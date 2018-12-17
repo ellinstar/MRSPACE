@@ -862,7 +862,7 @@ img.ui-datepicker-trigger {
 				<div class="onoffswitch">
 					<!-- 공간 선택 스위치 부분 -->
 					<input type="radio" name="sp_Type" class="onoffswitch-checkbox"
-						id="switch" value="od"> <label class="onoffswitch-label"
+						id="switch" value="오픈데스크"> <label class="onoffswitch-label"
 						for="switch"> <span class="onoffswitch-inner"></span> <span
 						class="onoffswitch-switch"></span>
 					</label>
@@ -872,7 +872,7 @@ img.ui-datepicker-trigger {
 				<div class="onoffswitch2">
 					<!-- 공간 선택 스위치 부분 -->
 					<input type="radio" name="sp_Type" class="onoffswitch-checkbox2"
-						id="switch2" value="pd"> <label class="onoffswitch-label2"
+						id="switch2" value="고정데스크"> <label class="onoffswitch-label2"
 						for="switch2"> <span class="onoffswitch-inner2"></span> <span
 						class="onoffswitch-switch2"></span>
 					</label>
@@ -882,7 +882,7 @@ img.ui-datepicker-trigger {
 				<div class="onoffswitch3">
 					<!-- 공간 선택 스위치 부분 -->
 					<input type="radio" name="sp_Type" class="onoffswitch-checkbox3"
-						id="switch3" value="po1"> <label
+						id="switch3" value="1인프라이빗오피스"> <label
 						class="onoffswitch-label3" for="switch3"> <span
 						class="onoffswitch-inner3"></span> <span
 						class="onoffswitch-switch3"></span>
@@ -892,7 +892,7 @@ img.ui-datepicker-trigger {
 				<div class="onoffswitch4">
 					<!-- 공간 선택 스위치 부분 -->
 					<input type="radio" name="sp_Type" class="onoffswitch-checkbox4"
-						id="switch4" value="po3"> <label
+						id="switch4" value="3인프라이빗오피스"> <label
 						class="onoffswitch-label4" for="switch4"> <span
 						class="onoffswitch-inner4"></span> <span
 						class="onoffswitch-switch4"></span>
@@ -903,7 +903,7 @@ img.ui-datepicker-trigger {
 				<div class="onoffswitch5">
 					<!-- 공간 선택 스위치 부분 -->
 					<input type="radio" name="sp_Type" class="onoffswitch-checkbox5"
-						id="switch5" value="po6"> <label
+						id="switch5" value="6인프라이빗오피스"> <label
 						class="onoffswitch-label5" for="switch5"> <span
 						class="onoffswitch-inner5"></span> <span
 						class="onoffswitch-switch5"></span>
