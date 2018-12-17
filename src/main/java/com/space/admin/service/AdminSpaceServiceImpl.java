@@ -26,6 +26,12 @@ public class AdminSpaceServiceImpl implements AdminSpaceService {
 	}
 
 	@Override
+	public List<SpaceVO> spNewList() {
+		// TODO Auto-generated method stub
+		List<SpaceVO> spNewList = adminSpaceDao.spNewList();
+		return spNewList;
+	}
+	@Override
 	public List<SpaceVO> spMainList() {
 		// TODO Auto-generated method stub
 		List<SpaceVO> spMainList = adminSpaceDao.spMainList();

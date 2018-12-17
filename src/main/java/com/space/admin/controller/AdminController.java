@@ -31,8 +31,12 @@ public class AdminController {
 	private AdminSpaceService adminSpaceServ;
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String adIndex() {
+	public String adIndex(Model model) {
 		log.info("관리자 메인화면");
+		List<CompVO> cpNewList = adminCompServ.cpNewList();
+		model.addAttribute("cpNewList", cpNewList);
+		List<SpaceVO> spNewList = adminSpaceServ.spNewList();
+		model.addAttribute("spNewList", spNewList);
 		return "index2";
 	}
 	

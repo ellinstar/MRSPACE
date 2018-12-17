@@ -20,6 +20,11 @@ public class AdminSpaceDaoImpl implements AdminSpaceDAO {
 	}
 
 	@Override
+	public List<SpaceVO> spNewList() {
+		// TODO Auto-generated method stub
+		return session.selectList("spNewList");
+	}
+	@Override
 	public List<SpaceVO> spMainList() {
 		// TODO Auto-generated method stub
 		return session.selectList("spMainList");

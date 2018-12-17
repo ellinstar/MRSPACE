@@ -24,6 +24,11 @@ public class AdminCompDaoImpl implements AdminCompDAO {
 		// TODO Auto-generated method stub
 		return session.selectList("cpMainList");
 	}
+	@Override
+	public List<CompVO> cpNewList() {
+		// TODO Auto-generated method stub
+		return session.selectList("cpNewList");
+	}
 
 	@Override
 	public CompVO compDetail(int cp_num) {

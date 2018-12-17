@@ -826,25 +826,7 @@ img.ui-datepicker-trigger {
 		
 	
 </script>
-<!-- 공간버튼 단일선택 스크립트 -->
-<!-- <script type="text/javascript">
-	$(document).ready(
-			function() {
 
-				$('input[type="radio"][name="sp_Type"]').click(
-						function() {
-							if ($(this).prop('checked')) {
-								$('input[type="radio"][name="sp_Type"]').prop(
-										'checked', false);
-								$(this).prop('checked', true);
-							}
-
-						});
-				
-				
-
-			});
-</script> -->
 <meta charset="UTF-8">
 <title>공간등록 유형선택 페이지</title>
 </head>

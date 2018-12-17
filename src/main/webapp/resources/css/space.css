@@ -1,0 +1,602 @@
+@charset "UTF-8";
+body {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+footer {
+	padding: 100px;
+	position: relative;
+	bottom: 100px;
+}
+
+div {
+	margin: auto 15;
+}
+<!-- 오픈데스크 1인 버튼 -->
+.onoffswitch {
+	position: relative;
+	width: 170px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+	display: none;
+}
+
+.onoffswitch-label {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 7px;
+}
+
+.onoffswitch-inner {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 34px;
+	padding: 0;
+	line-height: 34px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+	content: "오픈데스크 1인";
+	padding-left: 10px;
+	background-color: #EB8715;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+	content: "오픈데스크 1인";
+	padding-right: 10px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch {
+	display: block;
+	width: 36px;
+	margin: 1px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 132px;
+	border: 2px solid #999999;
+	border-radius: 7px;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+	right: 0px;
+}
+<!-- 고정데스크 1인 버튼 -->
+.onoffswitch2 {
+	position: relative;
+	left: 200px;
+	bottom: 47px;
+	width: 170px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	width: 170px;
+}
+
+.onoffswitch-checkbox2 {
+	display: none;
+}
+
+.onoffswitch-label2 {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 7px;
+}
+
+.onoffswitch-inner2 {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner2:before, .onoffswitch-inner2:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 34px;
+	padding: 0;
+	line-height: 34px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner2:before {
+	content: "고정데스크 1인";
+	padding-left: 10px;
+	background-color: #EB8715;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner2:after {
+	content: "고정데스크 1인";
+	padding-right: 10px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch2 {
+	display: block;
+	width: 36px;
+	margin: 1px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 132px;
+	border: 2px solid #999999;
+	border-radius: 7px;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox2:checked+.onoffswitch-label2 .onoffswitch-inner2 {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox2:checked+.onoffswitch-label2 .onoffswitch-switch2
+	{
+	right: 0px;
+}
+<!-- 프라이빗오피스1 버튼 -->
+.onoffswitch3 {
+	position: relative;
+	width: 170px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.onoffswitch-checkbox3 {
+	display: none;
+}
+
+.onoffswitch-label3 {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 7px;
+}
+
+.onoffswitch-inner3 {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner3:before, .onoffswitch-inner3:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 34px;
+	padding: 0;
+	line-height: 34px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner3:before {
+	content: "프라이빗오피스1인";
+	padding-left: 10px;
+	background-color: #EB8715;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner3:after {
+	content: "프라이빗오피스1인";
+	padding-right: 10px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch3 {
+	display: block;
+	width: 36px;
+	margin: 1px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 132px;
+	border: 2px solid #999999;
+	border-radius: 7px;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox3:checked+.onoffswitch-label3 .onoffswitch-inner3 {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox3:checked+.onoffswitch-label3 .onoffswitch-switch3
+	{
+	right: 0px;
+}
+<!-- 프라이빗오피스3 버튼 -->
+.onoffswitch4 {
+	position: relative;
+	left: 200px;
+	bottom: 47px;
+	width: 170px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.onoffswitch-checkbox4 {
+	display: none;
+}
+
+.onoffswitch-label4 {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 7px;
+}
+
+.onoffswitch-inner4 {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner4:before, .onoffswitch-inner4:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 34px;
+	padding: 0;
+	line-height: 34px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner4:before {
+	content: "프라이빗오피스3인";
+	padding-left: 10px;
+	background-color: #EB8715;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner4:after {
+	content: "프라이빗오피스3인";
+	padding-right: 10px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch4 {
+	display: block;
+	width: 36px;
+	margin: 1px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 132px;
+	border: 2px solid #999999;
+	border-radius: 7px;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox4:checked+.onoffswitch-label4 .onoffswitch-inner4 {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox4:checked+.onoffswitch-label4 .onoffswitch-switch4
+	{
+	right: 0px;
+}
+<!-- 프라이빗오피스6 버튼 -->
+.onoffswitch5 {
+	position: relative;
+	left: 400px;
+	bottom: 93px;
+	width: 170px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.onoffswitch-checkbox5 {
+	display: none;
+}
+
+.onoffswitch-label5 {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 7px;
+}
+
+.onoffswitch-inner5 {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner5:before, .onoffswitch-inner5:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 34px;
+	padding: 0;
+	line-height: 34px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner5:before {
+	content: "프라이빗오피스6인";
+	padding-left: 10px;
+	background-color: #EB8715;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner5:after {
+	content: "프라이빗오피스6인";
+	padding-right: 10px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch5 {
+	display: block;
+	width: 36px;
+	margin: 1px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 132px;
+	border: 2px solid #999999;
+	border-radius: 7px;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox5:checked+.onoffswitch-label5 .onoffswitch-inner5 {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox5:checked+.onoffswitch-label5 .onoffswitch-switch5
+	{
+	right: 0px;
+}
+<!-- 등록 버튼 -->
+input[type=date]:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+#spaceDateStart, #spaceDateEnd {
+	width: 150px;
+}
+
+/*datepicker에서 사용한 이미지 버튼 style적용*/
+img.ui-datepicker-trigger {
+	margin-left: 5px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+input[type=text] {
+	width: 350px;
+	border: 2px solid #aaa;
+	border-radius: 4px;
+	margin: 8px 0;
+	outline: none;
+	padding: 8px;
+	box-sizing: border-box;
+	transition: .3s;
+}
+
+input[type=text]:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+textarea {
+	width: 100%;
+	border: 2px solid #aaa;
+	border-radius: 4px;
+	margin: 8px 0;
+	outline: none;
+	padding: 8px;
+	box-sizing: border-box;
+	transition: .3s;
+	height: 150px;
+	resize: none; /* 사용자 임의 변경 불가 */
+}
+
+textarea:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+#spaceOpenDate {
+	width: 100%;
+	border: 2px solid #aaa;
+	border-radius: 4px;
+	margin: 8px 0;
+	outline: none;
+	padding: 8px;
+	box-sizing: border-box;
+	transition: .3s;
+}
+
+#spaceOpenDate:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.filebox label {
+	position: relative;
+	top: 3.5px;
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #e67e22;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	display: inline-block;
+}
+
+/* named upload */
+.filebox .upload-name {
+	display: inline-block;
+	padding: .5em .75em;
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.filebox.bs3-primary label {
+	color: #fff;
+	background-color: #e67e22;
+	border-color: #ee9e57;
+}
+
+#spaceOpenDate {
+	width: 150px;
+}
+
+/*datepicker에서 사용한 이미지 버튼 style적용*/
+img.ui-datepicker-trigger {
+	margin-left: 5px;
+	vertical-align: middle;
+	curs
+	inter;
+}
+<!-- 공간 서비스/교통편 텍스트 -->
+#spaceService, #spaceTraffic {
+	width: 400px;
+	height: 300px;
+	border: 2px solid #aaa;
+	border-radius: 4px;
+	margin: 8px 0;
+	outline: none;
+	padding: 8px;
+	box-sizing: border-box;
+	transition: .3s;
+	resize: none;
+	border: 2px solid #aaa;
+}
+
+#spaceService:focus, #spaceTraffic:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+#spaceTraffic, .trtitle {
+	position: relative;
+	bottom: 380px;
+	left: 710px;
+}
+
+.btnReg, .btnCancle {
+	position: relative;
+	float: right;
+	width: auto;
+	bottom: 300px;
+	display: inline-block;
+	color: #ecf0f1;
+	text-decoration: none;
+	border-radius: 5px;
+	border: solid 1px #f39c12;
+	background: #e67e22;
+	text-align: center;
+	padding: 16px 18px 14px;
+	margin: 12px;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	-webkit-box-shadow: 0px 6px 0px #d35400;
+	-moz-box-shadow: 0px 6px 0px #d35400;
+	box-shadow: 0px 6px 0px #d35400;
+	width: auto;
+	display: inline-block;
+}
+
+.btnReg:active, .btnCancle:active {
+	-webkit-box-shadow: 0px 2px 0px #d35400;
+	-moz-box-shadow: 0px 2px 0px #d35400;
+	box-shadow: 0px 2px 0px #d35400;
+	position: relative;
+}

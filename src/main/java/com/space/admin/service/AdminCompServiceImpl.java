@@ -26,6 +26,12 @@ public class AdminCompServiceImpl implements AdminCompService {
 	}
 
 	@Override
+	public List<CompVO> cpNewList() {
+		// TODO Auto-generated method stub
+		List<CompVO> cpNewList = adminCompDao.cpNewList();
+		return cpNewList;
+	}
+	@Override
 	public List<CompVO> cpMainList() {
 		// TODO Auto-generated method stub
 		List<CompVO> cpMainList = adminCompDao.cpMainList();
