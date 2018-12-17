@@ -6,7 +6,7 @@
 	<select id="spMainList" resultType="space">
 	<![CDATA[
 	select sp_num, cp_num, sp_name, sp_type, sp_address, sp_stock, sp_rest, sp_date
-		from tb_space s, tb_company c
+		from tb_space
 	where rownum <=3
 	order by sp_num desc
 	]]>
@@ -28,8 +28,8 @@
 		]]>
 	</select>
 	<!-- 업체 상세보기 -->
-	<select id="spaceDetail" resultType="comp">
-		select cp_name, sp_name, sp_type, sp_stock, sp_address, sp_exposition, sp_service, sp_traffic, sp_file
+	<select id="spaceDetail" resultType="space">
+		select cp_num, sp_name, sp_type, sp_stock, sp_address, sp_exposition, sp_service, sp_traffic, sp_file
 		from tb_space
 		where sp_num = #{sp_Num}
 	</select>

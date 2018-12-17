@@ -35,6 +35,7 @@ public class AdminSpaceController {
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public String compDetail(@RequestParam("sp_Num") int sp_Num, Model model) {
 		log.info("spaceDetail 호출 성공");
+		System.out.println(sp_Num);
 		SpaceVO detail = new SpaceVO();
 		detail = adminSpaceServ.spaceDetail(sp_Num);
 		model.addAttribute("detail", detail);

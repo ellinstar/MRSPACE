@@ -24,6 +24,9 @@
 	<definition name="/admin/comp/**" extends="adContent">
 		<put-attribute name="main" value="/WEB-INF/views/admin/comp/{1}.jsp" />
 	</definition>
+	<definition name="/admin/space/**" extends="adContent">
+		<put-attribute name="main" value="/WEB-INF/views/admin/space/{1}.jsp" />
+	</definition>
 	<definition name="/admin/mem/**" extends="adContent">
 		<put-attribute name="main" value="/WEB-INF/views/admin/mem/{1}.jsp" />
 	</definition>
