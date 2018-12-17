@@ -16,11 +16,19 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	var actionForm = $("#actionForm");
+	var actionForm2 = $("#actionForm2");
 	$(".move").on("click",function(e) {
 		e.preventDefault();
 		actionForm.append("<input type='hidden' name='cp_Num' value='"
 		+ $(this).attr("href")+ "'>");
 		actionForm.attr("action", "/admin/comp/detail");
+		actionForm.submit();
+	});
+	$(".move").on("click",function(e) {
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='sp_Num' value='"
+		+ $(this).attr("href")+ "'>");
+		actionForm.attr("action", "/admin/space/detail");
 		actionForm.submit();
 	});
 });
@@ -71,32 +79,36 @@ $(document).ready(function() {
 			</form>
 		</div>
 		<div class="page-header">
-			<h3><a href="/admin/comp/space">공간 등록 현황</a></h3>
+			<h3><a href="/admin/space/list">공간 등록 현황</a></h3>
 			</div>
 		<div class="col-md-12">
 			<table summary="게시판 리스트"
 				class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
-						<th data-value="nt_num" class="order">#번호</th>
+						<th data-value="sp_Num" class="order">#번호</th>
 						<th>업체명</th>
 						<th>공간명</th>
 						<th>유형</th>
 						<th>위치</th>
 						<th>총수량</th>
-						<th data-value="nt_date" class="order">등록신청일</th>
+						<th>남은수량</th>
+						<th data-value="sp_Regdate" class="order">등록신청일</th>
 					</tr>
 				</thead>
-				<tbody id="qnaList">
-				<%-- <c:choose>
-					<c:when test="${not empty qnaList}" >
-						<c:forEach var="qna" items="${qnaList}">
+				<tbody id="spList">
+				<c:choose>
+					<c:when test="${not empty spList}" >
+						<c:forEach var="space" items="${spList}">
 							<tr>
-								<td><c:out value="${qna.que_num}"/></td>
-								<td><a class='move' href='<c:out value="${qna.que_num}"/>'><c:out value="${qna.que_title}"></c:out></a> </td>
-								<td><c:out value="${qnd.que_rep_num}"/></td>
-								<td><c:out value="${qnd.mem_num}"/></td>
-								<td><c:out value="${qnd.que_date}"/></td>
+								<td><c:out value="${space.sp_Num}"/></td>
+								<td><c:out value="${space.cp_Name}"/></td>
+								<td><a class='move' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
+								<td><c:out value="${space.sp_Type}"/></td>
+								<td><c:out value="${space.sp_Address}"/></td>
+								<td><c:out value="${space.sp_Stock}"/></td>
+								<td><c:out value="${space.sp_Rest}"/></td>
+								<td><c:out value="${space.sp_Regdate}"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -105,9 +117,11 @@ $(document).ready(function() {
 							<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 						</tr>
 					</c:otherwise>
-				</c:choose> --%>
+				</c:choose>
 				</tbody>
 			</table>
+			<form id="actionForm2" action="/admin/space/detail" method="get">
+			</form>
 		</div>
 			
 	</div>
