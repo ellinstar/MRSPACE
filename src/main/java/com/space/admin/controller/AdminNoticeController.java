@@ -45,7 +45,7 @@ public class AdminNoticeController {
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("data", nvo);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
-;		
+		
 		
 		return "/admin/board/noticeList";
 	}

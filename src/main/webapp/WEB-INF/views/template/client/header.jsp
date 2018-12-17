@@ -15,7 +15,7 @@
 </script>
 <div class="container">
 	<a class="navbar-brand" href="/">COWKINGSPACE</a> <a href="/">Home</a>
-	<a href="/space/notice.do">공지사항</a> 
+	<a href="/notice.do">공지사항</a> 
 	<c:choose>
 		<c:when test="${cplogin.cp_Id != null or cplogin.cp_Id != '' and login.mem_Id == null and login.mem_Id == ''}">
 			<a href="/space/spaceRegister.do">내 공간 등록</a>
