@@ -638,8 +638,8 @@ img.ui-datepicker-trigger {
 	$(function() {
 
 		//다음 버튼 클릭시 
-		$("#btnReg").click(
-				function() {
+		$("#btnReg").click(function() {
+					alert("${cplogin.cp_Id}");
 					
 					
 					//재고갯수 입력 유효성 검사
@@ -730,7 +730,7 @@ img.ui-datepicker-trigger {
 							document.myForm.spaceexp.focus()
 							return false;
 						}
-						
+					
 			          $("#myForm").attr({
 							"method":"POST",
 							"action":"/space/spaceInsert.do"
@@ -995,6 +995,7 @@ img.ui-datepicker-trigger {
 				</div>
 			</div>
 		</div>
+		<input type='hidden' name='cp_Id' value='${complogin.cp_Id}'/>
 	</form>
 	<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
 		class="btnCancle" />

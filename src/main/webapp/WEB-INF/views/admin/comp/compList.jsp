@@ -62,7 +62,7 @@ $(document).ready(function() {
 						<c:forEach var="comp" items="${compList}">
 							<tr>
 								<td><c:out value="${comp.cp_Num}"/></td>
-								<td><a class='move' href='<c:out value="${comp.cp_Num}"/>'><c:out value="${comp.cp_Name}"></c:out></a> </td>
+								<td><a class='move' href='<c:out value="${comp.cp_Num}"/>'><c:out value="${comp.cp_Num}"></c:out></a> </td>
 								<td><c:out value="${comp.cp_Id}"/></td>
 								<td><c:out value="${comp.cp_Joinstate}"/></td>
 								<td><c:out value="${comp.cp_Joinstate}"/></td>

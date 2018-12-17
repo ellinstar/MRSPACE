@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.space.admin.service.AdminCompService;
-import com.space.comp.vo.CompVO;
+import com.space.admin.service.AdminSpaceService;
+import com.space.space.vo.SpaceVO;
 
 import lombok.extern.java.Log;
 
 @Log
 @Controller
-@RequestMapping(value="/admin/comp/**")
-public class AdminCompController {
+@RequestMapping(value="/admin/space/**")
+public class AdminSpaceController {
 	
 	@Autowired
-	private AdminCompService adminCompServ;
+	private AdminSpaceService adminSpaceServ;
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String compList(@ModelAttribute CompVO cvo, Model model, HttpServletRequest request) {
-		log.info("compList호출");
-		List<CompVO> compList = adminCompServ.compList(cvo);
-		model.addAttribute("compList", compList);
-		return "/admin/comp/compList";
+	public String spaceList(@ModelAttribute SpaceVO svo, Model model, HttpServletRequest request) {
+		log.info("spaceList호출");
+		List<SpaceVO> spaceList = adminSpaceServ.spaceList(svo);
+		model.addAttribute("spaceList", spaceList);
+		return "/admin/space/spaceList";
 	}
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
-	public String compDetail(@RequestParam("cp_Num") int cp_Num, Model model) {
-		log.info("compDetail 호출 성공");
-		CompVO detail = new CompVO();
-		detail = adminCompServ.compDetail(cp_Num);
+	public String compDetail(@RequestParam("sp_Num") int sp_Num, Model model) {
+		log.info("spaceDetail 호출 성공");
+		SpaceVO detail = new SpaceVO();
+		detail = adminSpaceServ.spaceDetail(sp_Num);
 		model.addAttribute("detail", detail);
-		return "/admin/comp/cpDetail";
+		return "/admin/space/spDetail";
 	}
 	
 }

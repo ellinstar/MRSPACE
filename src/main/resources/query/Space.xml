@@ -3,9 +3,6 @@
 
 <mapper namespace="com.space.space.dao.SpaceDAO">
 
-
-
-
 	<!-- 공간 등록 -->
 	<insert id="spaceInsert" parameterType="space">
 		<selectKey keyProperty="sp_Num" resultType="int"
@@ -26,7 +23,8 @@
 		sp_File,
 		sp_Service,
 		sp_Traffic,
-		sp_Rest
+		sp_Rest,
+		cp_Num
 		)
 		VALUES(
 		#{sp_Num},
@@ -43,7 +41,8 @@
 		#{sp_File, jdbcType=VARCHAR},
 		#{sp_Service, jdbcType=VARCHAR},
 		#{sp_Traffic, jdbcType=VARCHAR},
-		#{sp_Rest}
+		#{sp_Stock, jdbcType=VARCHAR},
+		(select cp_num from tb_company where cp_id=#{cp_Id})
 		)
 	</insert>
 
