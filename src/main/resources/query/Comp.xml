@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.space.comp.dao.CompDAO">
+	 <select id="compsecuritySelect" parameterType="String" resultType="cpsecurity"> 
+		select cp_id, salt from tb_compsecurity where cp_id = #{cp_Id} </select>
+
+	<insert id="compsecurityInsert" parameterType="cpsecurity">
+		insert into
+		tb_compsecurity(cp_Id, salt)
+		values(#{cp_Id}, #{salt})
+	</insert>
+
+	<select id="compSelect" parameterType="String" resultType="comp">
+	select * from tb_company where cp_id = #{cp_Id}
+	</select>
+
+	<insert id="compInsert" parameterType="comp">
+		<!-- comp = compInsert -->
+		insert into tb_company
+		(cp_num, cp_Id, cp_Pw, cp_Name, cp_Ceo, cp_Add, 
+		cp_Bnum, cp_Bank, cp_Account, cp_Email, cp_Phone, 
+		cp_Date, cp_State, cp_Joinstate, cp_Outdate)
+		values
+		(tb_comp_seq.nextval, #{cp_Id}, #{cp_Pw}, #{cp_Name},
+		#{cp_Ceo}, #{cp_Add}, #{cp_Bnum}, #{cp_Bank}, #{cp_Account},
+		#{cp_Email}, #{cp_Phone},sysdate, '0', '0', null)
+	</insert>
+
+</mapper>

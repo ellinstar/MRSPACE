@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.mem.dao.MemDAO">
+
+	<!-- <select resultType="mem" parameterType="String" id="memSelect">select
+		mem_num, mem_id, mem_pw, mem_name, mem_birth, mem_phone, mem_email,
+		mem_job from tb_mem where mem_id = #{mem_Id} </select> -->
+		
+	<select id="memSelect" parameterType="String" resultType="mem">
+		select mem_num, mem_id, mem_pw, mem_name, mem_birth, mem_phone, mem_email, mem_job, mem_state 
+		from tb_mem
+		where mem_id = #{mem_Id}
+	</select>
+	
+	  <update id="securityUpdate" parameterType="security">
+      update tb_security
+      set mem_Id = #{mem_Id},
+      salt = #{salt}
+      where mem_ID = #{mem_Id}
+   </update>
+
+	<!-- <insert parameterType="mem" id="memInsert">
+		/* mem - memInsert */
+		<selectKey resultType="int" order="BEFORE" keyProperty="idx">select
+			tb_mem_seq.nextval from dual </selectKey>
+		insert into tb_mem(mem_num, mem_id, mem_pw, mem_name, mem_birth,
+		mem_phone, mem_email, mem_job)values(#{idx}, #{mem_Id}, #{mem_Pw},
+		#{mem_Name}, #{mem_Birth}, #{mem_Phone}, #{mem_Email}, #{mem_Job})
+	</insert> -->
+	
+	<insert id="memInsert" parameterType="mem">
+		/* mem - memInsert */
+		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
+			select tb_mem_seq.nextval from dual
+		</selectKey>
+		insert into tb_mem(mem_num, mem_id, mem_pw, mem_name, mem_birth, mem_phone, mem_email, mem_job)
+		values(#{idx}, #{mem_Id}, #{mem_Pw}, #{mem_Name}, #{mem_Birth}, #{mem_Phone}, #{mem_Email}, #{mem_Job})
+	</insert>
+
+
+	<update parameterType="mem" id="memUpdate">
+		update tb_mem set
+		<if test="mem_Pw != null and mem_Pw != ''">mem_pw=#{mem_Pw}, </if>
+		mem_phone=#{mem_Phone}, mem_email=#{mem_Email}, mem_job=#{mem_Job}
+		where mem_Id=#{mem_Id}
+	</update>
+
+	<delete id="memDelete" parameterType="String">
+		update tb_mem set 
+		mem_state = 1 
+		where mem_id = #{mem_Id}
+	</delete>
+
+	<insert parameterType="security" id="securityInsert">insert into
+		tb_security(mem_id, salt) values(#{mem_Id}, #{salt}) </insert>
+
+	<select resultType="security" parameterType="String"
+		id="securitySelect">select mem_id, salt from tb_security where mem_id = #{mem_Id}
+	</select>
+
+	<delete parameterType="String" id="securityDelete">delete from security where
+		mem_id = #{mem_Id} </delete>
+
+
+	<select id="findMember" parameterType="String" resultType="mem">
+		select mem_id
+		from tb_mem
+		where mem_name = #{mem_Name} and mem_Phone = #{mem_Phone}
+	</select>
+
+	<select id="pwChange" parameterType="String" resultType="mem">
+		select mem_id
+		from tb_mem
+		where mem_id=#{mem_Id} and mem_name = #{mem_Name} and mem_Phone =
+		#{mem_Phone}
+	</select>
+
+	<update id="pwChange2" parameterType="mem">
+		update tb_mem
+		set mem_Pw = #{mem_Pw}
+		where mem_Id = #{mem_Id}
+	</update>
+</mapper>

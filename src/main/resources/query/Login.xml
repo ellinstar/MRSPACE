@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.memlogin.dao.MemLoginDAO">
+
+	<select id="mem_IdSelect" parameterType="String"
+		resultType="login">
+		select
+		mem_Id,
+		mem_Pw,
+		mem_Name
+		from tb_mem
+		where mem_Id =
+		#{mem_Id}
+	</select>
+
+	<!-- <select id="loginSelect" parameterType="login" resultType="login">
+		/* 로그인
+		처리 쿼리 */
+		select
+		mem_Id,
+		mem_Pw,
+		mem_Name
+		from tb_mem
+		where mem_Id =
+		#{mem_Id} and mem_Pw = #{mem_Pw}
+	</select> -->
+	
+	<select id="loginSelect" parameterType="login" resultType="login">
+		/* 로그인처리 쿼리 */
+		select
+		mem_Id,
+		mem_Pw,
+		mem_Name
+		from tb_mem
+		where mem_Id =
+		#{mem_Id} and mem_Pw = #{mem_Pw} and mem_state = 0
+	</select>
+	
+	<select id="loginSelect2" parameterType="login" resultType="login">
+		/* 로그인처리 쿼리2 */
+		select
+		mem_Id,
+		mem_Name
+		from tb_mem
+		where mem_Id =#{mem_Id} and mem_state = 0
+	</select>
+
+	<insert id="loginHistoryInsert" parameterType="login">
+		insert into
+		tb_login_history(
+		idx, mem_Id, lastSuccessedLogin)
+		values(
+		login_history_seq.nextval, #{mem_Id},
+		sysdate
+		)
+	</insert>
+
+	<update id="loginHistoryUpdate" parameterType="login">
+		update
+		tb_login_history
+		set lastsuccessedlogin = sysdate
+		where
+		idx = #{idx} and mem_Id = #{mem_Id}
+	</update>
+
+	<select id="loginHistorySelect" parameterType="String"
+		resultType="login">
+		select
+		idx,
+		mem_Id,
+		lastSuccessedLogin
+		from tb_login_history
+		where mem_Id = #{mem_Id}
+	</select>
+</mapper>
