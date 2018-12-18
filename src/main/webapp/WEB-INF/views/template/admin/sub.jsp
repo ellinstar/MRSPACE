@@ -184,7 +184,7 @@
 									<c:forEach var="space" items="${spNewList}">
 										<tr>
 											<td><a class='move' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
-											<td><c:out value="${space.cp_Num }"></c:out>
+											<td><c:out value="${space.cp_Name }"></c:out>
 										</tr>
 									</c:forEach>
 								</c:when>

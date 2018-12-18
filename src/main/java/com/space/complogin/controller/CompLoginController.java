@@ -72,6 +72,7 @@ public class CompLoginController {
 				vo.setLastSuccessedLogin(new Date());
 				comploginService.compLoginHistoryUpdate(vo);
 				session.setAttribute("cplogin", loginCheckResult);
+				session.setMaxInactiveInterval(-1);
 				log.info("업체 로그인성공!");
 				String url="/";
 				return "redirect: "+url;

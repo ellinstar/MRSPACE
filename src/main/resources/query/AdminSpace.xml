@@ -5,19 +5,19 @@
 	<!-- 신규 리스트 조회 -->
 	<select id="spNewList" resultType="space">
 	<![CDATA[
-	select sp_name, cp_num
-	from tb_space
-	where sp_date >=trunc(sysdate)
+	select * 
+	from(select s.sp_name, c.cp_name, s.sp_date
+	from tb_space s, tb_company c where s.cp_num = c.cp_num)
+	where sp_date >=trunc(sysdate) and rownum<=3
 	]]>
 	</select>
 	<!-- 메인 리스트 조회 -->
 	<select id="spMainList" resultType="space">
 	<![CDATA[
-	select *
-	from(select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_address, s.sp_stock, s.sp_rest, s.sp_date
+	select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_address, s.sp_stock, s.sp_rest, s.sp_date
 		from tb_space s, tb_company c
-	where s.cp_num = c.cp_num)
-	where rownum <=5
+	where s.cp_num = c.cp_num
+	and rownum <=5
 	order by sp_num desc
 	]]>
 	</select>

@@ -219,11 +219,11 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-4">
 						<c:choose>
 							<c:when test="${not empty commonList}">
 
 								<c:forEach var="space" items="${commonList}" varStatus="status">
+					<div class="col-lg-4">
 									<div class="tac" data-num="${space.sp_Num}">
 										<div class="goDetail tal">
 
@@ -276,6 +276,7 @@
 											</div>
 										</div>
 									</div>
+					</div>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
@@ -284,7 +285,6 @@
 								</tr>
 							</c:otherwise>
 						</c:choose>
-					</div>
 
 
 				</div>
