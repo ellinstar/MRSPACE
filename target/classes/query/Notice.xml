@@ -52,10 +52,14 @@
 			select tb_notice_seq.nextval from dual
 		</selectKey>
 		insert into tb_notice(
+
 			nt_num, nt_title, nt_content, ad_num <if test="nt_file != null and nt_file != ''">, nt_file</if>
+
 		)
 		values(
+
 			#{nt_num}, #{nt_title}, #{nt_content}, #{ad_num}<if test="nt_file != null and nt_file != ''">, #{nt_file}</if>
+
 		)
 	</insert>
 	
