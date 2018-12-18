@@ -17,12 +17,12 @@ import lombok.extern.java.Log;
 @Controller
 public class AdminLoginController {
 	
-	/*@RequestMapping(value="/admin",method=RequestMethod.GET)
+	@RequestMapping(value="/admin",method=RequestMethod.GET)
 	public String Login(Model model) {
 		log.info("로그인 화면");
 		model.addAttribute("adminLoginVO", new AdminLoginVO());
 		return "admin/log/login";
-	}*/
+	}
 	
 	@RequestMapping(value="/adminlogin", method=RequestMethod.POST)
 	public String loginSucces(@ModelAttribute("adminLoginVO") AdminLoginVO advo, HttpSession session) {
@@ -32,8 +32,8 @@ public class AdminLoginController {
 		String adminPw = advo.getAdminPw();
 		String url = "";
 		if(adminId.equals("admin") && adminPw.equals("admin")) {
-			url="redirect: /admin";
-			session.setAttribute("adminLog", adminId);
+			url="redirect: /admin/main";
+			session.setAttribute("adminId", adminId);
 		}else {
 			url="admin/log/login";
 		}
