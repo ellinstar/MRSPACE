@@ -53,7 +53,7 @@ public class AdminController {
 		List<CompVO> compList = adminCompServ.cpMainList();
 		List<SpaceVO> spaceList = adminSpaceServ.spMainList();
 		model.addAttribute("cpMainList", compList);
-		model.addAttribute("spaceList", spaceList);
+		model.addAttribute("spMainList", spaceList);
 		return "/admin/comp/compmain";
 	}
 	@RequestMapping(value="/qna", method= RequestMethod.GET)

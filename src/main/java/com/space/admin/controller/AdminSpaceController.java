@@ -28,8 +28,8 @@ public class AdminSpaceController {
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String spaceList(@ModelAttribute SpaceVO svo, Model model, HttpServletRequest request) {
 		log.info("spaceList호출");
-		List<SpaceVO> spaceList = adminSpaceServ.spaceList(svo);
-		model.addAttribute("spaceList", spaceList);
+		List<SpaceVO> adspaceList = adminSpaceServ.adspaceList(svo);
+		model.addAttribute("adspaceList", adspaceList);
 		return "/admin/space/spaceList";
 	}
 	@RequestMapping(value="/detail", method=RequestMethod.GET)

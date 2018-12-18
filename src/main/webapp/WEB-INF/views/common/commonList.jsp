@@ -270,7 +270,7 @@
 													<span class="tag_area_name">${space.sp_Address}</span>
 												</div>
 												<div class="info_price_hour">
-													<strong class="price"><fmt:formatNumber value="${detail.sp_Price}" /></strong><span
+													<strong class="price"><fmt:formatNumber value="${space.sp_Price}" /></strong><span
 														class="txt_unit">원/월</span>
 												</div>
 											</div>

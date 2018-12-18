@@ -102,19 +102,19 @@ $(document).ready(function() {
 						<th data-value="sp_Regdate" class="order">등록신청일</th>
 					</tr>
 				</thead>
-				<tbody id="spList">
+				<tbody id="spMainList">
 				<c:choose>
-					<c:when test="${not empty spaceList}" >
-						<c:forEach var="space" items="${spaceList}">
+					<c:when test="${not empty spMainList}" >
+						<c:forEach var="spmain" items="${spMainList}">
 							<tr>
-								<td><c:out value="${space.sp_Num}"/></td>
-								<td><c:out value="${space.cp_Num}"/></td>
-								<td><a class='move' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
-								<td><c:out value="${space.sp_Type}"/></td>
-								<td><c:out value="${space.sp_Address}"/></td>
-								<td><c:out value="${space.sp_Stock}"/></td>
-								<td><c:out value="${space.sp_Rest}"/></td>
-								<td><c:out value="${space.sp_Date}"/></td>
+								<td><c:out value="${spmain.sp_Num}"/></td>
+								<td><c:out value="${spmain.cp_Name}"/></td>
+								<td><a class='move' href='<c:out value="${spmain.sp_Num}"/>'><c:out value="${spmain.sp_Name}"></c:out></a> </td>
+								<td><c:out value="${spmain.sp_Type}"/></td>
+								<td><c:out value="${spmain.sp_Address}"/></td>
+								<td><c:out value="${spmain.sp_Stock}"/></td>
+								<td><c:out value="${spmain.sp_Rest}"/></td>
+								<td><c:out value="${spmain.sp_Date}"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>

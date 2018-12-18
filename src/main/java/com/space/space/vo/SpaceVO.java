@@ -68,6 +68,7 @@ public class SpaceVO extends CommonVO{
 	//공간 재고
 	private int sp_Rest;
 
-
+//admin에서 필요한 vo
+	private String cp_Name;
 	
 }

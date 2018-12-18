@@ -14,9 +14,9 @@ public class AdminSpaceDaoImpl implements AdminSpaceDAO {
 	private SqlSession session;
 
 	@Override
-	public List<SpaceVO> spaceList(SpaceVO cvo) {
+	public List<SpaceVO> adspaceList(SpaceVO cvo) {
 		// TODO Auto-generated method stub
-		return session.selectList("spaceList");
+		return session.selectList("adspaceList");
 	}
 
 	@Override
