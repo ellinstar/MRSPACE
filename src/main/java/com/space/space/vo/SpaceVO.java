@@ -3,10 +3,11 @@ package com.space.space.vo;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
+import com.space.common.vo.CommonVO;
 
 // 공간
 @Data
-public class SpaceVO {
+public class SpaceVO extends CommonVO{
 
 	// 공간 번호
 	private int sp_Num;
@@ -66,11 +67,6 @@ public class SpaceVO {
 	//공간 재고
 	private int sp_Rest;
 
-	
-	
-	
-	
-	
 
 	
 }

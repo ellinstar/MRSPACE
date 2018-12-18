@@ -1,3 +1,4 @@
+
 package com.space.common.vo;
 
 public class CommonVO {
@@ -117,4 +118,5 @@ public class CommonVO {
 	public void setResult_msg(String result_msg) {
 		this.result_msg = result_msg;
 	}
+
 }
