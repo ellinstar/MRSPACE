@@ -13,15 +13,15 @@
 	<!-- 메인 리스트 조회 -->
 	<select id="cpMainList" resultType="comp">
 	<![CDATA[
-	select cp_num, cp_name, cp_id, cp_joinstate, cp_joinstate, cp_date, cp_outdate
+	select cp_num, cp_name, cp_id, cp_joinstate, cp_date, cp_outdate
 		from tb_company
-	where rownum <=3
+	where rownum <=5
 	order by cp_num desc
 	]]>
 	</select>
 	<!-- 업체 기본 조회 -->
 	<select id="compList" resultType="comp">
-		select cp_num, cp_name, cp_id, cp_joinstate, cp_joinstate, cp_date, cp_outdate
+		select cp_num, cp_name, cp_id, cp_joinstate, cp_date, cp_outdate
 		from tb_company
 		order by cp_num desc
 	</select>
@@ -37,8 +37,14 @@
 	</select>
 	<!-- 업체 상세보기 -->
 	<select id="compDetail" resultType="comp">
-		select cp_name, cp_id, cp_bnum, cp_ceo, cp_add, cp_phone, cp_email, cp_bank
+		select cp_num, cp_name, cp_id, cp_bnum, cp_ceo, cp_add, cp_phone, cp_email, cp_bank, cp_account
 		from tb_company
 		where cp_num = #{cp_Num}
 	</select>
+	<!-- 업체 가입 승인 -->
+	<update id="compOk">
+		update tb_company
+		 set cp_joinstate = 1
+		 where cp_num = #{cp_Num}
+	</update>
 </mapper>

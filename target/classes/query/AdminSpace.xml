@@ -15,7 +15,7 @@
 	<![CDATA[
 	select sp_num, cp_num, sp_name, sp_type, sp_address, sp_stock, sp_rest, sp_date
 		from tb_space
-	where rownum <=3
+	where rownum <=5
 	order by sp_num desc
 	]]>
 	</select>

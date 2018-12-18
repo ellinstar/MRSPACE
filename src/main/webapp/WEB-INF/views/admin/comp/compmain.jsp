@@ -61,8 +61,14 @@ $(document).ready(function() {
 								<td><c:out value="${company.cp_Num}"/></td>
 								<td><a class='movec' href='<c:out value="${company.cp_Num}"/>'><c:out value="${company.cp_Name}"></c:out></a> </td>
 								<td><c:out value="${company.cp_Id}"/></td>
-								<td><c:out value="${company.cp_Joinstate}"/></td>
-								<td><c:out value="${company.cp_Joinstate}"/></td>
+								<td><c:if test="${company.cp_Joinstate == 1}">Y</c:if>
+								<c:if test="${company.cp_Joinstate == 0}">N</c:if>
+								<c:if test="${company.cp_Joinstate == -1}">N</c:if></td>
+								<td><c:if test="${company.cp_Joinstate == 1}">승인완료</c:if>
+								<c:if test="${company.cp_Joinstate == 0}">서류접수대기</c:if>
+								<c:if test="${company.cp_Joinstate == -1}">반려</c:if>
+								<c:if test="${company.cp_Outdate != null}">탈퇴</c:if></td>
+								
 								<td><c:out value="${company.cp_Date}"/></td>
 							</tr>
 						</c:forEach>

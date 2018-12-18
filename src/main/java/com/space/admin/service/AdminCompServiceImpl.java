@@ -45,4 +45,11 @@ public class AdminCompServiceImpl implements AdminCompService {
 		return detail;
 	}
 
+	@Override
+	public int compOk(int cp_Num) {
+		// TODO Auto-generated method stub
+		int result = adminCompDao.compOk(cp_Num);
+		return result;
+	}
+
 }

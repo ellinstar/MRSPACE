@@ -36,4 +36,10 @@ public class AdminCompDaoImpl implements AdminCompDAO {
 		return (CompVO)session.selectOne("compDetail", cp_num);
 	}
 
+	@Override
+	public int compOk(int cp_Num) {
+		// TODO Auto-generated method stub
+		return session.update("compOk", cp_Num);
+	}
+
 }
