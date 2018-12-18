@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.space.common.page.Paging;
 import com.space.common.util.Util;
+import com.space.comp.vo.CompVO;
+import com.space.complogin.vo.CompLoginVO;
 import com.space.space.file.FileUploadUtil;
 import com.space.space.service.SpaceService;
 import com.space.space.vo.SpaceVO;
@@ -67,7 +69,7 @@ public class SpaceController {
 
 	// 등록 구현하기
 	@RequestMapping(value = "/spaceInsert.do", method = RequestMethod.POST)
-	public ModelAndView spaceInsert(@ModelAttribute SpaceVO svo, HttpServletRequest request)
+	public ModelAndView spaceInsert(@ModelAttribute SpaceVO svo, HttpServletRequest request, HttpSession session)
 			throws IllegalStateException, IOException {
 
 		log.info("spaceInsert.do 호출 성공");
@@ -79,7 +81,13 @@ public class SpaceController {
 			String sp_File = FileUploadUtil.fileUpload(svo.getFile(), request, "space");
 			svo.setSp_File(sp_File);
 		}
-
+		
+		/*CompLoginVO cvo =(CompLoginVO) session.getAttribute("cplogin");
+		
+		System.out.println("받는 아이디 : " + cvo.getCp_Id());
+		
+		System.out.println("받아오는 아이디 : " + svo.getCp_Id());*/
+		System.out.println(svo.getCp_Id());
 		result = spaceService.spaceInsert(svo);
 
 

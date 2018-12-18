@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.space.space.dao.SpaceDAO;
+import com.space.space.dao.SpaceDAOImpl;
 import com.space.space.vo.SpaceVO;
 
 @Service
@@ -14,14 +14,16 @@ import com.space.space.vo.SpaceVO;
 public class SpaceServiceImpl implements SpaceService {
 
 	@Autowired
-	private SpaceDAO spaceDao;
+	private SpaceDAOImpl spaceDao;
 
 	// 공간 등록 구현
 	@Override
 	public int spaceInsert(SpaceVO svo) {
 		int result = 0;
 		System.out.println("spaceService : " + svo.getSp_Name());
+		System.out.println("spaceService : " + svo.getCp_Id());
 		try {
+			
 			result = spaceDao.spaceInsert(svo);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -4,6 +4,7 @@ public class CompLoginVO extends CompLoginHistory {
 	private String cp_Id = "";
 	private String cp_Pw = "";
 	private String cp_Name = "";
+	private int cp_Num;
 
 	public CompLoginVO() {}
 
@@ -12,6 +13,16 @@ public class CompLoginVO extends CompLoginHistory {
 		this.cp_Id = cp_Id;
 		this.cp_Pw = cp_Pw;
 		this.cp_Name = cp_Name;
+	}
+	
+	
+
+	public int getCp_Num() {
+		return cp_Num;
+	}
+
+	public void setCp_Num(int cp_Num) {
+		this.cp_Num = cp_Num;
 	}
 
 	public String getCp_Id() {

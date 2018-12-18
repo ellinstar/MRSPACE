@@ -59,6 +59,7 @@ public class SpaceVO extends CommonVO{
 
 	// 업체 번호
 	private int cp_Num;
+	
 	private String cp_Id;
 
 	// 공간 교통편
