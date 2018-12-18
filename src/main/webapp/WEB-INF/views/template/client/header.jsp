@@ -22,7 +22,7 @@
 			<ul class="navbar-nav">
 				<li><strong>[${cplogin.cp_Name}]님 반갑습니다.</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <a href="/mem/logout.do">로그아웃</a> <a
-					href="/mem/memModify.do">&nbsp;&nbsp;&nbsp;회원 정보</a></li>
+					href="/comp/compPage.do">&nbsp;&nbsp;&nbsp;마이페이지</a></li>
 			</ul>
 		</c:when>
 		<c:when test="${login.mem_Id != null or login.mem_Id != '' and cplogin.cp_Id == null and cplogin.cp_Id == ''}">
