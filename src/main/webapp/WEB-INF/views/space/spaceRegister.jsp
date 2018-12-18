@@ -730,7 +730,7 @@ img.ui-datepicker-trigger {
 							document.myForm.spaceexp.focus()
 							return false;
 						}
-					
+						
 			          $("#myForm").attr({
 							"method":"POST",
 							"action":"/space/spaceInsert.do"
@@ -977,21 +977,11 @@ img.ui-datepicker-trigger {
 				</div>
 			</div>
 		</div>
-		<input type='hidden' name='cp_Id' value='${complogin.cp_Id}'/>
+		<input type="hidden" name='cp_Id' id='cp_Id' value='${cplogin.cp_Id}'/>
 	</form>
 	<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
 		class="btnCancle" />
 	<input type="button" value="REGIST" name="btnReg" id="btnReg"
 		class="btnReg" />
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

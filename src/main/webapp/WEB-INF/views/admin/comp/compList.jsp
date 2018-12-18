@@ -64,13 +64,13 @@ $(document).ready(function() {
 								<td><c:out value="${comp.cp_Num}"/></td>
 								<td><a class='move' href='<c:out value="${comp.cp_Num}"/>'><c:out value="${comp.cp_Name}"></c:out></a> </td>
 								<td><c:out value="${comp.cp_Id}"/></td>
-								<td><c:if test="${company.cp_Joinstate == 1}">Y</c:if>
-								<c:if test="${company.cp_Joinstate == 0}">N</c:if>
-								<c:if test="${company.cp_Joinstate == -1}">N</c:if></td>
-								<td><c:if test="${company.cp_Joinstate == 1}">승인완료</c:if>
-								<c:if test="${company.cp_Joinstate == 0}">서류접수대기</c:if>
-								<c:if test="${company.cp_Joinstate == -1}">반려</c:if>
-								<c:if test="${company.cp_Outdate != null}">탈퇴</c:if></td>
+								<td><c:if test="${comp.cp_Joinstate == 1}">Y</c:if>
+								<c:if test="${comp.cp_Joinstate == 0}">N</c:if>
+								<c:if test="${comp.cp_Joinstate == -1}">N</c:if></td>
+								<td><c:if test="${comp.cp_Joinstate == 1}">승인완료</c:if>
+								<c:if test="${comp.cp_Joinstate == 0}">서류접수대기</c:if>
+								<c:if test="${comp.cp_Joinstate == -1}">반려</c:if>
+								<c:if test="${comp.cp_Outdate != null}">탈퇴</c:if></td>
 								<td><c:out value="${comp.cp_Date}"/></td>
 								<td><c:out value="${comp.cp_Outdate}"/></td>
 							</tr>

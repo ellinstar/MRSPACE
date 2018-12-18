@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,7 +118,7 @@ img {
 				<address>
 					<strong>${detail.sp_Type}</strong> <br>----------------------------------- <br>
 					<p class="info_price_hour">
-						<strong class="price">${detail.sp_Price}</strong> <span
+						<strong class="price"><fmt:formatNumber value="${detail.sp_Price}" /></strong> <span
 							class="txt_unit">원/월</span>
 							<br>       (VAT포함) <br>
 

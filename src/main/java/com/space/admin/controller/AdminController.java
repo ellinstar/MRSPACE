@@ -30,7 +30,7 @@ public class AdminController {
 	@Autowired
 	private AdminSpaceService adminSpaceServ;
 	
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String adIndex(Model model) {
 		log.info("관리자 메인화면");
 		List<CompVO> cpNewList = adminCompServ.cpNewList();

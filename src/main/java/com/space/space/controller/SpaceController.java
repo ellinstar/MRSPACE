@@ -1,17 +1,23 @@
 package com.space.space.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.space.common.page.Paging;
+import com.space.common.util.Util;
+import com.space.comp.vo.CompVO;
+import com.space.complogin.vo.CompLoginVO;
 import com.space.space.file.FileUploadUtil;
 import com.space.space.service.SpaceService;
 import com.space.space.vo.SpaceVO;
@@ -27,6 +33,32 @@ public class SpaceController {
 	@Autowired
 	private SpaceService spaceService;
 
+	// 공간 목록 구현하기
+	@RequestMapping(value = "/spaceList.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String spaceList(@ModelAttribute SpaceVO svo, Model model) {
+		log.info("spaceList 호출 성공 검색전");
+
+		// 페이지 세팅
+		Paging.setPage(svo);
+
+		// 전체 레코드 수 구현
+		int total = spaceService.spaceListCnt(svo);
+		log.info("total = " + total);
+
+		// 글번호 재설정
+		int count = total - (Util.nvl(svo.getPage()) - 1) * Util.nvl(svo.getPageSize());
+		log.info("count = " + count);
+
+		List<SpaceVO> spaceList = spaceService.spaceList(svo);
+
+		model.addAttribute("spaceList", spaceList);
+		model.addAttribute("count", count);
+		model.addAttribute("total", total);
+		model.addAttribute("data", svo);
+
+		return "space/spaceList";
+	}
+
 	@RequestMapping(value = "/spaceRegister.do")
 	// 등록페이지 1번째
 	public String spaceRegister1(HttpSession session) throws IllegalStateException, IOException {
@@ -37,7 +69,7 @@ public class SpaceController {
 
 	// 등록 구현하기
 	@RequestMapping(value = "/spaceInsert.do", method = RequestMethod.POST)
-	public ModelAndView spaceInsert(@ModelAttribute SpaceVO svo, HttpServletRequest request)
+	public ModelAndView spaceInsert(@ModelAttribute SpaceVO svo, HttpServletRequest request, HttpSession session)
 			throws IllegalStateException, IOException {
 
 		log.info("spaceInsert.do 호출 성공");
@@ -49,7 +81,13 @@ public class SpaceController {
 			String sp_File = FileUploadUtil.fileUpload(svo.getFile(), request, "space");
 			svo.setSp_File(sp_File);
 		}
-
+		
+		/*CompLoginVO cvo =(CompLoginVO) session.getAttribute("cplogin");
+		
+		System.out.println("받는 아이디 : " + cvo.getCp_Id());
+		
+		System.out.println("받아오는 아이디 : " + svo.getCp_Id());*/
+		System.out.println(svo.getCp_Id());
 		result = spaceService.spaceInsert(svo);
 
 
