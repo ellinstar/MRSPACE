@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,6 +56,11 @@ header.masthead2 {
 	color: #fff;
 }
 
+body {
+	background-color: #f5f5f5;
+}
+
+}
 header.masthead2 .overlay2 {
 	position: absolute;
 	width: 100%;
@@ -67,6 +72,98 @@ header.masthead2 .overlay2 {
 img {
 	width: 100%;
 	height: 320px;
+}
+
+@font-face {
+	font-family: 'NanumBarunGothicBold';
+	src: url('resources/fonts/NanumBarunGothicBold.ttf'); /* 폰트파일 주소 */
+}
+
+.info_area {
+	border-top: 3px solid #0e63ff;
+	border-bottom: 3px solid #0e63ff;
+	position: relative;
+	padding: 18px 20px 14px;
+	background-color: #fff;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 295px;
+	margin-top: 20px;
+	margin-left: 85px;
+}
+
+.info_area .tit_space {
+	padding-bottom: 7px;
+	font-size: 24px;
+	line-height: 23px;
+}
+
+.info_area .info_price_hour {
+	height: 23px;
+	padding-top: 3px;
+	margin-top: 11px;
+	font-size: 12px;
+}
+
+.info_area .info_price_hour .price {
+	
+}
+
+.info_area .info_price_hour .price {
+	font-size: 23px;
+	font-family: "NanumBarunGothicBold", sans-serif;
+	color: #0069d9;
+}
+
+.txt_vat {
+	font-family: "NanumBarunGothicBold", sans-serif;
+	text-align: right;
+	font-size: 14px;
+	color: #999;
+}
+
+.host_profile {
+	position: relative;
+	width: 100%;
+}
+
+.sp_name {
+	font-family: "NanumBarunGothicBold";
+	vertical-align: top;
+	font-size: 24px;
+	line-height: 26px;
+	color: #000;
+}
+
+.sp_location {
+	padding-bottom: 18px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ebebeb;
+	font-size: 15px;
+	color: #656565;
+	word-break: break-all;
+}
+
+.btn_rounded {
+	height: 50px;
+	color: #704de4;
+	line-height: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+
+.btn {
+	display: inline-block;
+	text-align: center;
+	font-size: 20px;
+}
+
+.host_profile .row .col4 {
+	width: 50%;
+	padding: 0 6px;
 }
 </style>
 
@@ -96,51 +193,76 @@ img {
 		<div class="row">
 			<div class="col-sm-8">
 				<h2 class="mt-4">${detail.sp_Name}</h2>
-				<h4>공간소개</h4>
+				<br>
+				<h5>공간소개</h5>
 				<p>${detail.sp_Exposition}</p>
-				<h4>공간 서비스</h4>	
+				<br>
+				<h5>공간 서비스</h5>
 				<p>${detail.sp_Service}</p>
 				<p></p>
-				<h4>공간 주소</h4>
-				<p>${detail.sp_Address}</p>
-				<p></p>
-				<h4>교통편</h4>
-				<p>${detail.sp_Traffic}</p>
+				<br>
+				<h5>공간 주소</h5>
 				
-				<br><br>
-				
-				<h4>'업체명의' 다른 공간</h4>
-			</div>
-			
+				<!-- 공간주소 -->
+				<div class="host_profile" id="_host_map">
+					<div class="inner">
+						<div class="sp_location">
+							<input type="hidden" name="spcLat" id="spcLat" value="37.487766">
+							<input type="hidden" name="spcLng" id="spcLng" value="127.0132">
+								
+							<p class="sp_address">${detail.sp_Address}</p>
+						</div>
 
-			<div class="col-sm-4">
-				<h3 class="mt-4">공간 예약 정보</h3>
+					</div>
+					<div class="map" id="_map" _lat="37.487766" _lng="127.0132">
+						<img id="_detailStaticMap" class="lazy"
+							src="https://ssl.map.naver.com/staticmap/image?version=1.1&amp;crs=EPSG:4326&amp;center=127.0132,37.487766&amp;level=12&amp;baselayer=default&amp;overlayer=ol_vc_an&amp;exception=blank&amp;markers_icon=type,scloud,127.0132,37.487766&amp;scale=1&amp;caller=scloud&amp;format=jpeg&amp;dataversion=142.0&amp;w=761&amp;h=640"
+							width="761" height="640">
+						<div id="_mapLayer"></div>
+
+					</div>
+				</div>
+				<p></p>
+				<br>
+				<h5>교통편</h5>
+				<p>${detail.sp_Traffic}</p>
+
+				<br> <br>
+
+				<h5>'업체명의' 다른 공간</h5>
+			</div>
+
+
+			<div class="info_area">
+				<h5 class="mt-4">공간 예약 정보</h5>
 				<address>
-					<strong>${detail.sp_Type}</strong> <br>----------------------------------- <br>
+					<strong>${detail.sp_Type}</strong> <br>──────────────<br>
 					<p class="info_price_hour">
-						<strong class="price"><fmt:formatNumber value="${detail.sp_Price}" /></strong> <span
-							class="txt_unit">원/월</span>
-							<br>       (VAT포함) <br>
+						<strong class="price"><span class="txt_sign">\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<fmt:formatNumber value="${detail.sp_Price}" /></strong> <span
+							class="txt_unit">/1개월</span> <br> <span class="txt_vat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(VAT포함)</span>
+						<br>
 
 					</p>
 					<br>
-					
+
 					<p>
-						<a class="btn btn-primary btn-lg" href="#">
-						<i class="glyphicon glyphicon-earphone"></i>
-						전화 &raquo;</a>
-						<a class="btn btn-primary btn-lg" href="#">예약하기 &raquo;</a>
+						<a class="btn btn-primary btn-lg" href="#"> <i
+							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
+						</a> <a class="btn btn-primary btn-lg" href="#">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>
 		</div>
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		<!-- /.row -->
 
 		<div class="row">
@@ -207,6 +329,5 @@ img {
 
 	<!-- Custom scripts for all pages 스크롤 TOP만 참조함-->
 	<script src="/resources/js/sb-admin.min.js"></script>
-
 </body>
 </html>
