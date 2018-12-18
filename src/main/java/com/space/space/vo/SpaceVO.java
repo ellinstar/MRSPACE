@@ -2,8 +2,10 @@ package com.space.space.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.space.common.vo.CommonVO;
+
 // 공간
-public class SpaceVO {
+public class SpaceVO extends CommonVO{
 
 	// 공간 번호
 	private int sp_Num;
