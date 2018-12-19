@@ -10,4 +10,5 @@ public interface SpaceDAO {
 	public int spaceListCnt(SpaceVO svo);
 
 	public List<SpaceVO> spaceList(SpaceVO svo);
+	
 }

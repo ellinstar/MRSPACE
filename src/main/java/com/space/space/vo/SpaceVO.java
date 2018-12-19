@@ -4,8 +4,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.space.common.vo.CommonVO;
 
+import lombok.Data;
+
 // 공간
-public class SpaceVO extends CommonVO{
+public class SpaceVO extends CommonVO {
 
 	// 공간 번호
 	private int sp_Num;
@@ -18,7 +20,7 @@ public class SpaceVO extends CommonVO{
 
 	// 공간 유형
 	private String sp_Type;
-	
+
 	private String sp_Stock;
 
 	// 공간 서비스
@@ -28,26 +30,24 @@ public class SpaceVO extends CommonVO{
 	private int sp_Price;
 
 	// 공간 사진
-	private MultipartFile file; //첨부파일
-	
-	
+	private MultipartFile file; // 첨부파일
+
 	private String sp_File = "";
-	
 
 	// 공간 예약 가능 (가능시 1, 불가능시 -1)
 	private int sp_Reservation;
 
 	// 공간 주소
 	private String sp_Address;
-	
-	//임대 계약 시작일
+
+	// 임대 계약 시작일
 	private String sp_Contract1;
-	
-	//임대 계약 종료일
-		private String sp_Contract2;
-		
-		//오픈 가능일
-		private String sp_Opendate;
+
+	// 임대 계약 종료일
+	private String sp_Contract2;
+
+	// 오픈 가능일
+	private String sp_Opendate;
 
 	// 등록 상태 (보류 0, 승인 1, 반려 -1)
 	private int sp_State;
@@ -57,103 +57,42 @@ public class SpaceVO extends CommonVO{
 
 	// 업체 번호
 	private int cp_Num;
+	private String cp_Id;
 
 	// 공간 교통편
 	private String sp_Traffic;
-	
-	//공간 재고
+
+	// 공간 재고
 	private int sp_Rest;
 
 	public SpaceVO() {
+	}
+
+	public SpaceVO(int sp_Num, String sp_Name, String sp_Exposition, String sp_Type, String sp_Stock, String sp_Service,
+			int sp_Price, MultipartFile file, String sp_File, int sp_Reservation, String sp_Address,
+			String sp_Contract1, String sp_Contract2, String sp_Opendate, int sp_State, String sp_Date, int cp_Num,
+			String cp_Id, String sp_Traffic, int sp_Rest) {
 		super();
-	}
-	
-	
-	
-	
-
-	public String getSp_Opendate() {
-		return sp_Opendate;
-	}
-
-
-
-
-
-	public void setSp_Opendate(String sp_Opendate) {
-		this.sp_Opendate = sp_Opendate;
-	}
-
-
-
-
-
-	public String getSp_Contract1() {
-		return sp_Contract1;
-	}
-
-
-
-
-
-	public void setSp_Contract1(String sp_Contract1) {
-		this.sp_Contract1 = sp_Contract1;
-	}
-
-
-
-
-
-	public String getSp_Contract2() {
-		return sp_Contract2;
-	}
-
-
-
-
-
-	public void setSp_Contract2(String sp_Contract2) {
-		this.sp_Contract2 = sp_Contract2;
-	}
-
-
-
-
-
-	public int getSp_Rest() {
-		return sp_Rest;
-	}
-
-
-
-
-
-	public void setSp_Rest(int sp_Rest) {
-		this.sp_Rest = sp_Rest;
-	}
-
-
-
-
-
-	public String getSp_Stock() {
-		return sp_Stock;
-	}
-
-
-
-	public void setSp_Stock(String sp_Stock) {
+		this.sp_Num = sp_Num;
+		this.sp_Name = sp_Name;
+		this.sp_Exposition = sp_Exposition;
+		this.sp_Type = sp_Type;
 		this.sp_Stock = sp_Stock;
-	}
-
-
-
-	public MultipartFile getFile() {
-		return file;
-	}
-
-	public void setFile(MultipartFile file) {
+		this.sp_Service = sp_Service;
+		this.sp_Price = sp_Price;
 		this.file = file;
+		this.sp_File = sp_File;
+		this.sp_Reservation = sp_Reservation;
+		this.sp_Address = sp_Address;
+		this.sp_Contract1 = sp_Contract1;
+		this.sp_Contract2 = sp_Contract2;
+		this.sp_Opendate = sp_Opendate;
+		this.sp_State = sp_State;
+		this.sp_Date = sp_Date;
+		this.cp_Num = cp_Num;
+		this.cp_Id = cp_Id;
+		this.sp_Traffic = sp_Traffic;
+		this.sp_Rest = sp_Rest;
 	}
 
 	public int getSp_Num() {
@@ -188,6 +127,14 @@ public class SpaceVO extends CommonVO{
 		this.sp_Type = sp_Type;
 	}
 
+	public String getSp_Stock() {
+		return sp_Stock;
+	}
+
+	public void setSp_Stock(String sp_Stock) {
+		this.sp_Stock = sp_Stock;
+	}
+
 	public String getSp_Service() {
 		return sp_Service;
 	}
@@ -202,6 +149,14 @@ public class SpaceVO extends CommonVO{
 
 	public void setSp_Price(int sp_Price) {
 		this.sp_Price = sp_Price;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 	public String getSp_File() {
@@ -228,6 +183,30 @@ public class SpaceVO extends CommonVO{
 		this.sp_Address = sp_Address;
 	}
 
+	public String getSp_Contract1() {
+		return sp_Contract1;
+	}
+
+	public void setSp_Contract1(String sp_Contract1) {
+		this.sp_Contract1 = sp_Contract1;
+	}
+
+	public String getSp_Contract2() {
+		return sp_Contract2;
+	}
+
+	public void setSp_Contract2(String sp_Contract2) {
+		this.sp_Contract2 = sp_Contract2;
+	}
+
+	public String getSp_Opendate() {
+		return sp_Opendate;
+	}
+
+	public void setSp_Opendate(String sp_Opendate) {
+		this.sp_Opendate = sp_Opendate;
+	}
+
 	public int getSp_State() {
 		return sp_State;
 	}
@@ -252,6 +231,14 @@ public class SpaceVO extends CommonVO{
 		this.cp_Num = cp_Num;
 	}
 
+	public String getCp_Id() {
+		return cp_Id;
+	}
+
+	public void setCp_Id(String cp_Id) {
+		this.cp_Id = cp_Id;
+	}
+
 	public String getSp_Traffic() {
 		return sp_Traffic;
 	}
@@ -260,21 +247,12 @@ public class SpaceVO extends CommonVO{
 		this.sp_Traffic = sp_Traffic;
 	}
 
-
-
-
-
-	@Override
-	public String toString() {
-		return "SpaceVO [sp_Num=" + sp_Num + ", sp_Name=" + sp_Name + ", sp_Exposition=" + sp_Exposition + ", sp_Type="
-				+ sp_Type + ", sp_Stock=" + sp_Stock + ", sp_Service=" + sp_Service + ", sp_Price=" + sp_Price
-				+ ", sp_Address=" + sp_Address + ", sp_Contract1=" + sp_Contract1 + ", sp_Contract2=" + sp_Contract2
-				+ ", sp_Opendate=" + sp_Opendate + ", sp_Traffic=" + sp_Traffic + ", sp_Rest=" + sp_Rest + "]";
+	public int getSp_Rest() {
+		return sp_Rest;
 	}
-	
-	
-	
-	
 
-	
+	public void setSp_Rest(int sp_Rest) {
+		this.sp_Rest = sp_Rest;
+	}
+
 }

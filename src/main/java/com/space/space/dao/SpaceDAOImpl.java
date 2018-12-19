@@ -26,6 +26,8 @@ public class SpaceDAOImpl implements SpaceDAO {
 	// 글목록 구현
 	@Override
 	public List<SpaceVO> spaceList(SpaceVO svo) {
+		System.out.println("글목록 구현 DAO " + svo.getCp_Id());
 		return session.selectList("spaceList", svo);
 	}
+
 }
