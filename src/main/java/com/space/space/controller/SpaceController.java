@@ -31,7 +31,7 @@ public class SpaceController {
 
 	@Autowired
 	private SpaceService spaceService;
-
+	
 	// 공간 목록 구현하기
 	@RequestMapping(value = "/spaceList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String spaceList(@ModelAttribute SpaceVO svo, Model model, @RequestParam ("cp_Num") int cp_Num) {
@@ -47,6 +47,7 @@ public class SpaceController {
 		// 글번호 재설정
 		int count = total - (Util.nvl(svo.getPage()) - 1) * Util.nvl(svo.getPageSize());
 		log.info("count = " + count);
+		
 
 		List<SpaceVO> spaceList = spaceService.spaceList(svo);
 
@@ -54,6 +55,7 @@ public class SpaceController {
 		model.addAttribute("count", count);
 		model.addAttribute("total", total);
 		model.addAttribute("data", svo);
+		
 
 		return "space/spaceList";
 	}
@@ -93,15 +95,15 @@ public class SpaceController {
 
 		switch (result) {
 		case 1:
-			mav.addObject("errCode", 1); // userId already exist
+			mav.addObject("errCode", 1); // already exist
 			mav.setViewName("space/spaceList");
 			break;
 		case 3:
 			mav.addObject("errCode", 3);
-			mav.setViewName("space/spaceList"); // success to add new member; move to login page
+			mav.setViewName("space/spaceList"); // success to add new space; move to spaceList page
 			break;
 		default:
-			mav.addObject("errCode", 2); // failed to add new member
+			mav.addObject("errCode", 2); // failed to add new space
 			mav.setViewName("space/spaceRegister");
 			break;
 		}
