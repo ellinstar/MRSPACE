@@ -30,7 +30,7 @@
 			<div class="row2">
 					<br><br><br>
 					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="/space/spaceList.do">
+						<li class="list-inline-item"><a href="/space/spaceList.do?cp_Num=${ cp_Num }">
 						<img alt="공간목록" src=""></a></li>
 					</ul>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

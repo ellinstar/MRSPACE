@@ -6,7 +6,8 @@
 		select
 		cp_Id,
 		cp_Pw,
-		cp_Name
+		cp_Name,
+		cp_Num
 		from tb_company
 		where cp_Id = #{cp_Id}
 	</select>
@@ -18,7 +19,8 @@
 		select
 		cp_Id,
 		cp_Pw,
-		cp_Name
+		cp_Name,
+		cp_Num
 		from tb_company
 		where cp_Id =
 		#{cp_Id} and cp_Pw = #{cp_Pw}

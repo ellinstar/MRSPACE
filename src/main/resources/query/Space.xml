@@ -14,7 +14,7 @@
 		( select list.*, rownum as rnum
 		from (
 		select sp_num, sp_name, sp_address, sp_type, sp_stock, sp_rest
-		from tb_space
+		from tb_space where cp_num = #{cp_Num}
 		<where>
 			<if test="keyword != null and keyword != ''">
 				sp_name like '%' || #{keyword} || '%'

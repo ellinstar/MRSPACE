@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.space.comp.service.CompService;
 import com.space.comp.vo.CompVO;
+import com.space.mem.vo.MemVO;
 
 import lombok.extern.java.Log;
 
@@ -124,5 +125,38 @@ public class CompController {
 		}
 		return mav;
 	}
+	/*
+	 * 아이디찾기 화면 출력
+	 */
+	@RequestMapping(value = "/compSearch.do", method = RequestMethod.GET)
+	public String compSearchForm(Model model) {
+	   log.info("compSearch.do get 방식에 의한 compSearchForm메서드 호출 성공");
+     return "comp/compSearch";
+    }
+	/*
+	    * 아이디찾기 처리
+	    */
+	   @RequestMapping(value = "/compSearch.do", method = RequestMethod.POST)
+	   public ModelAndView findComp(@ModelAttribute CompVO cvo, Model model) {
+	      System.out.println("CompController클래스 findComp메소드 호출");
+	      ModelAndView mav = new ModelAndView();
+
+	      CompVO cVo =compService.findComp(cvo);
+
+	      if (cVo == null) {
+	         mav.addObject("errCode", 9);
+	         mav.setViewName("comp/compSearch");
+	         return mav;
+	      } else {
+	         String cp_Id = cVo.getCp_Id();
+
+	         model.addAttribute("cpId", cp_Id);
+	         System.out.println(cp_Id);
+	         mav.setViewName("comp/compResult");
+	         return mav;
+	      }
+	   }
+	
+	
 
 }

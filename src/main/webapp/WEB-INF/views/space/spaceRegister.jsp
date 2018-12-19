@@ -977,7 +977,7 @@ img.ui-datepicker-trigger {
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name='cp_Id' id='cp_Id' value='${cplogin.cp_Id}'/>
+		<input type="hidden" name='cp_Id' id='cp_Id' value='${cp_Id}'/>
 	</form>
 	<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
 		class="btnCancle" />

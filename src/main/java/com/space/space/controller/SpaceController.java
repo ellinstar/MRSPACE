@@ -12,12 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.space.common.page.Paging;
 import com.space.common.util.Util;
-import com.space.comp.vo.CompVO;
-import com.space.complogin.vo.CompLoginVO;
 import com.space.space.file.FileUploadUtil;
 import com.space.space.service.SpaceService;
 import com.space.space.vo.SpaceVO;
@@ -35,12 +34,12 @@ public class SpaceController {
 
 	// 공간 목록 구현하기
 	@RequestMapping(value = "/spaceList.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String spaceList(@ModelAttribute SpaceVO svo, Model model) {
+	public String spaceList(@ModelAttribute SpaceVO svo, Model model, @RequestParam ("cp_Num") int cp_Num) {
 		log.info("spaceList 호출 성공 검색전");
 
 		// 페이지 세팅
 		Paging.setPage(svo);
-
+		svo.setCp_Num(cp_Num);
 		// 전체 레코드 수 구현
 		int total = spaceService.spaceListCnt(svo);
 		log.info("total = " + total);
@@ -74,6 +73,7 @@ public class SpaceController {
 
 		log.info("spaceInsert.do 호출 성공");
 		ModelAndView mav = new ModelAndView();
+		String url = "";
 
 		int result = 0;
 

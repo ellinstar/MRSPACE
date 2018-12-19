@@ -37,11 +37,10 @@
 		});
 		/* 사업자 메일 보내기 */
 		$("#emailFormBtn").click(function() {
-			e.preventDefault();
 			$("#myModal").modal('show');
 		});
 		$("#mailSendBtn").click(function() {
-			$("#mail-form").attr("action","/admin/mailSender").attr("method", "Post");
+			$("#mail-form").attr("action","/admin/notice/mailSender").attr("method", "Post");
 			$("#mail-form").submit();
 			if ("${result}" == "success") {
 				alert("메일이 성공적으로 발송되었습니다");
@@ -56,14 +55,12 @@
 	<div class="contentContainer">
 		<div class="page-header">
 			<h3>공지사항</h3>
-		</div>
 		<div id="button-group" class="pull-right">
-			<button id="ntFormBtn" class="btn btn-sm btn-primary"
-				href="/admin/notice/writeForm">공지사항 쓰기</button>
-			<button class="btn btn-sm" id="emailFormBtn" data-toggle="modal"
-				data-target="#myModal">사업자 공지 메일 보내기</button>
+			<button id="ntFormBtn" class="btn btn-sm btn-primary">공지사항 쓰기</button>
+			<!-- <button class="btn btn-sm" id="emailFormBtn">사업자 공지 메일 보내기</button> -->
 		</div>
-
+		</div>
+		
 		<%-- =================== 리스트 시작  ================= --%>
 		<div class="col-md-12">
 			<table summary="게시판 리스트"
@@ -99,35 +96,6 @@
 				</tbody>
 			</table>
 
-
-		</div>
-		<%-- =================== 리스트 종료  ================= --%>
-		<%-- =============== 페이지 네비게이션 시작 =============== --%>
-		<!-- 페이지 번호 출력 -->
-		<div class='pull-right button-group'>
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev }">
-					<li class="paginate_button previous"><a
-						href="${pageMaker.startPage -1 }">Previous</a></li>
-				</c:if>
-
-				<c:forEach var="num" begin="${pageMaker.startPage}"
-					end="${pageMaker.endPage}">
-					<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":''}"><a
-						href="${num}">${num}</a></li>
-				</c:forEach>
-
-				<c:if test="${pageMaker.next}">
-					<li class="paginate_button next"><a
-						href="${pageMaker.endPage +1 }">Next</a></li>
-				</c:if>
-			</ul>
-		</div>
-		<form id="actionForm" action="/admin/notice/list" method="get">
-			<input type="hidden" name='pageNum' value='${pageMaker.cri.pageNum}'>
-			<input type="hidden" name='amount' value='${pageMaker.cri.amount}'>
-		</form>
-		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 		<%-- =============== 사업자 메일 보내기 모달 =============== --%>
 		<!-- Modal 추가 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -165,6 +133,35 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<%-- =============== 사업자 메일보내기 모달 끝 =============== --%>
+
+		</div>
+		<%-- =================== 리스트 종료  ================= --%>
+		<%-- =============== 페이지 네비게이션 시작 =============== --%>
+		<!-- 페이지 번호 출력 -->
+		<div class='pull-right button-group'>
+			<ul class="pagination">
+				<c:if test="${pageMaker.prev }">
+					<li class="paginate_button previous"><a
+						href="${pageMaker.startPage -1 }">Previous</a></li>
+				</c:if>
+
+				<c:forEach var="num" begin="${pageMaker.startPage}"
+					end="${pageMaker.endPage}">
+					<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":''}"><a
+						href="${num}">${num}</a></li>
+				</c:forEach>
+
+				<c:if test="${pageMaker.next}">
+					<li class="paginate_button next"><a
+						href="${pageMaker.endPage +1 }">Next</a></li>
+				</c:if>
+			</ul>
+		</div>
+		<form id="actionForm" action="/admin/notice/list" method="get">
+			<input type="hidden" name='pageNum' value='${pageMaker.cri.pageNum}'>
+			<input type="hidden" name='amount' value='${pageMaker.cri.amount}'>
+		</form>
+		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 	</div>
 
 
