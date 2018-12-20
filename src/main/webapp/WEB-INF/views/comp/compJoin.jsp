@@ -102,7 +102,8 @@
 				<div>
 					<label for="cp_Bnum">사업자번호</label> <input type="text"
 						name="cp_Bnum" id="cp_Bnum" onkeypress="return numkeyCheck(event)"
-						placeholder="예) 000-00-00000">
+						placeholder="예) 000-00-00000"> <input type="button" id="bNumConfirmBtn"
+						value="사업자번호 확인">
 				</div>
 				<div class="col-sm-5">
 					<p class="form-control-static bnumError"></p>
@@ -124,7 +125,7 @@
 				<div>
 					<label for="cp_Phone">연 락 처</label> <input type="text"
 						name="cp_Phone" id="cp_Phone"
-						onkeyPress="return numkeyCheck(event)" placeholder="예) 010-0000-0000">
+						onkeyPress="return numkeyCheck(event)" placeholder="예) - 제외하고 입력해주세요.">
 				</div>
 				<div class="col-sm-5">
 					<p class="form-control-static phoneError"></p>

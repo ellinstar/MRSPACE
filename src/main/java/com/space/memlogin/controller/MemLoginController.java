@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.space.mem.service.MemService;
 import com.space.memlogin.service.MemLoginService;
 import com.space.memlogin.vo.LoginVO;
 

@@ -34,7 +34,7 @@ public class SpaceController {
 	
 	// 공간 목록 구현하기
 	@RequestMapping(value = "/spaceList.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String spaceList(@ModelAttribute SpaceVO svo, Model model, @RequestParam ("cp_Num") int cp_Num) {
+	public String spaceList(@ModelAttribute SpaceVO svo, Model model, @RequestParam("cp_Num") int cp_Num) {
 		log.info("spaceList 호출 성공 검색전");
 
 		// 페이지 세팅
@@ -70,12 +70,11 @@ public class SpaceController {
 
 	// 등록 구현하기
 	@RequestMapping(value = "/spaceInsert.do", method = RequestMethod.POST)
-	public ModelAndView spaceInsert(@ModelAttribute SpaceVO svo, HttpServletRequest request, HttpSession session)
+	public ModelAndView spaceInsert(@ModelAttribute SpaceVO svo, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 
 		log.info("spaceInsert.do 호출 성공");
 		ModelAndView mav = new ModelAndView();
-		String url = "";
 
 		int result = 0;
 
@@ -83,27 +82,21 @@ public class SpaceController {
 			String sp_File = FileUploadUtil.fileUpload(svo.getFile(), request, "space");
 			svo.setSp_File(sp_File);
 		}
-		
-		/*CompLoginVO cvo =(CompLoginVO) session.getAttribute("cplogin");
-		
-		System.out.println("받는 아이디 : " + cvo.getCp_Id());
-		
-		System.out.println("받아오는 아이디 : " + svo.getCp_Id());*/
-		System.out.println(svo.getCp_Id());
+
 		result = spaceService.spaceInsert(svo);
 
-
-		switch (result) {
-		case 1:
-			mav.addObject("errCode", 1); // already exist
-			mav.setViewName("space/spaceList");
+		System.out.println(result);
+		switch (result)	{
+		case 1: // 성공
+			mav.addObject("errCode", 1);
+			mav.setViewName("space/spaceRegistSuc");
 			break;
-		case 3:
-			mav.addObject("errCode", 3);
-			mav.setViewName("space/spaceList"); // success to add new space; move to spaceList page
+		case 3: // 안나옴
+			mav.addObject("errCode", 3); 
+			mav.setViewName("space/spaceList"); 
 			break;
-		default:
-			mav.addObject("errCode", 2); // failed to add new space
+		default: // 실패
+			mav.addObject("errCode", 2);
 			mav.setViewName("space/spaceRegister");
 			break;
 		}

@@ -25,6 +25,7 @@ function idPwdCheck() {
 
 $(document).ready(function() {
 var idConfirm = 1;
+var bNumConfirm = 1;
 	errCodeCheck();
 	// 사용자에게 요구사항에 대한 문자열로 배열 초기화.
 	var message = [ "영문,숫자만 가능. 6 ~ 12자로 입력해 주세요.",
@@ -79,6 +80,7 @@ var idConfirm = 1;
 								message[index]);
 					});
 
+	// 아이디 중복체크
 	$("#idConfirmBtn")
 			.click(
 					function() {
@@ -97,8 +99,7 @@ var idConfirm = 1;
 											alert('사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.');
 										},
 										success : function(resultData) {
-											console.log("resultData : "
-													+ resultData);
+											console.log("resultData : " + resultData);
 											if (resultData == "1") {
 												$("#cp_Id")
 														.parents("#myForm")
@@ -116,6 +117,41 @@ var idConfirm = 1;
 						}
 					});
 
+	// 사업자번호 중복체크
+	$("#bNumConfirmBtn").click(function() {
+				if (!formCheck($('#cp_Bnum'), $('.bnumError'), "사업자번호를")) {
+					return;
+				} else if (!bNumVerify('.bnumError')) {
+					return;
+				} else {
+					var cp_Bnum = $("#cp_Bnum").val();
+					$
+							.ajax({
+								url : "/comp/cp_BnumConfirm.do",
+								type : "post",
+								data : "cp_Bnum="+cp_Bnum,
+								error : function() {
+									alert('사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.');
+								},
+								success : function(resultData) {
+									console.log("resultData : "+ resultData);
+									if (resultData == "1") {
+										$("#cp_Bnum")
+												.parents("#myForm")
+												.find(".bnumError")
+												.html(
+														"이미 등록된 사업자번호입니다.");
+									} else if (resultData == "2") {
+										$("#cp_Bnum").parents("#myForm")
+												.find(".bnumError")
+												.html("사용 가능한 사업자번호입니다.");
+										bNumConfirm = 2;
+									}
+								}
+							});
+				}
+			});
+	
 	/* 확인 버튼 클릭 시 처리 이벤트 */
 	$("#join").click(function() {
 		// 입력값 체크
@@ -156,7 +192,10 @@ var idConfirm = 1;
 		else if (!emailVerify('.emailError'))
 			return;
 		else if (idConfirm != 2) {
-			alert("아이디 중복 체크 진행해 주세요.");
+			alert("아이디 중복체크를 진행해 주세요.");
+			return;
+		} else if (bNumConfirm != 2) {
+			alert("사업자번호 중복체크를 진행해 주세요.");
 			return;
 		} else {
 					$("#myForm").attr({
