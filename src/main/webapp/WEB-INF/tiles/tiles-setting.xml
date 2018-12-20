@@ -35,6 +35,10 @@
 		<put-attribute name="title" value="예약" />
  		<put-attribute name="body" value="/WEB-INF/views/reserv/{1}.jsp" />
 	</definition> 
+	<definition name="qna/*" extends="content">
+		<put-attribute name="title" value="문의" />
+ 		<put-attribute name="body" value="/WEB-INF/views/qna/{1}.jsp" />
+	</definition>
 	
 	
 	

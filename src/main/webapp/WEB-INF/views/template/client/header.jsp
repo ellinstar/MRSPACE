@@ -26,7 +26,7 @@
 			</ul>
 		</c:when>
 		<c:when test="${login.mem_Id != null or login.mem_Id != '' and cp_Id == null and cp_Id == ''}">
-			<a href="/space/qna.do">문의게시판</a>
+			<a href="/qna/qnaList.do">문의게시판</a>
 			<ul class="navbar-nav">
 				<li><strong>[${login.mem_Name}]님 반갑습니다.</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <a href="/mem/logout.do">로그아웃</a> <a

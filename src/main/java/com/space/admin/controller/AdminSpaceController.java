@@ -41,5 +41,11 @@ public class AdminSpaceController {
 		model.addAttribute("detail", detail);
 		return "/admin/space/spDetail";
 	}
-	
+	//공간 등록 승인
+	@RequestMapping(value="/ok",method=RequestMethod.GET)
+	public void spOk(@RequestParam("sp_Num") int sp_Num, Model model) {
+		log.info("spOk호출 성공");
+		int result = adminSpaceServ.spOk(sp_Num);
+		model.addAttribute("result", result);
+	}
 }

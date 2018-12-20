@@ -127,13 +127,13 @@ public class AdminNoticeController {
 
 		int result=0;
 		String url="";
-		String nt_file="";
 		if(!nvo.getFile().isEmpty()) {
 			log.info("첨부파일"+nvo.getFile().getOriginalFilename());
 			if(!nvo.getNt_file().isEmpty()) {
 				FileUploadUtil.fileDelete(nvo.getNt_file(), request);
 			}
-			nt_file = FileUploadUtil.fileUpload(nvo.getFile(), request, "notice");
+			String nt_file = FileUploadUtil.fileUpload(nvo.getFile(), request, "notice");
+			nvo.setNt_file(nt_file);
 		}else {
 			log.info("첨부파일 없음");
 			nvo.setNt_file("");
@@ -143,8 +143,7 @@ public class AdminNoticeController {
 		result = ntService.noticeUpdate(nvo);
 		
 		if(result == 1){
-			//url="/board/boardList.do"; // 수정 후 목록으로 이동
-			//아래 url은 수정 후 상세 페이지로 이동 
+			// 수정 후 목록으로 이동
 			url="/admin/notice/list";
 		}else{
 			url="/admin/notice/updateForm?nt_num="+nvo.getNt_num();

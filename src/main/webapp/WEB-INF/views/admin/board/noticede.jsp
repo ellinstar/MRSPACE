@@ -13,6 +13,29 @@
 	<script type="text/javascript" 	src="/resources/include/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#ntModFormBtn").click(function() {
+		$("#f_data").attr("action", "/admin/notice/updateForm");
+		$("#f_data").submit();
+	});
+	$("#ntDelBtn").click(function() {
+		var con = confirm("이 게시글을 삭제합니다 ");
+		if(con == true){
+			$("#f_data").attr("action", "/admin/notice/noticeDelete");
+			$("#f_data").submit();
+		}
+		
+	});
+	 /* 첨부파일 보여주기 */
+	/*var file="<c:out value='${detail.nt_file}'/>";
+	if(file != ""){
+		$("#fileImage").attr({
+			src:"/uploadStorage/notice/${detail.nt_file}", width:"450px", height:"200px"
+		});
+	} */
+});
+</script>
 </head>
 <body>
 	<div class="contentContainer">
@@ -27,12 +50,14 @@
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="30" name='nt_content' readonly="readonly"><c:out value="${detail.nt_content}"/></textarea>
+					<textarea class="form-control" rows="30" name='nt_content' readonly="readonly"><c:out value="${detail.nt_content}"/>
+					
+					</textarea>
 				</div>
 				<div class="form-group">
 				<c:if test="${detail.nt_file != '' }">
 					<label>첨부파일</label> 
-					<img id="fileImage">
+					<img id="fileImage" src="/uploadStorage/notice/${detail.nt_file}">
 				</c:if>
 				</div>
 				<button id="ntModFormBtn" class="btn btn-default">
@@ -48,34 +73,12 @@
 			<input type="hidden" name="nt_num" id="nt_num" value="${detail.nt_num}"/>
 			<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 			<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="nt_file" id="nt_file" value="${detail.nt_file}" />
+			<input type="hidden" name="nt_file" id="nt_file" value="/uploadStorage/notice/${detail.nt_file}" />
 		</form>
 			
 		</div>
 
 	</div>
-<script type="text/javascript">
-$(function() {
-	$("#ntModFormBtn").click(function() {
-		$("#f_data").attr("action", "/admin/notice/updateForm");
-		$("#f_data").submit();
-	});
-	$("#ntDelBtn").click(function() {
-		var con = confirm("이 게시글을 삭제합니다 ");
-		if(con == true){
-			$("#f_data").attr("action", "/admin/notice/noticeDelete");
-			$("#f_data").submit();
-		}
-		
-	});
-	/* 첨부파일 보여주기 */
-	var file="<c:out value='${detail.nt_file}'/>";
-	if(file != ""){
-		$("#fileImage").attr({
-			src:"/uploadStorage/notice/${detail.nt_file}", width:"450px", height:"200px"
-		});
-	}
-});
-</script>
+
 </body>
 </html>
