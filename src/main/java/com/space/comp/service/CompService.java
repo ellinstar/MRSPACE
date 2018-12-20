@@ -9,13 +9,14 @@ public interface CompService {
 	
 	public CompVO compSelect(String cp_Id);
 	
+	public CompVO compSelect2(String cp_Bnum);
+	
 	public int compInsert(CompVO cvo);
 
 	public boolean compUpdate(CompVO cvo);
-	
+
+	public int cp_BnumConfirm(String cp_Bnum);
 
 	//public int securityInsert(CompSecurity sec);
-	
-	public CompVO findComp(CompVO cvo);
 
 }

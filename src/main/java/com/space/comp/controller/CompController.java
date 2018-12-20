@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.space.comp.service.CompService;
 import com.space.comp.vo.CompVO;
-import com.space.mem.vo.MemVO;
 
 import lombok.extern.java.Log;
 
@@ -84,13 +83,23 @@ public class CompController {
 
 	// 페이지 이동 끝-----------------------------------------------------------------
 
-	// 사용자 아이디 중복 체크
+	// 사용자 아이디 중복체크
 	@ResponseBody
 	@RequestMapping(value = "/cp_IdConfirm.do", method = RequestMethod.POST)
 	public String cp_IdConfirm(@ModelAttribute("cp_Id") String cp_Id) {
 		int resultData = compService.cp_idConfirm(cp_Id);
+		System.out.println("CompController : cp_IdConfirm 메소드 호출 cp_Id = " + cp_Id);
 		return resultData + "";
 	}
+	
+	// 사업자번호 중복체크
+		@ResponseBody
+		@RequestMapping(value = "/cp_BnumConfirm.do", method = RequestMethod.POST)
+		public String cp_BnumConfirm(@ModelAttribute("cp_Bnum") String cp_Bnum) {
+			int resultData = compService.cp_BnumConfirm(cp_Bnum);
+			System.out.println("CompController : cp_BnumConfirm 메소드 호출 cp_Bnum = " + cp_Bnum);
+			return resultData + "";
+		}
 
 	// 회원 가입 처리
 	@RequestMapping(value = "/compJoin.do", method = RequestMethod.POST)
@@ -109,54 +118,20 @@ public class CompController {
 		 */
 
 		switch (result) {
-		case 1:
-			mav.addObject("errCode", 1); // cp_Id alreay exist
+		case 1: // 안나옴
+			mav.addObject("errCode", 1);
 			mav.setViewName("comp/compJoin");
 			break;
-		case 3:
+		case 3: // 성공
 			mav.addObject("errCode", 3);
-			mav.setViewName("comp/compJoinSuc");
-			// success to add new comp; move to login page
+			mav.setViewName("comp/compJoinSuc"); 
 			break;
-		default:
+		default: // 실패
 			mav.addObject("errCode", 2); // failed to add new comp
 			mav.setViewName("comp/compJoin");
 			break;
 		}
 		return mav;
 	}
-	/*
-	 * 아이디찾기 화면 출력
-	 */
-	@RequestMapping(value = "/compSearch.do", method = RequestMethod.GET)
-	public String compSearchForm(Model model) {
-	   log.info("compSearch.do get 방식에 의한 compSearchForm메서드 호출 성공");
-     return "comp/compSearch";
-    }
-	/*
-	    * 아이디찾기 처리
-	    */
-	   @RequestMapping(value = "/compSearch.do", method = RequestMethod.POST)
-	   public ModelAndView findComp(@ModelAttribute CompVO cvo, Model model) {
-	      System.out.println("CompController클래스 findComp메소드 호출");
-	      ModelAndView mav = new ModelAndView();
-
-	      CompVO cVo =compService.findComp(cvo);
-
-	      if (cVo == null) {
-	         mav.addObject("errCode", 9);
-	         mav.setViewName("comp/compSearch");
-	         return mav;
-	      } else {
-	         String cp_Id = cVo.getCp_Id();
-
-	         model.addAttribute("cpId", cp_Id);
-	         System.out.println(cp_Id);
-	         mav.setViewName("comp/compResult");
-	         return mav;
-	      }
-	   }
-	
-	
 
 }

@@ -1,7 +1,6 @@
 package com.space.comp.service;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +9,6 @@ import com.space.common.util.Util;
 import com.space.comp.dao.CompDAOImpl;
 import com.space.comp.vo.CompSecurity;
 import com.space.comp.vo.CompVO;
-import com.space.mem.vo.MemVO;
 
 import lombok.extern.java.Log;
 
@@ -19,7 +17,7 @@ import lombok.extern.java.Log;
 @Transactional
 public class CompServiceImpl implements CompService {
 
-	@Resource(name="compDAOImpl")
+	@Autowired
 	private CompDAOImpl compDao;
 
 	@Override
@@ -56,6 +54,12 @@ public class CompServiceImpl implements CompService {
 		CompVO cvo = compDao.compSelect(cp_Id);
 		return cvo;
 	}
+	
+	@Override
+	public CompVO compSelect2(String cp_Bnum) {
+		CompVO cvo = compDao.compSelect2(cp_Bnum);
+		return cvo;
+	}
 
 	@Override
 	public int cp_idConfirm(String cp_id) {
@@ -70,17 +74,21 @@ public class CompServiceImpl implements CompService {
 	}
 
 	@Override
+	public int cp_BnumConfirm(String cp_Bnum) {
+		int result = 0;
+		CompVO cvo = compDao.compSelect2(cp_Bnum);
+		if(cvo != null) {
+			result = 1;
+		} else {
+			result = 2;
+		}
+		return result;
+	}
+
+	@Override
 	public boolean compUpdate(CompVO cvo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
-	//아이디 찾기
-	@Override
-	public CompVO findComp(CompVO cvo) {
-		System.out.println("CompServiceImpl클래스 findComp메소드 호출");
-		CompVO vo = compDao.findComp(cvo);
-		return vo;
-	}
-
 }

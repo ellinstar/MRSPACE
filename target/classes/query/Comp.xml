@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.space.comp.dao.CompDAO">
-	 <select id="compsecuritySelect" parameterType="String" resultType="cpsecurity"> 
+	 <select id="compsecuritySelect" parameterType="cpsecurity" resultType="cpsecurity"> 
 		select cp_id, salt from tb_compsecurity where cp_id = #{cp_Id} </select>
 
 	<insert id="compsecurityInsert" parameterType="cpsecurity">
@@ -15,6 +15,10 @@
 	<select id="compSelect" parameterType="String" resultType="comp">
 	select * from tb_company where cp_id = #{cp_Id}
 	</select>
+	
+	<select id="compSelect2" parameterType="String" resultType="comp">
+	select * from tb_company where cp_bnum = #{cp_Bnum}
+	</select>
 
 	<insert id="compInsert" parameterType="comp">
 		<!-- comp = compInsert -->
@@ -23,15 +27,9 @@
 		cp_Bnum, cp_Bank, cp_Account, cp_Email, cp_Phone, 
 		cp_Date, cp_State, cp_Joinstate, cp_Outdate)
 		values
-		(tb_comp_seq.nextval, #{cp_Id}, #{cp_Pw}, #{cp_Name},
+		(tb_company_seq.nextval, #{cp_Id}, #{cp_Pw}, #{cp_Name},
 		#{cp_Ceo}, #{cp_Add}, #{cp_Bnum}, #{cp_Bank}, #{cp_Account},
 		#{cp_Email}, #{cp_Phone},sysdate, '0', '0', null)
 	</insert>
-	
-	<select id="findComp" parameterType="String" resultType="comp">
-		select cp_id
-		from tb_company
-		where cp_name = #{cp_Name} and cp_ceo = #{cp_Ceo} and cp_bnum = #{cp_Bnum}
-	</select>
 
 </mapper>
