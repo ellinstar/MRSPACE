@@ -13,7 +13,6 @@
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="/resources/include/dist/js/bootstrap.min.js"></script>
-<link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#ok").click(function() {
