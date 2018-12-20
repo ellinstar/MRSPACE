@@ -52,6 +52,10 @@
 <body>
 	<c:if test="${reserv == null}">	
 	<form id="reservForm" name="reservForm">
+	<p>가격 : ${login.mem_Id }
+	<p>가격 : ${detail.sp_Price }
+	<p>가격 : ${detail.sp_Num }
+	<p>가격 : ${detail.sp_Stock }
 		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id}">
 		<input type="hidden" id="sp_Num" name="sp_Num"value="${detail.sp_Num}">
 		<input type="hidden" id="sp_Stock" name="sp_Stock"value="${detail.sp_Stock}">
