@@ -120,7 +120,7 @@
 	</head>
 	<body>
 		<div class="contentContainer">
-			<div class="contentTit"><h3>무늬 게시판</h3></div>
+			<div class="contentTit"><h3>문의 게시판</h3></div>
 			
 			<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 			<form name="detailForm" id="detailForm">
