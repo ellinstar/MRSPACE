@@ -54,7 +54,7 @@
 						</colgroup>
 						<tr>
 							<td class="ac">작성자</td>
-							<td><input type="text" name="qna_Name" id="qna_Name"></td>
+							<td><input type="text" name="qna_Name" id="qna_Name" value="${qna.mem_Name }" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td class="ac">글제목</td>

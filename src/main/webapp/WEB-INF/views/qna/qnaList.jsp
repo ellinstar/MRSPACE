@@ -148,7 +148,7 @@
 									<option value="qna_Content">내용</option>
 									<option value="qna_Name">작성자</option>
 								</select>
-								<input type="text" name="keyword" id="keyword" value="검색어를입력하세요" />
+								<input type="text" name="keyword" id="keyword" placeholder="검색어를입력하세요" />
 								<input type="button" value="검색" id="searchData" />
 							</td>
 							<td id="btd2">한페이지에

@@ -227,7 +227,7 @@ public class MemController {
 
 		if (memService.memUpdate(mvo)) {
 			mav.addObject("errCode", 3);
-			mav.setViewName("redirect:/mem/logout.do");
+			mav.setViewName("redirect:/mem/memInfo.do");
 		    return mav;	 
 		} else {
 			mav.addObject("errCode", 2);

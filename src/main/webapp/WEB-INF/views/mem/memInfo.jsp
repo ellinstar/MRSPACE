@@ -15,13 +15,12 @@
 
 	$(function() {
 		
-		
 		$("#mem_Edit").click(function() {
 			location.href = "/mem/memModifyPw.do";
 		});
 
 		$("#mem_Cancel").click(function() {
-			history.back();
+			location.href = "/mem/memMyPage.do";
 		});
 	});
 </script>
