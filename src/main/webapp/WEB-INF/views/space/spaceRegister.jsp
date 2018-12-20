@@ -982,8 +982,6 @@ img.ui-datepicker-trigger {
 				<input type="text" id="spaceAddr" placeholder="주소" name="sp_Address">
 				<input type="button" onclick="sample5_execDaumPostcode()"
 					value="주소 검색"><br>
-				<div id="map"
-					style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 
 				<p>
 				<h3>임대 계약 기간</h3>
