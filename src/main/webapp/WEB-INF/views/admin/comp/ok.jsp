@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	location.href="/admin/comp/list";
+</script>
 </head>
 <body>
 

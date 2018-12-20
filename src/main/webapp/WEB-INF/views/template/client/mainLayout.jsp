@@ -40,6 +40,28 @@
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 
+<script type="text/javascript">
+	$(function() {
+		// 검색 후 검색 대상과 단어 출력
+		var word = "<c:out value='${data.keyword}'/>";
+		var value = "";
+		if (word != "") {
+			$("#keyword").val("<c:out value='${data.keyword}'/>");
+		}
+
+		// 검색 버튼 클릭 시
+		$("#searchData").click(function() {
+			$("#mysearch").attr({
+				"method" : "GET",
+				"action" : "/common/commonList.do"
+			});
+			$("#mysearch").submit();
+		});
+
+	});
+</script>
+
+
 <!-- 이미지 줌 CSS -->
 <style type="text/css">
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300); */
@@ -110,15 +132,19 @@
 					<h1 class="mb-5">다시 만나고 싶은 공간!</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
+					<form class="mysearch" id="mysearch" name="mysearch">
 						<div class="form-row">
 							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="email" class="form-control form-control-lg"
+								<input type="text" id="keyword" name="keyword"
+									class="form-control form-control-lg"
 									placeholder="공간을 빠르게 검색해보세요.">
 							</div>
+
 							<div class="col-12 col-md-3">
-								<button type="submit" class="btn btn-block btn-lg btn-primary">Search!</button>
+								<button type="submit" id="searchData" name="searchData"
+									class="btn btn-block btn-lg btn-primary">Search!</button>
 							</div>
+
 						</div>
 					</form>
 				</div>

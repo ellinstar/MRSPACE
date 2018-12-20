@@ -12,7 +12,10 @@ public interface CompService {
 	public int compInsert(CompVO cvo);
 
 	public boolean compUpdate(CompVO cvo);
+	
 
 	//public int securityInsert(CompSecurity sec);
+	
+	public CompVO findComp(CompVO cvo);
 
 }

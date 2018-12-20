@@ -12,7 +12,7 @@
 	
 	<tag>
 		<name>paging</name>
-		<tag-class>com.spring.common.page.PagingTag</tag-class>
+		<tag-class>com.space.common.page.PagingTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>page</name>

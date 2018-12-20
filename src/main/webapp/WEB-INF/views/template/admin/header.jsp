@@ -4,7 +4,6 @@
 
 
 <a class="navbar-brand mr-1" href="/admin/main">SPACE ADMIN</a>
-
 <button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 	id="sidebarToggle" href="#">
 	<i class="fas fa-bars"></i>
@@ -26,6 +25,7 @@
  -->
 <!-- Navbar -->
 <div class="container">
+	
 	<ul class="navbar-nav">
 		<li><a class="btn btn-primary" id="logout" href="/adminlogout">로그아웃 </a></li>
 

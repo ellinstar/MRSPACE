@@ -28,13 +28,14 @@ public class AdminSpaceController {
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String spaceList(@ModelAttribute SpaceVO svo, Model model, HttpServletRequest request) {
 		log.info("spaceList호출");
-		List<SpaceVO> spaceList = adminSpaceServ.spaceList(svo);
-		model.addAttribute("spaceList", spaceList);
+		List<SpaceVO> adspaceList = adminSpaceServ.adspaceList(svo);
+		model.addAttribute("adspaceList", adspaceList);
 		return "/admin/space/spaceList";
 	}
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public String compDetail(@RequestParam("sp_Num") int sp_Num, Model model) {
 		log.info("spaceDetail 호출 성공");
+		System.out.println(sp_Num);
 		SpaceVO detail = new SpaceVO();
 		detail = adminSpaceServ.spaceDetail(sp_Num);
 		model.addAttribute("detail", detail);

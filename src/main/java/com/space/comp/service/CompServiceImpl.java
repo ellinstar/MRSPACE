@@ -10,6 +10,7 @@ import com.space.common.util.Util;
 import com.space.comp.dao.CompDAOImpl;
 import com.space.comp.vo.CompSecurity;
 import com.space.comp.vo.CompVO;
+import com.space.mem.vo.MemVO;
 
 import lombok.extern.java.Log;
 
@@ -72,6 +73,14 @@ public class CompServiceImpl implements CompService {
 	public boolean compUpdate(CompVO cvo) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	//아이디 찾기
+	@Override
+	public CompVO findComp(CompVO cvo) {
+		System.out.println("CompServiceImpl클래스 findComp메소드 호출");
+		CompVO vo = compDao.findComp(cvo);
+		return vo;
 	}
 
 }

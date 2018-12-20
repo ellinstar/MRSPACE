@@ -17,7 +17,7 @@
 $(document).ready(function() {
 	var actionForm = $("#actionForm");
 	var actionForm2 = $("#actionForm2");
-	$(".move").on("click",function(e) {
+	$(".movec").on("click",function(e) {
 		e.preventDefault();
 		actionForm.append("<input type='hidden' name='cp_Num' value='"
 		+ $(this).attr("href")+ "'>");
@@ -59,10 +59,16 @@ $(document).ready(function() {
 						<c:forEach var="company" items="${cpMainList}">
 							<tr>
 								<td><c:out value="${company.cp_Num}"/></td>
-								<td><a class='move' href='<c:out value="${company.cp_Num}"/>'><c:out value="${company.cp_Name}"></c:out></a> </td>
+								<td><a class='movec' href='<c:out value="${company.cp_Num}"/>'><c:out value="${company.cp_Name}"></c:out></a> </td>
 								<td><c:out value="${company.cp_Id}"/></td>
-								<td><c:out value="${company.cp_Joinstate}"/></td>
-								<td><c:out value="${company.cp_Joinstate}"/></td>
+								<td><c:if test="${company.cp_Joinstate == 1}">Y</c:if>
+								<c:if test="${company.cp_Joinstate == 0}">N</c:if>
+								<c:if test="${company.cp_Joinstate == -1}">N</c:if></td>
+								<td><c:if test="${company.cp_Joinstate == 1}">승인완료</c:if>
+								<c:if test="${company.cp_Joinstate == 0}">서류접수대기</c:if>
+								<c:if test="${company.cp_Joinstate == -1}">반려</c:if>
+								<c:if test="${company.cp_Outdate != null}">탈퇴</c:if></td>
+								
 								<td><c:out value="${company.cp_Date}"/></td>
 							</tr>
 						</c:forEach>
@@ -96,25 +102,25 @@ $(document).ready(function() {
 						<th data-value="sp_Regdate" class="order">등록신청일</th>
 					</tr>
 				</thead>
-				<tbody id="spList">
+				<tbody id="spMainList">
 				<c:choose>
-					<c:when test="${not empty spList}" >
-						<c:forEach var="space" items="${spList}">
+					<c:when test="${not empty spMainList}" >
+						<c:forEach var="spmain" items="${spMainList}">
 							<tr>
-								<td><c:out value="${space.sp_Num}"/></td>
-								<td><c:out value="${space.cp_Name}"/></td>
-								<td><a class='move' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
-								<td><c:out value="${space.sp_Type}"/></td>
-								<td><c:out value="${space.sp_Address}"/></td>
-								<td><c:out value="${space.sp_Stock}"/></td>
-								<td><c:out value="${space.sp_Rest}"/></td>
-								<td><c:out value="${space.sp_Regdate}"/></td>
+								<td><c:out value="${spmain.sp_Num}"/></td>
+								<td><c:out value="${spmain.cp_Name}"/></td>
+								<td><a class='move' href='<c:out value="${spmain.sp_Num}"/>'><c:out value="${spmain.sp_Name}"></c:out></a> </td>
+								<td><c:out value="${spmain.sp_Type}"/></td>
+								<td><c:out value="${spmain.sp_Address}"/></td>
+								<td><c:out value="${spmain.sp_Stock}"/></td>
+								<td><c:out value="${spmain.sp_Rest}"/></td>
+								<td><c:out value="${spmain.sp_Date}"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+							<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

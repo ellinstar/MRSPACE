@@ -33,7 +33,7 @@ public class AdminLoginController {
 		String url = "";
 		if(adminId.equals("admin") && adminPw.equals("admin")) {
 			url="redirect: /admin/main";
-			session.setAttribute("adminLog", adminId);
+			session.setAttribute("adminId", adminId);
 		}else {
 			url="admin/log/login";
 		}

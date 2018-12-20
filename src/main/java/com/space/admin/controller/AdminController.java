@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.space.admin.service.AdminCompService;
+import com.space.admin.service.AdminSpaceService;
 import com.space.admin.service.NoticeService;
 import com.space.admin.vo.NoticeVO;
 import com.space.comp.vo.CompVO;
+import com.space.space.vo.SpaceVO;
 
 import lombok.extern.java.Log;
 
@@ -25,10 +27,16 @@ public class AdminController {
 	public NoticeService ntService;
 	@Autowired
 	public AdminCompService adminCompServ;
+	@Autowired
+	private AdminSpaceService adminSpaceServ;
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String adIndex() {
+	public String adIndex(Model model) {
 		log.info("관리자 메인화면");
+		List<CompVO> cpNewList = adminCompServ.cpNewList();
+		model.addAttribute("cpNewList", cpNewList);
+		List<SpaceVO> spNewList = adminSpaceServ.spNewList();
+		model.addAttribute("spNewList", spNewList);
 		return "index2";
 	}
 	
@@ -43,7 +51,9 @@ public class AdminController {
 	public String adComp(@ModelAttribute CompVO cvo, Model model) {
 		log.info("업체 관리호출");
 		List<CompVO> compList = adminCompServ.cpMainList();
+		List<SpaceVO> spaceList = adminSpaceServ.spMainList();
 		model.addAttribute("cpMainList", compList);
+		model.addAttribute("spMainList", spaceList);
 		return "/admin/comp/compmain";
 	}
 	@RequestMapping(value="/qna", method= RequestMethod.GET)

@@ -40,5 +40,13 @@ public class AdminCompController {
 		model.addAttribute("detail", detail);
 		return "/admin/comp/cpDetail";
 	}
+	@RequestMapping(value="/ok", method=RequestMethod.GET)
+	public void compOk(@RequestParam("cp_Num") int cp_Num, Model model) {
+		log.info("compOk 호출성공");
+		int result = adminCompServ.compOk(cp_Num);
+		model.addAttribute("result", result);
+		
+	}
+	
 	
 }
