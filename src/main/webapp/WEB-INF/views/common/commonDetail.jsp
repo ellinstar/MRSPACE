@@ -129,7 +129,7 @@ img {
 						<a class="btn btn-primary btn-lg" href="#">
 						<i class="glyphicon glyphicon-earphone"></i>
 						전화 &raquo;</a>
-						<a class="btn btn-primary btn-lg" href="#">예약하기 &raquo;</a>
+						<a class="btn btn-primary btn-lg" href="/reserv/reservation.do">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>
