@@ -36,7 +36,8 @@
 				</div>
 				<div class="form-group">
 					<label>첨부파일</label> <input type="file" class="form-control" name='file' id="file">
-					<span id="imgView">${updateData.nt_file}<span id="imgArea"></span> </span>
+					<span id="imgView">${updateData.nt_file}</span><p>
+					<div style="height:300px"><span id="imgArea"></span> </div>
 				</div>
 			</form>
 				<button type="submit" data-oper='modify' class="btn btn-default">

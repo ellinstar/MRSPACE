@@ -28,8 +28,8 @@ public class AdminSpaceController {
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String spaceList(@ModelAttribute SpaceVO svo, Model model, HttpServletRequest request) {
 		log.info("spaceList호출");
-		List<SpaceVO> spaceList = adminSpaceServ.spaceList(svo);
-		model.addAttribute("spaceList", spaceList);
+		List<SpaceVO> adspaceList = adminSpaceServ.adspaceList(svo);
+		model.addAttribute("adspaceList", adspaceList);
 		return "/admin/space/spaceList";
 	}
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
@@ -41,5 +41,11 @@ public class AdminSpaceController {
 		model.addAttribute("detail", detail);
 		return "/admin/space/spDetail";
 	}
-	
+	//공간 등록 승인
+	@RequestMapping(value="/ok",method=RequestMethod.GET)
+	public void spOk(@RequestParam("sp_Num") int sp_Num, Model model) {
+		log.info("spOk호출 성공");
+		int result = adminSpaceServ.spOk(sp_Num);
+		model.addAttribute("result", result);
+	}
 }

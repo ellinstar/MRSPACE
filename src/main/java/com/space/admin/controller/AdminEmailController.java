@@ -1,5 +1,7 @@
 package com.space.admin.controller;
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,17 +13,22 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.space.admin.service.AdminCompService;
 
 import lombok.extern.java.Log;
 
 @Log
 @Controller
-@RequestMapping(value="/admin")
+@RequestMapping(value="/admin/notice/**")
 public class AdminEmailController {
+	
+	@Autowired
+	private AdminCompService adminCompServ;
 	
 	@RequestMapping(value="/mailSender",method=RequestMethod.POST)
 	public String mailSender(HttpServletRequest request) throws AddressException, MessagingException{
@@ -34,7 +41,6 @@ public class AdminEmailController {
 		final String accountPwd = "!@#apr0230";
 		final int port = 465;//smtp포트
 		
-		String receiver = "ellinstar@naver.com";//받는 이메일
 		String sender = "ellinstar48@gmail.com";//보내는 이메일
 		
 		//property 정보 생성
@@ -55,7 +61,22 @@ public class AdminEmailController {
 		
 		Message mimeMessage = new MimeMessage(session);//MimeMessage생성
 		mimeMessage.setFrom(new InternetAddress(sender));//보내는 Email
-		mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
+		
+		//String receiver = "ellinstar@naver.com";//받는 이메일
+		
+		/*String[] list = receiver.toArray(new String[receiver.size()]);
+		for(int i=0; i<list.length;i++) {
+			toAddr[i] = new InternetAddress();
+		}*/
+		Map<String, Object> receiver = adminCompServ.cpMail();
+		InternetAddress[] toAddr = new InternetAddress[receiver.size()];
+		Iterator<String> keys = receiver.keySet().iterator();
+		while(keys.hasNext()) {
+			for(int i=0; i<receiver.size();i++) {
+			toAddr[i] = new InternetAddress((String)receiver.get(keys));
+			}
+		}
+		mimeMessage.setRecipients(Message.RecipientType.TO, toAddr);
 		
 		//Message Setting
 		mimeMessage.setSubject(title);
@@ -65,7 +86,7 @@ public class AdminEmailController {
 	/*	String result = "";
 		result = "success";
 		model.addAttribute("mail", result);*/
-		return "redirect: noticeList";
+		return "redirect: list";
 		
 	}
 	

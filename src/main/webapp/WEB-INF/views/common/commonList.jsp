@@ -219,11 +219,11 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-4">
 						<c:choose>
 							<c:when test="${not empty commonList}">
 
 								<c:forEach var="space" items="${commonList}" varStatus="status">
+					<div class="col-lg-4">
 									<div class="tac" data-num="${space.sp_Num}">
 										<div class="goDetail tal">
 
@@ -270,12 +270,13 @@
 													<span class="tag_area_name">${space.sp_Address}</span>
 												</div>
 												<div class="info_price_hour">
-													<strong class="price"><fmt:formatNumber value="${detail.sp_Price}" /></strong><span
+													<strong class="price"><fmt:formatNumber value="${space.sp_Price}" /></strong><span
 														class="txt_unit">원/월</span>
 												</div>
 											</div>
 										</div>
 									</div>
+					</div>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
@@ -284,7 +285,6 @@
 								</tr>
 							</c:otherwise>
 						</c:choose>
-					</div>
 
 
 				</div>

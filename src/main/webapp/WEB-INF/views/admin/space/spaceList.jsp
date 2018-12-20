@@ -59,11 +59,11 @@ $(document).ready(function() {
 				<tbody id="space">
 					<!-- 데이터 출력 -->
 				<c:choose>
-					<c:when test="${not empty spaceList}" >
-						<c:forEach var="space" items="${spaceList}">
+					<c:when test="${not empty adspaceList}" >
+						<c:forEach var="space" items="${adspaceList}">
 							<tr>
 								<td><c:out value="${space.sp_Num}"/></td>
-								<td><c:out value="${space.cp_Num}"/></td>
+								<td><c:out value="${space.cp_Name}"/></td>
 								<td><a class='move' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
 								<td><c:out value="${space.sp_Type}"/></td>
 								<td><c:out value="${space.sp_Address}"/></td>

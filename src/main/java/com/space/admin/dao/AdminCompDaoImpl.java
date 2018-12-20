@@ -1,6 +1,12 @@
 package com.space.admin.dao;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.mail.Message;
+import javax.mail.internet.MimeMessage;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +46,13 @@ public class AdminCompDaoImpl implements AdminCompDAO {
 	public int compOk(int cp_Num) {
 		// TODO Auto-generated method stub
 		return session.update("compOk", cp_Num);
+	}
+	//메일 보내기
+	@Override
+	public Map<String, Object> cpMail() {
+		// TODO Auto-generated method stub
+		
+		return session.selectMap("cpMail", "key");
 	}
 
 }
