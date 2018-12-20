@@ -12,6 +12,7 @@ public class ReservVO {
 	private int res_State;
 	private String mem_Id;
 	private int sp_Num;
+	private int restSpace;
 
 	public ReservVO() {
 		super();

@@ -23,7 +23,6 @@
 				break;
 			case 3:
 				alert("예약 성공 했습니다. '<br>'예약 내역은 마이페이지에서 확인 하실수 있습니다.");
-				
 				<%session.removeAttribute("errCode"); %>
 				break;
 			case 4:
@@ -47,15 +46,24 @@
 			}
 		});
 	});
+	/* //재고 갯수 확인
+	$("#resUseDate").onchange(function() {
+		$("#reservForm").attr({
+			"method":"GET"
+			"action":"/reserv/restSpace.do"
+		});
+		$("reservForm").submit();
+	}); */
 </script>
 
 <body>
 	<c:if test="${reserv == null}">	
 	<form id="reservForm" name="reservForm">
-	<p>가격 : ${login.mem_Id }
+	<p>아이디 : ${login.mem_Id }
 	<p>가격 : ${detail.sp_Price }
-	<p>가격 : ${detail.sp_Num }
-	<p>가격 : ${detail.sp_Stock }
+	<p>공간번호 : ${detail.sp_Num }
+	<p>재고 : ${rest.restSpace }
+	<p>
 		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id}">
 		<input type="hidden" id="sp_Num" name="sp_Num"value="${detail.sp_Num}">
 		<input type="hidden" id="sp_Stock" name="sp_Stock"value="${detail.sp_Stock}">
@@ -71,5 +79,7 @@
 		<p>이용달 : ${reserv.resUseDate}</p>
 		<p>결제 금액 : ${detail.sp_Price}</p>
 	</c:if>
+	
+	
 </body>
 </html>

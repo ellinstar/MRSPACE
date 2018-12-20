@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,6 +71,13 @@ img {
 </style>
 
 </head>
+<script type="text/javascript">
+$(function() {
+	$("#reserv").click(function() {
+	<%session.removeAttribute("reserv");%>
+});
+</script>
+
 <body>
 
 
@@ -98,49 +105,53 @@ img {
 				<h2 class="mt-4">${detail.sp_Name}</h2>
 				<h4>공간소개</h4>
 				<p>${detail.sp_Exposition}</p>
-				<h4>공간 서비스</h4>	
+				<h4>공간 서비스</h4>
 				<p>${detail.sp_Service}</p>
 				<p></p>
 				<h4>공간 주소</h4>
 				<p>${detail.sp_Address}</p>
 				<p></p>
+				<h4>공간 총 개수</h4>
+				<p>${detail.sp_Stock}</p>
 				<h4>교통편</h4>
 				<p>${detail.sp_Traffic}</p>
-				
-				<br><br>
-				
+
+				<br>
+				<br>
+
 				<h4>'업체명의' 다른 공간</h4>
 			</div>
-			
+
 
 			<div class="col-sm-4">
 				<h3 class="mt-4">공간 예약 정보</h3>
 				<address>
-					<strong>${detail.sp_Type}</strong> <br>----------------------------------- <br>
+					<strong>${detail.sp_Type}</strong> <br>-----------------------------------
+					<br>
 					<p class="info_price_hour">
-						<strong class="price"><fmt:formatNumber value="${detail.sp_Price}" /></strong> <span
-							class="txt_unit">원/월</span>
-							<br>       (VAT포함) <br>
+						<strong class="price"><fmt:formatNumber
+								value="${detail.sp_Price}" /></strong> <span class="txt_unit">원/월</span>
+						<br> (VAT포함) <br>
 
 					</p>
 					<br>
-					
+
 					<p>
-						<a class="btn btn-primary btn-lg" href="#">
-						<i class="glyphicon glyphicon-earphone"></i>
-						전화 &raquo;</a>
-						<a class="btn btn-primary btn-lg" href="/reserv/reservation.do">예약하기 &raquo;</a>
+						<a class="btn btn-primary btn-lg" href="#"> <i
+							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
+						</a> <a class="btn btn-primary btn-lg" id="reserv"
+							href="/reserv/reservation.do">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>
 		</div>
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		<!-- /.row -->
 
 		<div class="row">
