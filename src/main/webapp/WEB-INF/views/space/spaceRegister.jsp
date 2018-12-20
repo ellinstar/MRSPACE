@@ -646,7 +646,7 @@ img.ui-datepicker-trigger {
 
 		//다음 버튼 클릭시 
 		$("#btnReg").click(function() {
-					alert("${cp_Id}");
+					alert("공간 등록 신청 성공!");
 					
 					
 					//재고갯수 입력 유효성 검사

@@ -38,7 +38,7 @@ function goList() {
 		<div class="well">
 			<div class="tac"> 공간 등록 신청에 성공하였습니다.<br />
 				<span id="text"></span>
-				<input type="button" id="goList" name="goList" onclick="javascript:goList()" value="리스트로"/>
+				<input type="button" id="goList" name="goList" onclick="javascript:goList()" value="확인"/>
 
 			</div>
 		</div>

@@ -133,4 +133,9 @@
 		DELETE FROM tb_qna WHERE qna_Num = #{qna_Num}
 	</delete>
 	
+	<!-- 관리자 문의게시판 불러오기 -->
+	<select id="adQnaList" resultType="qna">
+		select * from tb_qna
+	</select>
+	
 </mapper>
