@@ -16,8 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.space.common.page.Paging;
 import com.space.common.util.Util;
-import com.space.comp.vo.CompVO;
-import com.space.complogin.vo.CompLoginVO;
 import com.space.space.file.FileUploadUtil;
 import com.space.space.service.SpaceService;
 import com.space.space.vo.SpaceVO;
