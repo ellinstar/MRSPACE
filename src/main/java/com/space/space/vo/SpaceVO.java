@@ -72,6 +72,10 @@ public class SpaceVO extends CommonVO{
 	//공간 사용일
 	private String resUseDate;
 	
+	// 업체 핸드폰번호
+	private String cp_Phone;
+	
+	// 업체 이름
 	private String cp_Name;
 
 

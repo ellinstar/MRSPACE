@@ -6,19 +6,20 @@
 	<!-- 게시물 전체 조회 (메인페이지 검색 쿼리) -->
 	<select id="commonList" resultType="space">
 		/* Space - spaceList */
-		select sp_num, sp_file, sp_name, sp_address,
-		sp_price
+		select sp_num, sp_file, sp_name, sp_address, sp_price, cp_phone
 		from
 		( select list.*, rownum as rnum
 		from (
-		select sp_num,
-		sp_file, sp_name, sp_address, sp_price
-		from tb_space
+		select s.sp_num, s.sp_file, s.sp_name, s.sp_address, s.sp_price, c.cp_phone
+		from tb_space s, tb_company c
+		
 		<where>
+			s.cp_num = c.cp_num
 			<if test="keyword != null and keyword != ''">
-				sp_name like '%' || #{keyword} || '%'
+				and sp_name like '%' || #{keyword} || '%'
 			</if>
 		</where>
+		
 		order by sp_num desc
 		) list
 		)
@@ -53,10 +54,9 @@
 	<select id="commonDetail" parameterType="int" resultType="common">
 		/* Board - spaceDetail */
 		SELECT
-			      sp_num, sp_type, sp_stock, sp_name, sp_price, sp_address,
-			      sp_exposition, sp_file, sp_service, sp_traffic, sp_rest,
-			      sp_reservation, sp_state
-		FROM tb_space
+			      s.sp_num, s.sp_type, s.sp_stock, s.sp_name, s.sp_price, s.sp_address,
+			      s.sp_exposition, s.sp_file, s.sp_service, s.sp_traffic, c.cp_phone
+		FROM tb_space s, tb_company c
 		WHERE sp_num = #{sp_Num}
 	</select>
 
