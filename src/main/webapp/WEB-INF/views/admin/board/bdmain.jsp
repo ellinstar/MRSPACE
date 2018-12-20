@@ -29,7 +29,7 @@ $(document).ready(function() {
 	});
 	/* 사업자 메일 보내기 */
 	$("#emailFormBtn").click(function() {
-		e.preventDefault();
+		
 		$("#myModal").modal('show');
 	});
 	$("#mailSendBtn").click(function() {
@@ -48,9 +48,9 @@ $(document).ready(function() {
 	<div class="contentContainer">
 		<div class="page-header">
 			<h3><a href="/admin/notice/list">공지사항 게시판</a></h3>
-			<button class="btn btn-sm pull-right" id="emailFormBtn">
-				사업자 공지 메일 보내기</button>
-			<button class="btn btn-sm btn-primary pull-right" id="insertFormBtn" href="/admin/board/notice/noticeWrite">글쓰기</button>
+			<!-- <button class="btn btn-sm pull-right" id="emailFormBtn">
+				사업자 공지 메일 보내기</button> -->
+			<button class="btn btn-sm btn-primary pull-right" id="insertFormBtn">공지사항 쓰기 </button>
 		</div>
 		<div class="col-md-12">
 			<table summary="게시판 리스트"
@@ -82,9 +82,7 @@ $(document).ready(function() {
 				</c:choose>
 				</tbody>
 			</table>
-			<form id="actionForm" action="/admin/notice/ntDetail" method="get">
-			
-			</form>
+			<form id="actionForm" action="/admin/notice/ntDetail" method="get"></form>
 		<%-- =============== 사업자 메일 보내기 모달 =============== --%>
 		<!-- Modal 추가 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"

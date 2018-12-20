@@ -90,7 +90,7 @@
 
 	/* 전체목록 불러오기 */
 	function spaceAll() {
-		location.href = "/space/spaceList.do";
+		location.href = "/space/spaceList.do?cp_Num=${ cp_Num }";
 	}
 	
 	/* 공간 등록하기 */
@@ -121,8 +121,9 @@
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="modifyForm" id="modifyForm">
 			<input type="hidden" name="sp_Num" id="sp_Num">
+			<%-- <input type="hidden" name="cp_Id" id="cp_Id" value='${cplogin.cp_Id}'> --%>
 		</form>
-
+		
 		<%-- ================== 검색기능 시작 ================= --%>
 		<div class="spaceSearch">
 

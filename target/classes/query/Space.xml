@@ -3,8 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.space.space.dao.SpaceDAO">
-
-
 	<!-- 게시물 전체 조회 -->
 	<select id="spaceList" parameterType="space" resultType="space">
 		/* Space - spaceList */
@@ -13,11 +11,11 @@
 		from
 		( select list.*, rownum as rnum
 		from (
-		select sp_num, sp_name, sp_address, sp_type, sp_stock, sp_rest
-		from tb_space
+		select sp_num, sp_name, sp_address, sp_type, sp_stock, sp_rest, cp_num
+		from tb_space where cp_num = #{cp_Num}
 		<where>
 			<if test="keyword != null and keyword != ''">
-				sp_name like '%' || #{keyword} || '%'
+				and sp_name like '%' || #{keyword} || '%'
 			</if>
 		</where>
 		order by sp_num desc
@@ -31,6 +29,10 @@
 			</if>
 		</where>
 	</select>
+
+<!-- <if test="sp_name != null and sp_name != ''">
+			cp_num = #{cp_num}
+			</if> -->
 
 	<!-- 게시물 총 개수 -->
 	<select id="spaceListCnt" parameterType="space" resultType="int">

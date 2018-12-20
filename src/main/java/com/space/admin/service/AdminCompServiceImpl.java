@@ -1,6 +1,7 @@
 package com.space.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -50,6 +51,13 @@ public class AdminCompServiceImpl implements AdminCompService {
 		// TODO Auto-generated method stub
 		int result = adminCompDao.compOk(cp_Num);
 		return result;
+	}
+	//메일 보내기 
+	@Override
+	public Map<String, Object> cpMail() {
+		// TODO Auto-generated method stub
+		Map<String, Object> cpMail = adminCompDao.cpMail();
+		return cpMail;
 	}
 
 }

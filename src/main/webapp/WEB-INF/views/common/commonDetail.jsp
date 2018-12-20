@@ -28,6 +28,21 @@
 	rel="stylesheet" type="text/css">
 
 
+<link rel="stylesheet" href="/resources/popup/needpopup.min.css">
+
+
+<!-- 구글지도 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("maps", "3.4", {
+		other_params : "sensor=false&language=kr"
+	});
+</script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery.googlemap.js"></script>
+
 
 <!-- Custom styles for this template -->
 <link href="/resources/css/landing-page.min.css" rel="stylesheet">
@@ -42,9 +57,10 @@
 				width : "334px",
 				height : "188px"
 			});
-		}
-	});
+
 </script>
+
+
 
 <style type="text/css">
 header.masthead2 {
@@ -165,6 +181,30 @@ img {
 	width: 50%;
 	padding: 0 6px;
 }
+
+.wrapper {
+	padding: 40px 60px;
+}
+
+p {
+	font-size: 1.2em;
+	line-height: 1.4;
+	color: #343638;
+	margin: 20px 0;
+}
+
+.needpopup {
+	border-radius: 6px;
+	box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 1);
+}
+
+.needpopup p {
+	margin: 0;
+}
+
+.needpopup p+p {
+	margin-top: 10px;
+}
 </style>
 
 </head>
@@ -172,8 +212,7 @@ img {
 
 
 	<input type="hidden" name="sp_Num" id="sp_Num" value="${detail.sp_Num}">
-
-
+	<input type="hidden" id="cp_Num" name="cp_Num" value="${detail.cp_Num}" />
 
 	<!-- Header with Background Image -->
 	<header class="business-header">
@@ -202,25 +241,41 @@ img {
 				<p></p>
 				<br>
 				<h5>공간 주소</h5>
-				
+
 				<!-- 공간주소 -->
 				<div class="host_profile" id="_host_map">
 					<div class="inner">
 						<div class="sp_location">
 							<input type="hidden" name="spcLat" id="spcLat" value="37.487766">
 							<input type="hidden" name="spcLng" id="spcLng" value="127.0132">
-								
+
 							<p class="sp_address">${detail.sp_Address}</p>
 						</div>
 
 					</div>
-					<div class="map" id="_map" _lat="37.487766" _lng="127.0132">
+
+					<!-- 구글지도 마커표시 -->
+					<div id="map2" style="width: 700px; height: 450px;"></div>
+					<script type="text/javascript">
+						$(function() {
+							$("#map2").googleMap();
+							$("#map2").addMarker({
+								coords : [ 37.5457747, 126.9828226 ], // Map center
+								url : 'http://www.blueb.co.kr',
+								id : 'marker1'
+							});
+						})
+					</script>
+
+
+					<!-- 네이버지도 -->
+					<!-- 	<div class="map" id="_map" _lat="37.487766" _lng="127.0132">
 						<img id="_detailStaticMap" class="lazy"
 							src="https://ssl.map.naver.com/staticmap/image?version=1.1&amp;crs=EPSG:4326&amp;center=127.0132,37.487766&amp;level=12&amp;baselayer=default&amp;overlayer=ol_vc_an&amp;exception=blank&amp;markers_icon=type,scloud,127.0132,37.487766&amp;scale=1&amp;caller=scloud&amp;format=jpeg&amp;dataversion=142.0&amp;w=761&amp;h=640"
 							width="761" height="640">
 						<div id="_mapLayer"></div>
 
-					</div>
+					</div> -->
 				</div>
 				<p></p>
 				<br>
@@ -236,7 +291,7 @@ img {
 			<div class="info_area">
 				<h5 class="mt-4">공간 예약 정보</h5>
 				<address>
-					<strong>${detail.sp_Type}</strong> <br>──────────────<br>
+					<strong>${detail.sp_Type}</strong> <br>───────────────────<br>
 					<p class="info_price_hour">
 						<strong class="price"><span class="txt_sign">\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<fmt:formatNumber value="${detail.sp_Price}" /></strong> <span
@@ -248,18 +303,17 @@ img {
 					</p>
 					<br>
 
+
+
 					<p>
 						<a class="btn btn-primary btn-lg" href="#"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
-						</a> <a class="btn btn-primary btn-lg" href="#">예약하기 &raquo;</a>
+						</a> <a class="btn btn-primary btn-lg" href="/reserv/reservation.do">예약하기
+							&raquo;</a>
 					</p>
 				</address>
 			</div>
 		</div>
-
-
-
-
 
 
 
@@ -315,7 +369,35 @@ img {
 	<!-- /.container -->
 
 
+	<!-- 전화 popup 모달창 -->
+	<div class="wrapper">
 
+
+		<div id='small-popup' class="needpopup">
+			<p>"코워킹스페이스를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다. :)</p>
+			<p>-------------------------------------------------------------------------</p>
+			<h2>${detail.sp_Name}</h2>
+			<%-- <h2>${detail.cp_Phone}</h2> --%>
+			<p>PHONE : ${detail.cp_Phone}</p>
+		</div>
+	</div>
+
+	<script src="/resources/popup/needpopup.min.js"></script>
+	<script>
+		needPopup.config.custom = {
+			'removerPlace' : 'outside',
+			'closeOnOutside' : false,
+			onShow : function() {
+				console.log('needPopup is shown');
+			},
+			onHide : function() {
+				console.log('needPopup is hidden');
+			}
+		};
+		needPopup.init();
+		
+	</script>
+	<!-- 전화 popup 모달창 끝 -->
 
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i

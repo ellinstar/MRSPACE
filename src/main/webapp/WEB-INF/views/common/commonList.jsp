@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
 <!DOCTYPE html>
 <html>
@@ -44,20 +44,20 @@
 			/* $("#search").val("<c:out value='${data.search}'/>"); */
 
 			/* if ($("#search").val() != 'sp_Name') {
-				// :contains()는 특정 테스트를 포함한 요소반환
-				if ($("#search").val() == 'sp_Name')
-					value = "#list tr td.goDetail";
-				else if ($("#search").val() == 'sp_Name')
-					value = "#list tr td.name";
-				$(value + ":contains('" + word + "')").each(
-						function() {
-							var regex = new RegExp(word, 'gi');
-							$(this).html(
-									$(this).text().replace(
-											regex,
-											"<span class='required'>" + word
-													+ "</span"));
-						});
+			   // :contains()는 특정 테스트를 포함한 요소반환
+			   if ($("#search").val() == 'sp_Name')
+			      value = "#list tr td.goDetail";
+			   else if ($("#search").val() == 'sp_Name')
+			      value = "#list tr td.name";
+			   $(value + ":contains('" + word + "')").each(
+			         function() {
+			            var regex = new RegExp(word, 'gi');
+			            $(this).html(
+			                  $(this).text().replace(
+			                        regex,
+			                        "<span class='required'>" + word
+			                              + "</span"));
+			         });
 			} */
 		}
 
@@ -73,12 +73,12 @@
 
 		/* // 검색 대상이 변경될 때마다 처리 이벤트
 		$("#search").change(function() {
-			if ($("#search").val() == "all") {
-				$("#keyword").val("전체 데이터 조회합니다.");
-			} else if ($("#search").val() != "all") {
-				$("#keyword").val("");
-				$("#keyword").focus();
-			}
+		   if ($("#search").val() == "all") {
+		      $("#keyword").val("전체 데이터 조회합니다.");
+		   } else if ($("#search").val() != "all") {
+		      $("#keyword").val("");
+		      $("#keyword").focus();
+		   }
 		}); */
 
 		// 검색 버튼 클릭 시 처리 이벤트
@@ -169,13 +169,45 @@
 	font-family: "NanumBarunGothicBold", sans-serif;
 	color: #0069d9;
 }
+
+.inner_width, .pc .intro+.section_cont {
+	width: 1158px;
+}
+
+.sorting_filter {
+	position: absolute;
+	top: 210px;
+	right: 420px;
+	background-color: #fff;
+	width: 154px;
+	height: 40px;
+}
+
+.filter_area .sorting_filter select {
+	position: relative;
+	height: 50px;
+	opacity: 0;
+}
+
+.filter_area .sorting_filter label {
+	top: 11px;
+	font-size: 14px;
+}
+
+.filter_area .sorting_filter label {
+	position: absolute;
+	top: 16px;
+	right: 0;
+	left: 0;
+	font-size: 13px;
+}
 </style>
 
 <title>Insert title here</title>
 </head>
 <body id="page-top">
 
-	<h3>"${data.keyword}"(으)로 검색한 결과입니다.</h3>
+
 	<div class="spaceList1">
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="detailForm" id="detailForm">
@@ -183,30 +215,60 @@
 				type="hidden" name="page" value="${data.page}"> <input
 				type="hidden" name="pageSize" value="${data.pageSize}">
 		</form>
+
 		<%-- ================== 검색기능 시작 ================= --%>
+		<br> <br>
 		<div class="spaceSearch">
+			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+				<h3>"${data.keyword}"(으)로 검색한 결과입니다.</h3>
+				<form id="sp_Search" name="sp_Search" class="form-row">
 
-			<form id="sp_Search" name="sp_Search">
-				<input type="hidden" id="page" name="page" value="${data.page}" />
-				<input type="button" value="전체목록" onclick="javascript:spaceAll()">
-				<%-- <input type="hidden" id="order_by" name="order_by" value="${data.order_by}" />
-				
-				<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" /> --%>
-				<input type="text" name="keyword" id="keyword"
-					placeholder="공간을 빠르게 검색해보세요." /> <input type="button" value="검색"
-					id="searchData" />
+					<input type="hidden" id="page" name="page" value="${data.page}" />
+					<input type="button" value="전체목록" onclick="javascript:spaceAll()">
+					<%-- <input type="hidden" id="order_by" name="order_by" value="${data.order_by}" />
+            
+            <input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" /> --%>
+					<div class="col-12 col-md-9 mb-2 mb-md-0">
+						<input type="text" class="form-control form-control-lg"
+							name="keyword" id="keyword" placeholder="공간을 빠르게 검색해보세요." />
+					</div>
+					<div>
+						<input type="button" class="btn btn-block btn-lg btn-primary"
+							value="검색" id="searchData" />
+					</div>
+				</form>
+			</div>
+			<br>
+
+			<!-- 정렬 -->
+			<div class="inner_width">
+
+				<input type="hidden" id="selected_unit_type"
+					data-search-param="rsvTpCd" value="">
+
+				<!-- [D] label 클릭 시 sorting_filter에 on클래스를 추가해주세요. (아이콘)-->
+				<div class="sorting_filter">
+					<!-- [D] 선택된 option의 텍스트를 label에 넣어주세요 -->
+					<select name="search" id="search" data-search-param="order">
+						<option value="BEST_DESC" selected="">베스트 공간 순</option>
+						<option value="PRC_ASC">가격 낮은 순</option>
+						<option value="PRC_DESC">가격 높은 순</option>
+						<option value="CMNT_DESC">이용후기 많은 순</option>
 
 
-			</form>
+					</select>
+				</div>
+			</div>
 
+			<br>
 			<!-- 검색조건 아직 미구현 -->
 			<div class="spaceSearch2">
-				<!-- 	<label>검색조건</label> <select id="search" name="search">
-					<option value="all">전체</option>
-					<option value="sp_Name">공간명</option>
-					<option value="sp_Address">주소</option>
-					<option value="sp_Price">가격</option>
-				</select>  -->
+				<!--    <label>검색조건</label> <select id="search" name="search">
+               <option value="all">전체</option>
+               <option value="sp_Name">공간명</option>
+               <option value="sp_Address">주소</option>
+               <option value="sp_Price">가격</option>
+            </select>  -->
 			</div>
 		</div>
 		<%-- ================== 검색기능 종료 ================= --%>
@@ -219,11 +281,12 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-4">
-						<c:choose>
-							<c:when test="${not empty commonList}">
+					<c:choose>
+						<c:when test="${not empty commonList}">
 
-								<c:forEach var="space" items="${commonList}" varStatus="status">
+							<c:forEach var="space" items="${commonList}" varStatus="status">
+								<div class="col-lg-4">
+
 									<div class="tac" data-num="${space.sp_Num}">
 										<div class="goDetail tal">
 
@@ -234,8 +297,8 @@
 												<ol class="carousel-indicators">
 													<li data-target="#myCarousel" data-slide-to="0"
 														class="active"></li>
-													<!-- 		<li data-target="#myCarousel" data-slide-to="1"></li>
-											<li data-target="#myCarousel" data-slide-to="2"></li> -->
+													<!--       <li data-target="#myCarousel" data-slide-to="1"></li>
+                                 <li data-target="#myCarousel" data-slide-to="2"></li> -->
 												</ol>
 
 												<div class="carousel-inner" role="listbox">
@@ -243,16 +306,18 @@
 														<img src="/uploadStorage/space/${space.sp_File}"
 															class="d-block img-fluid" alt="First slide">
 													</div>
-													<div class="carousel-item">
+													<%-- 		<div class="carousel-item">
 														<img class="d-block img-fluid"
-															src="/uploadStorage/space/${space.sp_File}" alt="Second slide">
+															src="/uploadStorage/space/${space.sp_File}"
+															alt="Second slide">
 													</div>
 													<div class="carousel-item">
 														<img class="d-block img-fluid"
-															src="/uploadStorage/space/${space.sp_File}" alt="Third slide">
+															src="/uploadStorage/space/${space.sp_File}"
+															alt="Third slide">
 													</div>
-
-													<a class="carousel-control-prev" href="#myCarousel"
+ --%>
+													<!-- 		<a class="carousel-control-prev" href="#myCarousel"
 														role="button" data-slide="prev"> <span
 														class="carousel-control-prev-icon" aria-hidden="true"></span>
 														<span class="sr-only">Previous</span>
@@ -260,7 +325,8 @@
 														role="button" data-slide="next"> <span
 														class="carousel-control-next-icon" aria-hidden="true"></span>
 														<span class="sr-only">Next</span>
-													</a>
+													</a> -->
+
 												</div>
 											</div>
 
@@ -270,21 +336,22 @@
 													<span class="tag_area_name">${space.sp_Address}</span>
 												</div>
 												<div class="info_price_hour">
-													<strong class="price"><fmt:formatNumber value="${detail.sp_Price}" /></strong><span
-														class="txt_unit">원/월</span>
+													<strong class="price"><fmt:formatNumber
+															value="${space.sp_Price}" /></strong><span class="txt_unit">원/월</span>
+													<input type="hidden" value="${space.cp_Phone}">
 												</div>
 											</div>
 										</div>
 									</div>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td colspan="7" class="tac">등록된 공간이 존재하지 않습니다.</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</div>
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7" class="tac">등록된 공간이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 
 
 				</div>

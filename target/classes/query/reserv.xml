@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.reserv.ReservDAOImpl">
+
+	<insert id="reservation" parameterType="reserv">
+		insert into tb_reserv(res_num, res_usedate, res_amount, res_state, mem_Id, sp_num)
+		values(
+			tb_reserv_seq.nextval , to_date(#{resUseDate},'yyyy-MM') , ${res_Amount} , 1,'${mem_Id}' , ${sp_Num})
+	</insert>
+	
+	<select id="spaceResert" resultType="space">
+		select *
+		from tb_space
+		where sp_Num = ${sp_Num}
+	</select>
+	
+	<select id="useSpace" resultType="int">
+		select count(sp_num) useSpace
+		from tb_reserv
+		where sp_num = ${sp_Num} and res_UseDate = to_date('${resUseDate}','yyyy-MM')
+	</select>
+	
+</mapper>

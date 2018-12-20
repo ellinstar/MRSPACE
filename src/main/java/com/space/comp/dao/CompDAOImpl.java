@@ -47,5 +47,12 @@ public class CompDAOImpl{
 	public int compDelete(String cp_Id) {
 		return session.delete("compDelete", cp_Id);
 	}
+	//아이디 찾기
+	public CompVO findComp(CompVO cvo) {
+		return session.selectOne("findComp", cvo);
+	}
+
+	
+	
 
 }

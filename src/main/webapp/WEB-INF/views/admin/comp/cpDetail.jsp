@@ -159,8 +159,7 @@
           </form>
           <div class="button-group ">
 			<button>삭제</button>&nbsp;
-			<button>반려</button>&nbsp;
-			<button>접수</button>&nbsp;
+			
 			<button id="ok">승인</button>
           </div>
         </div>

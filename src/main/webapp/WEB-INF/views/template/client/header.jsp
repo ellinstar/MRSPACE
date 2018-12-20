@@ -17,16 +17,16 @@
 	<a class="navbar-brand" href="/">COWKINGSPACE</a> <a href="/">Home</a>
 	<a href="/notice.do">공지사항</a> 
 	<c:choose>
-		<c:when test="${cplogin.cp_Id != null or cplogin.cp_Id != '' and login.mem_Id == null and login.mem_Id == ''}">
+		<c:when test="${cp_Id != null or cp_Id != '' and login.mem_Id == null and login.mem_Id == ''}">
 			<a href="/space/spaceRegister.do">내 공간 등록</a>
 			<ul class="navbar-nav">
-				<li><strong>[${cplogin.cp_Name}]님 반갑습니다.</strong>
+				<li><strong>[${cp_Name}]님 반갑습니다.</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <a href="/mem/logout.do">로그아웃</a> <a
 					href="/comp/compPage.do">&nbsp;&nbsp;&nbsp;마이페이지</a></li>
 			</ul>
 		</c:when>
-		<c:when test="${login.mem_Id != null or login.mem_Id != '' and cplogin.cp_Id == null and cplogin.cp_Id == ''}">
-			<a href="/space/qna.do">문의게시판</a>
+		<c:when test="${login.mem_Id != null or login.mem_Id != '' and cp_Id == null and cp_Id == ''}">
+			<a href="/qna/qnaList.do">문의게시판</a>
 			<ul class="navbar-nav">
 				<li><strong>[${login.mem_Name}]님 반갑습니다.</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <a href="/mem/logout.do">로그아웃</a> <a

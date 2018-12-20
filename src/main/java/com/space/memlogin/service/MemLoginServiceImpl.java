@@ -30,9 +30,6 @@ public class MemLoginServiceImpl implements MemLoginService {
 	public LoginVO loginSelect(String mem_Id, String mem_Pw) {
 		LoginVO vo = null;
 		MemSecurity sec = memDao.securitySelect(mem_Id);
-		System.out.println("아이디 :"  + mem_Id);
-		System.out.println("sec.getSalt() : " + sec.getSalt());
-		System.out.println("mem_Pw : " + mem_Pw);
 		if (sec != null) {
 			System.out.println("sec.getSalt() : " + sec.getSalt());
 			mem_Pw = new String(OpenCrypt.getSHA256(mem_Pw, sec.getSalt()));

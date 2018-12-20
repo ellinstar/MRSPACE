@@ -2,8 +2,9 @@ package com.space.space.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import lombok.Data;
 import com.space.common.vo.CommonVO;
+
+import lombok.Data;
 
 // 공간
 @Data
@@ -21,7 +22,7 @@ public class SpaceVO extends CommonVO{
 	// 공간 유형
 	private String sp_Type;
 	
-	private String sp_Stock;
+	private int sp_Stock;
 
 	// 공간 서비스
 	private String sp_Service;
@@ -59,7 +60,7 @@ public class SpaceVO extends CommonVO{
 
 	// 업체 번호
 	private int cp_Num;
-	
+	//업체 아이디
 	private String cp_Id;
 
 	// 공간 교통편
@@ -67,6 +68,15 @@ public class SpaceVO extends CommonVO{
 	
 	//공간 재고
 	private int sp_Rest;
+	
+	//공간 사용일
+	private String resUseDate;
+	
+	// 업체 핸드폰번호
+	private String cp_Phone;
+	
+	// 업체 이름
+	private String cp_Name;
 
 
 	

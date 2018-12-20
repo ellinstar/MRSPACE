@@ -47,4 +47,8 @@
 		 set cp_joinstate = 1
 		 where cp_num = #{cp_Num}
 	</update>
+	<!-- 업체 공지 메일 보내기 -->
+	<select id="cpMail" resultType="hashMap">
+		select cp_id, cp_email from tb_company
+	</select>
 </mapper>

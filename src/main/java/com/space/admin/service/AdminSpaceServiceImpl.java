@@ -18,11 +18,11 @@ public class AdminSpaceServiceImpl implements AdminSpaceService {
 	private AdminSpaceDAO adminSpaceDao;
 
 	@Override
-	public List<SpaceVO> spaceList(SpaceVO svo) {
+	public List<SpaceVO> adspaceList(SpaceVO svo) {
 		// TODO Auto-generated method stub
-		List<SpaceVO> spaceList = null;
-		spaceList = adminSpaceDao.spaceList(svo);
-		return spaceList;
+		List<SpaceVO> adspaceList = null;
+		adspaceList = adminSpaceDao.adspaceList(svo);
+		return adspaceList;
 	}
 
 	@Override
@@ -43,6 +43,13 @@ public class AdminSpaceServiceImpl implements AdminSpaceService {
 		// TODO Auto-generated method stub
 		SpaceVO detail = adminSpaceDao.spaceDetail(sp_Num);
 		return detail;
+	}
+
+	@Override
+	public int spOk(int sp_Num) {
+		// TODO Auto-generated method stub
+		int result = adminSpaceDao.spOk(sp_Num);
+		return result;
 	}
 
 }

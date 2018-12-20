@@ -5,24 +5,27 @@
 	<!-- 신규 리스트 조회 -->
 	<select id="spNewList" resultType="space">
 	<![CDATA[
-	select sp_name, cp_num
-	from tb_space
-	where sp_date >=trunc(sysdate)
+	select * 
+	from(select s.sp_name, c.cp_name, s.sp_date
+	from tb_space s, tb_company c where s.cp_num = c.cp_num)
+	where sp_date >=trunc(sysdate) and rownum<=3
 	]]>
 	</select>
 	<!-- 메인 리스트 조회 -->
 	<select id="spMainList" resultType="space">
 	<![CDATA[
-	select sp_num, cp_num, sp_name, sp_type, sp_address, sp_stock, sp_rest, sp_date
-		from tb_space
-	where rownum <=5
+	select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_address, s.sp_stock, s.sp_rest, s.sp_date
+		from tb_space s, tb_company c
+	where s.cp_num = c.cp_num
+	and rownum <=5
 	order by sp_num desc
 	]]>
 	</select>
 	<!-- 공간 기본 조회 -->
-	<select id="spaceList" resultType="space">
-		select sp_num, cp_num, sp_name, sp_type, sp_address, sp_stock, sp_rest, sp_date
-		from tb_space
+	<select id="adspaceList" resultType="space">
+		select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_address, s.sp_stock, s.sp_rest, s.sp_date
+		from tb_space s, tb_company c
+		where s.cp_num = c.cp_num 
 		order by sp_num desc
 	</select>
 	<!-- 공간 수 조회 -->
@@ -35,10 +38,16 @@
 		where sp_num > 0
 		]]>
 	</select>
-	<!-- 업체 상세보기 -->
+	<!-- 공간 상세보기 -->
 	<select id="spaceDetail" resultType="space">
-		select cp_num, sp_name, sp_type, sp_stock, sp_address, sp_exposition, sp_service, sp_traffic, sp_file
-		from tb_space
-		where sp_num = #{sp_Num}
+		select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_stock, s.sp_address, s.sp_exposition, s.sp_service, s.sp_traffic, s.sp_file
+		from tb_space s, tb_company c
+		where s.cp_num = c.cp_num and s.sp_num = #{sp_Num}
 	</select>
+	<!-- 공간 가입 승인 -->
+	<update id="spOk">
+		update tb_space
+		 set sp_state = 1
+		 where sp_num = #{sp_Num}
+	</update>
 </mapper>
