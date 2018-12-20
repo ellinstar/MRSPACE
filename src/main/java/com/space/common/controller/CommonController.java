@@ -2,6 +2,8 @@ package com.space.common.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +42,7 @@ public class CommonController {
 	 * 공간 상세보기 구현
 	 **************************************************************/
 	@RequestMapping(value = "/commonDetail", method = RequestMethod.GET)
-	public String commonDetail(@ModelAttribute SpaceVO svo, Model model) {
+	public String commonDetail(@ModelAttribute SpaceVO svo, Model model, HttpSession session) throws Exception {
 		log.info("commonDetail 호출 성공");
 		log.info("sp_num = " + svo.getSp_Num());
 		/* log.info("cp_num = " + svo.getCp_Num()); */
@@ -53,7 +55,7 @@ public class CommonController {
 		}
 
 		model.addAttribute("detail", detail);
-
+		session.setAttribute("detail", detail);
 		return "common/commonDetail";
 	}
 
