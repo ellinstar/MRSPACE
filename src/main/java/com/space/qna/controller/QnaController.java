@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.space.client.util.Util;
+import com.space.memlogin.vo.LoginVO;
 import com.space.qna.page.Paging;
 import com.space.qna.service.QnaService;
 import com.space.qna.vo.QnaVO;
@@ -27,9 +30,6 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
-	
-	/*@Resource(name="qnaService")
-	private QnaService qnaService;*/
 	
 	/**************************************************************
 	 * 글목록 구현하기
@@ -62,11 +62,16 @@ public class QnaController {
 	/**************************************************************
 	 * 글쓰기 폼 출력하기
 	 **************************************************************/
-	@RequestMapping(value="/qnaWriteForm.do")
-	public String qnaWriteForm(){
-		log.info("qnaWriteForm 호출 성공");
+	@RequestMapping(value="/qnaWriteForm.do", method = RequestMethod.GET)
+	public ModelAndView memInfoForm(HttpSession session) {
+		log.info("qnaWriteForm.do get 방식에 의한 qnaWriteForm메서드 호출 성공");
+		ModelAndView mav=new ModelAndView();
 		
-		return "qna/qnaWrite";
+		LoginVO login =(LoginVO)session.getAttribute("login");
+		
+		mav.addObject("qna", login);
+		mav.setViewName("qna/qnaWrite");	
+		return mav;
 	}
 	
 	/**************************************************************

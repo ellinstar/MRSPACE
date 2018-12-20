@@ -120,7 +120,7 @@
 	</head>
 	<body>
 		<div class="contentContainer">
-			<div class="contentTit"><h3>무늬 게시판</h3></div>
+			<div class="contentTit"><h3>문의 게시판</h3></div>
 			
 			<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 			<form name="detailForm" id="detailForm">
@@ -148,7 +148,7 @@
 									<option value="qna_Content">내용</option>
 									<option value="qna_Name">작성자</option>
 								</select>
-								<input type="text" name="keyword" id="keyword" value="검색어를입력하세요" />
+								<input type="text" name="keyword" id="keyword" placeholder="검색어를입력하세요" />
 								<input type="button" value="검색" id="searchData" />
 							</td>
 							<td id="btd2">한페이지에
@@ -241,4 +241,3 @@
 		</div>
 	</body>
 </html>
-		

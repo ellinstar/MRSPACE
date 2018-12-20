@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.space.memlogin.vo.LoginVO;
 import com.space.reserv.service.ReservService;
 import com.space.reserv.vo.ReservVO;
@@ -34,6 +36,14 @@ public class ReservController {
 		session.getAttribute("login");
 		session.getAttribute("detail");
 		return "reserv/reservation";
+	}
+	//재고 갯수
+	@RequestMapping(value = "/restSpace.do")
+	public void restSpace(@ModelAttribute ReservVO rvo, Model model) {
+		log.info("restSpace호출 성공");
+		int count = reservService.restSpace(rvo);
+		rvo.setRestSpace(count);
+		model.addAttribute("rest", rvo);
 	}
 
 	// 예약 실행

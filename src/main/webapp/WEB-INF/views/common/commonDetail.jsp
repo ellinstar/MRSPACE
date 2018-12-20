@@ -208,6 +208,13 @@ p {
 </style>
 
 </head>
+<script type="text/javascript">
+$(function() {
+	$("#reserv").click(function() {
+	<%session.removeAttribute("reserv");%>
+});
+</script>
+
 <body>
 
 
@@ -303,20 +310,15 @@ p {
 					</p>
 					<br>
 
-
-
 					<p>
 						<a class="btn btn-primary btn-lg" href="#"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
-						</a> <a class="btn btn-primary btn-lg" href="/reserv/reservation.do">예약하기
-							&raquo;</a>
+						</a> <a class="btn btn-primary btn-lg" id="reserv"
+							href="/reserv/reservation.do">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>
 		</div>
-
-
-
 		<!-- /.row -->
 
 		<div class="row">

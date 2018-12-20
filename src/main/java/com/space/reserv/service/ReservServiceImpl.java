@@ -1,7 +1,5 @@
 package com.space.reserv.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +47,15 @@ public class ReservServiceImpl implements ReservService {
 
 		}
 
+	}
+	//재고 갯수 확인
+	@Override
+	public int restSpace(ReservVO rvo) {
+		// TODO Auto-generated method stub
+		SpaceVO svo = rdao.spaceResert(rvo);
+		svo.setResUseDate(rvo.getResUseDate());
+		int useSpace = rdao.useSpace(svo);
+		return svo.getSp_Stock()-useSpace;
 	}
 
 }
