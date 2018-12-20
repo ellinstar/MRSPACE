@@ -36,6 +36,12 @@ public class AdminSpaceDaoImpl implements AdminSpaceDAO {
 		return (SpaceVO)session.selectOne("spaceDetail", sp_num);
 	}
 
+	@Override
+	public int spOk(int sp_Num) {
+		// TODO Auto-generated method stub
+		return session.update("spOk", sp_Num);
+	}
+
 
 
 }

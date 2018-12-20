@@ -45,4 +45,11 @@ public class AdminSpaceServiceImpl implements AdminSpaceService {
 		return detail;
 	}
 
+	@Override
+	public int spOk(int sp_Num) {
+		// TODO Auto-generated method stub
+		int result = adminSpaceDao.spOk(sp_Num);
+		return result;
+	}
+
 }
