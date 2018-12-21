@@ -42,7 +42,7 @@ public class CommonController {
 	 * 공간 상세보기 구현
 	 **************************************************************/
 	@RequestMapping(value = "/commonDetail", method = RequestMethod.GET)
-	public String commonDetail(@ModelAttribute SpaceVO svo, Model model, HttpSession session) {
+	public String commonDetail(@ModelAttribute SpaceVO svo, Model model, HttpSession session) throws Exception {
 		log.info("commonDetail 호출 성공");
 		log.info("sp_num = " + svo.getSp_Num());
 		/* log.info("cp_num = " + svo.getCp_Num()); */
