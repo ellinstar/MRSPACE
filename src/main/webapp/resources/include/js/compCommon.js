@@ -44,7 +44,7 @@ function formCheck(main, item, msg) {
 
 var idPattern = "[A-z|0-9].{5,11}";
 var pwPattern = "((?=.*[a-zA-Z])(?=.*[0-9@#$%]).{8,12})";
-var telPattern = "^\\d{2,3}-\\d{3,4}-\\d{4}";
+var telPattern = "(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})";
 var bNumPattern = "^\\d{3}-\\d{2}-\\d{5}";
 var emailPattern = "^[A-z|0-9]([A-z|0-9]*)(@)([A-z]*)(\.)([A-z]*)$";
 					// ^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$

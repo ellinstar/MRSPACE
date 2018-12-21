@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.space.common.dao.CommonDAOImpl;
 import com.space.space.vo.SpaceVO;
 
+import lombok.extern.java.Log;
+@Log
 @Service("CommonService")
 @Transactional
 public class CommonServiceImpl implements CommonService {
@@ -38,6 +40,7 @@ public class CommonServiceImpl implements CommonService {
 	// 공간 상세 구현
 	@Override
 	public SpaceVO commonDetail(SpaceVO svo) {
+		log.info("ComServiceImpl 공간상세 호출!");
 		SpaceVO detail = null;
 		detail = commonDao.commonDetail(svo);
 		return detail;

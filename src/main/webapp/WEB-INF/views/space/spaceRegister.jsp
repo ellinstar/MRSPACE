@@ -10,15 +10,15 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
-<script type="text/javascript" src="/resources/include/js/common.js"></script>
-
-
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 
+
+
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 
 <head>
 <style type="text/css">
@@ -646,7 +646,7 @@ img.ui-datepicker-trigger {
 
 		//다음 버튼 클릭시 
 		$("#btnReg").click(function() {
-					alert("${cplogin.cp_Id}");
+					alert("공간 등록 신청 성공!");
 					
 					
 					//재고갯수 입력 유효성 검사
@@ -982,8 +982,6 @@ img.ui-datepicker-trigger {
 				<input type="text" id="spaceAddr" placeholder="주소" name="sp_Address">
 				<input type="button" onclick="sample5_execDaumPostcode()"
 					value="주소 검색"><br>
-				<div id="map"
-					style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 
 				<p>
 				<h3>임대 계약 기간</h3>
@@ -1042,7 +1040,7 @@ img.ui-datepicker-trigger {
 		</div>
 
 
-		<input type="hidden" name='cp_Id' id='cp_Id' value='${cplogin.cp_Id}' />
+		<input type="hidden" name='cp_Id' id='cp_Id' value='${cp_Id}' />
 	</form>
 	<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
 		class="btnCancle" />

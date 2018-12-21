@@ -57,7 +57,7 @@
 			      s.sp_num, s.sp_type, s.sp_stock, s.sp_name, s.sp_price, s.sp_address,
 			      s.sp_exposition, s.sp_file, s.sp_service, s.sp_traffic, c.cp_phone
 		FROM tb_space s, tb_company c
-		WHERE sp_num = #{sp_Num}
+		WHERE s.cp_num = c.cp_num and s.sp_num = #{sp_Num}
 	</select>
 
 
