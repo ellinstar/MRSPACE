@@ -91,4 +91,12 @@ public class CompServiceImpl implements CompService {
 		return false;
 	}
 	
+	//아이디 찾기
+		@Override
+		public CompVO findComp(CompVO cvo) {
+			System.out.println("CompServiceImpl클래스 findComp메소드 호출");
+			CompVO vo = compDao.findComp(cvo);
+			return vo;
+		}
+	
 }

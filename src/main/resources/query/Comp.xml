@@ -31,5 +31,11 @@
 		#{cp_Ceo}, #{cp_Add}, #{cp_Bnum}, #{cp_Bank}, #{cp_Account},
 		#{cp_Email}, #{cp_Phone},sysdate, '0', '0', null)
 	</insert>
+	<!-- 업체 회원 아이디 찾기 -->
+	<select id="findComp" parameterType="String" resultType="comp">
+		select cp_id
+		from tb_company
+		where cp_name = #{cp_Name} and cp_ceo = #{cp_Ceo} and cp_bnum = #{cp_Bnum}
+	</select>
 
 </mapper>

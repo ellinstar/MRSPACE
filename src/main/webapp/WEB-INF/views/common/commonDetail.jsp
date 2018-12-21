@@ -314,7 +314,7 @@ $(function() {
 						<a class="btn btn-primary btn-lg" href="#" data-needpopup-show="#small-popup"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
 						</a> <a class="btn btn-primary btn-lg" id="reserv"
-							href="/reserv/reservation.do">예약하기 &raquo;</a>
+							href="/reserv/selectMonth.do">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>
