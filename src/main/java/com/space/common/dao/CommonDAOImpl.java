@@ -23,6 +23,7 @@ public class CommonDAOImpl {
 
 	// 공간 상세 구현
 	public SpaceVO commonDetail(SpaceVO svo) {
+		System.out.println("CommonDAOImpl commonDetail호출!");
 		return (SpaceVO)session.selectOne("commonDetail", svo);
 	}
 }

@@ -59,6 +59,6 @@ public class AdminController {
 	@RequestMapping(value="/qna", method= RequestMethod.GET)
 	public String qnaList() {
 		log.info("문의게시판 관리 호출");
-		return "/admin/comp/compmain";
+		return "/admin/board/qnabd";
 	}
 }

@@ -14,9 +14,7 @@
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 
-
-
-
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 
 <head>
 <style type="text/css">
@@ -644,7 +642,7 @@ img.ui-datepicker-trigger {
 
 		//다음 버튼 클릭시 
 		$("#btnReg").click(function() {
-					alert("${cplogin.cp_Id}");
+					alert("공간 등록 신청 성공!");
 					
 					
 					//재고갯수 입력 유효성 검사
@@ -1046,7 +1044,7 @@ img.ui-datepicker-trigger {
 		</div>
 
 
-		<input type="hidden" name='cp_Id' id='cp_Id' value='${cplogin.cp_Id}' />
+		<input type="hidden" name='cp_Id' id='cp_Id' value='${cp_Id}' />
 	</form>
 	<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
 		class="btnCancle" />

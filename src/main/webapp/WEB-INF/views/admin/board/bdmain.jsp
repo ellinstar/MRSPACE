@@ -122,7 +122,7 @@ $(document).ready(function() {
 		<%-- =============== 사업자 메일보내기 모달 끝 =============== --%>
 		</div>
 		<div class="page-header">
-			<h3><a href="/admin/qna">문의 게시판</a></h3>
+			<h3><a href="/admin/qna/list">문의 게시판</a></h3>
 			</div>
 		<div class="col-md-12">
 			<table summary="게시판 리스트"

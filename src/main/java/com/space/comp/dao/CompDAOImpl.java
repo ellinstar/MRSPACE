@@ -32,7 +32,10 @@ public class CompDAOImpl{
 	public CompVO compSelect(String cp_Id) {
 		return (CompVO) session.selectOne("compSelect", cp_Id);
 	}
-
+	
+	public CompVO compSelect2(String cp_Bnum) {
+		return (CompVO) session.selectOne("compSelect2", cp_Bnum);
+	}
 	
 	public int compInsert(CompVO cvo) {
 		return session.update("compInsert", cvo);
@@ -47,12 +50,11 @@ public class CompDAOImpl{
 	public int compDelete(String cp_Id) {
 		return session.delete("compDelete", cp_Id);
 	}
+	
 	//아이디 찾기
-	public CompVO findComp(CompVO cvo) {
-		return session.selectOne("findComp", cvo);
-	}
+		public CompVO findComp(CompVO cvo) {
+			return session.selectOne("findComp", cvo);
+		}
 
-	
-	
 
 }

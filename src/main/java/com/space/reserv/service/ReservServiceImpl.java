@@ -21,7 +21,7 @@ public class ReservServiceImpl implements ReservService {
 	// 예약 실행
 	@Override
 	public int reservation(ReservVO rvo) {
-
+		
 		SpaceVO svo = rdao.spaceResert(rvo);
 		SpaceVO ssvo = svo;
 		ssvo.setResUseDate(rvo.getResUseDate());
