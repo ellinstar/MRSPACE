@@ -77,21 +77,10 @@
 					goPage(1);
 				});
 				
-				/* 자주 묻는 질문 버튼 클릭 시 처리 이벤트 */		
-				$("#qnaFixed").click(function(){
-					location.href = "/qna/qnaFixed.do";
-				});
-				
 				/* 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트 */
 				$("#pageSize").change(function() {
 					goPage(1);
 				});
-				
-				/* 글쓰기 버튼 클릭 시 처리 이벤트 */		
-				$("#insertFormBtn").click(function(){
-					location.href = "/qna/qnaWriteForm.do";
-				});
-				
 				
 				/* 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트 */		
 				$(".goDetail").click(function(){
@@ -101,7 +90,7 @@
 					// 상세 페이지로 이동하기 위해 form 추가 (id : detailForm) 
 					$("#detailForm").attr({
 						"method":"get",
-						"action":"/qna/qnaDetail.do"
+						"action":"/qna/qnaDetail2.do"
 					});
 					$("#detailForm").submit(); 
 				});
@@ -125,7 +114,7 @@
 	</head>
 	<body>
 		<div class="contentContainer">
-			<br><div class="contentTit"><h2>문의 게시판</h2></div><br><br>
+			<br><div class="contentTit"><h2>자주 묻는 질문 게시판</h2></div><br><br>
 			
 			<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 			<form name="detailForm" id="detailForm">
@@ -155,7 +144,6 @@
 								</select>
 								<input type="text" name="keyword" id="keyword" placeholder="검색어를입력하세요" />
 								<input type="button" value="검색" id="searchData" />
-								<input type="button" value="자주 묻는 질문" id="qnaFixed" />
 							</td>
 							<td id="btd2">한페이지에
 								<select id="pageSize" name="pageSize">
@@ -233,12 +221,6 @@
 			</div>
 			<%-- =================== 리스트 종료  ================= --%>
 			
-			<%-- ================ 글쓰기 버튼 출력 시작 =============== --%>
-			
-			<div class="contentBtn">
-				<input type="button" value="글쓰기" id="insertFormBtn">
-			</div>
-			<%-- ================ 글쓰기 버튼 출력 종료 =============== --%>
 			
 			<%-- =============== 페이지 네비게이션 시작 =============== --%>
 			<div id="qnaPage">

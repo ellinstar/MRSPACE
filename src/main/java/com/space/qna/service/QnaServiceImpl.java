@@ -31,6 +31,19 @@ public class QnaServiceImpl implements QnaService {
 		return myList;
 	}
 	
+	// 글목록 구현2
+		@Override
+		public List<QnaVO> qnaList2(QnaVO qvo) {
+			List<QnaVO> myList = null;
+			
+			// 정렬에 대한 기본값 설정
+			if(qvo.getOrder_by()==null) qvo.setOrder_by("qna_Num");
+			if(qvo.getOrder_sc()==null) qvo.setOrder_sc("DESC");
+			
+			myList = qnaDAO.qnaList2(qvo);
+			return myList;
+		}
+	
 	// 글 목록수
 	@Override
 	public int qnaListCnt(QnaVO qvo) {
@@ -55,6 +68,13 @@ public class QnaServiceImpl implements QnaService {
 	public QnaVO qnaDetail(QnaVO qvo) {
 		QnaVO detail = null;
 		detail = qnaDAO.qnaDetail(qvo);
+		return detail;
+	}
+	// 글상세 구현
+	@Override
+	public QnaVO qnaDetail2(QnaVO qvo) {
+		QnaVO detail = null;
+		detail = qnaDAO.qnaDetail2(qvo);
 		return detail;
 	}
 

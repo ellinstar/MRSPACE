@@ -20,6 +20,12 @@ public class QnaDAOImpl implements QnaDAO {
 		return session.selectList("qnaList", qvo);
 	}
 	
+	// 글목록 구현
+		@Override
+		public List<QnaVO> qnaList2(QnaVO qvo) {
+			return session.selectList("qnaList2", qvo);
+		}
+	
 	// 글 목록수
 	public int qnaListCnt(QnaVO qvo) {
 		return (Integer)session.selectOne("qnaListCnt", qvo);
@@ -29,6 +35,11 @@ public class QnaDAOImpl implements QnaDAO {
 	@Override
 	public QnaVO qnaDetail(QnaVO qvo) {
 		return (QnaVO)session.selectOne("qnaDetail", qvo);
+	}
+	// 글상세 구현
+	@Override
+	public QnaVO qnaDetail2(QnaVO qvo) {
+		return (QnaVO)session.selectOne("qnaDetail2", qvo);
 	}
 	
 	// 글입력 구현

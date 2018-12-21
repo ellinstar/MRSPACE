@@ -17,7 +17,5 @@
 	<typeAlias type="com.space.qna.vo.QnaVO" alias="qna" />
 	<typeAlias type="com.space.reserv.vo.ReservVO" alias="reserv"/>
 	
-	<!-- 새별테스트 -->
-	<typeAlias type="com.space.reserv.vo.ReservationVO" alias="res"/>
 	</typeAliases>
 </configuration>

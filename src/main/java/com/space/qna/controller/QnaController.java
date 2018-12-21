@@ -59,6 +59,36 @@ public class QnaController {
 		return "qna/qnaList";
 	}
 	
+	
+	/**************************************************************
+	 * 자주묻는질문 구현하기
+	 **************************************************************/	
+	@RequestMapping(value="/qnaFixed.do", method = RequestMethod.GET)
+	public String qnaFixed(@ModelAttribute QnaVO qvo, Model model) {
+		log.info("qnaFixed 호출 성공");
+
+		//페이지 세팅
+		Paging.setPage(qvo); 
+		
+		// 전체 레코드수 구현
+		int total = qnaService.qnaListCnt(qvo);
+		log.info("total = "+total);
+		
+		// 글번호 재설정
+		int count = total - (Util.nvl(qvo.getPage())-1) * Util.nvl(qvo.getPageSize());
+		log.info("count = "+count);
+		
+		List<QnaVO> qnaList = qnaService.qnaList2(qvo);
+		
+		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("count", count);
+		model.addAttribute("total", total);
+		model.addAttribute("data", qvo);
+		
+		return "qna/qnaFixed";
+	}
+	
+	
 	/**************************************************************
 	 * 글쓰기 폼 출력하기
 	 **************************************************************/
@@ -112,6 +142,25 @@ public class QnaController {
 		model.addAttribute("detail", detail);
 
 		return "qna/qnaDetail";
+	}
+	/**************************************************************
+	 * 글 상세보기 구현2
+	 **************************************************************/
+	@RequestMapping(value="/qnaDetail2.do", method=RequestMethod.GET)
+	public String qnaDetail2(@ModelAttribute QnaVO qvo, Model model) {
+		log.info("qnaDetail2 호출 성공");
+		log.info("qna_num = " + qvo.getQna_Num());
+		
+		QnaVO detail = new QnaVO();
+		detail = qnaService.qnaDetail2(qvo);
+		
+		if(detail!=null && (!detail.equals(""))){
+			detail.setQna_Content(detail.getQna_Content().toString().replaceAll("\n", "<br>"));
+		}
+		
+		model.addAttribute("detail", detail);
+		
+		return "qna/qnaDetail2";
 	}
 	
 	/**************************************************************
