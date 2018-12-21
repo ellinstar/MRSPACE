@@ -207,6 +207,59 @@ p {
 }
 </style>
 
+<!-- 다음 지도 CSS -->
+<style>
+.customoverlay {
+	position: relative;
+	bottom: 85px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	border-bottom: 2px solid #ddd;
+	float: left;
+}
+
+.customoverlay:nth-of-type(n) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.customoverlay a {
+	display: block;
+	text-decoration: none;
+	color: #000;
+	text-align: center;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	overflow: hidden;
+	background: #d95050;
+	background: #d95050
+		url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
+		no-repeat right 14px center;
+}
+
+.customoverlay .title {
+	display: block;
+	text-align: center;
+	background: #fff;
+	margin-right: 35px;
+	padding: 10px 15px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.customoverlay:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: -12px;
+	width: 22px;
+	height: 12px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+</style>
 </head>
 <script type="text/javascript">
 $(function() {
@@ -261,19 +314,54 @@ $(function() {
 
 					</div>
 
-					<!-- 구글지도 마커표시 -->
-					<div id="map2" style="width: 700px; height: 450px;"></div>
-					<script type="text/javascript">
-						$(function() {
-							$("#map2").googleMap();
-							$("#map2").addMarker({
-								coords : [ 37.5457747, 126.9828226 ], // Map center
-								url : 'http://www.blueb.co.kr',
-								id : 'marker1'
-							});
-						})
-					</script>
+					<div id="map" style="width: 750px; height: 350px;"></div>
 
+					<script type="text/javascript"
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24"></script>
+					<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+  mapOption = { 
+        center: new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X}), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
+
+var map = new daum.maps.Map(mapContainer, mapOption);
+
+var imageSrc = '/resources/img/marker_red.png', // 마커이미지의 주소입니다    
+    imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
+    imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X}); // 마커가 표시될 위치입니다
+
+// 마커를 생성합니다
+var marker = new daum.maps.Marker({
+  position: markerPosition,
+  image: markerImage // 마커이미지 설정 
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);  
+
+// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var content = '<div class="customoverlay">' +
+    '  <a href="http://localhost/">' +
+    '    <span class="title">${detail.sp_Name}</span>' +
+    '  </a>' +
+    '</div>';
+
+// 커스텀 오버레이가 표시될 위치입니다 
+var position = new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X});  
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new daum.maps.CustomOverlay({
+    map: map,
+    position: position,
+    content: content,
+    yAnchor: 1 
+});
+</script>
 
 					<!-- 네이버지도 -->
 					<!-- 	<div class="map" id="_map" _lat="37.487766" _lng="127.0132">
@@ -311,10 +399,11 @@ $(function() {
 					<br>
 
 					<p>
-						<a class="btn btn-primary btn-lg" href="#" data-needpopup-show="#small-popup"> <i
+						<a class="btn btn-primary btn-lg" href="#"
+							data-needpopup-show="#small-popup"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
 						</a> <a class="btn btn-primary btn-lg" id="reserv"
-							href="/reserv/selectMonth.do">예약하기 &raquo;</a>
+							href="/reserv/reservation.do">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>

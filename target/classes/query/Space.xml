@@ -64,6 +64,8 @@
 		sp_Name,
 		sp_Price,
 		sp_Address,
+		sp_Y,
+		sp_X,
 		sp_Contract1,
 		sp_Contract2,
 		sp_Opendate,
@@ -73,16 +75,17 @@
 		sp_Traffic,
 		sp_Rest,
 		cp_Num
+		
 		)
 		VALUES(
 		#{sp_Num},
-		#{sp_Type,
-		jdbcType=VARCHAR},
+		#{sp_Type, jdbcType=VARCHAR},
 		#{sp_Stock, jdbcType=VARCHAR},
-		#{sp_Name,
-		jdbcType=VARCHAR},
+		#{sp_Name, jdbcType=VARCHAR},
 		#{sp_Price},
 		#{sp_Address, jdbcType=VARCHAR},
+		#{sp_Y, jdbcType=VARCHAR},
+		#{sp_X, jdbcType=VARCHAR},
 		#{sp_Contract1, jdbcType=VARCHAR},
 		#{sp_Contract2, jdbcType=VARCHAR},
 		#{sp_Opendate, jdbcType=VARCHAR},
@@ -91,6 +94,7 @@
 		#{sp_Service, jdbcType=VARCHAR},
 		#{sp_Traffic, jdbcType=VARCHAR},
 		#{sp_Stock, jdbcType=VARCHAR},
+	
 		(select cp_num from tb_company where cp_id=#{cp_Id})
 		)
 	</insert>

@@ -928,7 +928,7 @@ img.ui-datepicker-trigger {
 				<hr>
 
 
-				<input type="text" id="sample5_address" placeholder="주소"> <input
+				<input type="text" id="spaceAddr" name="sp_Address" placeholder="주소"> <input
 					type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 				<div id="map"
 					style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
@@ -962,7 +962,7 @@ img.ui-datepicker-trigger {
                 var addr = data.address; // 최종 주소 변수
 
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = addr;
+                document.getElementById("spaceAddr").value = addr;
                 // 주소로 상세 정보를 검색
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
@@ -972,6 +972,10 @@ img.ui-datepicker-trigger {
 
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
+                        alert(coords);
+                        // 위도 경도값 받아감!
+                        $("#mapcoords").val(result.y);
+                        $("#mapcoords2").val(result.x);
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
                         map.relayout();
@@ -984,9 +988,11 @@ img.ui-datepicker-trigger {
             }
         }).open();
     }
-</script>
-
-
+</script>	
+				<!-- 업체 지도 위도경도값 -->	
+				<input type="text" id="mapcoords" name="sp_Y">
+				<input type="text" id="mapcoords2" name="sp_X">	
+	
 				<p>
 				<h3>임대 계약 기간</h3>
 				<hr>
