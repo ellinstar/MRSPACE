@@ -52,7 +52,7 @@
 			<a class="btn btn-default" id="boardListBtn" href="/admin/qna/list">목록</a>
 
 			<form name="f_data" id="f_data" method="get">
-				<input type="hidden" name="qna_num" id="qna_num" value="${detail.qna_Num}" /> 
+				<input type="hidden" name="qna_Num" id="qna_Num" value="${detail.qna_Num}" /> 
 				<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'> 
 				<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 			</form>
