@@ -16,6 +16,7 @@
 	<typeAlias type="com.space.admin.vo.NoticeVO" alias="notice" />
 	<typeAlias type="com.space.qna.vo.QnaVO" alias="qna" />
 	<typeAlias type="com.space.reserv.vo.ReservVO" alias="reserv"/>
+	<typeAlias type="com.space.qna.vo.QnaRepVO" alias="rep"/>
 	
 	</typeAliases>
 </configuration>
