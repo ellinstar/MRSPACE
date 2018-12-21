@@ -7,5 +7,7 @@ import com.space.qna.vo.QnaVO;
 
 public interface AdminQnaService {
 	public List<QnaVO> qnaList(Criteria cri);
+	public QnaVO getQna(int qna_num);
+	public int qnaCnt(Criteria cri);
 
 }

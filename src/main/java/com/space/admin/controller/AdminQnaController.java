@@ -8,9 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.space.admin.page.Criteria;
+import com.space.admin.page.PageDTO;
 import com.space.admin.service.AdminQnaService;
+import com.space.qna.service.QnaService;
 import com.space.qna.vo.QnaVO;
 
 import lombok.extern.java.Log;
@@ -23,13 +26,29 @@ public class AdminQnaController {
 	@Autowired
 	public AdminQnaService adQnaServ;
 	
+	@Autowired
+	private QnaService qnaServ;
+	
 	//글목록 구현
 	@RequestMapping(value="/list", method= RequestMethod.GET)
 	public String qnaList(@ModelAttribute QnaVO qvo, Model model, Criteria cri) {
 		log.info("문의게시판 list 호출");
 		List<QnaVO> qnalist = adQnaServ.qnaList(cri);
+		int total = adQnaServ.qnaCnt(cri);
 		model.addAttribute("qna", qnalist);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		return "/admin/board/qnabd";
 	}
+	
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	public String qnaGet(@RequestParam("qna_Num") int qna_Num, @ModelAttribute("cri") Criteria cri, Model model) {
+		log.info("문의게시판 상세보기 Get 호출");
+		QnaVO detail = new QnaVO();
+		detail= adQnaServ.getQna(qna_Num);
+		model.addAttribute("detail", detail);
+		return "/admin/board/qnadetail";
+	}
+	
+	
 
 }

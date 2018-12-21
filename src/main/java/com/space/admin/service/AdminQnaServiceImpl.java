@@ -17,12 +17,26 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 	
 	@Autowired
 	public AdminQnaDaoImpl adQnaDao;
-
+	
+	//qna리스트 가져오기
 	@Override
 	public List<QnaVO> qnaList(Criteria cri) {
 		// TODO Auto-generated method stub
 		List<QnaVO> qna = adQnaDao.qnaList(cri);
 		return qna;
+	}
+	//상세페이지
+	@Override
+	public QnaVO getQna(int qna_num) {
+		// TODO Auto-generated method stub
+		QnaVO qna = adQnaDao.getQna(qna_num);
+		return qna;
+	}
+	//페이징 위한 갯수 
+	@Override
+	public int qnaCnt(Criteria cri) {
+		// TODO Auto-generated method stub
+		return adQnaDao.qnaCnt(cri);
 	}
 
 }

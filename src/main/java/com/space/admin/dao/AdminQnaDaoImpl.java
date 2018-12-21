@@ -19,4 +19,14 @@ public class AdminQnaDaoImpl {
 	public List<QnaVO> qnaList(Criteria cri){
 		return session.selectList("adQnaList", cri);
 	}
+	
+	//페이징 위한 목록 수 
+	public int qnaCnt(Criteria cri) {
+		return(Integer)session.selectOne("qnaCnt");
+	}
+	
+	
+	public QnaVO getQna(int qna_num) {
+		return session.selectOne("getQna", qna_num);
+	}
 }

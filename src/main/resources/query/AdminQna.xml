@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.admin.dao.AdminQnaDAO">
+	<!-- 관리자 문의게시판 불러오기 -->
+	<select id="adQnaList" resultType="qna" parameterType="qna">
+	<![CDATA[
+		select qna_num, qna_title, qna_name, qna_date  
+		from(select rownum rn, qna_num, qna_title, qna_name, qna_date from tb_qna 
+		where rownum <= #{pageNum} * #{amount}
+		order by qna_num desc)
+		where rn > (#{pageNum} -1) * #{amount}
+	]]>
+	</select>
+	<!-- 페이징 위한 목록 수 조회 -->
+	<select id="qnaCnt" resultType="int">
+	<![CDATA[
+		select 
+			count(*)
+		from
+			tb_qna
+		where qna_num > 0
+	]]>
+	</select>
+	<select id="getqnaReply" >
+		select 
+	</select>
+	<select id="getQna" parameterType="int" resultType="qna">
+		select qna_num, qna_title, qna_name, qna_date, qna_content, qna_date
+		from tb_qna
+		where qna_num = #{qna_Num}
+	</select>
+</mapper>
