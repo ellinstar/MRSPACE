@@ -14,6 +14,7 @@ import com.space.admin.page.Criteria;
 import com.space.admin.page.PageDTO;
 import com.space.admin.service.AdminQnaService;
 import com.space.qna.service.QnaService;
+import com.space.qna.vo.QnaRepVO;
 import com.space.qna.vo.QnaVO;
 
 import lombok.extern.java.Log;
@@ -45,8 +46,31 @@ public class AdminQnaController {
 		log.info("문의게시판 상세보기 Get 호출");
 		QnaVO detail = new QnaVO();
 		detail= adQnaServ.getQna(qna_Num);
+		QnaRepVO reply = new QnaRepVO();
+		reply = adQnaServ.getRep(qna_Num);
 		model.addAttribute("detail", detail);
+		model.addAttribute("rep", reply);
 		return "/admin/board/qnadetail";
+	}
+	@RequestMapping(value="/repInsert", method=RequestMethod.POST)
+	public String repInsert(@ModelAttribute QnaRepVO qrvo, Model model, @ModelAttribute("cri") Criteria cri) {
+		int result = adQnaServ.repInsert(qrvo);
+		String url="";
+		if(result == 1) url="/admin/qna/list";
+		else {
+			url="/admin/qna/detail?qna_Num="+qrvo.getQna_Num();
+		}
+		return "redirect : "+url;
+	}
+	@RequestMapping(value="/repUpdate", method=RequestMethod.POST)
+	public String repUpdate(@ModelAttribute QnaRepVO qrvo, Model model, @ModelAttribute("cri") Criteria cri) {
+		int result = adQnaServ.repUpdate(qrvo);
+		String url="";
+		if(result == 1) url="/admin/qna/list";
+		else {
+			url="/admin/qna/detail?qna_Num="+qrvo.getQna_Num();//수정 필요
+		}
+		return "redirect : "+url;
 	}
 	
 	
