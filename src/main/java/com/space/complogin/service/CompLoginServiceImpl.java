@@ -27,7 +27,7 @@ public class CompLoginServiceImpl implements CompLoginService {
 	@Override
 	public CompLoginVO compLoginSelect(String cp_Id, String cp_Pw) {
 		CompLoginVO vo = null;
-		CompSecurity sec = compDao.securitySelect(cp_Id);
+		CompSecurity sec = compDao.compsecuritySelect(cp_Id);
 		System.out.println("compLoginSelect 아이디 : " + cp_Id);
 		System.out.println("compLoginSelect 비밀번호 : " + cp_Pw);
 		//System.out.println("sec.getSalt() : " + sec.getSalt());
