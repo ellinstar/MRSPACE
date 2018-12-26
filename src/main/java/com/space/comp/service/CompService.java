@@ -17,6 +17,10 @@ public interface CompService {
 
 	public int cp_BnumConfirm(String cp_Bnum);
 
-	//public int securityInsert(CompSecurity sec);
+	public CompVO findComp(CompVO cvo);
+
+	public CompVO compPwChange(CompVO cvo);
+
+	public int compPwChange2(CompVO cvo);
 
 }

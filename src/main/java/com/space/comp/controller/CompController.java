@@ -1,5 +1,7 @@
 package com.space.comp.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.space.comp.service.CompService;
 import com.space.comp.vo.CompVO;
+import com.space.complogin.vo.CompLoginVO;
+import com.space.mem.vo.MemVO;
+import com.space.memlogin.vo.LoginVO;
 
 import lombok.extern.java.Log;
 
@@ -81,6 +86,39 @@ public class CompController {
 		return "comp/compGraph";
 	}
 
+	// 비밀번호 변경 첫화면 출력
+	@RequestMapping(value = "/compPwChange.do", method = RequestMethod.GET)
+	public String compPwChangForm(Model model) {
+		log.info("compPwChange.do get 방식에 의한 compPwchange get메서드 호출 성공");
+		return "comp/compPwChange";
+	}
+
+	// 비밀번호 변경 화면 출력
+	@RequestMapping(value = "/compPwChangePage.do", method = RequestMethod.GET)
+	public String compPwChangForm2(Model model) {
+		log.info("compPwChangePage.do get 방식에 의한 compPwChangeForm2 get메서드 호출 성공");
+		return "comp/compPwChangePage";
+	}
+
+	// 내 정보 
+	@RequestMapping(value="/compInfo.do", method = RequestMethod.GET)
+	public ModelAndView CompInfoForm(HttpSession session) {
+		log.info("compInfo.do get 방식에 의한 CompInfoForm메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+		
+		String cpId =(String)session.getAttribute("cp_Id");
+		
+		if(cpId==null){
+			mav.setViewName("mem/login");	
+			return mav;
+		}
+		
+		CompVO vo = compService.compSelect(cpId);
+		mav.addObject("comp", vo);
+		mav.setViewName("comp/compInfo");	
+		return mav;
+	}
+	
 	// 페이지 이동 끝-----------------------------------------------------------------
 
 	// 사용자 아이디 중복체크
@@ -91,15 +129,15 @@ public class CompController {
 		System.out.println("CompController : cp_IdConfirm 메소드 호출 cp_Id = " + cp_Id);
 		return resultData + "";
 	}
-	
+
 	// 사업자번호 중복체크
-		@ResponseBody
-		@RequestMapping(value = "/cp_BnumConfirm.do", method = RequestMethod.POST)
-		public String cp_BnumConfirm(@ModelAttribute("cp_Bnum") String cp_Bnum) {
-			int resultData = compService.cp_BnumConfirm(cp_Bnum);
-			System.out.println("CompController : cp_BnumConfirm 메소드 호출 cp_Bnum = " + cp_Bnum);
-			return resultData + "";
-		}
+	@ResponseBody
+	@RequestMapping(value = "/cp_BnumConfirm.do", method = RequestMethod.POST)
+	public String cp_BnumConfirm(@ModelAttribute("cp_Bnum") String cp_Bnum) {
+		int resultData = compService.cp_BnumConfirm(cp_Bnum);
+		System.out.println("CompController : cp_BnumConfirm 메소드 호출 cp_Bnum = " + cp_Bnum);
+		return resultData + "";
+	}
 
 	// 회원 가입 처리
 	@RequestMapping(value = "/compJoin.do", method = RequestMethod.POST)
@@ -124,7 +162,7 @@ public class CompController {
 			break;
 		case 3: // 성공
 			mav.addObject("errCode", 3);
-			mav.setViewName("comp/compJoinSuc"); 
+			mav.setViewName("comp/compJoinSuc");
 			break;
 		default: // 실패
 			mav.addObject("errCode", 2); // failed to add new comp
@@ -132,6 +170,79 @@ public class CompController {
 			break;
 		}
 		return mav;
+	}
+
+	// 아이디찾기 화면 출력
+	@RequestMapping(value = "/compSearch.do", method = RequestMethod.GET)
+	public String compSearchForm(Model model) {
+		log.info("compSearch.do get 방식에 의한 compSearchForm메서드 호출 성공");
+		return "comp/compSearch";
+	}
+
+	// 아이디찾기 처리
+	@RequestMapping(value = "/compSearch.do", method = RequestMethod.POST)
+	public ModelAndView findComp(@ModelAttribute CompVO cvo, Model model) {
+		System.out.println("CompController클래스 findComp메소드 호출");
+		ModelAndView mav = new ModelAndView();
+
+		CompVO cVo = compService.findComp(cvo);
+
+		if (cVo == null) {
+			mav.addObject("errCode", 9);
+			mav.setViewName("comp/compSearch");
+			return mav;
+		} else {
+			String cp_Id = cVo.getCp_Id();
+
+			model.addAttribute("cpId", cp_Id);
+			System.out.println(cp_Id);
+			mav.setViewName("comp/compResult");
+			return mav;
+		}
+	}
+
+	// 비밀번호 변경할 회원정보 확인
+	@RequestMapping(value = "/compPwChange.do", method = RequestMethod.POST)
+	public ModelAndView pwChange(@ModelAttribute CompVO cvo, HttpSession session, Model model) {
+		System.out.println("CompController클래스 compPwchange post메소드 호출");
+		ModelAndView mav = new ModelAndView();
+
+		CompVO cVo = compService.compPwChange(cvo);
+
+		if (cVo == null) {
+			mav.addObject("errCode", 9);
+			mav.setViewName("comp/compPwChange"); // 실패
+			return mav;
+		} else {
+			session.setAttribute("cp_Id2", cVo.getCp_Id());
+			session.setAttribute("cp_Pw2", cVo.getCp_Pw());
+			session.setAttribute("cp_Num2", cVo.getCp_Num());
+			mav.setViewName("comp/compPwChangePage"); // 성공
+			return mav;
+		}
+	}
+
+	// 비밀번호 변경 처리
+	@RequestMapping(value = "/compPwChangePage.do", method = RequestMethod.POST)
+	public ModelAndView compPwChange2(@ModelAttribute("CompVO") CompVO cvo, HttpSession session, Model model) {
+		System.out.println("CompController클래스 compPwChangePage post메소드 호출");
+		ModelAndView mav = new ModelAndView();
+		System.out.println("ModelAndView mav : " + mav);
+		String cpId = (String)session.getAttribute("cp_Id2");
+		
+		cvo.setCp_Id(cpId);
+		
+		int result = compService.compPwChange2(cvo);
+		System.out.println("반환값 : " + result);
+		if (result != 1) {
+			mav.addObject("errCode", 10);
+			mav.setViewName("comp/compPwChangePage");
+			return mav;
+		} else {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
 	}
 
 }
