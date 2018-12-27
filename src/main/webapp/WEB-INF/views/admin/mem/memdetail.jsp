@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -86,6 +87,35 @@
           </form>
           <div class="text-center">
 			공 간 사 용 현 황 
+			<table class="table table-striped table-bordered" >
+			<thead>
+			<tr>
+				<th>No</th>
+				<th>공간명</th>
+				<th>기간</th>
+				<th>상태</th>
+				<th>결제금액(원)</th>
+				<th>잔여일</th>
+			</tr>
+			</thead>
+			<tbody>
+			
+			<c:choose>
+				<c:when test="${not empty reservlist }">
+					<c:forEach var="reserv" items="${reservlist}">
+						<tr data-num="${reserv.res_Num}">
+							<td><c:out value="${reserv.res_Num}"/></td>
+							<td><c:out value="${reserv.sp_Name}"/></td>
+							<td><c:out value="${reserv.resUseDate}"/></td>
+							<td><c:out value="${reserv.res_State}"/></td>
+							<td><c:out value="${reserv.res_Amount}"/></td>
+							<td><c:out value="${reserv.res_Num}"/></td>
+						</tr>
+					</c:forEach>
+				</c:when>
+			</c:choose>
+			</tbody>
+			</table>
           </div>
         </div>
       </div>

@@ -21,5 +21,13 @@ public interface CompDAO {
 	public int compUpdate(CompVO cvo);
 	
 	public int compDelete(String cp_Id);
+	
+	public CompVO findComp(CompVO cvo);
+	
+	public CompVO compPwChange(CompVO cvo);
+	
+	public int compPwChange2(CompVO cvo);
+	
+	public int compSecurityUpdate(CompSecurity sec);
 
 }
