@@ -19,6 +19,14 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 	@Autowired
 	public AdminQnaDaoImpl adQnaDao;
 	
+	//qna메인 리스트
+	@Override
+	public List<QnaRepVO> qnaMainList(QnaRepVO qvo) {
+		// TODO Auto-generated method stub
+		List<QnaRepVO> qlist = adQnaDao.qnaMain(qvo);
+		return qlist;
+	}
+	
 	//qna리스트 가져오기
 	@Override
 	public List<QnaVO> qnaList(Criteria cri) {
@@ -58,5 +66,6 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 		// TODO Auto-generated method stub
 		return adQnaDao.repUpdate(qrvo);
 	}
+	
 
 }

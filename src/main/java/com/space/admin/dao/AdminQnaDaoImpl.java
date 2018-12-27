@@ -16,6 +16,11 @@ public class AdminQnaDaoImpl {
 	@Autowired
 	private SqlSession session;
 	
+	//메인 문의게시판 목록
+	public List<QnaRepVO> qnaMain(QnaRepVO qvo){
+		return session.selectList("qnaMainList",qvo);
+	}
+	
 	//문의게시판 목록
 	public List<QnaVO> qnaList(Criteria cri){
 		return session.selectList("adQnaList", cri);
