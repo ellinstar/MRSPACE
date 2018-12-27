@@ -30,4 +30,7 @@
 	<definition name="/admin/mem/**" extends="adContent">
 		<put-attribute name="main" value="/WEB-INF/views/admin/mem/{1}.jsp" />
 	</definition>
+	<definition name="/admin/reserv/**" extends="adContent">
+		<put-attribute name="main" value="/WEB-INF/views/admin/reserv/{1}.jsp" />
+	</definition>
 </tiles-definitions>

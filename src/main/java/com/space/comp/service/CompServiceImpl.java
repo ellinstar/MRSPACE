@@ -30,23 +30,23 @@ public class CompServiceImpl implements CompService {
 				CompSecurity sec = new CompSecurity();
 				sec.setCp_Id(cvo.getCp_Id());
 				sec.setSalt(Util.getRandomString());
-				sCode = compDao.securityInsert(sec);
+				sCode = compDao.compsecurityInsert(sec);
 
 				if (sCode == 1) {
-					cvo.setCp_Pw(new String(
-					OpenCrypt.getSHA256(cvo.getCp_Pw(), sec.getSalt())));
+					cvo.setCp_Pw(new String(OpenCrypt.getSHA256(cvo.getCp_Pw(), sec.getSalt())));
 					compDao.compInsert(cvo);
 					return 3;
 				} else {
 					return 2;
-				} 
+				}
 			} catch (RuntimeException e) {
 				e.printStackTrace();
 				return 2;
 			}
 		}
-		/*int result = compDao.compInsert(cvo);
-		return result;*/
+		/*
+		 * int result = compDao.compInsert(cvo); return result;
+		 */
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class CompServiceImpl implements CompService {
 		CompVO cvo = compDao.compSelect(cp_Id);
 		return cvo;
 	}
-	
+
 	@Override
 	public CompVO compSelect2(String cp_Bnum) {
 		CompVO cvo = compDao.compSelect2(cp_Bnum);
@@ -65,7 +65,7 @@ public class CompServiceImpl implements CompService {
 	public int cp_idConfirm(String cp_id) {
 		int result = 0;
 		CompVO cvo = compDao.compSelect(cp_id);
-		if(cvo != null) {
+		if (cvo != null) {
 			result = 1;
 		} else {
 			result = 2;
@@ -77,7 +77,7 @@ public class CompServiceImpl implements CompService {
 	public int cp_BnumConfirm(String cp_Bnum) {
 		int result = 0;
 		CompVO cvo = compDao.compSelect2(cp_Bnum);
-		if(cvo != null) {
+		if (cvo != null) {
 			result = 1;
 		} else {
 			result = 2;
@@ -90,13 +90,34 @@ public class CompServiceImpl implements CompService {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	//아이디 찾기
-		@Override
-		public CompVO findComp(CompVO cvo) {
-			System.out.println("CompServiceImpl클래스 findComp메소드 호출");
-			CompVO vo = compDao.findComp(cvo);
-			return vo;
-		}
-	
+
+	// 아이디 찾기
+	@Override
+	public CompVO findComp(CompVO cvo) {
+		System.out.println("CompServiceImpl클래스 findComp 메소드 호출");
+		CompVO vo = compDao.findComp(cvo);
+		return vo;
+	}
+
+	// 비밀번호 변경할 회원정보 확인
+	@Override
+	public CompVO compPwChange(CompVO cvo) {
+		System.out.println("CompServiceImpl클래스 compPwChange 메소드 호출");
+		CompVO vo = compDao.compPwChange(cvo);
+		return vo;
+	}
+
+	@Override
+	public int compPwChange2(CompVO cvo) {
+		System.out.println("CompServiceImpl클래스 compPwChange2 메소드 호출");
+		CompSecurity sec = new CompSecurity();
+		sec.setCp_Id(cvo.getCp_Id());
+		sec.setSalt(Util.getRandomString());
+		compDao.compSecurityUpdate(sec);
+		cvo.setCp_Pw(new String(OpenCrypt.getSHA256(cvo.getCp_Pw(), sec.getSalt())));
+		int result = compDao.compPwChange2(cvo);
+		System.out.println("서비스 : " + result);
+		return result;
+	}
+
 }

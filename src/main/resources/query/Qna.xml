@@ -22,6 +22,25 @@
 		</where>
 	</sql>
 	
+	<sql id="qnaSpace2">
+		SELECT qna_Num, qna_Name, qna_Title, qna_Date 
+		FROM tb_qna2 
+		<where>
+			<if test="search=='qna_Title'">
+				<![CDATA[ qna_Title LIKE '%'|| #{keyword} ||'%' ]]>					
+			</if>
+			<if test="search=='qna_Content'">
+				<![CDATA[ qna_Content LIKE '%'|| #{keyword} ||'%' ]]>					
+			</if>
+			<if test="search=='qna_Name'">
+				<![CDATA[ qna_Name LIKE '%'|| #{keyword} ||'%' ]]>					
+			</if>
+			<if test="search=='qna_Date'">
+				<![CDATA[ to_char(qna_Date,'YYYY-MM-DD') between #{start_date} and #{end_date}  ]]>					
+			</if>
+		</where>
+	</sql>
+	
 	<!-- 게시물 전체 조회 --> 
 	<select id="qnaList" parameterType="qna" resultType="qna"> 
 		/* qna - qnaList */ 
@@ -31,6 +50,44 @@
 		(  SELECT list.*, ROWNUM AS RNUM  
 			FROM ( 
 				<include refid="qnaSpace"></include>
+				<choose> 
+					<when test="order_by=='qna_Num'"> 
+						ORDER BY qna_Num  
+					</when> 
+					<when test="order_by=='qna_Date'"> 
+						ORDER BY qna_Date    
+					</when> 
+				</choose>
+				<choose> 
+					<when test="order_sc=='ASC'"> 
+						ASC 
+					</when> 
+					<when test="order_sc=='DESC'"> 
+						DESC 
+					</when> 
+				</choose> 
+			) list 
+		) 
+		
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+		
+	</select>
+	
+	<!-- 게시물 전체 조회2 --> 
+	<select id="qnaList2" parameterType="qna" resultType="qna"> 
+		/* qna - qnaList */ 
+		SELECT qna_Num, qna_Name, qna_Title,  
+			TO_CHAR(qna_Date,'YYYY-MM-DD') AS qna_Date  
+		FROM  
+		(  SELECT list.*, ROWNUM AS RNUM  
+			FROM ( 
+				<include refid="qnaSpace2"></include>
 				<choose> 
 					<when test="order_by=='qna_Num'"> 
 						ORDER BY qna_Num  
@@ -78,6 +135,16 @@
 			      qna_Num, qna_Name, qna_Title, qna_Content, 
 			      TO_CHAR(qna_Date,'YYYY-MM-DD HH24:MI:SS') AS qna_Date
 		FROM tb_qna
+		WHERE qna_Num = #{qna_Num}
+	</select>
+	
+	<!-- 자주묻는질문 상세 페이지를 위한 게시물 조회 -->
+	<select id="qnaDetail2" parameterType="int" resultType="qna">
+		/* Qna - qnaDetail2 */
+		SELECT
+			      qna_Num, qna_Name, qna_Title, qna_Content, 
+			      TO_CHAR(qna_Date,'YYYY-MM-DD HH24:MI:SS') AS qna_Date
+		FROM tb_qna2
 		WHERE qna_Num = #{qna_Num}
 	</select>
 	
@@ -132,10 +199,5 @@
 		/* Qna - qnaDelete */
 		DELETE FROM tb_qna WHERE qna_Num = #{qna_Num}
 	</delete>
-	
-	<!-- 관리자 문의게시판 불러오기 -->
-	<select id="adQnaList" resultType="qna">
-		select * from tb_qna
-	</select>
 	
 </mapper>

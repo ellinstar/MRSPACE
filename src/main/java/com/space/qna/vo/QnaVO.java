@@ -1,5 +1,8 @@
 package com.space.qna.vo;
 
+import lombok.Data;
+
+@Data
 public class QnaVO extends CommonVO {
 	
 	// 문의게시판 번호

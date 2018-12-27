@@ -82,6 +82,7 @@
                <input type="button" class="btn btn-lg btn-primary btn-block"
                   id="comploginBtn" value="로그인">
                   &nbsp;<a href="/comp/compSearch.do">아이디 찾기</a>&nbsp;&nbsp;
+                   <a href="/comp/compPwChange.do">비밀번호 변경</a>&nbsp;&nbsp;
                   <a href="/mem/memType.do">회원가입</a>
             </form>
          </div>

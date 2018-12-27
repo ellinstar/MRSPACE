@@ -19,4 +19,8 @@ public interface CompService {
 
 	public CompVO findComp(CompVO cvo);
 
+	public CompVO compPwChange(CompVO cvo);
+
+	public int compPwChange2(CompVO cvo);
+
 }

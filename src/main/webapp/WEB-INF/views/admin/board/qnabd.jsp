@@ -10,10 +10,32 @@
 <title>QnA</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<!-- Bootstrap core CSS -->
-<!-- <link href="/resources/include/dist/css/bootstrap.min.css"
-	rel="stylesheet"> -->
+<script type="text/javascript" 	src="/resources/include/dist/js/bootstrap.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			/* 게시글 등록 */
+			/* $("#insertFormBtn").on("click", function() {
+				self.location = "/admin/noticeWrite";
+			}); */
+			/* 페이지 이동 */
+			var actionForm = $("#actionForm");
 
+			$(".paginate_button a").on("click",function(e) {
+				e.preventDefault();
+				console.log('click');
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+			});
+
+			$(".move").on("click",function(e) {
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='qna_Num' value='"
+				+ $(this).attr("href")+ "'>");
+				actionForm.attr("action","/admin/qna/detail");
+				actionForm.submit();
+			});
+	});
+	</script>
 </head>
 <body>
 	<div class="contentContainer">
@@ -85,47 +107,14 @@
 				</c:if>
 			</ul>
 		</div>
-		<form id="actionForm" action="/admin/qna" method="get">
+		<form id="actionForm" action="/admin/qna/list" method="get">
 			<input type="hidden" name='pageNum' value='${pageMaker.cri.pageNum}'>
 			<input type="hidden" name='amount' value='${pageMaker.cri.amount}'>
-			<input type="hidden" name='type'
-				value='<c:out value="${pageMaker.cri.type}"/>'> <input
-				type="hidden" name='keyword'
-				value='<c:out value="${pageMaker.cri.keyword}"/>'>
+			
 
 		</form>
 		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 	</div>
-	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							/* 게시글 등록 */
-							$("#insertFormBtn").on("click", function() {
-								self.location = "/admin/noticeWrite";
-							});
-							/* 페이지 이동 */
-							var actionForm = $("#actionForm");
-
-							$(".paginate_button a").on(
-									"click",
-									function(e) {
-										e.preventDefault();
-										console.log('click');
-										actionForm
-												.find("input[name='pageNum']")
-												.val($(this).attr("href"));
-										actionForm.submit();
-									});
-
-							$(".move").on("click",function(e) {
-									e.preventDefault();
-									actionForm.append("<input type='hidden' name='nt_num' value='"
-									+ $(this).attr("href")+ "'>");
-									actionForm.attr("action","/noticeDetail");
-									actionForm.submit();
-							});
-						});
-	</script>
+	
 </body>
 </html>

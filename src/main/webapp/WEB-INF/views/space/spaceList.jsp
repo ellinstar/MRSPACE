@@ -135,12 +135,12 @@
 				<input type="button" value="검색" id="searchData" /> <input
 					type="text" name="keyword" id="keyword" placeholder="공 간 명 검 색" />
 				<input type="hidden" name="page" id="page" value="${ data.page }" />
-				<select name="pageSize" id="pageSize">
+				<!-- <select name="pageSize" id="pageSize">
 					<option value="3">3</option>
 					<option value="5">5</option>
 					<option value="7">7</option>
 					<option value="10">10</option>
-				</select>
+				</select> -->
 			</form>
 		</div>
 		<%-- ================== 검색기능 종료 ================= --%>

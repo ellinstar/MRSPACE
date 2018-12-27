@@ -25,4 +25,10 @@
       from tb_mem m , tb_login_history h
       where m.mem_id = h.mem_id and m.mem_id = #{mem_Id}
    </select>
+   <!-- 회원 예약 내용 -->
+   <select id="memReserv" resultType="reserv">
+   	select r.res_num, to_char(r.res_usedate,'yyyy-mm'), r.res_amount, r.res_state, r.mem_id, s.sp_name
+   	from tb_reserv r, tb_space s
+   	where r.mem_id=#{mem_id} and r.sp_num = s.sp_num
+   </select>
 </mapper>
