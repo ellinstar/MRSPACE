@@ -24,8 +24,10 @@ $(document).ready(function() {
 		actionForm.submit();
 	});
 	var searchForm = $("#searchForm");
-	$("#cpResbtn").on("click", function(e) {
+	$("#cp_Num").val("<c:out value='${data.cp_Num}'/>");
+	$("#cpResbtn").on("change", function(e) {
 		e.preventDefault();
+		//searchForm.attr("value", $("#cp_Num").val());
 		searchForm.submit();
 		/* $.ajax({
 			type:"GET",
@@ -121,7 +123,7 @@ $(document).ready(function() {
 		<div class="page-header">
 			<h3>업체별 예약건</h3>
 		</div>
-		<form id='searchForm' action="/admin/reserv" method="POST">
+		<form id='searchForm' action="/admin/reserv" method="get">
 		<select name="cp_Num" id="cp_Num" class="form-label-group form-control font-weight-bold" data-live-search="true">
 			<c:forEach var="cp" items="${cp}">
 			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
@@ -132,7 +134,7 @@ $(document).ready(function() {
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
-						<th>No</th>
+						<th>업체번호</th>
 						<th>예약번호</th>
 						<th>공간명</th>
 						<th>공간유형</th>
@@ -146,7 +148,7 @@ $(document).ready(function() {
 					<c:when test="${not empty rescplist}" >
 						<c:forEach var="rescp" items="${rescplist}">
 							<tr>
-								<td><c:out value="${rescp.res_Num}"/></td>
+								<td><c:out value="${rescp.cp_Num}"/></td>
 								<td><a class='move' href='<c:out value="${rescp.res_Num}"/>'><c:out value="${rescp.res_Num}"></c:out></a> </td>
 								<td><c:out value="${rescp.sp_Name}"/></td>
 								<td><c:out value="${rescp.sp_Type}"/></td>

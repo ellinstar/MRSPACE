@@ -45,6 +45,7 @@ public class AdminController {
 		log.info("게시판 관리 호출");
 		List<NoticeVO> ntMainList = ntService.ntMainList();
 		model.addAttribute("ntMainList", ntMainList);
+		
 		return "/admin/board/bdmain";
 	}
 	@RequestMapping(value="/comp", method= RequestMethod.GET)

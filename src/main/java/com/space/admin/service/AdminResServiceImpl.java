@@ -53,9 +53,9 @@ public class AdminResServiceImpl implements AdminResService {
 		return adResDAO.optionCp();
 	}
 	@Override
-	public List<ReservVO> cpResList(int cp_Num) {
+	public List<ReservVO> cpResList(ReservVO rvo) {
 		// TODO Auto-generated method stub
-		return adResDAO.cpResList(cp_Num);
+		return adResDAO.cpResList(rvo);
 	}
 
 	

@@ -37,13 +37,14 @@ public class AdminResController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		List<CompVO> cpname = adResServ.optionCp();
 		model.addAttribute("cp", cpname);
-		/*log.info("업체별 리스트 호출 성공");
-		List<ReservVO> cpres = adResServ.cpResList(rvo.getCp_Num());
-		model.addAttribute("rescplist", cpres);*/
+		log.info("업체별 리스트 호출 성공");
+		List<ReservVO> cpres = adResServ.cpResList(rvo);
+		model.addAttribute("rescplist", cpres);
+		model.addAttribute("data", rvo);
 		return "/admin/reserv/reservmain";
 	}
 	
-	@RequestMapping(value="/reserv", method= RequestMethod.POST)
+/*	@RequestMapping(value="/reserv", method= RequestMethod.POST)
 	public String cpRes(@RequestParam("cp_Num") int cp_Num, Model model) {
 		log.info("업체별 리스트 호출 성공");
 		List<ReservVO> cpres = adResServ.cpResList(cp_Num);
@@ -51,7 +52,7 @@ public class AdminResController {
 		model.addAttribute("rescplist", cpres);
 		return "redirect: /admin/reserv";
 	}
-	
+	*/
 	
 	@RequestMapping(value="/reserv/detail", method= RequestMethod.GET)
 	public String resDetail(@RequestParam("res_Num") int res_Num, @ModelAttribute("cri") Criteria cri, Model model) {
