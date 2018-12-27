@@ -61,4 +61,9 @@ public class AdminController {
 		log.info("문의게시판 관리 호출");
 		return "/admin/board/qnabd";
 	}
+	/*@RequestMapping(value="/reserv",method= RequestMethod.GET)
+	public String reservList() {
+		log.info("예약관리 게시판 호출");
+		return "/admin/reserv/reservmain";
+	}*/
 }
