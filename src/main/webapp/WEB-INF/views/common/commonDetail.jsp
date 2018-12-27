@@ -481,8 +481,8 @@ $(function() {
 					</div>
 
 					<!-- 지도div -->
-					<div id="map" style="width: 1060px; height: 400px;"></div>
-
+					<div id="map" style="min-wight: 1060px; height: 400px;"></div>
+					
 					<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24"></script>
 					<script>
