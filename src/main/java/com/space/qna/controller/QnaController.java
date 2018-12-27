@@ -71,7 +71,7 @@ public class QnaController {
 		Paging.setPage(qvo); 
 		
 		// 전체 레코드수 구현
-		int total = qnaService.qnaListCnt(qvo);
+		int total = qnaService.qnaListCnt2(qvo);
 		log.info("total = "+total);
 		
 		// 글번호 재설정
