@@ -20,7 +20,7 @@ public class ReservVO {
 	private String sp_Name;//공간명
 	private String sp_Type;//공간유형
 	private String cp_Name;//업체명
-	private String res_UseDate;
+	private String res_UseDate; //예약 사용하는 달
 	
 	
 
