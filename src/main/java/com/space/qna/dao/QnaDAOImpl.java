@@ -21,14 +21,18 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 	
 	// 글목록 구현
-		@Override
-		public List<QnaVO> qnaList2(QnaVO qvo) {
-			return session.selectList("qnaList2", qvo);
-		}
+	@Override
+	public List<QnaVO> qnaList2(QnaVO qvo) {
+		return session.selectList("qnaList2", qvo);
+	}
 	
 	// 글 목록수
 	public int qnaListCnt(QnaVO qvo) {
 		return (Integer)session.selectOne("qnaListCnt", qvo);
+	}
+	// 글 목록수 (자주 묻는 질문)
+	public int qnaListCnt2(QnaVO qvo) {
+		return (Integer)session.selectOne("qnaListCnt2", qvo);
 	}
 
 	// 글상세 구현
