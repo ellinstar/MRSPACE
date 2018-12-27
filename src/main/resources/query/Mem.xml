@@ -80,4 +80,12 @@
 		set mem_Pw = #{mem_Pw}
 		where mem_Id = #{mem_Id}
 	</update>
+	
+	<!-- 예약 목록 기본 조회 -->
+	<select id="reservList" resultType="reserv" parameterType="mem">
+		select *
+		from tb_reserv
+		where mem_id = #{mem_Id}
+	</select>
+	
 </mapper>

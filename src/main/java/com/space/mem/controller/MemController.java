@@ -1,5 +1,7 @@
 package com.space.mem.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import com.space.mem.service.MemService;
 import com.space.mem.vo.MemVO;
 import com.space.memlogin.service.MemLoginService;
 import com.space.memlogin.vo.LoginVO;
+import com.space.reserv.vo.ReservVO;
 
 import lombok.extern.java.Log;
 
@@ -359,6 +362,21 @@ public class MemController {
 
 	   }
 	
+	   /*
+		 *  리스트 구현
+		 */
+		@RequestMapping(value="/myReservationList", method=RequestMethod.GET)
+		public String reservList(@ModelAttribute MemVO mvo, Model model , HttpSession session) {
+			
+			LoginVO lvo = (LoginVO) session.getAttribute("login");
+			
+			mvo.setMem_Id(lvo.getMem_Id());
+			
+			List<ReservVO> reservListe = memService.reservList(mvo);
+			session.setAttribute("reservList", reservListe);
+			
+			return "mem/myReservationList";
+		}
 	
 
 }

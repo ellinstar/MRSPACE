@@ -1,11 +1,14 @@
 package com.space.mem.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.space.mem.vo.MemSecurity;
 import com.space.mem.vo.MemVO;
+import com.space.reserv.vo.ReservVO;
 
 @Repository
 public class MemDAOImpl implements MemDAO {
@@ -71,6 +74,11 @@ public class MemDAOImpl implements MemDAO {
 	public int securityUpdate(MemSecurity set) {
 		System.out.println("MemDAOImpl - securityUpdate 메소드 호출");
         return session.update("securityUpdate",set);
+	}
+	
+	@Override
+	public List<ReservVO> reservList(MemVO mvo) {
+		return session.selectList("reservList", mvo);
 	}
 
 }

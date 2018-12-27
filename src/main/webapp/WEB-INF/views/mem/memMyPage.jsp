@@ -24,7 +24,7 @@
 			<div class="row2">
 					<br><br><br>
 					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#"><img
+						<li class="list-inline-item"><a href="/mem/myReservationList.do"><img
 								alt="예약 목록" src="/resources/img/RL.PNG"></a></li>
 					</ul>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

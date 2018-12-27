@@ -26,4 +26,13 @@ public class CommonDAOImpl {
 		System.out.println("CommonDAOImpl commonDetail호출!");
 		return (SpaceVO)session.selectOne("commonDetail", svo);
 	}
+	
+	// 공간 리스트
+	public List<SpaceVO> dtcommonList(SpaceVO svo) {
+		return session.selectList("dtcommonList", svo);
+	}
+	
+	public int cpnum(SpaceVO svo) {
+		return session.selectOne("cpnum",svo);
+	}
 }
