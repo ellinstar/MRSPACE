@@ -52,11 +52,14 @@
 	
 	<!-- 업체별 예약현황 -->
 	<select id="rescplist" resultType="reserv">
-	select r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state
+	select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state
 		from tb_reserv r, tb_space s, tb_company c
 	where 
-	
+	<choose>
+	<when test="cp_Num != null and cp_Num != ''">
 	c.cp_num=#{cp_Num} and 
+	</when>
+	</choose>
 	
 	s.cp_num = c.cp_num and r.sp_num=s.sp_num
 	</select>

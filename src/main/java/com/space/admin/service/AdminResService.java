@@ -15,6 +15,6 @@ public interface AdminResService {
 	public MemVO resMem(String mem_Id);
 	public SpaceVO resSp(int sp_Num); 
 	public List<CompVO> optionCp();
-	public List<ReservVO> cpResList(int cp_Num);
+	public List<ReservVO> cpResList(ReservVO rvo);
 
 }

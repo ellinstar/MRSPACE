@@ -52,6 +52,7 @@ public class AdminQnaController {
 		model.addAttribute("rep", reply);
 		return "/admin/board/qnadetail";
 	}
+	//문의 댓글 달기
 	@RequestMapping(value="/repInsert", method=RequestMethod.POST)
 	public String repInsert(@ModelAttribute QnaRepVO qrvo, Model model, @ModelAttribute("cri") Criteria cri) {
 		int result = adQnaServ.repInsert(qrvo);

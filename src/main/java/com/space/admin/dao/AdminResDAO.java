@@ -40,7 +40,7 @@ public class AdminResDAO {
 		return session.selectList("compName");
 	}
 	//업체별
-	public List<ReservVO> cpResList(int cp_Num) {
-		return session.selectList("rescplist", cp_Num);
+	public List<ReservVO> cpResList(ReservVO rvo) {
+		return session.selectList("rescplist");
 	}
 }
