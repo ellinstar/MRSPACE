@@ -67,7 +67,7 @@
 
 
 	<select id="dtcommonList" resultType="space" parameterType="int">
-		/* Space - spaceList */
+		/* Space - dtcommonList */
 		select *
 		from
 		( select list.*, rownum as rnum
@@ -103,5 +103,6 @@
 		from tb_space
 		where sp_num = #{sp_Num}
 	</select>
+	
 
 </mapper>
