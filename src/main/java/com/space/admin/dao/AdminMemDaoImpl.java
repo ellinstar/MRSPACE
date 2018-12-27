@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.space.admin.page.Criteria;
 import com.space.mem.vo.MemVO;
+import com.space.reserv.vo.ReservVO;
 
 @Repository("AdminMemDAOImpl")
 public class AdminMemDaoImpl {
@@ -30,5 +31,9 @@ public class AdminMemDaoImpl {
 	public MemVO memDetail(MemVO mvo) {
 	      return (MemVO) session.selectOne("memDetail", mvo);
 	   }
+	
+	public List<ReservVO> memReserv(String mem_Id) {
+		return session.selectList("memReserv", mem_Id);
+	}
 
 }

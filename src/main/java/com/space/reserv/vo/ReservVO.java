@@ -14,6 +14,15 @@ public class ReservVO {
 	private int sp_Num; //공간번호
 	private int restSpace; //공간재고갯수
 	
+	//관리자 추가
+	private int cp_Num;//업체번호
+	private String mem_Name;
+	private String sp_Name;//공간명
+	private String sp_Type;//공간유형
+	private String cp_Name;//업체명
+	private String res_UseDate;
+	
+	
 
 	public ReservVO() {
 		super();
