@@ -45,4 +45,20 @@ public class CommonServiceImpl implements CommonService {
 		detail = commonDao.commonDetail(svo);
 		return detail;
 	}
+	// 공간 상세 구현 리스트
+	@Override
+	public List<SpaceVO> dtcommonList(SpaceVO svo) {
+		List<SpaceVO> cm_List = null;
+		cm_List = commonDao.dtcommonList(svo);
+		return cm_List;
+	}
+	//업체 번호 셀렉트
+	@Override
+	public int cpnum(SpaceVO svo) {
+		int cpnum;
+		cpnum = commonDao.cpnum(svo);
+		return cpnum;
+	}
+	
+	
 }
