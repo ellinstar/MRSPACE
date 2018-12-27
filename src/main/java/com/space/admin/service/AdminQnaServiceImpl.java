@@ -21,9 +21,9 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 	
 	//qna메인 리스트
 	@Override
-	public List<QnaRepVO> qnaMainList(QnaRepVO qvo) {
+	public List<QnaRepVO> qnaMainList() {
 		// TODO Auto-generated method stub
-		List<QnaRepVO> qlist = adQnaDao.qnaMain(qvo);
+		List<QnaRepVO> qlist = adQnaDao.qnaMain();
 		return qlist;
 	}
 	

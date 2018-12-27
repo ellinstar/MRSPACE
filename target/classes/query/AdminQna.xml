@@ -4,7 +4,7 @@
 	<!-- 문의게시판 메인 -->
 	<select id="qnaMainList" resultType="rep">
 	<![CDATA[
-	select q.qna_num, q.qna_title, nvl(r.rep_num,0), q.qna_name, q.qna_date
+	select q.qna_num, q.qna_title, nvl(r.rep_num,0) rep_num, q.qna_name, q.qna_date
 	from tb_qna q, tb_qnarep r
 	where q.qna_num=r.qna_num(+) and rownum <=3
 	

@@ -150,9 +150,9 @@ $(document).ready(function() {
 							<tr>
 								<td><c:out value="${qna.qna_Num}"/></td>
 								<td><a class='moveqna' href='<c:out value="${qna.qna_Num}"/>'><c:out value="${qna.qna_Title}"></c:out></a> </td>
-								<td><c:out value="${qna.rep_num}"></c:out>
-								<%-- <c:if test="${qna.rep_num == 0}">미등록</c:if> --%>
-								<c:if test="${qna.rep_num ne 0}">완료</c:if>
+								<td>
+								<c:if test="${qna.rep_num == 0}">미등록</c:if>
+								<c:if test="${qna.rep_num != 0}">완료</c:if>
 								</td>
 								<td><c:out value="${qna.qna_Name}"/></td>
 								<td><c:out value="${qna.qna_Date}"/></td>

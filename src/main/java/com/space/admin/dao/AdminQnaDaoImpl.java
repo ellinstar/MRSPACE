@@ -17,8 +17,8 @@ public class AdminQnaDaoImpl {
 	private SqlSession session;
 	
 	//메인 문의게시판 목록
-	public List<QnaRepVO> qnaMain(QnaRepVO qvo){
-		return session.selectList("qnaMainList",qvo);
+	public List<QnaRepVO> qnaMain(){
+		return session.selectList("qnaMainList");
 	}
 	
 	//문의게시판 목록

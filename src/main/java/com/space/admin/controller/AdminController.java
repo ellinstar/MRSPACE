@@ -46,12 +46,15 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/board", method= RequestMethod.GET)
-	public String adBoard(Model model,@ModelAttribute QnaRepVO qvo) {
+	public String adBoard(Model model) {
 		log.info("게시판 관리 호출");
 		List<NoticeVO> ntMainList = ntService.ntMainList();
 		model.addAttribute("ntMainList", ntMainList);
-		List<QnaRepVO> qnaMain = adQnServ.qnaMainList(qvo);
+		
+		List<QnaRepVO> qnaMain = adQnServ.qnaMainList();
 		model.addAttribute("qnMain", qnaMain);
+		
+		System.out.println("asd : " + qnaMain.toString());
 		return "/admin/board/bdmain";
 	}
 	@RequestMapping(value="/comp", method= RequestMethod.GET)
