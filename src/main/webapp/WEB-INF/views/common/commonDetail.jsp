@@ -115,15 +115,18 @@
 		});
 
 		// 제목 클릭 시 상세 페이지 이동을 위한 처리 이벤트 - X
-		$(".goDetail").click(function() {
+		$(".goDetail2").click(function() {
 			var sp_Num = $(this).parents("div").attr("data-num");
 			$("#sp_Num").val(sp_Num);
 			console.log("글번호 : " + sp_Num);
 			// 상세 페이지로 이동하기 위해 form추가 (id : detailForm)
+			$("#detailForm").append("<input type='hidden' name='sp_Num' value='${space.sp_Num}'/>");
+			
 			$("#detailForm").attr({
 				"method" : "get",
 				"action" : "/common/commonDetail.do"
 			});
+			
 			$("#detailForm").submit();
 		});
 	});
@@ -481,8 +484,7 @@ $(function() {
 					</div>
 
 					<!-- 지도div -->
-					<div id="map" style="min-wight: 1060px; height: 400px;"></div>
-					
+					<div id="map" style="width: 1060px; height: 400px;"></div>
 					<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24"></script>
 					<script>
@@ -570,14 +572,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 
 
 
-		<div class="spaceList1">
-			<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
-			<form name="detailForm" id="detailForm">
-				<input type="hidden" name="sp_Num" id="sp_Num"> <input
-					type="hidden" name="page" value="${data.page}"> <input
-					type="hidden" name="pageSize" value="${data.pageSize}">
-			</form>
-
+		<div class="spaceList2">
 
 
 			<!-- /.row -->
@@ -593,7 +588,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 									<div class="col-lg-4">
 
 										<div class="tac" data-num="${space.sp_Num}">
-											<div class="goDetail tal">
+											<div class="goDetail2 tal">
 
 												<!-- 슬라이스 시작 시점1 -->
 
@@ -644,7 +639,15 @@ var customOverlay = new daum.maps.CustomOverlay({
 														<strong class="price"><fmt:formatNumber
 																value="${space.sp_Price}" /></strong><span class="txt_unit">원/월</span>
 														<input type="hidden" value="${space.cp_Phone}"> <input
-															type="hidden" value="${space.cp_Num}">
+															type="hidden" value="${space.cp_Num}"> <input
+															type="hidden" value="${space.sp_Num}">
+														<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
+														<form name="detailForm" id="detailForm">
+															<input type="hidden" name="sp_Num" id="sp_Num" value="${space.sp_Num}">
+															
+														</form>
+
+
 													</div>
 												</div>
 											</div>
