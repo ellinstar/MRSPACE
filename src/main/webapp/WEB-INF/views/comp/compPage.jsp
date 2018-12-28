@@ -37,7 +37,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>공간관리</h1>
 	<div class="container">
 		<form id="sp_Form">
 			<%-- <input type="hidden" name="cp_Id" id="cp_Id" value="${cplogin.cp_Id}" /> --%>

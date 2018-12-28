@@ -60,6 +60,7 @@ public class SpaceVO extends CommonVO{
 
 	// 업체 번호
 	private int cp_Num;
+	
 	//업체 아이디
 	private String cp_Id;
 
@@ -77,6 +78,11 @@ public class SpaceVO extends CommonVO{
 	
 	// 업체 이름
 	private String cp_Name;
+	
+	
+	// 지도 위도경도(업체위치)
+	private String sp_Y; // 위도
+	private String sp_X; // 경도
 
 
 	

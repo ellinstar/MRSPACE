@@ -16,15 +16,16 @@
 		<![CDATA[
 	select nt_num, nt_title, nt_date, nt_views
 	from
-		(select /*+INDEX_DESC(tb_notice nt_num) */
+		(select 
 		rownum rn, nt_num, nt_title, nt_date, nt_views 
 		from
 		tb_notice
 		where	
 		rownum <= #{pageNum} * #{amount}
+		order by nt_num desc
 		)
 	where rn > (#{pageNum} -1) * #{amount}
-	order by nt_num desc
+	
 ]]>
 	</select>
 	<!-- 페이징 위한 목록 수 조회 -->
@@ -34,7 +35,7 @@
 			count(*)
 		from
 			tb_notice
-		--where nt_num > 0
+		where nt_num > 0
 	]]>
 	</select>
 	

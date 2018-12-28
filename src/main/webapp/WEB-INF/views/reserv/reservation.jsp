@@ -46,40 +46,76 @@
 			}
 		});
 	});
-	/* //재고 갯수 확인
-	$("#resUseDate").onchange(function() {
-		$("#reservForm").attr({
-			"method":"GET"
-			"action":"/reserv/restSpace.do"
-		});
-		$("reservForm").submit();
-	}); */
 </script>
-
 <body>
+
+<div class="container">
 	<c:if test="${reserv == null}">	
-	<form id="reservForm" name="reservForm">
-	<p>아이디 : ${login.mem_Id }
-	<p>가격 : ${detail.sp_Price }
-	<p>공간번호 : ${detail.sp_Num }
-	<p>재고 : ${rest.restSpace }
-	<p>
-		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id}">
-		<input type="hidden" id="sp_Num" name="sp_Num"value="${detail.sp_Num}">
-		<input type="hidden" id="sp_Stock" name="sp_Stock"value="${detail.sp_Stock}">
-		<input type="month"	id="resUseDate" name="resUseDate"> 
-		<input type="text"	id="res_Amount" name="res_Amount" value="${detail.sp_Price}" readonly="readonly">
+	<div class="card-heder">예약 하실 공간 정보</div>	
+	<div class="card-body">
+		<form id="reservForm" name="reservForm">
+		<div class="form-group form-row">
+			<div class="col-md-2 form-label-group">
+				<label class="form-control">공간명</label>
+			</div>
+			<div class="col-md-4 form-label-group">
+				<label class="form-control">${detail.sp_Name}</label>
+			</div>
+		</div>
+		<div class="form-group form-row">
+			<div class="col-md-2 form-label-group">
+				<label class="form-control">가격</label>
+			</div>
+			<div class="col-md-4 form-label-group">
+				<label class="form-control">${detail.sp_Price}</label>
+			</div>
+		</div>
+		<div class="form-group form-row">
+			<div class="col-md-2 form-label-group">
+				<label class="form-control">사용 기간</label>
+			</div>
+			<div class="col-md-4 form-label-group">
+				<input type="month"	id="resUseDate" name="resUseDate" class="form-control"> 
+			</div>
+		</div>
+		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id}"><!-- 회원아이디 -->
+		<input type="hidden" id="sp_Num" name="sp_Num"value="${detail.sp_Num}"><!-- 공간번호 -->
+		<input type="hidden" id="sp_Name" name="sp_Name"value="${detail.sp_Name}"><!-- 공간이름 -->
+		<input type="hidden" id="sp_Stock" name="sp_Stock"value="${detail.sp_Stock}"><!-- 공간 재고 -->
+		<input type="hidden" id="res_Amount" name="res_Amount" value="${detail.sp_Price}" readonly="readonly">
 		<input type="button" id="reservBtn" name="reservBtn" value="예약">
 	</form>
-</c:if>
-	
-	<c:if test="${reserv != null}">
-	<p>예약 정보 </p>
-		<p>공간명 : ${detail.sp_Name}</p>
-		<p>이용달 : ${reserv.resUseDate}</p>
-		<p>결제 금액 : ${detail.sp_Price}</p>
+	</div>
 	</c:if>
-	
-	
+	<c:if test="${reserv != null}">
+	<div class="card-heder">예약 정보 확인</div>	
+	<div class="card-body">
+		<div class="form-group form-row">
+			<div class="col-md-2 form-label-group">
+				<label class="form-control">공간명</label>
+			</div>
+			<div class="col-md-4 form-label-group">
+				<label class="form-control">${detail.sp_Name}</label>
+			</div>
+		</div>
+		<div class="form-group form-row">
+			<div class="col-md-2 form-label-group">
+				<label class="form-control">이용 월</label>
+			</div>
+			<div class="col-md-4 form-label-group">
+				<label class="form-control">${reserv.resUseDate}</label>
+			</div>
+		</div>
+		<div class="form-group form-row">
+			<div class="col-md-2 form-label-group">
+				<label class="form-control">결제금액</label>
+			</div>
+			<div class="col-md-4 form-label-group">
+				<label class="form-control">${detail.sp_Price}</label>
+			</div>
+		</div>
+	</div>
+	</c:if>
+</div>
 </body>
 </html>

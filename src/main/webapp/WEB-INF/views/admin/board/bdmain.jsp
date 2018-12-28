@@ -27,6 +27,13 @@ $(document).ready(function() {
 		actionForm.attr("action", "/admin/notice/ntDetail");
 		actionForm.submit();
 	});
+	$(".moveqna").on("click",function(e) {
+		e.preventDefault();
+		$("#qnaForm").append("<input type='hidden' name='qna_Num' value='"
+		+ $(this).attr("href")+ "'>");
+		$("#qnaForm").attr("action","/admin/qna/detail");
+		$("#qnaForm").submit();
+	});
 	/* 사업자 메일 보내기 */
 	$("#emailFormBtn").click(function() {
 		
@@ -83,7 +90,8 @@ $(document).ready(function() {
 				</tbody>
 			</table>
 			<form id="actionForm" action="/admin/notice/ntDetail" method="get"></form>
-		<%-- =============== 사업자 메일 보내기 모달 =============== --%>
+		
+		<%-- 보류=============== 사업자 메일 보내기 모달 =============== --%>
 		<!-- Modal 추가 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
@@ -121,8 +129,9 @@ $(document).ready(function() {
 		</div>
 		<%-- =============== 사업자 메일보내기 모달 끝 =============== --%>
 		</div>
+		
 		<div class="page-header">
-			<h3><a href="/admin/qna">문의 게시판</a></h3>
+			<h3><a href="/admin/qna/list">문의 게시판</a></h3>
 			</div>
 		<div class="col-md-12">
 			<table summary="게시판 리스트"
@@ -136,16 +145,19 @@ $(document).ready(function() {
 						<th data-value="nt_date" class="order">작성일</th>
 					</tr>
 				</thead>
-				<tbody id="qnaList">
+				<tbody id="qnMain">
 				<c:choose>
-					<c:when test="${not empty qnaList}" >
-						<c:forEach var="qna" items="${qnaList}">
+					<c:when test="${not empty qnaMain}" >
+						<c:forEach var="qna" items="${qnaMain}">
 							<tr>
-								<td><c:out value="${qna.que_num}"/></td>
-								<td><a class='move' href='<c:out value="${qna.que_num}"/>'><c:out value="${qna.que_title}"></c:out></a> </td>
-								<td><c:out value="${qnd.que_rep_num}"/></td>
-								<td><c:out value="${qnd.mem_num}"/></td>
-								<td><c:out value="${qnd.que_date}"/></td>
+								<td><c:out value="${qna.qna_Num}"/></td>
+								<td><a class='moveqna' href='<c:out value="${qna.qna_Num}"/>'><c:out value="${qna.qna_Title}"></c:out></a> </td>
+								<td>
+								<c:if test="${qna.rep_num == 0}">미등록</c:if>
+								<c:if test="${qna.rep_num != 0}">완료</c:if>
+								</td>
+								<td><c:out value="${qna.qna_Name}"/></td>
+								<td><c:out value="${qna.qna_Date}"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -157,6 +169,7 @@ $(document).ready(function() {
 				</c:choose>
 				</tbody>
 			</table>
+			<form id="qnaForm"></form>
 		</div>
 			
 	</div>

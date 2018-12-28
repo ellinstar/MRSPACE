@@ -38,6 +38,7 @@ public class CompDAOImpl implements CompDAO {
 	}
 
 	public int compUpdate(CompVO cvo) {
+		System.out.println("업데이트 DAO : cpID : " + cvo.getCp_Id());
 		return session.update("compUpdate", cvo);
 	}
 

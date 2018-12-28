@@ -66,5 +66,15 @@
       salt = #{salt}
       where cp_id = #{cp_Id}
    </update>
+   
+   <update id="compUpdate" parameterType="comp">
+   update tb_company set
+   <if test="cp_Pw != null and cp_Pw != ''">cp_Pw = #{cp_Pw},</if>
+   <if test="cp_Account != null and cp_Account != ''">cp_account=#{cp_Account},</if>
+   <if test="cp_Bank != null and cp_Bank != ''">cp_bank=#{cp_Bank},</if> 
+   <if test="cp_Phone != null and cp_Phone != ''">cp_phone=#{cp_Phone},</if>
+   <if test="cp_Email != null and cp_Email != ''"> cp_email=#{cp_Email}</if>
+   where cp_Id=#{cp_Id}
+   </update>
 
 </mapper>

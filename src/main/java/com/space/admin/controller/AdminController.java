@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.space.admin.service.AdminCompService;
+import com.space.admin.service.AdminQnaService;
 import com.space.admin.service.AdminSpaceService;
 import com.space.admin.service.NoticeService;
 import com.space.admin.vo.NoticeVO;
 import com.space.comp.vo.CompVO;
+import com.space.qna.vo.QnaRepVO;
+import com.space.qna.vo.QnaVO;
 import com.space.space.vo.SpaceVO;
 
 import lombok.extern.java.Log;
@@ -29,6 +32,8 @@ public class AdminController {
 	public AdminCompService adminCompServ;
 	@Autowired
 	private AdminSpaceService adminSpaceServ;
+	@Autowired
+	private AdminQnaService adQnServ;
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String adIndex(Model model) {
@@ -41,10 +46,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/board", method= RequestMethod.GET)
-	public String adBoard(@ModelAttribute NoticeVO nvo, Model model) {
+	public String adBoard(Model model) {
 		log.info("게시판 관리 호출");
 		List<NoticeVO> ntMainList = ntService.ntMainList();
 		model.addAttribute("ntMainList", ntMainList);
+		
+		List<QnaRepVO> qnaMain = adQnServ.qnaMainList();
+		model.addAttribute("qnaMain", qnaMain);
+		
 		return "/admin/board/bdmain";
 	}
 	@RequestMapping(value="/comp", method= RequestMethod.GET)
@@ -59,6 +68,11 @@ public class AdminController {
 	@RequestMapping(value="/qna", method= RequestMethod.GET)
 	public String qnaList() {
 		log.info("문의게시판 관리 호출");
-		return "/admin/comp/compmain";
+		return "/admin/board/qnabd";
 	}
+	/*@RequestMapping(value="/reserv",method= RequestMethod.GET)
+	public String reservList() {
+		log.info("예약관리 게시판 호출");
+		return "/admin/reserv/reservmain";
+	}*/
 }

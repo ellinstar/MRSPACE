@@ -59,6 +59,96 @@
 			});
 
 </script>
+<script type="text/javascript">
+	$(function() {
+		// 검색 후 검색 대상과 단어 출력
+		var word = "<c:out value='${data.keyword}'/>";
+		var value = "";
+		if (word != "") {
+			$("#keyword").val("<c:out value='${data.keyword}'/>");
+			/* $("#search").val("<c:out value='${data.search}'/>"); */
+
+			/* if ($("#search").val() != 'sp_Name') {
+			   // :contains()는 특정 테스트를 포함한 요소반환
+			   if ($("#search").val() == 'sp_Name')
+			      value = "#list tr td.goDetail";
+			   else if ($("#search").val() == 'sp_Name')
+			      value = "#list tr td.name";
+			   $(value + ":contains('" + word + "')").each(
+			         function() {
+			            var regex = new RegExp(word, 'gi');
+			            $(this).html(
+			                  $(this).text().replace(
+			                        regex,
+			                        "<span class='required'>" + word
+			                              + "</span"));
+			         });
+			} */
+		}
+
+		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
+		if ("<c:out value='${data.pageSize}' /> " != "") {
+			$("#pageSize").val("<c:out value='${data.pageSize}'/>");
+		}
+
+		// 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트
+		$("#pageSize").change(function() {
+			goPage(1);
+		});
+
+		/* // 검색 대상이 변경될 때마다 처리 이벤트
+		$("#search").change(function() {
+		   if ($("#search").val() == "all") {
+		      $("#keyword").val("전체 데이터 조회합니다.");
+		   } else if ($("#search").val() != "all") {
+		      $("#keyword").val("");
+		      $("#keyword").focus();
+		   }
+		}); */
+
+		// 검색 버튼 클릭 시 처리 이벤트
+		$("#searchData").click(function() {
+			if (!chkSubmit($('#keyword'), "검색어를")) {
+				return;
+			}
+			goPage(1);
+		});
+
+		// 제목 클릭 시 상세 페이지 이동을 위한 처리 이벤트 - X
+		$(".goDetail2").click(function() {
+			var sp_Num = $(this).parents("div").attr("data-num");
+			$("#sp_Num").val(sp_Num);
+			console.log("글번호 : " + sp_Num);
+			// 상세 페이지로 이동하기 위해 form추가 (id : detailForm)
+			$("#detailForm").append("<input type='hidden' name='sp_Num' value='${space.sp_Num}'/>");
+			
+			$("#detailForm").attr({
+				"method" : "get",
+				"action" : "/common/commonDetail.do"
+			});
+			
+			$("#detailForm").submit();
+		});
+	});
+
+	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
+	function goPage(page) {
+		$("#page").val(page);
+		$("#sp_Search").attr({
+			"method" : "get",
+			"action" : "/common/commonList.do"
+		});
+		$("#sp_Search").submit();
+	}
+
+	/* 전체목록 불러오기 */
+	function spaceAll() {
+		location.href = "/common/commonList.do";
+	}
+</script>
+
+
+
 
 
 
@@ -88,6 +178,8 @@ header.masthead2 .overlay2 {
 img {
 	width: 100%;
 	height: 320px;
+	position: relative;
+	background-size: cover;
 }
 
 @font-face {
@@ -155,8 +247,8 @@ img {
 }
 
 .sp_location {
-	padding-bottom: 18px;
-	margin-bottom: 20px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
 	border-bottom: 1px solid #ebebeb;
 	font-size: 15px;
 	color: #656565;
@@ -207,6 +299,145 @@ p {
 }
 </style>
 
+<!-- 다음 지도 CSS -->
+<style>
+.customoverlay {
+	position: relative;
+	bottom: 85px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	border-bottom: 2px solid #ddd;
+	float: left;
+}
+
+.customoverlay:nth-of-type(n) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.customoverlay a {
+	display: block;
+	text-decoration: none;
+	color: #000;
+	text-align: center;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	overflow: hidden;
+	background: #d95050;
+	background: #d95050
+		url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
+		no-repeat right 14px center;
+}
+
+.customoverlay .title {
+	display: block;
+	text-align: center;
+	background: #fff;
+	margin-right: 35px;
+	padding: 10px 15px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.customoverlay:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: -12px;
+	width: 22px;
+	height: 12px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+</style>
+
+
+<!-- 이미지 줌 CSS -->
+<style type="text/css">
+/* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300); */
+
+/* Zoom In #1 */
+.col-lg-4 div img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+}
+
+.col-lg-4 div:hover img {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.info_area2 {
+	position: relative;
+	padding: 18px 20px 14px;
+	background-color: #fff;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.info_area2 .tit_space {
+	padding-bottom: 7px;
+	font-size: 21px;
+	line-height: 23px;
+}
+
+.info_area2 .info_price_hour2 {
+	height: 23px;
+	padding-top: 3px;
+	margin-top: 11px;
+	font-size: 12px;
+}
+
+.info_area2 .info_price_hour2 .price {
+	
+}
+
+.info_area2 .info_price_hour2 .price {
+	font-size: 23px;
+	font-family: "NanumBarunGothicBold", sans-serif;
+	color: #0069d9;
+}
+
+.inner_width, .pc .intro+.section_cont {
+	width: 1158px;
+}
+
+.sorting_filter {
+	position: absolute;
+	top: 210px;
+	right: 420px;
+	background-color: #fff;
+	width: 154px;
+	height: 40px;
+}
+
+.filter_area .sorting_filter select {
+	position: relative;
+	height: 50px;
+	opacity: 0;
+}
+
+.filter_area .sorting_filter label {
+	top: 11px;
+	font-size: 14px;
+}
+
+.filter_area .sorting_filter label {
+	position: absolute;
+	top: 16px;
+	right: 0;
+	left: 0;
+	font-size: 13px;
+}
+</style>
+
 </head>
 <script type="text/javascript">
 $(function() {
@@ -217,20 +448,12 @@ $(function() {
 
 <body>
 
-
-	<input type="hidden" name="sp_Num" id="sp_Num" value="${detail.sp_Num}">
+	<input type="hidden" name="sp_Num" id="sp_Num" value="${space.sp_Num }">
+	<%-- 	<input type="hidden" name="sp_Num" id="sp_Num" value="${detail.sp_Num}"> --%>
 	<input type="hidden" id="cp_Num" name="cp_Num" value="${detail.cp_Num}" />
 
 	<!-- Header with Background Image -->
-	<header class="business-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<img src="/uploadStorage/space/${detail.sp_File}">
-				</div>
-			</div>
-		</div>
-	</header>
+	<img src="/uploadStorage/space/${detail.sp_File}">
 
 
 	<!-- Page Content -->
@@ -248,7 +471,6 @@ $(function() {
 				<p></p>
 				<br>
 				<h5>공간 주소</h5>
-
 				<!-- 공간주소 -->
 				<div class="host_profile" id="_host_map">
 					<div class="inner">
@@ -261,28 +483,54 @@ $(function() {
 
 					</div>
 
-					<!-- 구글지도 마커표시 -->
-					<div id="map2" style="width: 700px; height: 450px;"></div>
-					<script type="text/javascript">
-						$(function() {
-							$("#map2").googleMap();
-							$("#map2").addMarker({
-								coords : [ 37.5457747, 126.9828226 ], // Map center
-								url : 'http://www.blueb.co.kr',
-								id : 'marker1'
-							});
-						})
-					</script>
+					<!-- 지도div -->
+					<div id="map" style="width: 1060px; height: 400px;"></div>
+					<script type="text/javascript"
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24"></script>
+					<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+  mapOption = { 
+        center: new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X}), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
 
+var map = new daum.maps.Map(mapContainer, mapOption);
 
-					<!-- 네이버지도 -->
-					<!-- 	<div class="map" id="_map" _lat="37.487766" _lng="127.0132">
-						<img id="_detailStaticMap" class="lazy"
-							src="https://ssl.map.naver.com/staticmap/image?version=1.1&amp;crs=EPSG:4326&amp;center=127.0132,37.487766&amp;level=12&amp;baselayer=default&amp;overlayer=ol_vc_an&amp;exception=blank&amp;markers_icon=type,scloud,127.0132,37.487766&amp;scale=1&amp;caller=scloud&amp;format=jpeg&amp;dataversion=142.0&amp;w=761&amp;h=640"
-							width="761" height="640">
-						<div id="_mapLayer"></div>
+var imageSrc = '/resources/img/marker_red.png', // 마커이미지의 주소입니다    
+    imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
+    imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-					</div> -->
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X}); // 마커가 표시될 위치입니다
+
+// 마커를 생성합니다
+var marker = new daum.maps.Marker({
+  position: markerPosition,
+  image: markerImage // 마커이미지 설정 
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);  
+
+// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var content = '<div class="customoverlay">' +
+    '  <a href="http://localhost/">' +
+    '    <span class="title">${detail.sp_Name}</span>' +
+    '  </a>' +
+    '</div>';
+
+// 커스텀 오버레이가 표시될 위치입니다 
+var position = new daum.maps.LatLng("${detail.sp_Y}", "${detail.sp_X}");  
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new daum.maps.CustomOverlay({
+    map: map,
+    position: position,
+    content: content,
+    yAnchor: 1 
+});
+</script>
 				</div>
 				<p></p>
 				<br>
@@ -292,6 +540,7 @@ $(function() {
 				<br> <br>
 
 				<h5>'업체명의' 다른 공간</h5>
+
 			</div>
 
 
@@ -311,7 +560,8 @@ $(function() {
 					<br>
 
 					<p>
-						<a class="btn btn-primary btn-lg" href="#"> <i
+						<a class="btn btn-primary btn-lg" href="#"
+							data-needpopup-show="#small-popup"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
 						</a> <a class="btn btn-primary btn-lg" id="reserv"
 							href="/reserv/reservation.do">예약하기 &raquo;</a>
@@ -319,62 +569,114 @@ $(function() {
 				</address>
 			</div>
 		</div>
-		<!-- /.row -->
 
-		<div class="row">
-			<div class="col-sm-4 my-4">
-				<div class="card">
-					<img class="card-img-top" src="http://placehold.it/300x200" alt="">
-					<div class="card-body">
-						<h4 class="card-title">Card title</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Sapiente esse necessitatibus neque sequi
-							doloribus.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-primary">Find Out More!</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 my-4">
-				<div class="card">
-					<img class="card-img-top" src="http://placehold.it/300x200" alt="">
-					<div class="card-body">
-						<h4 class="card-title">Card title</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Sapiente esse necessitatibus neque sequi
-							doloribus totam ut praesentium aut.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-primary">Find Out More!</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 my-4">
-				<div class="card">
-					<img class="card-img-top" src="http://placehold.it/300x200" alt="">
-					<div class="card-body">
-						<h4 class="card-title">Card title</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Sapiente esse necessitatibus neque.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-primary">Find Out More!</a>
-					</div>
-				</div>
-			</div>
 
+
+		<div class="spaceList2">
+
+
+			<!-- /.row -->
+			<section class="features-icons bg-light text-left">
+
+				<div class="container">
+					<div class="row">
+						<c:choose>
+							<c:when test="${not empty dtcommonList}">
+
+								<c:forEach var="space" items="${dtcommonList}"
+									varStatus="status">
+									<div class="col-lg-4">
+
+										<div class="tac" data-num="${space.sp_Num}">
+											<div class="goDetail2 tal">
+
+												<!-- 슬라이스 시작 시점1 -->
+
+												<div id="myCarousel" class="carousel slide my-4"
+													data-ride="carousel" data-interval="false">
+													<ol class="carousel-indicators">
+														<li data-target="#myCarousel" data-slide-to="0"
+															class="active"></li>
+														<!--       <li data-target="#myCarousel" data-slide-to="1"></li>
+                                 <li data-target="#myCarousel" data-slide-to="2"></li> -->
+													</ol>
+
+													<div class="carousel-inner" role="listbox">
+														<div class="carousel-item active">
+															<img src="/uploadStorage/space/${space.sp_File}"
+																class="d-block img-fluid" alt="First slide">
+														</div>
+														<%-- 		<div class="carousel-item">
+														<img class="d-block img-fluid"
+															src="/uploadStorage/space/${space.sp_File}"
+															alt="Second slide">
+													</div>
+													<div class="carousel-item">
+														<img class="d-block img-fluid"
+															src="/uploadStorage/space/${space.sp_File}"
+															alt="Third slide">
+													</div>
+ --%>
+														<!-- 		<a class="carousel-control-prev" href="#myCarousel"
+														role="button" data-slide="prev"> <span
+														class="carousel-control-prev-icon" aria-hidden="true"></span>
+														<span class="sr-only">Previous</span>
+													</a> <a class="carousel-control-next" href="#myCarousel"
+														role="button" data-slide="next"> <span
+														class="carousel-control-next-icon" aria-hidden="true"></span>
+														<span class="sr-only">Next</span>
+													</a> -->
+
+													</div>
+												</div>
+
+												<div class="info_area2">
+													<h3 class="tit_space">${space.sp_Name}</h3>
+													<div class="tags">
+														<span class="tag_area_name">${space.sp_Address}</span>
+													</div>
+													<div class="info_price_hour2">
+														<strong class="price"><fmt:formatNumber
+																value="${space.sp_Price}" /></strong><span class="txt_unit">원/월</span>
+														<input type="hidden" value="${space.cp_Phone}"> <input
+															type="hidden" value="${space.cp_Num}"> <input
+															type="hidden" value="${space.sp_Num}">
+														<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
+														<form name="detailForm" id="detailForm">
+															<input type="hidden" name="sp_Num" id="sp_Num" value="${space.sp_Num}">
+															
+														</form>
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="7" class="tac">등록된 공간이 존재하지 않습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+
+
+					</div>
+				</div>
+
+
+			</section>
+
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
-
 	</div>
 	<!-- /.container -->
 
 
 	<!-- 전화 popup 모달창 -->
 	<div class="wrapper">
-
-
 		<div id='small-popup' class="needpopup">
 			<p>"코워킹스페이스를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다. :)</p>
 			<p>-------------------------------------------------------------------------</p>
@@ -397,9 +699,10 @@ $(function() {
 			}
 		};
 		needPopup.init();
-		
 	</script>
 	<!-- 전화 popup 모달창 끝 -->
+
+
 
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i

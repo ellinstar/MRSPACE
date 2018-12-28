@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.space.comp.vo.CompVO;
 import com.space.complogin.vo.CompLoginVO;
 
 @Repository
@@ -18,6 +19,9 @@ public class CompLoginDAOImpl {
 	public CompLoginVO compLoginSelect(CompLoginVO lvo) {
 		return (CompLoginVO) session.selectOne("compLoginSelect", lvo);
 	}
+	public CompLoginVO compLoginSelect2(CompLoginVO lvo) {
+		return (CompLoginVO) session.selectOne("compLoginSelect2", lvo);
+	}
 	public int compLoginHistoryInsert(CompLoginVO lvo) {
 		return session.insert("compLoginHistoryInsert", lvo);
 	}
@@ -27,5 +31,9 @@ public class CompLoginDAOImpl {
 	public CompLoginVO compLoginHistorySelect(String cp_Id) {
 		return (CompLoginVO) session.selectOne("compLoginHistorySelect", cp_Id);
 	}
+	public CompVO comp(String cp_Id) {
+		return (CompVO) session.selectOne("comp2", cp_Id);
+	}
+	
 
 }

@@ -16,6 +16,7 @@ import com.space.admin.page.Criteria;
 import com.space.admin.page.PageDTO;
 import com.space.admin.service.AdminMemService;
 import com.space.mem.vo.MemVO;
+import com.space.reserv.vo.ReservVO;
 
 import lombok.extern.java.Log;
 
@@ -46,15 +47,17 @@ public class AdminMemController {
 	    * 회원 정보 확인
 	    */
 	   @RequestMapping(value="/memdetail", method=RequestMethod.GET)
-	   public String memDetail(@ModelAttribute MemVO mvo, Model model) {
+	   public String memDetail(@ModelAttribute MemVO mvo, Model model, @ModelAttribute ReservVO rvo) {
 	      log.info("memDetail 호출 성공");
 	      log.info("mem_id = " + mvo.getMem_Id());
 	      
 	      MemVO detail = new MemVO();
 	      
 	      detail = adminMemServ.memDetail(mvo);
+	      List<ReservVO> res = adminMemServ.memReserv(mvo.getMem_Id());
 	      
 	      model.addAttribute("mem", detail);
+	      model.addAttribute("reservlist", res);
 
 	      return "/admin/mem/memdetail";
 	   }

@@ -52,12 +52,14 @@ public class CompServiceImpl implements CompService {
 	@Override
 	public CompVO compSelect(String cp_Id) {
 		CompVO cvo = compDao.compSelect(cp_Id);
+		System.out.println("업체서비스Impl : compselect" + cvo.getCp_Id()); 
 		return cvo;
 	}
 
 	@Override
 	public CompVO compSelect2(String cp_Bnum) {
 		CompVO cvo = compDao.compSelect2(cp_Bnum);
+		System.out.println("업체서비스Impl : compselect2" + cvo.getCp_Id()); 
 		return cvo;
 	}
 
@@ -86,9 +88,16 @@ public class CompServiceImpl implements CompService {
 	}
 
 	@Override
-	public boolean compUpdate(CompVO cvo) {
-		// TODO Auto-generated method stub
-		return false;
+	public int compUpdate(CompVO cvo) {
+		CompSecurity sec = new CompSecurity();
+		if(cvo.getCp_Pw() != null && cvo.getCp_Pw() != "") {
+			sec.setCp_Id(cvo.getCp_Id());
+			sec.setSalt(Util.getRandomString());
+			compDao.compSecurityUpdate(sec);
+			System.out.println("업체서비스Impl compUpdate : " + cvo);
+			cvo.setCp_Pw(new String(OpenCrypt.getSHA256(cvo.getCp_Pw(), sec.getSalt())));
+		}
+		return compDao.compUpdate(cvo);
 	}
 
 	// 아이디 찾기
@@ -107,6 +116,7 @@ public class CompServiceImpl implements CompService {
 		return vo;
 	}
 
+	// 비밀번호 변경 메소드
 	@Override
 	public int compPwChange2(CompVO cvo) {
 		System.out.println("CompServiceImpl클래스 compPwChange2 메소드 호출");

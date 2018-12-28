@@ -38,7 +38,7 @@ public class AdminEmailController {
 		//SMTP서버 설정
 		final String host = "smtp.gmail.com";//smtp host
 		final String accountId = "ellinstar48@gmail.com";
-		final String accountPwd = "!@#apr0230";
+		final String accountPwd = "비밀번호";
 		final int port = 465;//smtp포트
 		
 		String sender = "ellinstar48@gmail.com";//보내는 이메일

@@ -11,10 +11,11 @@
 	<typeAlias type="com.space.comp.vo.CompSecurity" alias="cpsecurity" />
 	<typeAlias type="com.space.space.vo.SpaceVO" alias="space"/>
 	<typeAlias type="com.space.space.vo.SpaceVO" alias="common"/>
-	<typeAlias type="com.space.admin.vo.AdminVO" alias="admin" />
 	<typeAlias type="com.space.admin.vo.AdminLoginVO" alias="adminlogin" />
 	<typeAlias type="com.space.admin.vo.NoticeVO" alias="notice" />
 	<typeAlias type="com.space.qna.vo.QnaVO" alias="qna" />
 	<typeAlias type="com.space.reserv.vo.ReservVO" alias="reserv"/>
+	<typeAlias type="com.space.qna.vo.QnaRepVO" alias="rep"/>
+	
 	</typeAliases>
 </configuration>

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.space.admin.dao.AdminMemDaoImpl;
 import com.space.admin.page.Criteria;
 import com.space.mem.vo.MemVO;
+import com.space.reserv.vo.ReservVO;
 
 @Service("AdminMemService")
 @Transactional
@@ -38,5 +39,11 @@ public class AdminMemServiceImpl implements AdminMemService {
        detail = adminMemDao.memDetail(mvo);
        return detail;
     }
+
+	@Override
+	public List<ReservVO> memReserv(String mem_Id) {
+		List<ReservVO> res = adminMemDao.memReserv(mem_Id);
+		return res;
+	}
 
 }

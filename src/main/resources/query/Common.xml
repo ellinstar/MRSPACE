@@ -3,38 +3,36 @@
 
 <mapper namespace="com.space.space.dao.CommonDAO">
 
+
 	<!-- 게시물 전체 조회 (메인페이지 검색 쿼리) -->
 	<select id="commonList" resultType="space">
 		/* Space - spaceList */
-		select sp_num, sp_file, sp_name, sp_address, sp_price, cp_phone
+		select sp_num, sp_file, sp_name, sp_address,
+		sp_Y, sp_X, sp_price, cp_phone, cp_num
 		from
-		( select list.*, rownum as rnum
+		( select list.*, rownum as
+		rnum
 		from (
-		select s.sp_num, s.sp_file, s.sp_name, s.sp_address, s.sp_price, c.cp_phone
+		select s.sp_num, s.sp_file, s.sp_name, s.sp_address, s.sp_Y,
+		s.sp_X, s.sp_price, c.cp_phone, s.cp_num
 		from tb_space s, tb_company c
-		
+
 		<where>
 			s.cp_num = c.cp_num
 			<if test="keyword != null and keyword != ''">
 				and sp_name like '%' || #{keyword} || '%'
 			</if>
 		</where>
-		
+
 		order by sp_num desc
 		) list
 		)
-		<where>
-			<if test="start_row != null and start_row != ''">
-				<if test="end_row != null and end_row != ''">
-					rnum between #{start_row} and #{end_row}
-				</if>
-			</if>
-		</where>
 	</select>
 
 
 	<!-- 게시물 총 개수 -->
-	<select id="commonListCnt" parameterType="common" resultType="int">
+	<select id="commonListCnt" parameterType="common"
+		resultType="int">
 		<!-- Space - SpaceListCnt -->
 		select nvl(count(1), 0) from
 		( select list.*, rownum as rnum
@@ -50,15 +48,61 @@
 
 	</select>
 
-		<!-- 상세 페이지를 위한 게시물 조회 -->
-	<select id="commonDetail" parameterType="int" resultType="common">
+	<!-- 상세 페이지를 위한 게시물 조회 -->
+	<select id="commonDetail" parameterType="int"
+		resultType="common">
 		/* Board - spaceDetail */
 		SELECT
-			      s.sp_num, s.sp_type, s.sp_stock, s.sp_name, s.sp_price, s.sp_address,
-			      s.sp_exposition, s.sp_file, s.sp_service, s.sp_traffic, c.cp_phone
-		FROM tb_space s, tb_company c
-		WHERE sp_num = #{sp_Num}
+		s.sp_num, s.sp_type,
+		s.sp_stock, s.sp_name, s.sp_price, s.sp_address, s.sp_Y,
+		s.sp_X,
+		s.sp_exposition, s.sp_file, s.sp_service, s.sp_traffic, c.cp_phone,
+		c.cp_num
+		FROM
+		tb_space s, tb_company c
+		WHERE s.cp_num = c.cp_num and
+		s.sp_num =
+		#{sp_Num}
 	</select>
 
+
+	<select id="dtcommonList" resultType="space" parameterType="int">
+		/* Space - dtcommonList */
+		select *
+		from
+		( select list.*, rownum as rnum
+		from (
+		select s.sp_num, s.sp_file, s.sp_name, s.sp_address, s.sp_Y,
+		s.sp_X, s.sp_price, c.cp_phone, s.cp_num
+		from tb_space s, tb_company c
+
+		<where>
+			s.cp_num = c.cp_num and
+			
+			<![CDATA[ rownum < 4 ]]>
+
+			and s.cp_num = #{cp_Num} and not s.sp_Num = #{sp_Num}
+
+
+		</where>
+
+		order by c.cp_num desc
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum between #{start_row} and #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<select id="cpnum" resultType="int" parameterType="space">
+		select cp_Num
+		from tb_space
+		where sp_num = #{sp_Num}
+	</select>
+	
 
 </mapper>

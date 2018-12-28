@@ -8,12 +8,34 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA</title>
-<!-- Bootstrap core CSS -->
-<link href="/resources/include/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" 	src="/resources/include/dist/js/bootstrap.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			/* 게시글 등록 */
+			/* $("#insertFormBtn").on("click", function() {
+				self.location = "/admin/noticeWrite";
+			}); */
+			/* 페이지 이동 */
+			var actionForm = $("#actionForm");
+
+			$(".paginate_button a").on("click",function(e) {
+				e.preventDefault();
+				console.log('click');
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+			});
+
+			$(".move").on("click",function(e) {
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='qna_Num' value='"
+				+ $(this).attr("href")+ "'>");
+				actionForm.attr("action","/admin/qna/detail");
+				actionForm.submit();
+			});
+	});
+	</script>
 </head>
 <body>
 	<div class="contentContainer">
@@ -26,11 +48,11 @@
 
 				<thead>
 					<tr>
-						<th data-value="que_num" class="order">#번호</th>
+						<th data-value="qna_Num" class="order">#번호</th>
 						<th>제목</th>
 						<th>답변</th>
-						<th data-value="mem_name">작성자</th>
-						<th data-value="que_date" class="order">작성일</th>
+						<th data-value="qna_Name">작성자</th>
+						<th data-value="qna_Date" class="order">작성일</th>
 					</tr>
 				</thead>
 				<tbody id="qna">
@@ -39,19 +61,20 @@
 						<c:when test="${not empty qna}">
 							<c:forEach var="qna" items="${qna}">
 								<tr>
-									<td><c:out value="${qna.que_num}" /></td>
+									<td><c:out value="${qna.qna_Num}" /></td>
 									<td><a class='move'
-										href='<c:out value="${qna.que_num}"/>'><c:out
-												value="${qna.que_title}"></c:out></a></td>
-									<td><%  %></td>
-									<td><c:out value="${qna.mem_name}"/></td>
-									<td><c:out value="${qna.que_date}" /></td>
+										href='<c:out value="${qna.qna_Num}"/>'><c:out
+												value="${qna.qna_Title}"></c:out></a></td>
+									<td><c:if test="${qna.rep_num == 0}">미등록</c:if>
+								<c:if test="${qna.rep_num != 0}">완료</c:if></td>
+									<td><c:out value="${qna.qna_Name}"/></td>
+									<td><c:out value="${qna.qna_Date}" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="3" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+								<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -85,47 +108,14 @@
 				</c:if>
 			</ul>
 		</div>
-		<form id="actionForm" action="/admin/qna" method="get">
+		<form id="actionForm" action="/admin/qna/list" method="get">
 			<input type="hidden" name='pageNum' value='${pageMaker.cri.pageNum}'>
 			<input type="hidden" name='amount' value='${pageMaker.cri.amount}'>
-			<input type="hidden" name='type'
-				value='<c:out value="${pageMaker.cri.type}"/>'> <input
-				type="hidden" name='keyword'
-				value='<c:out value="${pageMaker.cri.keyword}"/>'>
+			
 
 		</form>
 		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 	</div>
-	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							/* 게시글 등록 */
-							$("#insertFormBtn").on("click", function() {
-								self.location = "/admin/noticeWrite";
-							});
-							/* 페이지 이동 */
-							var actionForm = $("#actionForm");
-
-							$(".paginate_button a").on(
-									"click",
-									function(e) {
-										e.preventDefault();
-										console.log('click');
-										actionForm
-												.find("input[name='pageNum']")
-												.val($(this).attr("href"));
-										actionForm.submit();
-									});
-
-							$(".move").on("click",function(e) {
-									e.preventDefault();
-									actionForm.append("<input type='hidden' name='nt_num' value='"
-									+ $(this).attr("href")+ "'>");
-									actionForm.attr("action","/noticeDetail");
-									actionForm.submit();
-							});
-						});
-	</script>
+	
 </body>
 </html>
