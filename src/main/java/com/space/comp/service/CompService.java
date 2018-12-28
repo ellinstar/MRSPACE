@@ -13,7 +13,7 @@ public interface CompService {
 	
 	public int compInsert(CompVO cvo);
 
-	public boolean compUpdate(CompVO cvo);
+	public int compUpdate(CompVO cvo);
 
 	public int cp_BnumConfirm(String cp_Bnum);
 

@@ -38,13 +38,14 @@ public class CompDAOImpl implements CompDAO {
 	}
 
 	public int compUpdate(CompVO cvo) {
+		System.out.println("업데이트 DAO : cpID : " + cvo.getCp_Id());
 		return session.update("compUpdate", cvo);
 	}
 
 	public int compDelete(String cp_Id) {
 		return session.delete("compDelete", cp_Id);
 	}
-	
+
 	// 아이디 찾기
 	public CompVO findComp(CompVO cvo) {
 		return session.selectOne("findComp", cvo);

@@ -6,7 +6,7 @@
 	<select id="spNewList" resultType="space">
 	<![CDATA[
 	select * 
-	from(select s.sp_name, c.cp_name, s.sp_date
+	from(select s.sp_num, s.sp_name, c.cp_name, s.sp_date
 	from tb_space s, tb_company c where s.cp_num = c.cp_num)
 	where sp_date >=trunc(sysdate) and rownum<=3
 	]]>

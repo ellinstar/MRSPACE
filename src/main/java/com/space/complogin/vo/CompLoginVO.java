@@ -9,5 +9,4 @@ public class CompLoginVO extends CompLoginHistory {
 	private String cp_Name = "";
 	private int cp_Num;
 
-
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 // 업체 
-public class CompVO extends CompLoginVO{
+public class CompVO extends CompLoginVO {
 
 	// 업체 번호
 	private int cp_Num;

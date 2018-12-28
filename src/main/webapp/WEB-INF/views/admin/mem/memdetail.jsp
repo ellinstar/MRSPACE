@@ -75,7 +75,7 @@ label, input{
                     <label class="label">생년월일</label>
                 </div>
                 <div class="col-md-4 form-label-group">
-                    <input type="text" id="birth" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                    <input type="text" id="birth" class="form-control" placeholder="First name" required="required">
                     <label for="birth">${mem.mem_Birth}</label>
                 </div>
                 <div class="col-md-1 form-label-group">

@@ -13,9 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.space.comp.service.CompService;
 import com.space.comp.vo.CompVO;
+import com.space.complogin.service.CompLoginService;
 import com.space.complogin.vo.CompLoginVO;
-import com.space.mem.vo.MemVO;
-import com.space.memlogin.vo.LoginVO;
 
 import lombok.extern.java.Log;
 
@@ -26,6 +25,9 @@ public class CompController {
 
 	@Autowired
 	private CompService compService;
+
+	@Autowired
+	private CompLoginService compLoginService;
 
 	// 페이지 이동 시작
 	// --------------------------------------------------------------------------------------
@@ -100,25 +102,65 @@ public class CompController {
 		return "comp/compPwChangePage";
 	}
 
-	// 내 정보 
-	@RequestMapping(value="/compInfo.do", method = RequestMethod.GET)
+	// 내 정보
+	@RequestMapping(value = "/compInfo.do", method = RequestMethod.GET)
 	public ModelAndView CompInfoForm(HttpSession session) {
 		log.info("compInfo.do get 방식에 의한 CompInfoForm메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
-		
-		String cpId =(String)session.getAttribute("cp_Id");
-		
-		if(cpId==null){
-			mav.setViewName("mem/login");	
+
+		String cpId = (String) session.getAttribute("cp_Id");
+
+		if (cpId == null) {
+			mav.setViewName("mem/login");
 			return mav;
 		}
-		
+
 		CompVO vo = compService.compSelect(cpId);
-		mav.addObject("comp", vo);
-		mav.setViewName("comp/compInfo");	
+		session.setAttribute("compInfo", vo);
+		mav.setViewName("comp/compInfo");
 		return mav;
 	}
-	
+
+	// 내정보 - 비밀번호 확인 폼
+	@RequestMapping(value = "/compModifyPw.do", method = RequestMethod.GET)
+	public ModelAndView compModifyPw(HttpSession session) {
+		log.info("compModifyPw.do get 방식에 의한 메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+
+		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
+
+		System.out.println(lvo);
+
+		if (lvo == null) {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
+		CompVO vo = compService.compSelect(lvo.getCp_Id());
+		mav.addObject("comp2", vo);
+		mav.setViewName("comp/compModifyPw");
+		return mav;
+	}
+
+	// 회원정보수정 폼
+	@RequestMapping(value = "/compModify.do", method = RequestMethod.GET)
+	public ModelAndView compModify(HttpSession session) {
+		log.info("compModify.do get 방식에 의한 메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+
+		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
+
+		if (lvo == null) {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
+		CompVO vo = compService.compSelect(lvo.getCp_Id());
+		mav.addObject("comp2", vo);
+		mav.setViewName("comp/compModify");
+		return mav;
+	}
+
 	// 페이지 이동 끝-----------------------------------------------------------------
 
 	// 사용자 아이디 중복체크
@@ -228,10 +270,10 @@ public class CompController {
 		System.out.println("CompController클래스 compPwChangePage post메소드 호출");
 		ModelAndView mav = new ModelAndView();
 		System.out.println("ModelAndView mav : " + mav);
-		String cpId = (String)session.getAttribute("cp_Id2");
-		
+		String cpId = (String) session.getAttribute("cp_Id2");
+
 		cvo.setCp_Id(cpId);
-		
+
 		int result = compService.compPwChange2(cvo);
 		System.out.println("반환값 : " + result);
 		if (result != 1) {
@@ -242,7 +284,68 @@ public class CompController {
 			mav.setViewName("mem/login");
 			return mav;
 		}
+	}
 
+	// 내정보 - 비밀번호 확인 처리
+	@RequestMapping(value = "/compModifyPw.do", method = RequestMethod.POST)
+	public ModelAndView compModifyPwProcess(@ModelAttribute("CompVO") CompVO cvo, HttpSession session) {
+		log.info("compModifyPw.do post 방식에 의한 메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+
+		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
+
+		if (lvo == null) {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
+		cvo.setCp_Id(lvo.getCp_Id());
+		CompVO vo = compService.compSelect(cvo.getCp_Id());
+		if (compLoginService.compLoginSelect(cvo.getCp_Id(), cvo.getCp_Pw()) == null) {
+			mav.addObject("errCode", 1);
+			System.out.println("1 / CompLoginVO lvo : " + lvo);
+			System.out.println("1 / CompVO vo : " + vo);
+			return mav;
+		} else {
+			mav.addObject("comp2", vo);
+			mav.setViewName("comp/compModify");
+			System.out.println("2 / CompLoginVO lvo : " + lvo);
+			System.out.println("2 / CompVO vo : " + vo);
+			return mav;
+		}
+	}
+
+	// 회원정보수정 처리
+	@RequestMapping(value = "/compModify.do", method = RequestMethod.POST)
+	public ModelAndView compModifyProcess(@ModelAttribute("CompVO") CompVO cvo, HttpSession session) {
+		log.info("compModify.do post 방식에 의한 메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+
+		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
+
+		System.out.println("세션 comp2 : " + session.getAttribute("comp2"));
+		
+		
+		if (lvo == null) {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
+		cvo.setCp_Id(lvo.getCp_Id());
+		CompVO vo = compService.compSelect(cvo.getCp_Id());
+		System.out.println("컨트롤러 : 업체아이디 : " + cvo.getCp_Id());
+		if (compLoginService.comploginSelect2(cvo.getCp_Id()) == null) { // 실패
+			mav.addObject("errCode", 1);
+			mav.setViewName("comp/compModify");
+		} else if (compService.compUpdate(cvo) == 1) { // 성공
+			mav.addObject("errCode", 3);
+			mav.setViewName("redirect:/comp/compInfo.do");
+		} else {
+			mav.addObject("errCode", 2); // 실패
+			mav.addObject("comp2", vo);
+			mav.setViewName("comp/compModify");
+		}
+		return mav;
 	}
 
 }

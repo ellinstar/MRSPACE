@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.space.comp.vo.CompVO;
 import com.space.complogin.service.CompLoginService;
 import com.space.complogin.vo.CompLoginVO;
 
@@ -54,13 +55,14 @@ public class CompLoginController {
 		} else {
 			// 입력한 아이디 비밀번호 확인
 			CompLoginVO loginCheckResult = comploginService.compLoginSelect(lvo.getCp_Id(), lvo.getCp_Pw());
-			log.info("logincheckResult"+loginCheckResult);
-			System.out.println("id : " + lvo.getCp_Id());
-			System.out.println("pw : " + lvo.getCp_Pw());
+			
+			log.info("logincheckResult : "+loginCheckResult);
+			
 			CompLoginVO vo = comploginService.compLoginHistorySelect(cp_Id);
 			log.info("비밀번호 확인!");
-			//log.info("최근 로그인 일시 : " + new SimpleDateFormat("YYYY-MM-dd").format(vo.getLastSuccessedLogin()));
+			// log.info("최근 로그인 일시 : " + new SimpleDateFormat("YYYY-MM-dd").format(vo.getLastSuccessedLogin()));
 			// 로그인 성공인지 확인
+			
 			if (loginCheckResult == null) {
 				mav.addObject("errCode", 1);
 				
@@ -69,17 +71,24 @@ public class CompLoginController {
 			// 로그인 성공
 			// 로그인 성공 시간 DB에 업데이트
 			else {
+				CompVO ccvo = new CompVO();
+				
+				ccvo = comploginService.comp(loginCheckResult.getCp_Id());
+				
+				session.setAttribute("comp2", ccvo);
+				
 				vo.setLastSuccessedLogin(new Date());
 				comploginService.compLoginHistoryUpdate(vo);
 				session.setAttribute("cp_Id", loginCheckResult.getCp_Id());
 	            session.setAttribute("cp_Num", loginCheckResult.getCp_Num());
 	            session.setAttribute("cp_Name", loginCheckResult.getCp_Name());
+	            
+	            
 				session.setMaxInactiveInterval(-1);
-				log.info("업체 로그인성공!");
+				System.out.println("업체 로그인성공!");
 				String url="/";
 				return "redirect: "+url;
 			}
-
 		}
 	}
 
