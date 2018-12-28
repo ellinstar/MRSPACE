@@ -31,23 +31,28 @@ public class QnaServiceImpl implements QnaService {
 		return myList;
 	}
 	
-	// 글목록 구현2
-		@Override
-		public List<QnaVO> qnaList2(QnaVO qvo) {
-			List<QnaVO> myList = null;
-			
-			// 정렬에 대한 기본값 설정
-			if(qvo.getOrder_by()==null) qvo.setOrder_by("qna_Num");
-			if(qvo.getOrder_sc()==null) qvo.setOrder_sc("DESC");
-			
-			myList = qnaDAO.qnaList2(qvo);
-			return myList;
-		}
+	// 글목록 구현 (자주 묻는 질문)
+	@Override
+	public List<QnaVO> qnaList2(QnaVO qvo) {
+		List<QnaVO> myList = null;
+		
+		// 정렬에 대한 기본값 설정
+		if(qvo.getOrder_by()==null) qvo.setOrder_by("qna_Num");
+		if(qvo.getOrder_sc()==null) qvo.setOrder_sc("DESC");
+		
+		myList = qnaDAO.qnaList2(qvo);
+		return myList;
+	}
 	
 	// 글 목록수
 	@Override
 	public int qnaListCnt(QnaVO qvo) {
 		return qnaDAO.qnaListCnt(qvo);
+	}
+	// 글 목록수 (자주 묻는 질문)
+	@Override
+	public int qnaListCnt2(QnaVO qvo) {
+		return qnaDAO.qnaListCnt2(qvo);
 	}
 
 	// 글입력 구현

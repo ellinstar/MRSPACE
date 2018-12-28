@@ -80,6 +80,7 @@
 		</div>
 		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id}"><!-- 회원아이디 -->
 		<input type="hidden" id="sp_Num" name="sp_Num"value="${detail.sp_Num}"><!-- 공간번호 -->
+		<input type="hidden" id="sp_Name" name="sp_Name"value="${detail.sp_Name}"><!-- 공간이름 -->
 		<input type="hidden" id="sp_Stock" name="sp_Stock"value="${detail.sp_Stock}"><!-- 공간 재고 -->
 		<input type="hidden" id="res_Amount" name="res_Amount" value="${detail.sp_Price}" readonly="readonly">
 		<input type="button" id="reservBtn" name="reservBtn" value="예약">

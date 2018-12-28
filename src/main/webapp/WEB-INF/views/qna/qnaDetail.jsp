@@ -78,7 +78,7 @@
 	</head>
 <body>
 	<div class="contentContainer">
-		<div class="contentTit"><h3>게시판 상세보기</h3></div>
+		<br><div class="contentTit"><h3>게시판 상세보기</h3></div>
 		
 		<form name="f_data" id="f_data" method="POST">
 			<input type="hidden" name="qna_Num" value="${detail.qna_Num}"/>
@@ -102,9 +102,9 @@
 					</div>
 				</td>
 				<td id="btd2">
-					<input type="button" value="수정" id="updateFormBtn">
-					<input type="button" value="삭제" id="qnaDeleteBtn">
-					<input type="button" value="목록" id="qnaListBtn">
+					<input type="button" value="수정" id="updateFormBtn" class="btn btn-default">
+					<input type="button" value="삭제" id="qnaDeleteBtn" class="btn btn-default">
+					<input type="button" value="목록" id="qnaListBtn" class="btn btn-default">
 				</td>
 			</tr>
 		</table>
@@ -145,7 +145,8 @@
 			</table>
 		</div>
 		<%-- =============== 상세 정보 보여주기 종료 ============ --%>
-		<%-- <jsp:include page="reply.jsp"></jsp:include> --%>
+		<hr>
+		<jsp:include page="reply.jsp"></jsp:include>
 	</div>
 </body>
 </html>

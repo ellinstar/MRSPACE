@@ -32,9 +32,9 @@ public class AdminQnaController {
 	
 	//글목록 구현
 	@RequestMapping(value="/list", method= RequestMethod.GET)
-	public String qnaList(@ModelAttribute QnaVO qvo, Model model, Criteria cri) {
+	public String qnaList(@ModelAttribute QnaRepVO qvo, Model model, Criteria cri) {
 		log.info("문의게시판 list 호출");
-		List<QnaVO> qnalist = adQnaServ.qnaList(cri);
+		List<QnaRepVO> qnalist = adQnaServ.qnaList(cri);
 		int total = adQnaServ.qnaCnt(cri);
 		model.addAttribute("qna", qnalist);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));

@@ -10,6 +10,7 @@ public interface QnaDAO {
 	public List<QnaVO> qnaList(QnaVO qvo);
 	public List<QnaVO> qnaList2(QnaVO qvo);
 	public int qnaListCnt(QnaVO qvo);
+	public int qnaListCnt2(QnaVO qvo);
 	public int qnaInsert(QnaVO qvo);
 	public QnaVO qnaDetail(QnaVO qvo);
 	public QnaVO qnaDetail2(QnaVO qvo);

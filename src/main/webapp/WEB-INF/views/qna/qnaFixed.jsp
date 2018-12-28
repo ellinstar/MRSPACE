@@ -77,6 +77,11 @@
 					goPage(1);
 				});
 				
+				// 문의게시판으로
+				$("#qnamooni").click(function(){
+					history.back();
+				});
+				
 				/* 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트 */
 				$("#pageSize").change(function() {
 					goPage(1);
@@ -105,7 +110,7 @@
 				$("#page").val(page);
 				$("#f_search").attr({ 
 					"method":"get", 
-					"action":"/qna/qnaList.do" 
+					"action":"/qna/qnaFixed.do" 
 				}); 
 				$("#f_search").submit();
 			}
@@ -114,7 +119,7 @@
 	</head>
 	<body>
 		<div class="contentContainer">
-			<br><div class="contentTit"><h2>자주 묻는 질문 게시판</h2></div><br><br>
+			<br><div class="contentTit"><h2>자주 묻는 질문</h2></div><br><br>
 			
 			<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 			<form name="detailForm" id="detailForm">
@@ -143,7 +148,8 @@
 									<option value="qna_Name">작성자</option>
 								</select>
 								<input type="text" name="keyword" id="keyword" placeholder="검색어를입력하세요" />
-								<input type="button" value="검색" id="searchData" />
+								<input type="button" value="검색" id="searchData" class="btn btn-default" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="button" value="문의 게시판" id="qnamooni" class="btn btn-primary" />
 							</td>
 							<td id="btd2">한페이지에
 								<select id="pageSize" name="pageSize">

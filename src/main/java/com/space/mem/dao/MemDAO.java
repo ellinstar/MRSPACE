@@ -1,7 +1,10 @@
 package com.space.mem.dao;
 
+import java.util.List;
+
 import com.space.mem.vo.MemSecurity;
 import com.space.mem.vo.MemVO;
+import com.space.reserv.vo.ReservVO;
 
 public interface MemDAO {
 	public int securityInsert(MemSecurity set);
@@ -25,4 +28,6 @@ public interface MemDAO {
 	public MemVO pwChange(MemVO mvo);
 	   
 	public int pwChange2(MemVO mvo);
+	
+	public List<ReservVO> reservList(MemVO mvo);
 }
