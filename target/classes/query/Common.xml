@@ -7,24 +7,46 @@
 	<!-- 게시물 전체 조회 (메인페이지 검색 쿼리) -->
 	<select id="commonList" resultType="space">
 		/* Space - spaceList */
-		select sp_num, sp_file, sp_name, sp_address,
-		sp_Y, sp_X, sp_price, cp_phone, cp_num
+		select sp_num, sp_file, sp_name, sp_address, sp_price
+		
 		from
-		( select list.*, rownum as
-		rnum
+		
+		( select list.*, rownum as rnum
+		
 		from (
-		select s.sp_num, s.sp_file, s.sp_name, s.sp_address, s.sp_Y,
-		s.sp_X, s.sp_price, c.cp_phone, s.cp_num
-		from tb_space s, tb_company c
+		
+		select s.sp_num, s.sp_file, s.sp_name, s.sp_address, s.sp_price
+		
+		from tb_space s
 
-		<where>
-			s.cp_num = c.cp_num
-			<if test="keyword != null and keyword != ''">
-				and sp_name like '%' || #{keyword} || '%'
-			</if>
-		</where>
+		<if test="keyword != null and keyword != ''">
+			where sp_name like '%' || #{keyword} || '%'
+		</if>
+		
+		<if test="search == 0">
+			order by sp_num DESC
+		</if>
+		
+		
+		<if test="search == 1">
+			order by sp_num DESC
+		</if>
 
-		order by sp_num desc
+		<if test="search == 2">
+		<![CDATA[ , (select sp_num, count(*) c 
+				from tb_reserv group by sp_num order by c DESC) r
+				where s.sp_num = r.sp_num ]]>
+		</if>
+
+		<if test="search == 3">
+				<![CDATA[ ORDER BY sp_price ASC  ]]>
+		</if>
+
+		<if test="search == 4">
+				<![CDATA[ ORDER BY sp_price DESC  ]]>
+		</if>
+
+
 		) list
 		)
 	</select>
@@ -103,6 +125,6 @@
 		from tb_space
 		where sp_num = #{sp_Num}
 	</select>
-	
+
 
 </mapper>

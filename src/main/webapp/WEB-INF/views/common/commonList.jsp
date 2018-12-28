@@ -41,7 +41,7 @@
 		var value = "";
 		if (word != "") {
 			$("#keyword").val("<c:out value='${data.keyword}'/>");
-			/* $("#search").val("<c:out value='${data.search}'/>"); */
+			$("#search").val("<c:out value='${data.search}'/>");
 
 			/* if ($("#search").val() != 'sp_Name') {
 			   // :contains()는 특정 테스트를 포함한 요소반환
@@ -70,22 +70,16 @@
 		$("#pageSize").change(function() {
 			goPage(1);
 		});
-
-		
-		$("#search").change(function() {
+		// select option
+		var searchForm = $("#searchForm");
+		$("#search").on("change", function() {
 			// value 값으로 선택
+		/* 	e.preventDefault(); */
+
 			$("#search option:checked").val();
-			function goPage(page) {
-				if($("#search").val()=="all"){
-					$("#page").val(page);
-					$("#f_search").attr({
-						"method":"get",
-						"action":"/common/commonList.do"
-					});
-					$("#f_search").submit();
-				}
-			}
-			
+
+			searchForm.submit();
+
 		});
 
 		// 검색 버튼 클릭 시 처리 이벤트
@@ -111,14 +105,14 @@
 	});
 
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
-	function goPage(page) {
-		$("#page").val(page);
-		$("#sp_Search").attr({
-			"method" : "get",
-			"action" : "/common/commonList.do"
-		});
-		$("#sp_Search").submit();
-	}
+	/* 	function goPage(page) {
+	 $("#page").val(page);
+	 $("#sp_Search").attr({
+	 "method" : "get",
+	 "action" : "/common/commonList.do"
+	 });
+	 $("#sp_Search").submit();
+	 } */
 
 	/* 전체목록 불러오기 */
 	function spaceAll() {
@@ -208,6 +202,11 @@
 	left: 0;
 	font-size: 13px;
 }
+
+form#searchForm {
+	margin-left: 930px;
+	width: 150px;
+}
 </style>
 
 <title>Insert title here</title>
@@ -231,7 +230,6 @@
 				<form id="sp_Search" name="sp_Search" class="form-row">
 
 					<input type="hidden" id="page" name="page" value="${data.page}" />
-					<input type="button" value="전체목록" onclick="javascript:spaceAll()">
 					<input type="hidden" id="order_by" name="order_by"
 						value="${data.order_by}" /> <input type="hidden" id="order_sc"
 						name="order_sc" value="${data.order_sc}" />
@@ -254,27 +252,20 @@
 					data-search-param="rsvTpCd" value="">
 
 				<!-- [D] label 클릭 시 sorting_filter에 on클래스를 추가해주세요. (아이콘)-->
-				<form id="f_search" name="f_search">
+				<form id='searchForm' method="get" class="form-row">
 					<!-- [D] 선택된 option의 텍스트를 label에 넣어주세요 -->
-					<select name="search" id="search">
-						<option value="all">-- 선택 --</option>
-						<option value="BEST_DESC">베스트 공간 순</option>
-						<option value="PRC_ASC">가격 낮은 순</option>
-						<option value="PRC_DESC">가격 높은 순</option>
+					<select name="search" id="search"
+						class="form-control font-weight-bold">
+						<option value="0" style="display:none">전체</option>
+						<option value="1">전체</option>
+						<option value="2">베스트 공간 순</option>
+						<option value="3">가격 낮은 순</option>
+						<option value="4">가격 높은 순</option>
 					</select>
 				</form>
 			</div>
 
 			<br>
-			<!-- 검색조건 아직 미구현 -->
-			<div class="spaceSearch2">
-				<!--    <label>검색조건</label> <select id="search" name="search">
-               <option value="all">전체</option>
-               <option value="sp_Name">공간명</option>
-               <option value="sp_Address">주소</option>
-               <option value="sp_Price">가격</option>
-            </select>  -->
-			</div>
 		</div>
 		<%-- ================== 검색기능 종료 ================= --%>
 
