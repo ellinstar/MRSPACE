@@ -43,22 +43,6 @@
 			$("#keyword").val("<c:out value='${data.keyword}'/>");
 			$("#search").val("<c:out value='${data.search}'/>");
 
-			/* if ($("#search").val() != 'sp_Name') {
-			   // :contains()는 특정 테스트를 포함한 요소반환
-			   if ($("#search").val() == 'sp_Name')
-			      value = "#list tr td.goDetail";
-			   else if ($("#search").val() == 'sp_Name')
-			      value = "#list tr td.name";
-			   $(value + ":contains('" + word + "')").each(
-			         function() {
-			            var regex = new RegExp(word, 'gi');
-			            $(this).html(
-			                  $(this).text().replace(
-			                        regex,
-			                        "<span class='required'>" + word
-			                              + "</span"));
-			         });
-			} */
 		}
 
 		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
@@ -74,8 +58,6 @@
 		var searchForm = $("#searchForm");
 		$("#search").on("change", function() {
 			// value 값으로 선택
-		/* 	e.preventDefault(); */
-
 			$("#search option:checked").val();
 
 			searchForm.submit();
@@ -103,16 +85,6 @@
 			$("#detailForm").submit();
 		});
 	});
-
-	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
-	/* 	function goPage(page) {
-	 $("#page").val(page);
-	 $("#sp_Search").attr({
-	 "method" : "get",
-	 "action" : "/common/commonList.do"
-	 });
-	 $("#sp_Search").submit();
-	 } */
 
 	/* 전체목록 불러오기 */
 	function spaceAll() {
@@ -256,7 +228,7 @@ form#searchForm {
 					<!-- [D] 선택된 option의 텍스트를 label에 넣어주세요 -->
 					<select name="search" id="search"
 						class="form-control font-weight-bold">
-						<option value="0" style="display:none">전체</option>
+						<option value="0" style="display: none">전체</option>
 						<option value="1">전체</option>
 						<option value="2">베스트 공간 순</option>
 						<option value="3">가격 낮은 순</option>
