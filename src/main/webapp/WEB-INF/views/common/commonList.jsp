@@ -71,14 +71,21 @@
 			goPage(1);
 		});
 
-		// 검색 대상이 변경될 때마다 처리 이벤트
+		
 		$("#search").change(function() {
-			if ($("#search").val() == "all") {
-				$("#keyword").val("전체 데이터 조회합니다.");
-			} else if ($("#search").val() != "all") {
-				$("#keyword").val("");
-				$("#keyword").focus();
+			// value 값으로 선택
+			$("#search option:checked").val();
+			function goPage(page) {
+				if($("#search").val()=="all"){
+					$("#page").val(page);
+					$("#f_search").attr({
+						"method":"get",
+						"action":"/common/commonList.do"
+					});
+					$("#f_search").submit();
+				}
 			}
+			
 		});
 
 		// 검색 버튼 클릭 시 처리 이벤트
@@ -226,8 +233,8 @@
 					<input type="hidden" id="page" name="page" value="${data.page}" />
 					<input type="button" value="전체목록" onclick="javascript:spaceAll()">
 					<input type="hidden" id="order_by" name="order_by"
-						value="${data.order_by}" /> 
-					<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" />
+						value="${data.order_by}" /> <input type="hidden" id="order_sc"
+						name="order_sc" value="${data.order_sc}" />
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
 						<input type="text" class="form-control form-control-lg"
 							name="keyword" id="keyword" placeholder="공간을 빠르게 검색해보세요." />
@@ -247,14 +254,15 @@
 					data-search-param="rsvTpCd" value="">
 
 				<!-- [D] label 클릭 시 sorting_filter에 on클래스를 추가해주세요. (아이콘)-->
-				<div class="sorting_filter">
+				<form id="f_search" name="f_search">
 					<!-- [D] 선택된 option의 텍스트를 label에 넣어주세요 -->
-					<select name="search" id="search" data-search-param="order">
+					<select name="search" id="search">
+						<option value="all">-- 선택 --</option>
 						<option value="BEST_DESC">베스트 공간 순</option>
 						<option value="PRC_ASC">가격 낮은 순</option>
 						<option value="PRC_DESC">가격 높은 순</option>
 					</select>
-				</div>
+				</form>
 			</div>
 
 			<br>
