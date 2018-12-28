@@ -22,7 +22,7 @@ public class AdminQnaDaoImpl {
 	}
 	
 	//문의게시판 목록
-	public List<QnaVO> qnaList(Criteria cri){
+	public List<QnaRepVO> qnaList(Criteria cri){
 		return session.selectList("adQnaList", cri);
 	}
 	

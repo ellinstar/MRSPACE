@@ -90,7 +90,8 @@ $(document).ready(function() {
 				</tbody>
 			</table>
 			<form id="actionForm" action="/admin/notice/ntDetail" method="get"></form>
-		<%-- =============== 사업자 메일 보내기 모달 =============== --%>
+		
+		<%-- 보류=============== 사업자 메일 보내기 모달 =============== --%>
 		<!-- Modal 추가 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
@@ -128,6 +129,7 @@ $(document).ready(function() {
 		</div>
 		<%-- =============== 사업자 메일보내기 모달 끝 =============== --%>
 		</div>
+		
 		<div class="page-header">
 			<h3><a href="/admin/qna/list">문의 게시판</a></h3>
 			</div>
@@ -145,8 +147,8 @@ $(document).ready(function() {
 				</thead>
 				<tbody id="qnMain">
 				<c:choose>
-					<c:when test="${not empty qnMain}" >
-						<c:forEach var="qna" items="${qnMain}">
+					<c:when test="${not empty qnaMain}" >
+						<c:forEach var="qna" items="${qnaMain}">
 							<tr>
 								<td><c:out value="${qna.qna_Num}"/></td>
 								<td><a class='moveqna' href='<c:out value="${qna.qna_Num}"/>'><c:out value="${qna.qna_Title}"></c:out></a> </td>

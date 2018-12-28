@@ -52,9 +52,8 @@ public class AdminController {
 		model.addAttribute("ntMainList", ntMainList);
 		
 		List<QnaRepVO> qnaMain = adQnServ.qnaMainList();
-		model.addAttribute("qnMain", qnaMain);
+		model.addAttribute("qnaMain", qnaMain);
 		
-		System.out.println("asd : " + qnaMain.toString());
 		return "/admin/board/bdmain";
 	}
 	@RequestMapping(value="/comp", method= RequestMethod.GET)

@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.space.admin.dao.AdminResDAO">
+	<sql id="resCommon">
+		select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state, r.res_date
+		from tb_reserv r, tb_space s, tb_company c
+		<where>
+			<if test="search != 0">
+				c.cp_num = #{search} and
+			</if>
+			r.sp_num=s.sp_num and s.cp_num = c.cp_num
+		</where>
+	</sql>
 
 
 	<!-- 신규 리스트 조회 -->
 	<select id="rsNewlist" resultType="reserv">
-	<![CDATA[
+	
 	select res_Num, sp_Name, sp_type, mem_id, cp_name, res_state
 	from
-	(select rownum rn, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state
-		from tb_reserv r, tb_space s, tb_company c
-	where r.sp_num=s.sp_num and s.cp_num = c.cp_num
-	and r.res_date >= trunc(sysdate) 
+	(select rownum rn, list.* 
+	from ( 
+	<include refid="resCommon"></include>
+	<![CDATA[
+	) list
+	where list.res_date >= trunc(sysdate) 
 	and rownum <= #{pageNum} * #{amount}
 	)
+	
 	where rn > (#{pageNum} -1) * #{amount}
 	]]>
+	</select>
+	<!-- 업체별 예약현황 -->
+	<select id="rescplist" resultType="reserv">
+	select rownum rn, list.*
+	from(
+		<include refid="resCommon"></include>
+	) list
 	</select>
 	
 	<!-- 페이징 위한 목록 수 조회 -->
@@ -50,18 +70,6 @@
 		select cp_Num, cp_Name from tb_company
 	</select>
 	
-	<!-- 업체별 예약현황 -->
-	<select id="rescplist" resultType="reserv">
-	select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state
-		from tb_reserv r, tb_space s, tb_company c
-	where 
-	<choose>
-	<when test="cp_Num != null and cp_Num != ''">
-	c.cp_num=#{cp_Num} and 
-	</when>
-	</choose>
 	
-	s.cp_num = c.cp_num and r.sp_num=s.sp_num
-	</select>
 	
 </mapper>

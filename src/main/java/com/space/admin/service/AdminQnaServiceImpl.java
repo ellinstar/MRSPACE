@@ -29,9 +29,9 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 	
 	//qna리스트 가져오기
 	@Override
-	public List<QnaVO> qnaList(Criteria cri) {
+	public List<QnaRepVO> qnaList(Criteria cri) {
 		// TODO Auto-generated method stub
-		List<QnaVO> qna = adQnaDao.qnaList(cri);
+		List<QnaRepVO> qna = adQnaDao.qnaList(cri);
 		return qna;
 	}
 	//페이징 위한 갯수 

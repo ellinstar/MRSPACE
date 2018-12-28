@@ -3,7 +3,7 @@
 <mapper namespace="com.space.reserv.ReservDAOImpl">
 
 	<insert id="reservation" parameterType="reserv">
-		insert into tb_reserv(res_num, res_usedate, res_amount, res_state, mem_Id, sp_num)
+		insert into tb_reserv(res_num, res_usedate, res_amount, res_state, mem_Id, sp_num, sp_name)
 		values(
 			tb_reserv_seq.nextval , to_date(#{resUseDate},'yyyy-MM') , ${res_Amount} , 1,'${mem_Id}' , ${sp_Num}, '${sp_Name}')
 	</insert>

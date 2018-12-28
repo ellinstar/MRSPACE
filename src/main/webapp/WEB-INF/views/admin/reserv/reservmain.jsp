@@ -24,23 +24,11 @@ $(document).ready(function() {
 		actionForm.submit();
 	});
 	var searchForm = $("#searchForm");
-	$("#cp_Num").val("<c:out value='${data.cp_Num}'/>");
-	$("#cpResbtn").on("change", function(e) {
+	$("#search").on("change", function(e) {
 		e.preventDefault();
-		//searchForm.attr("value", $("#cp_Num").val());
 		searchForm.submit();
-		/* $.ajax({
-			type:"GET",
-			url:"/admin/reserv/cpres",
-			data: cp_Num,
-			success: function(res) {
-				alert("리스트 호출");
-				$("#rescplist").html(res);
-			},
-			error: function() {
-				alert("에러 발생");
-			}
-		}); */
+		$("#search option:selected").text();
+		//$(this).find("option:eq(search)").prop("selected", true);
 		
 		
 	});
@@ -50,6 +38,16 @@ $(document).ready(function() {
 </head>
 <body>
 	<div class="contentContainer">
+	<!-- =====================콤보박스================================= -->
+	<form id='searchForm' action="/admin/reserv" method="get" class="form-label-group form-row " >
+		<select name="search" id="search" class="form-control font-weight-bold" data-live-search="true">
+			<option value="0">전체</option>
+			<c:forEach var="cp" items="${cp}">
+			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
+			</c:forEach>
+		</select>
+		</form>
+	<!-- =====================콤보박스================================= -->
 	<div class="row">
 		<div class="col-6">
 		<div class="page-header">
@@ -118,19 +116,12 @@ $(document).ready(function() {
 			</form>
 		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 		</div>
-		<%-- =================== 업체별 예약 =================== --%>
+		<%-- =================== 전체 예약 =================== --%>
 		<div class="col-6">
 		<div class="page-header">
-			<h3>업체별 예약건</h3>
+			<h3>전체 예약건</h3>
 		</div>
-		<form id='searchForm' action="/admin/reserv" method="get">
-		<select name="cp_Num" id="cp_Num" class="form-label-group form-control font-weight-bold" data-live-search="true">
-			<c:forEach var="cp" items="${cp}">
-			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
-			</c:forEach>
-		</select>
-		<button id="cpResbtn" class="btn">예약목록보기</button>
-		</form>
+		
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
@@ -166,6 +157,8 @@ $(document).ready(function() {
 				</c:choose>
 				</tbody>
 			</table>
+			
+			
 		</div>
 		</div>	
 	</div>

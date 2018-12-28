@@ -8,7 +8,7 @@ public class QnaRepVO extends QnaVO {
 	private String rep_content;
 	private String rep_date;
 	
-	private int qna_num;
+	private int qna_Num;
 	private String rep_name;
 	
 	
