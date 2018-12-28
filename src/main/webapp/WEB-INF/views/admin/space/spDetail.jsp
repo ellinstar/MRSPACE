@@ -23,7 +23,20 @@
 		});
 	});
 </script>
+<style type="text/css">
+label, input {
+	text-align: center;
+}
 
+.label {
+	background-color: #EAEAEA;
+}
+
+.form-control {
+	border-color: #EAEAEA;
+	border: 0.1;
+}
+</style>
 </head>
 <body class="bg-dark">
 	<div class="container" style="width: 100%">
@@ -33,124 +46,78 @@
 				<form>
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-						<label class="label label-default" id="cpnamel">업체명
-							</label>
+							<label class="label">업체명</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<input type="text" id="cpname" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="cpname">${detail.cp_Name}</label>
+								placeholder="First name"> <label for="cpname">${detail.cp_Name}</label>
 						</div>
 						<div class="col-md-2 form-label-group">
-							<input type="text" id="namel" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="namel">공간명 </label>
+							<label class="label">공간명 </label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<input type="text" id="name" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="name">${detail.sp_Name}</label>
+								placeholder="First name"> <label for="name">${detail.sp_Name}</label>
 						</div>
 					</div>
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<input type="text" id="typel" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="typel">공간유형 </label>
+							<label class="label">공간유형 </label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<input type="text" id="type" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="type">${detail.sp_Type}</label>
+								placeholder="First name"> <label for="type">${detail.sp_Type}</label>
 						</div>
 						<div class="col-md-2 form-label-group">
-							<input type="text" id="stockl" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="stockl">수량 </label>
+							<label class="label">수량 </label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<input type="text" id="stock" class="form-control"
-								placeholder="First name" required="required"
-								autofocus="autofocus"> <label for="stock">${detail.sp_Stock}</label>
+								placeholder="First name"> <label for="stock">${detail.sp_Stock}</label>
 						</div>
 					</div>
 					<div class="form-group form-row">
 						<div class="col-md-2">
 							<div class="form-label-group">
-								<input type="text" id="addl" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="addl">위치 </label>
+								<label class="label">위치 </label>
 							</div>
 						</div>
 						<div class="col-md-10">
 							<div class="form-label-group">
 								<input type="text" id="add" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="add">${detail.sp_Address}</label>
+									placeholder="First name"> <label for="add">${detail.sp_Address}</label>
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="expol" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="expol">공간 소개 </label>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="expo" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="expo">${detail.sp_Exposition}</label>
-							</div>
+					<div class="form-group form-row"">
+						<label class="label col-md-12">공간 소개 </label>
+						<div class="col-md-12 form-label-group">
+							<input type="text" id="expo" class="form-control"
+								placeholder="Confirm password" required="required"> <label
+								for="expo">${detail.sp_Exposition}</label>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="servl" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="servl">공간 서비스 </label>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="serv" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="serv">${detail.sp_Service}</label>
-							</div>
+					<div class="form-group form-row">
+						<label class="label col-md-12 ">공간 서비스 </label>
+						<div class="col-md-12 form-label-group">
+							<input type="text" id="serv" class="form-control"
+								placeholder="Confirm password" required="required"> <label
+								for="serv">${detail.sp_Service}</label>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="trafl" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="trafl">교통편</label>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="traf" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="traf">${detail.sp_Traffic}</label>
-							</div>
+					<div class="form-group form-row">
+						<label class="label col-md-12">교통편</label>
+						<div class="col-md-12 form-label-group">
+							<input type="text" id="traf" class="form-control"
+								placeholder="First name" required="required"> <label
+								for="traf">${detail.sp_Traffic}</label>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<input type="text" id="fill" class="form-control"
-									placeholder="Confirm password" required="required"> <label
-									for="fill">사진</label>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-12 form-label-group">
-								<img src="/uploadStorage/space/${detail.sp_File}"
-									style="width: 100%">
-							</div>
+					<div class="form-group form-row">
+						<label class="label col-md-12">사진</label>
+						<div class="col-md-12 form-label-group">
+							<img src="/uploadStorage/space/${detail.sp_File}"
+								style="width: 100%">
 						</div>
 					</div>
 
@@ -164,7 +131,7 @@
 			<!-- <button>삭제</button>&nbsp;
 		<button>반려</button>&nbsp;
 		<button>접수</button>&nbsp; -->
-			<button id="ok">승인</button>
+			<button id="ok" class="btn btn-default">승인</button>
 		</div>
 	</div>
 

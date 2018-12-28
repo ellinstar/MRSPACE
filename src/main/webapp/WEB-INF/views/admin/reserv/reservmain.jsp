@@ -146,7 +146,7 @@ $(document).ready(function() {
 								<td><c:out value="${rescp.sp_Name}"/></td>
 								<td><c:out value="${rescp.sp_Type}"/></td>
 								<td><c:out value="${rescp.mem_Id}"/></td>
-								<td><c:out value="${rescp.resUseDate}"/></td>
+								<td><c:out value="${rescp.res_UseDate}"/></td>
 								<td><c:out value="${rescp.res_State}"/></td>
 							</tr>
 						</c:forEach>

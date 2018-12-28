@@ -71,13 +71,14 @@ label, input{
             </div>
             
             <div class="form-group form-row">
-                <div class="col-md-2 form-label-group">
-                    <label class="label">생년월일</label>
-                </div>
-                <div class="col-md-4 form-label-group">
-                    <input type="text" id="birth" class="form-control" placeholder="First name" required="required">
-                    <label for="birth">${mem.mem_Birth}</label>
-                </div>
+            	<div class="col-md-1  form-label-group">
+                 <label class="label">이메일 </label>
+               </div>
+                <div class="col-md-5 form-label-group">
+                 <input type="text" id="mail" class="form-control" placeholder="Confirm password" required="required">
+                 <label for="mail">${mem.mem_Email}</label>
+               </div>
+                
                 <div class="col-md-1 form-label-group">
                     <label class="label">가입일</label>
                 </div>
@@ -88,13 +89,13 @@ label, input{
             </div>
             
             <div class="form-group form-row">
-                <div class="col-md-1  form-label-group">
-                 <label class="label">이메일 </label>
-               </div>
-                <div class="col-md-5 form-label-group">
-                 <input type="text" id="mail" class="form-control" placeholder="Confirm password" required="required">
-                 <label for="mail">${mem.mem_Email}</label>
-               </div>
+                <div class="col-md-2 form-label-group">
+                    <label class="label">생년월일</label>
+                </div>
+                <div class="col-md-4 form-label-group">
+                    <input type="text" id="birth" class="form-control" placeholder="First name" required="required">
+                    <label for="birth">${mem.mem_Birth}</label>
+                </div>
                 <div class="col-md-2  form-label-group">
                  <label class="label">최근 접속일 </label>
                </div>
