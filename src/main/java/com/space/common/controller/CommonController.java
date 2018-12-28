@@ -32,6 +32,7 @@ public class CommonController {
 		
 		List<SpaceVO> commonList = commonService.commonList(svo);
 		
+		
 		model.addAttribute("commonList", commonList);
 		model.addAttribute("data", svo);
 
