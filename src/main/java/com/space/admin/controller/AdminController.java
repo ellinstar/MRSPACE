@@ -42,6 +42,8 @@ public class AdminController {
 		model.addAttribute("cpNewList", cpNewList);
 		List<SpaceVO> spNewList = adminSpaceServ.spNewList();
 		model.addAttribute("spNewList", spNewList);
+		List<QnaVO> qNewList = adQnServ.qnaNewList();
+		model.addAttribute("qNew", qNewList);
 		return "index2";
 	}
 	

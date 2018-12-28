@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <div id="content-wrapper" class="content-wrapper">
 	<!--    <h1 class="page-header">&nbsp;Confirm!</h1> -->
 
@@ -120,7 +121,9 @@
 		</div>
 
 
-
+<!-- 링크 클릭시 넘어갈 actionForm -->
+<form id="actionForm"></form>
+<!-- 링크 클릭시 넘어갈 actionForm 끝 -->
 
 		<!-- DataTables 신규업체 -->
 		<div class="card mb-3">
@@ -142,7 +145,7 @@
 								<c:when test="${not empty cpNewList}">
 									<c:forEach var="comp" items="${cpNewList}">
 										<tr>
-											<td><a class='move' href='<c:out value="${comp.cp_Num}"/>'><c:out value="${comp.cp_Name}"></c:out></a> </td>
+											<td><a class='movec' href='<c:out value="${comp.cp_Num}"/>'><c:out value="${comp.cp_Name}"></c:out></a> </td>
 											<td><c:out value="${comp.cp_Id }"></c:out>
 										</tr>
 									</c:forEach>
@@ -183,7 +186,7 @@
 								<c:when test="${not empty spNewList}">
 									<c:forEach var="space" items="${spNewList}">
 										<tr>
-											<td><a class='move' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
+											<td><a class='moves' href='<c:out value="${space.sp_Num}"/>'><c:out value="${space.sp_Name}"></c:out></a> </td>
 											<td><c:out value="${space.cp_Name }"></c:out>
 										</tr>
 									</c:forEach>
@@ -221,11 +224,11 @@
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${not empty qnaNewList}">
-									<c:forEach var="qna" items="${qnaNewList}">
+								<c:when test="${not empty qNew}">
+									<c:forEach var="qna" items="${qNew}">
 										<tr>
-											<td><a class='move' href='<c:out value="${qna.qna_Num}"/>'><c:out value="${qna.qna_Title}"></c:out></a> </td>
-											<td><c:out value="${qna.mem_Id }"></c:out>
+											<td><a class='moveq' href='<c:out value="${qna.qna_Num}"/>'><c:out value="${qna.qna_Title}"></c:out></a> </td>
+											<td><c:out value="${qna.qna_Name }"></c:out>
 											<td><c:out value="${qna.qna_Date }"></c:out>
 										</tr>
 									</c:forEach>
@@ -251,4 +254,30 @@
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	var actionForm = $("#actionForm");
+		$(".movec").on("click",function(e) {
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='cp_Num' value='"
+			+ $(this).attr("href")+ "'>");
+			actionForm.attr("action", "/admin/comp/detail");
+			actionForm.submit();
+		});
+		$(".moves").on("click",function(e) {
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='sp_Num' value='"
+			+ $(this).attr("href")+ "'>");
+			actionForm.attr("action", "/admin/space/detail");
+			actionForm.submit();
+		});
+		$(".moveq").on("click",function(e) {
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='qna_Num' value='"
+			+ $(this).attr("href")+ "'>");
+			actionForm.attr("action","/admin/qna/detail");
+			actionForm.submit();
+		});
+	});
+</script>
 </div>

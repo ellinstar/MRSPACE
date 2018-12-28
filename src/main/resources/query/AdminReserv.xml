@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.space.admin.dao.AdminResDAO">
+	
 	<sql id="resCommon">
-		select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state, r.res_date
+		select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state, r.res_date, r.res_UseDate
 		from tb_reserv r, tb_space s, tb_company c
 		<where>
 			<if test="search != 0">
@@ -30,6 +31,7 @@
 	where rn > (#{pageNum} -1) * #{amount}
 	]]>
 	</select>
+	
 	<!-- 업체별 예약현황 -->
 	<select id="rescplist" resultType="reserv">
 	select rownum rn, list.*
@@ -51,7 +53,7 @@
 	
 	<!-- 예약건 확인 -->
 	<select id="resDetail" resultType="reserv">
-	select res_Num, mem_id, res_date, to_char(res_usedate,'yyyy-mm'), res_state, res_amount, sp_Num
+	select res_Num, mem_id, res_date, to_char(res_usedate,'yyyy-mm') resUseDate, res_state, res_amount, sp_Num
 		from tb_reserv
 	where res_num=#{res_Num}
 	</select>

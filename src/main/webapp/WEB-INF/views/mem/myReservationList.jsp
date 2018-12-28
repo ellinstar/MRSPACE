@@ -10,18 +10,6 @@
 <meta charset="UTF-8">
 <title>예약 목록</title>
 </head>
-<!-- Bootstrap core CSS -->
-<link href="/resources/include/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="dashboard.css" rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="/resources/include/dist/js/bootstrap.min.js"></script>
@@ -31,6 +19,9 @@
 	src="/resources/include/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
+<!-- Bootstrap core CSS -->
+<link href="/resources/include/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="/resources/css/landing-page.min.css" rel="stylesheet">

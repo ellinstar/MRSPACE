@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.space.admin.page.Criteria;
 import com.space.qna.vo.QnaRepVO;
 import com.space.qna.vo.QnaVO;
+import com.space.space.vo.SpaceVO;
 
 @Repository("AdminQnaDAO")
 public class AdminQnaDaoImpl {
@@ -16,7 +17,13 @@ public class AdminQnaDaoImpl {
 	@Autowired
 	private SqlSession session;
 	
-	//메인 문의게시판 목록
+	//관리자 메인 새로운 문의
+	public List<QnaVO> qnaNewList() {
+		// TODO Auto-generated method stub
+		return session.selectList("qnaNewList");
+	}
+	
+	//게시판관리 메인 문의게시판 목록
 	public List<QnaRepVO> qnaMain(){
 		return session.selectList("qnaMainList");
 	}

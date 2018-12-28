@@ -19,7 +19,14 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 	@Autowired
 	public AdminQnaDaoImpl adQnaDao;
 	
-	//qna메인 리스트
+	//관리자 메인 신규문의 qna
+		@Override
+		public List<QnaVO> qnaNewList() {
+			// TODO Auto-generated method stub
+			List<QnaVO> qnew = adQnaDao.qnaNewList();
+			return qnew;
+		}
+	//게시판관리 메인 qna 리스트
 	@Override
 	public List<QnaRepVO> qnaMainList() {
 		// TODO Auto-generated method stub
@@ -66,6 +73,7 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 		// TODO Auto-generated method stub
 		return adQnaDao.repUpdate(qrvo);
 	}
+	
 	
 
 }

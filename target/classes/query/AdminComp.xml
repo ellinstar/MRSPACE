@@ -5,7 +5,7 @@
 	<!-- 신규 리스트 조회 -->
 	<select id="cpNewList" resultType="comp">
 	<![CDATA[
-	select cp_name, cp_id, cp_date
+	select cp_num, cp_name, cp_id, cp_date
 		from tb_company
 	where cp_date >=trunc(sysdate)
 	]]>

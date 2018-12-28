@@ -69,9 +69,9 @@ $(document).ready(function() {
 				<!-- 데이터 출력 -->
 				<c:choose>
 					<c:when test="${not empty todayRes}" >
-						<c:forEach var="res" items="${todayRes}">
+						<c:forEach var="res" items="${todayRes}" varStatus="status">
 							<tr>
-								<td></td>
+								<td>${status.index + 1}</td>
 								<td><a class='reserv' href='<c:out value="${res.res_Num}"/>'><c:out value="${res.res_Num}"></c:out></a> </td>
 								<td><c:out value="${res.sp_Name}"/></td>
 								<td><c:out value="${res.sp_Type}"/></td>
@@ -125,7 +125,8 @@ $(document).ready(function() {
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
-						<th>업체번호</th>
+						<th>No</th>
+						<th>업체명</th>
 						<th>예약번호</th>
 						<th>공간명</th>
 						<th>공간유형</th>
@@ -137,10 +138,11 @@ $(document).ready(function() {
 				<tbody id="rescplist">
 				<c:choose>
 					<c:when test="${not empty rescplist}" >
-						<c:forEach var="rescp" items="${rescplist}">
+						<c:forEach var="rescp" items="${rescplist}" varStatus="status">
 							<tr>
-								<td><c:out value="${rescp.cp_Num}"/></td>
-								<td><a class='move' href='<c:out value="${rescp.res_Num}"/>'><c:out value="${rescp.res_Num}"></c:out></a> </td>
+								<td>${status.index + 1}</td>
+								<td><c:out value="${rescp.cp_Name}"/></td>
+								<td><a class='reserv' href='<c:out value="${rescp.res_Num}"/>'><c:out value="${rescp.res_Num}"></c:out></a> </td>
 								<td><c:out value="${rescp.sp_Name}"/></td>
 								<td><c:out value="${rescp.sp_Type}"/></td>
 								<td><c:out value="${rescp.mem_Id}"/></td>

@@ -23,7 +23,7 @@
    <select id="memDetail" parameterType="mem" resultType="mem">
       select m.* , h.lastsuccessedlogin
       from tb_mem m , tb_login_history h
-      where m.mem_id = h.mem_id and m.mem_id = #{mem_Id}
+      where m.mem_id = h.mem_id(+) and m.mem_id = #{mem_Id}
    </select>
    <!-- 회원 예약 내용 -->
    <select id="memReserv" resultType="reserv">
