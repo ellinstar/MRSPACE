@@ -100,7 +100,7 @@
                 when res_state = 3 and to_char(res_usedate,'yyyymm') < to_char(sysdate,'yyyymm') then 4
                 
                 when res_state = 1 and to_char(res_usedate,'yyyymm') > to_char(sysdate,'yyyymm') then 1
-        end) ;
+        end)
 		]]>
 	</update>
 	

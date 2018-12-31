@@ -11,10 +11,11 @@
 <link class="include" rel="stylesheet" type="text/css" href="/resources/graph/jquery.jqplot.css"/>  
 <!-- JQ-PLOT의 기본 설정 -->  
 <script type="text/javascript" src="/resources/graph/jquery.jqplot.js"></script>
+<script type="text/javascript" src="/resources/graph/excanvas.min.js"></script>
 
 
 <script type="text/javascript">
-$(function() {
+$(document).ready(function() {
     //X,Y 쌍으로 배열의 형태로 차례대로 값을 넣습니다.
     
     //id가 graphDiv인 곳에 그래프로 나타낼 Line을 넣어 표현한다.
