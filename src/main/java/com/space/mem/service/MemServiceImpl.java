@@ -140,4 +140,9 @@ public class MemServiceImpl implements MemService {
 		return reservList;
 	}
 
+	@Override
+	public void updateState() {
+		memDAO.updateState();
+	}
+	
 }

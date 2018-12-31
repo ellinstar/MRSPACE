@@ -65,6 +65,12 @@
 									<c:when test="${reserv.res_State == 2}">
 										<td>예약 완료</td>
 									</c:when>
+									<c:when test="${reserv.res_State == 3}">
+										<td>사용중</td>
+									</c:when>
+									<c:when test="${reserv.res_State == 4}">
+										<td>사용종료</td>
+									</c:when>
 								</c:choose>
 							</tr>
 						</c:forEach>

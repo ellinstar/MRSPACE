@@ -369,7 +369,7 @@ public class MemController {
 		public String reservList(@ModelAttribute MemVO mvo, Model model , HttpSession session) {
 			
 			LoginVO lvo = (LoginVO) session.getAttribute("login");
-			
+			memService.updateState();
 			mvo.setMem_Id(lvo.getMem_Id());
 			
 			List<ReservVO> reservListe = memService.reservList(mvo);
