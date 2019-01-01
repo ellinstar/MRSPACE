@@ -19,19 +19,26 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 	@Autowired
 	public AdminQnaDaoImpl adQnaDao;
 	
-	//qna메인 리스트
+	//관리자 메인 신규문의 qna
+		@Override
+		public List<QnaVO> qnaNewList() {
+			// TODO Auto-generated method stub
+			List<QnaVO> qnew = adQnaDao.qnaNewList();
+			return qnew;
+		}
+	//게시판관리 메인 qna 리스트
 	@Override
-	public List<QnaRepVO> qnaMainList(QnaRepVO qvo) {
+	public List<QnaRepVO> qnaMainList() {
 		// TODO Auto-generated method stub
-		List<QnaRepVO> qlist = adQnaDao.qnaMain(qvo);
+		List<QnaRepVO> qlist = adQnaDao.qnaMain();
 		return qlist;
 	}
 	
 	//qna리스트 가져오기
 	@Override
-	public List<QnaVO> qnaList(Criteria cri) {
+	public List<QnaRepVO> qnaList(Criteria cri) {
 		// TODO Auto-generated method stub
-		List<QnaVO> qna = adQnaDao.qnaList(cri);
+		List<QnaRepVO> qna = adQnaDao.qnaList(cri);
 		return qna;
 	}
 	//페이징 위한 갯수 
@@ -66,6 +73,7 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 		// TODO Auto-generated method stub
 		return adQnaDao.repUpdate(qrvo);
 	}
+	
 	
 
 }

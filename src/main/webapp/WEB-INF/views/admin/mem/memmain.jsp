@@ -7,20 +7,19 @@
 <html>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
+<script type="text/javascript" 	src="/resources/include/dist/js/bootstrap.js"></script>
 <script type="text/javascript">
-$(function() {
-   /* 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트 */      
-   $("#mem_Id").click(function(){
-      // 상세 페이지로 이동하기 위해 form 추가  
-      $("#move").attr({
-         "method":"get",
-         "action":"/admin/memdetail"
-      });
-      $("#move").submit(); 
-   });
-  
+$(document).ready(function() {
+	var actionForm = $("#moveForm");
+	$(".mem").on("click",function(e) {
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='mem_Id' value='"
+		+ $(this).attr("href")+ "'>");
+		actionForm.attr("action", "/admin/memdetail");
+		actionForm.submit();
+	});
 });
+
 </script>
 
 <body>
@@ -33,15 +32,19 @@ $(function() {
       </div>
       
       <div class="col-md-12">
+      <!-- =======================상세보기 위한 form========================== -->
+      <form id="moveForm" method="get">
+      </form>
+      <!-- =======================상세보기 위한 form 끝======================== -->
          <table summary="게시판 리스트"
             class="table table-striped table-bordered table-hover">
             <colgroup>
-               <col width="3%">
+               <col width="5%">
+               <col width="20%">
+               <col width="10%">
                <col width="20%">
                <col width="20%">
-               <col width="25%">
-               <col width="25%">
-               <col width="7%">
+               <col width="17%">
                
             </colgroup>
             <thead>
@@ -62,10 +65,7 @@ $(function() {
                      <tr>
                         <td>${status.index + 1}</td>
                         <td>
-                       
-                        <form name="move" id="move">
-                        <input type="text" readonly value='${mem.mem_Id}' id="mem_Id" name="mem_Id">
-                        </form>
+                       <a class='mem' href='<c:out value="${mem.mem_Id}"/>'><c:out value="${mem.mem_Id}"></c:out></a>
                         </td>
                         <td><c:out value="${mem.mem_Name}"/></td>
                         <td><c:out value="${mem.mem_Date}"/></td>

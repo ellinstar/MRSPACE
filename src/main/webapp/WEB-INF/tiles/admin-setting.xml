@@ -33,4 +33,7 @@
 	<definition name="/admin/reserv/**" extends="adContent">
 		<put-attribute name="main" value="/WEB-INF/views/admin/reserv/{1}.jsp" />
 	</definition>
+	<definition name="/admin/graph/**" extends="adContent">
+		<put-attribute name="main" value="/WEB-INF/views/admin/graph/{1}.jsp" />
+	</definition>
 </tiles-definitions>

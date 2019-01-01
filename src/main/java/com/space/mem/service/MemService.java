@@ -23,4 +23,6 @@ public interface MemService {
 	public int pwChange2(MemVO mvo);
 	
 	public List<ReservVO> reservList(MemVO mvo);
+	
+	public void updateState();
 }

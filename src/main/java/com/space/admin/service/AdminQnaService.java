@@ -7,8 +7,9 @@ import com.space.qna.vo.QnaRepVO;
 import com.space.qna.vo.QnaVO;
 
 public interface AdminQnaService {
-	public List<QnaRepVO> qnaMainList(QnaRepVO qvo);
-	public List<QnaVO> qnaList(Criteria cri);
+	public List<QnaVO> qnaNewList();
+	public List<QnaRepVO> qnaMainList();
+	public List<QnaRepVO> qnaList(Criteria cri);
 	public int qnaCnt(Criteria cri);
 	public QnaVO getQna(int qna_num);
 	public QnaRepVO getRep(int qna_num);

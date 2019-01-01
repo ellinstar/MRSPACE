@@ -14,17 +14,20 @@ import com.space.admin.page.Criteria;
 import com.space.admin.page.PageDTO;
 import com.space.admin.service.NoticeService;
 import com.space.admin.vo.NoticeVO;
+import com.space.mem.service.MemService;
 
 import lombok.extern.java.Log;
 
 @Log
 @Controller
 public class HomeController {
-	
+	@Autowired
+	private MemService memService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
 		log.info("메인컨트롤러 접속!!완료!!!!!!!!");
+		memService.updateState();
 		return "index";
 	}
 	//공지사항

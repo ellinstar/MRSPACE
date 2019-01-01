@@ -81,4 +81,9 @@ public class MemDAOImpl implements MemDAO {
 		return session.selectList("reservList", mvo);
 	}
 
+	@Override
+	public void updateState() {
+		session.update("updateState");
+	}
+	
 }

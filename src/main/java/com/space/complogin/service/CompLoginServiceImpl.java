@@ -7,8 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.space.common.util.OpenCrypt;
 import com.space.comp.dao.CompDAOImpl;
 import com.space.comp.vo.CompSecurity;
+import com.space.comp.vo.CompVO;
 import com.space.complogin.dao.CompLoginDAOImpl;
 import com.space.complogin.vo.CompLoginVO;
+import com.space.mem.vo.MemSecurity;
+import com.space.memlogin.vo.LoginVO;
 
 @Service
 @Transactional
@@ -69,6 +72,24 @@ public class CompLoginServiceImpl implements CompLoginService {
 	@Override
 	public CompLoginVO compLoginHistorySelect(String cp_Id) {
 		return lDao.compLoginHistorySelect(cp_Id);
+	}
+
+	@Override
+	public CompVO comp(String cp_Id) {
+		return lDao.comp(cp_Id);
+	}
+
+	@Override
+	public CompLoginVO comploginSelect2(String cp_Id) {
+		CompLoginVO vo = null;
+		CompSecurity sec = compDao.compsecuritySelect(cp_Id);
+		if (sec != null) {
+			CompLoginVO lvo = new CompLoginVO();
+			lvo.setCp_Id(cp_Id);
+
+			vo = lDao.compLoginSelect2(lvo);
+		}
+		return vo;
 	}
 
 }

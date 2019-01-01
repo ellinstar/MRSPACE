@@ -6,7 +6,7 @@ import lombok.Data;
 public class QnaVO extends CommonVO {
 	
 	// 문의게시판 번호
-	private int qna_Num = 0;
+	private int qna_Num;
 
 	// 작성자
 	private String qna_Name = "";

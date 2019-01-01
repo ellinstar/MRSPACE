@@ -28,17 +28,18 @@ public class AdminResController {
 	@Autowired
 	public AdminResService adResServ;
 	
-	@RequestMapping(value="/reserv", method= RequestMethod.GET)
+	@RequestMapping(value="/reserv", method= {RequestMethod.GET, RequestMethod.POST})
 	public String resToday(@ModelAttribute ReservVO rvo, Model model, Criteria cri) {
 		log.info("예약메인 호출 성공");
+		List<CompVO> cpname = adResServ.optionCp();//select option 값 불러오기
+		model.addAttribute("cp", cpname);
+		
 		List<ReservVO> resnew = adResServ.getNewList(cri);
 		int total = adResServ.resCnt(cri);
 		model.addAttribute("todayRes", resnew);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		List<CompVO> cpname = adResServ.optionCp();
-		model.addAttribute("cp", cpname);
-		log.info("업체별 리스트 호출 성공");
-		List<ReservVO> cpres = adResServ.cpResList(rvo);
+		
+		List<ReservVO> cpres = adResServ.cpResList(cri);
 		model.addAttribute("rescplist", cpres);
 		model.addAttribute("data", rvo);
 		return "/admin/reserv/reservmain";

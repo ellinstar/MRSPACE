@@ -15,11 +15,12 @@ import com.space.space.vo.SpaceVO;
 public class AdminResDAO {
 	@Autowired
 	public SqlSession session;
-	//메인
+	
+	//메인 오늘 예약건
 	public List<ReservVO> newResList(Criteria cri){
 		return session.selectList("rsNewlist", cri);
 	}
-	//메인, 페이징
+	//메인 오늘 예약건 페이징
 	public int resCnt(Criteria cri) {
 		return (Integer)session.selectOne("resCount");
 	}
@@ -35,12 +36,12 @@ public class AdminResDAO {
 	public SpaceVO resSp(int sp_Num) {
 		return session.selectOne("resSp", sp_Num);
 	}
-	//옵션
+	// 업체별 옵션 불러오기
 	public List<CompVO> optionCp() {
 		return session.selectList("compName");
 	}
-	//업체별
-	public List<ReservVO> cpResList(ReservVO rvo) {
-		return session.selectList("rescplist");
+	//업체별 리스트
+	public List<ReservVO> cpResList(Criteria cri) {
+		return session.selectList("rescplist", cri);
 	}
 }

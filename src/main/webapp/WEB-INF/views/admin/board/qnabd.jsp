@@ -51,8 +51,8 @@
 						<th data-value="qna_Num" class="order">#번호</th>
 						<th>제목</th>
 						<th>답변</th>
-						<th data-value="mem_Name">작성자</th>
-						<th data-value="que_Date" class="order">작성일</th>
+						<th data-value="qna_Name">작성자</th>
+						<th data-value="qna_Date" class="order">작성일</th>
 					</tr>
 				</thead>
 				<tbody id="qna">
@@ -65,7 +65,8 @@
 									<td><a class='move'
 										href='<c:out value="${qna.qna_Num}"/>'><c:out
 												value="${qna.qna_Title}"></c:out></a></td>
-									<td><%  %></td>
+									<td><c:if test="${qna.rep_num == 0}">미등록</c:if>
+								<c:if test="${qna.rep_num != 0}">완료</c:if></td>
 									<td><c:out value="${qna.qna_Name}"/></td>
 									<td><c:out value="${qna.qna_Date}" /></td>
 								</tr>

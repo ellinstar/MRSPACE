@@ -5,6 +5,12 @@ $(function() {
 		$(this).parents("div").find(".error").html("");
 	});
 
+	// 아래 함수는 서버로 받아 온 코드값에 대한 처리 함수(login.jsp 파일에 정의.)
+	errCodeCheck();
+	$('#cp_Id, #cp_Pw').bind("keyup", function() {
+		$(this).parents("div").find(".error").html("");
+	});
+
 	/* 로그인 버튼 클릭 시 처리 이벤트 */
 	/*
 	 * 함수명: formCheck(유효성 체크 대상, 출력 영역, 메시지 내용)

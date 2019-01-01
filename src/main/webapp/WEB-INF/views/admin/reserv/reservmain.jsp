@@ -24,23 +24,11 @@ $(document).ready(function() {
 		actionForm.submit();
 	});
 	var searchForm = $("#searchForm");
-	$("#cp_Num").val("<c:out value='${data.cp_Num}'/>");
-	$("#cpResbtn").on("change", function(e) {
+	$("#search").on("change", function(e) {
 		e.preventDefault();
-		//searchForm.attr("value", $("#cp_Num").val());
 		searchForm.submit();
-		/* $.ajax({
-			type:"GET",
-			url:"/admin/reserv/cpres",
-			data: cp_Num,
-			success: function(res) {
-				alert("리스트 호출");
-				$("#rescplist").html(res);
-			},
-			error: function() {
-				alert("에러 발생");
-			}
-		}); */
+		$("#search option:selected").text();
+		//$(this).find("option:eq(search)").prop("selected", true);
 		
 		
 	});
@@ -50,6 +38,17 @@ $(document).ready(function() {
 </head>
 <body>
 	<div class="contentContainer">
+	<!-- =====================콤보박스================================= -->
+	<form id='searchForm' action="/admin/reserv" method="post" class="form-label-group form-row " >
+		<select name="search" id="search" class="form-control font-weight-bold" data-live-search="true">
+			<option selected disabled>업체명선택</option>
+			<option value="0">전체</option>
+			<c:forEach var="cp" items="${cp}">
+			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
+			</c:forEach>
+		</select>
+		</form>
+	<!-- =====================콤보박스================================= -->
 	<div class="row">
 		<div class="col-6">
 		<div class="page-header">
@@ -71,9 +70,9 @@ $(document).ready(function() {
 				<!-- 데이터 출력 -->
 				<c:choose>
 					<c:when test="${not empty todayRes}" >
-						<c:forEach var="res" items="${todayRes}">
+						<c:forEach var="res" items="${todayRes}" varStatus="status">
 							<tr>
-								<td></td>
+								<td>${status.index + 1}</td>
 								<td><a class='reserv' href='<c:out value="${res.res_Num}"/>'><c:out value="${res.res_Num}"></c:out></a> </td>
 								<td><c:out value="${res.sp_Name}"/></td>
 								<td><c:out value="${res.sp_Type}"/></td>
@@ -118,23 +117,17 @@ $(document).ready(function() {
 			</form>
 		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 		</div>
-		<%-- =================== 업체별 예약 =================== --%>
+		<%-- =================== 전체 예약 =================== --%>
 		<div class="col-6">
 		<div class="page-header">
-			<h3>업체별 예약건</h3>
+			<h3>전체 예약건</h3>
 		</div>
-		<form id='searchForm' action="/admin/reserv" method="get">
-		<select name="cp_Num" id="cp_Num" class="form-label-group form-control font-weight-bold" data-live-search="true">
-			<c:forEach var="cp" items="${cp}">
-			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
-			</c:forEach>
-		</select>
-		<button id="cpResbtn" class="btn">예약목록보기</button>
-		</form>
+		
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
-						<th>업체번호</th>
+						<th>No</th>
+						<th>업체명</th>
 						<th>예약번호</th>
 						<th>공간명</th>
 						<th>공간유형</th>
@@ -146,14 +139,15 @@ $(document).ready(function() {
 				<tbody id="rescplist">
 				<c:choose>
 					<c:when test="${not empty rescplist}" >
-						<c:forEach var="rescp" items="${rescplist}">
+						<c:forEach var="rescp" items="${rescplist}" varStatus="status">
 							<tr>
-								<td><c:out value="${rescp.cp_Num}"/></td>
-								<td><a class='move' href='<c:out value="${rescp.res_Num}"/>'><c:out value="${rescp.res_Num}"></c:out></a> </td>
+								<td>${status.index + 1}</td>
+								<td><c:out value="${rescp.cp_Name}"/></td>
+								<td><a class='reserv' href='<c:out value="${rescp.res_Num}"/>'><c:out value="${rescp.res_Num}"></c:out></a> </td>
 								<td><c:out value="${rescp.sp_Name}"/></td>
 								<td><c:out value="${rescp.sp_Type}"/></td>
 								<td><c:out value="${rescp.mem_Id}"/></td>
-								<td><c:out value="${rescp.resUseDate}"/></td>
+								<td><c:out value="${rescp.res_UseDate}"/></td>
 								<td><c:out value="${rescp.res_State}"/></td>
 							</tr>
 						</c:forEach>
@@ -166,6 +160,8 @@ $(document).ready(function() {
 				</c:choose>
 				</tbody>
 			</table>
+			
+			
 		</div>
 		</div>	
 	</div>

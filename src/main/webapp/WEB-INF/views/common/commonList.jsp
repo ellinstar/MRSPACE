@@ -41,24 +41,8 @@
 		var value = "";
 		if (word != "") {
 			$("#keyword").val("<c:out value='${data.keyword}'/>");
-			/* $("#search").val("<c:out value='${data.search}'/>"); */
+			$("#search").val("<c:out value='${data.search}'/>");
 
-			/* if ($("#search").val() != 'sp_Name') {
-			   // :contains()는 특정 테스트를 포함한 요소반환
-			   if ($("#search").val() == 'sp_Name')
-			      value = "#list tr td.goDetail";
-			   else if ($("#search").val() == 'sp_Name')
-			      value = "#list tr td.name";
-			   $(value + ":contains('" + word + "')").each(
-			         function() {
-			            var regex = new RegExp(word, 'gi');
-			            $(this).html(
-			                  $(this).text().replace(
-			                        regex,
-			                        "<span class='required'>" + word
-			                              + "</span"));
-			         });
-			} */
 		}
 
 		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
@@ -70,15 +54,14 @@
 		$("#pageSize").change(function() {
 			goPage(1);
 		});
+		// select option
+		var searchForm = $("#searchForm");
+		$("#search").on("change", function() {
+			// value 값으로 선택
+			$("#search option:checked").val();
 
-		// 검색 대상이 변경될 때마다 처리 이벤트
-		$("#search").change(function() {
-			if ($("#search").val() == "all") {
-				$("#keyword").val("전체 데이터 조회합니다.");
-			} else if ($("#search").val() != "all") {
-				$("#keyword").val("");
-				$("#keyword").focus();
-			}
+			searchForm.submit();
+
 		});
 
 		// 검색 버튼 클릭 시 처리 이벤트
@@ -102,16 +85,6 @@
 			$("#detailForm").submit();
 		});
 	});
-
-	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
-	function goPage(page) {
-		$("#page").val(page);
-		$("#sp_Search").attr({
-			"method" : "get",
-			"action" : "/common/commonList.do"
-		});
-		$("#sp_Search").submit();
-	}
 
 	/* 전체목록 불러오기 */
 	function spaceAll() {
@@ -201,6 +174,11 @@
 	left: 0;
 	font-size: 13px;
 }
+
+form#searchForm {
+	margin-left: 930px;
+	width: 150px;
+}
 </style>
 
 <title>Insert title here</title>
@@ -224,10 +202,9 @@
 				<form id="sp_Search" name="sp_Search" class="form-row">
 
 					<input type="hidden" id="page" name="page" value="${data.page}" />
-					<input type="button" value="전체목록" onclick="javascript:spaceAll()">
 					<input type="hidden" id="order_by" name="order_by"
-						value="${data.order_by}" /> 
-					<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" />
+						value="${data.order_by}" /> <input type="hidden" id="order_sc"
+						name="order_sc" value="${data.order_sc}" />
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
 						<input type="text" class="form-control form-control-lg"
 							name="keyword" id="keyword" placeholder="공간을 빠르게 검색해보세요." />
@@ -247,26 +224,20 @@
 					data-search-param="rsvTpCd" value="">
 
 				<!-- [D] label 클릭 시 sorting_filter에 on클래스를 추가해주세요. (아이콘)-->
-				<div class="sorting_filter">
+				<form id='searchForm' method="get" class="form-row">
 					<!-- [D] 선택된 option의 텍스트를 label에 넣어주세요 -->
-					<select name="search" id="search" data-search-param="order">
-						<option value="BEST_DESC">베스트 공간 순</option>
-						<option value="PRC_ASC">가격 낮은 순</option>
-						<option value="PRC_DESC">가격 높은 순</option>
+					<select name="search" id="search"
+						class="form-control font-weight-bold">
+						<option value="0" style="display:none">전체</option>
+						<option value="1">전체</option>
+						<option value="2">베스트 공간 순</option>
+						<option value="3">가격 낮은 순</option>
+						<option value="4">가격 높은 순</option>
 					</select>
-				</div>
+				</form>
 			</div>
 
 			<br>
-			<!-- 검색조건 아직 미구현 -->
-			<div class="spaceSearch2">
-				<!--    <label>검색조건</label> <select id="search" name="search">
-               <option value="all">전체</option>
-               <option value="sp_Name">공간명</option>
-               <option value="sp_Address">주소</option>
-               <option value="sp_Price">가격</option>
-            </select>  -->
-			</div>
 		</div>
 		<%-- ================== 검색기능 종료 ================= --%>
 

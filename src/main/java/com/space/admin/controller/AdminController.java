@@ -42,16 +42,20 @@ public class AdminController {
 		model.addAttribute("cpNewList", cpNewList);
 		List<SpaceVO> spNewList = adminSpaceServ.spNewList();
 		model.addAttribute("spNewList", spNewList);
+		List<QnaVO> qNewList = adQnServ.qnaNewList();
+		model.addAttribute("qNew", qNewList);
 		return "index2";
 	}
 	
 	@RequestMapping(value="/board", method= RequestMethod.GET)
-	public String adBoard(Model model,@ModelAttribute QnaRepVO qvo) {
+	public String adBoard(Model model) {
 		log.info("게시판 관리 호출");
 		List<NoticeVO> ntMainList = ntService.ntMainList();
 		model.addAttribute("ntMainList", ntMainList);
-		List<QnaRepVO> qnaMain = adQnServ.qnaMainList(qvo);
-		model.addAttribute("qnMain", qnaMain);
+		
+		List<QnaRepVO> qnaMain = adQnServ.qnaMainList();
+		model.addAttribute("qnaMain", qnaMain);
+		
 		return "/admin/board/bdmain";
 	}
 	@RequestMapping(value="/comp", method= RequestMethod.GET)
