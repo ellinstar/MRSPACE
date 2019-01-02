@@ -26,7 +26,6 @@ public class ReservVO {
 	private int like_Num;
 	private String like_Date;
 	private int like_Amount;
-	private String like_UseDate;
 	private String sp_Address;
 
 	public ReservVO() {

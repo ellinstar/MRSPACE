@@ -3371,9 +3371,9 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 }
 
 .btn-primary {
-	color: #fff;
+	/* color: #fff;
 	background-color: #337ab7;
-	border-color: #2e6da4
+	border-color: #2e6da4 */
 }
 
 .btn-primary.active, .btn-primary.focus, .btn-primary:active,
@@ -4394,7 +4394,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 .navbar {
 	position: relative;
 	min-height: 50px;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 	border: 1px solid transparent
 }
 
@@ -4571,9 +4571,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-nav>li>a {
-	padding-top: 10px;
+	/* padding-top: 10px;
 	padding-bottom: 10px;
-	line-height: 20px
+	line-height: 20px */
 }
 
 @media ( max-width :767px) {
@@ -4608,10 +4608,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	.navbar-nav>li {
 		float: left
 	}
-	.navbar-nav>li>a {
+	/* .navbar-nav>li>a {
 		padding-top: 15px;
 		padding-bottom: 15px
-	}
+	} */
 }
 
 .navbar-form {
