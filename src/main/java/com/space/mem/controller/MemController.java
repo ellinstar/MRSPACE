@@ -23,215 +23,209 @@ import com.space.reserv.vo.ReservVO;
 import lombok.extern.java.Log;
 
 @Controller
-@RequestMapping(value="/mem")
+@RequestMapping(value = "/mem")
 @Log
 public class MemController {
 	@Autowired
 	private MemService memService;
-	
+
 	@Autowired
 	private MemLoginService loginService;
-	
+
 	/**************************************************************
 	 * 회원 가입유형 폼
 	 **************************************************************/
-	@RequestMapping(value="/memType.do", 
-			method = RequestMethod.GET)
+	@RequestMapping(value = "/memType.do", method = RequestMethod.GET)
 	public String memTypeForm(Model model) {
 		log.info("memType.do get 방식에 의한 memTypeForm메서드 호출 성공");
 		return "mem/memType";
 	}
-	
+
 	/**************************************************************
 	 * 회원 약관동의 폼 (일반 회원)
 	 **************************************************************/
-	@RequestMapping(value="/memAgree.do", 
-			method = RequestMethod.GET)
+	@RequestMapping(value = "/memAgree.do", method = RequestMethod.GET)
 	public String memAgreeForm(Model model) {
 		log.info("memAgree.do get 방식에 의한 memAgreeForm메서드 호출 성공");
 		return "mem/memAgree";
 	}
-	
+
 	/**************************************************************
 	 * 회원 가입 폼 (일반 회원)
 	 **************************************************************/
-	@RequestMapping(value="/memJoin.do", 
-			method = RequestMethod.GET)
+	@RequestMapping(value = "/memJoin.do", method = RequestMethod.GET)
 	public String memJoinForm(Model model) {
 		log.info("memJoin.do get 방식에 의한 memJoinForm메서드 호출 성공");
 		return "mem/memJoin";
 	}
-	
+
 	/*************************************************
 	 * 회원 아이디 중복 체크
-	 ************************************************/ 
+	 ************************************************/
 	@ResponseBody
-	@RequestMapping(value="/memIdConfirm.do", method=RequestMethod.POST)
-	public String memIdConfirm(@RequestParam("mem_Id") String mem_Id){
+	@RequestMapping(value = "/memIdConfirm.do", method = RequestMethod.POST)
+	public String memIdConfirm(@RequestParam("mem_Id") String mem_Id) {
 		System.out.println("MemController - memIdConfirm 메소드 호출 - mem_Id : " + mem_Id);
 		int result = memService.memIdConfirm(mem_Id);
-		return result+"";
+		return result + "";
 	}
-	
-	
-	
+
 	/**************************************************************
 	 * 회원 가입 처리
 	 *************************************************************/
-	@RequestMapping(value="/memJoin.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/memJoin.do", method = RequestMethod.POST)
 	public ModelAndView memInsert(@ModelAttribute MemVO mvo) {
 		log.info("memJoin.do post 방식에 의한 메서드 호출 성공");
 		System.out.println("MemController클래스 memInsert메소드 호출");
 		ModelAndView mav = new ModelAndView();
-		
+
 		int result = 0;
 		result = memService.memInsert(mvo);
-		
-		switch(result) {
+
+		switch (result) {
 		case 1:
-			mav.addObject("errCode", 1); // userId already exist 
+			mav.addObject("errCode", 1); // userId already exist
 			mav.setViewName("mem/memJoin");
 			break;
 		case 3:
 			mav.addObject("errCode", 3);
 			mav.setViewName("mem/memJoin_Success"); // success to add new member; move to login page
 			break;
-		default: 
+		default:
 			mav.addObject("errCode", 2); // failed to add new member
 			mav.setViewName("mem/memJoin");
 			break;
 		}
 		return mav;
 	}
-	
+
 	/**************************************************************
 	 * 마이 페이지 폼
 	 **************************************************************/
-	@RequestMapping(value="/memMyPage.do", 
-			method = RequestMethod.GET)
+	@RequestMapping(value = "/memMyPage.do", method = RequestMethod.GET)
 	public String memMyPageForm(Model model) {
 		log.info("memMyPage.do get 방식에 의한 memMyPageForm메서드 호출 성공");
 		return "mem/memMyPage";
 	}
-	
+
 	/**************************************************************
 	 * 내 정보 폼
 	 **************************************************************/
-	@RequestMapping(value="/memInfo.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/memInfo.do", method = RequestMethod.GET)
 	public ModelAndView memInfoForm(HttpSession session) {
 		log.info("memInfo.do get 방식에 의한 memInfoForm메서드 호출 성공");
-		ModelAndView mav=new ModelAndView();
-		
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-		if(login==null){
-			mav.setViewName("mem/login");	
-			return mav;
-		}
-		
-		MemVO vo = memService.memSelect(login.getMem_Id());
-		mav.addObject("mem", vo);
-		mav.setViewName("mem/memInfo");	
-		return mav;
-	}
-	
-	/**************************************************************
-	 * 내정보 - 비밀번호 확인 폼
-	 **************************************************************/
-	@RequestMapping(value="/memModifyPw.do", method = RequestMethod.GET)	
-	public ModelAndView memModifyPw(HttpSession session){
-		log.info("memModifyPw.do get 방식에 의한 메서드 호출 성공");
-		ModelAndView mav=new ModelAndView();
-		
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-		if(login==null){
-			mav.setViewName("mem/login");	
-			return mav;
-		}
-		
-		MemVO vo = memService.memSelect(login.getMem_Id());
-		mav.addObject("mem", vo);
-		mav.setViewName("mem/memModifyPw");	
-		return mav;
-	}
-	
-	/**************************************************************
-	 * 내정보 - 비밀번호 확인 처리
-	 **************************************************************/
-	@RequestMapping(value="/memModifyPw.do", method = RequestMethod.POST)	
-	public ModelAndView memModifyPwProcess(@ModelAttribute("MemVO") MemVO mvo, HttpSession session){
-		log.info("memModifyPw.do post 방식에 의한 메서드 호출 성공");
-		ModelAndView mav=new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-		if(login==null){
+		LoginVO login = (LoginVO) session.getAttribute("login");
+
+		if (login == null) {
 			mav.setViewName("mem/login");
 			return mav;
 		}
-		
+
+		MemVO vo = memService.memSelect(login.getMem_Id());
+		mav.addObject("mem", vo);
+		mav.setViewName("mem/memInfo");
+		return mav;
+	}
+
+	/**************************************************************
+	 * 내정보 - 비밀번호 확인 폼
+	 **************************************************************/
+	@RequestMapping(value = "/memModifyPw.do", method = RequestMethod.GET)
+	public ModelAndView memModifyPw(HttpSession session) {
+		log.info("memModifyPw.do get 방식에 의한 메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+
+		LoginVO login = (LoginVO) session.getAttribute("login");
+
+		if (login == null) {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
+		MemVO vo = memService.memSelect(login.getMem_Id());
+		mav.addObject("mem", vo);
+		mav.setViewName("mem/memModifyPw");
+		return mav;
+	}
+
+	/**************************************************************
+	 * 내정보 - 비밀번호 확인 처리
+	 **************************************************************/
+	@RequestMapping(value = "/memModifyPw.do", method = RequestMethod.POST)
+	public ModelAndView memModifyPwProcess(@ModelAttribute("MemVO") MemVO mvo, HttpSession session) {
+		log.info("memModifyPw.do post 방식에 의한 메서드 호출 성공");
+		ModelAndView mav = new ModelAndView();
+
+		LoginVO login = (LoginVO) session.getAttribute("login");
+
+		if (login == null) {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
 		mvo.setMem_Id(login.getMem_Id());
 		MemVO vo = memService.memSelect(mvo.getMem_Id());
-		if (loginService.loginSelect(mvo.getMem_Id(), mvo.getMem_OldPw()) == null ) {
+		if (loginService.loginSelect(mvo.getMem_Id(), mvo.getMem_OldPw()) == null) {
 			mav.addObject("errCode", 1);
 			return mav;
-		}  else {
+		} else {
 			mav.addObject("mem", vo);
 			mav.setViewName("mem/memModify");
-		    return mav;
+			return mav;
 		}
 	}
-	
+
 	/**************************************************************
 	 * 회원 정보 수정1
 	 *************************************************************/
-	@RequestMapping(value="/memModify.do", method = RequestMethod.GET)	
-	public ModelAndView memModify(HttpSession session){
+	@RequestMapping(value = "/memModify.do", method = RequestMethod.GET)
+	public ModelAndView memModify(HttpSession session) {
 		log.info("memModify.do get 방식에 의한 메서드 호출 성공");
-		ModelAndView mav=new ModelAndView();
-		
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-		if(login==null){
-			mav.setViewName("mem/login");	
+		ModelAndView mav = new ModelAndView();
+
+		LoginVO login = (LoginVO) session.getAttribute("login");
+
+		if (login == null) {
+			mav.setViewName("mem/login");
 			return mav;
 		}
-		
+
 		MemVO vo = memService.memSelect(login.getMem_Id());
 		mav.addObject("mem", vo);
-		mav.setViewName("mem/memModify");	
+		mav.setViewName("mem/memModify");
 		return mav;
 	}
-	
+
 	/**************************************************************
 	 * 회원 정보 수정2
 	 *************************************************************/
-	@RequestMapping(value="/memModify.do", method = RequestMethod.POST)	
-	public ModelAndView memModifyProcess(@ModelAttribute("MemVO") MemVO mvo, HttpSession session){
+	@RequestMapping(value = "/memModify.do", method = RequestMethod.POST)
+	public ModelAndView memModifyProcess(@ModelAttribute("MemVO") MemVO mvo, HttpSession session) {
 		log.info("memModify.do post 방식에 의한 메서드 호출 성공");
-		ModelAndView mav=new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-		if(login==null){
-			mav.setViewName("mem/login");	
+		LoginVO login = (LoginVO) session.getAttribute("login");
+
+		if (login == null) {
+			mav.setViewName("mem/login");
 			return mav;
 		}
-		
+
 		mvo.setMem_Id(login.getMem_Id());
 		MemVO vo = memService.memSelect(mvo.getMem_Id());
-		if (loginService.loginSelect2(mvo.getMem_Id()) == null ) {
+		if (loginService.loginSelect2(mvo.getMem_Id()) == null) {
 			mav.addObject("errCode", 1);
-			mav.addObject("mem",vo);
+			mav.addObject("mem", vo);
 			mav.setViewName("mem/memModify");
 			return mav;
-		} 
+		}
 
 		if (memService.memUpdate(mvo)) {
 			mav.addObject("errCode", 3);
 			mav.setViewName("redirect:/mem/memInfo.do");
-		    return mav;	 
+			return mav;
 		} else {
 			mav.addObject("errCode", 2);
 			mav.addObject("mem", vo);
@@ -239,23 +233,23 @@ public class MemController {
 			return mav;
 		}
 	}
-	
+
 	/**************************************************************
 	 * 회원 탈퇴
 	 ************************************************************/
-	@RequestMapping("/memDelete.do")	
-	public ModelAndView memDelete(HttpSession session){
+	@RequestMapping("/memDelete.do")
+	public ModelAndView memDelete(HttpSession session) {
 		log.info("memDelete.do get방식에 의한 메서드 호출 성공");
-		
-		ModelAndView mav=new ModelAndView();
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		if(login==null){
-			mav.setViewName("mem/login");	
+
+		ModelAndView mav = new ModelAndView();
+		LoginVO login = (LoginVO) session.getAttribute("login");
+		if (login == null) {
+			mav.setViewName("mem/login");
 			return mav;
 		}
-		
+
 		int errCode = memService.memDelete(login.getMem_Id());
-		switch(errCode) {
+		switch (errCode) {
 		case 1:
 			mav.addObject("errCode", 6);
 			mav.setViewName("redirect:/mem/logout.do");
@@ -266,116 +260,158 @@ public class MemController {
 			mav.setViewName("mem/login");
 			break;
 		}
-	    return mav;	
+		return mav;
 	}
-	
-	/*
-	    * 아이디찾기 화면 출력
-	    */
-	   @RequestMapping(value = "/memSearch.do", method = RequestMethod.GET)
-	   public String memSearchForm(Model model) {
-	      log.info("memSearch.do get 방식에 의한 memSearchForm메서드 호출 성공");
-	      return "mem/memSearch";
-	   }
 
-	   /*
-	    * 아이디찾기 처리
-	    */
-	   @RequestMapping(value = "/memSearch.do", method = RequestMethod.POST)
-	   public ModelAndView findMember(@ModelAttribute MemVO mvo, Model model) {
-	      System.out.println("MemController클래스 findMember메소드 호출");
-	      ModelAndView mav = new ModelAndView();
+	/**************************************************************
+	 * 찜 목록
+	 ************************************************************/
+	@RequestMapping(value = "/likeList.do", method = RequestMethod.GET)
+	public String likeList(@ModelAttribute MemVO mvo, Model model, HttpSession session) {
+		log.info("likeList.do get방식에 의한 메서드 호출 성공");
 
-	      MemVO mVo = memService.findMember(mvo);
+		LoginVO lvo = (LoginVO) session.getAttribute("login");
 
-	      if (mVo == null) {
-	         mav.addObject("errCode", 9);
-	         mav.setViewName("mem/memSearch");
-	         return mav;
-	      } else {
-	         String mem_Id = mVo.getMem_Id();
+		mvo.setMem_Id(lvo.getMem_Id());
 
-	         model.addAttribute("memId", mem_Id);
-	         mav.setViewName("mem/memResult");
-	         return mav;
-	      }
-	   }
+		List<ReservVO> likeList = memService.likeList(mvo);
+		session.setAttribute("likeList", likeList);
 
-	   /*
-	    * 비밀번호 변경 첫화면 출력
-	    */
-	   @RequestMapping(value = "/pwChange.do", method = RequestMethod.GET)
-	   public String pwChangForm(Model model) {
-	      log.info("memSearch.do get 방식에 의한 pwchange get메서드 호출 성공");
-	      return "mem/pwChange";
-	   }
+		return "mem/likeList";
+	}
 
-	   /*
-	    * 비밀번호 변경 첫화면 처리
-	    */
-	   @RequestMapping(value = "/pwChange.do", method = RequestMethod.POST)
-	   public ModelAndView pwChange(@ModelAttribute MemVO mvo, HttpSession session, Model model) {
-	      System.out.println("MemController클래스 pwchange post메소드 호출");
-	      ModelAndView mav = new ModelAndView();
+	/**************************************************************
+	 * 찜목록 삭제버튼
+	 ************************************************************/
+	@RequestMapping(value = "/likeDelete.do", method = RequestMethod.POST)
+	public ModelAndView likeDelete(@ModelAttribute ReservVO rvo, HttpSession session) {
+		log.info("likeDelete.do post방식에 의한 메서드 호출 성공");
 
-	      MemVO mVo = memService.pwChange(mvo);
+		ModelAndView mav = new ModelAndView();
+		LoginVO login = (LoginVO) session.getAttribute("login");
 
-	      if (mVo == null) {
-	         mav.addObject("errCode", 9);
-	         mav.setViewName("mem/pwChange");
-	         return mav;
-	      } else {
-	         session.setAttribute("memId", mVo);
-	         mav.setViewName("mem/pwChangePage");
-	         return mav;
-	      }
-	   }
-
-	   /*
-	    * 비밀번호 변경 화면 출력
-	    */
-	   @RequestMapping(value = "/pwChangePage.do", method = RequestMethod.GET)
-	   public String pwChangForm2(Model model) {
-	      log.info("memSearch.do get 방식에 의한 pwchange2 get메서드 호출 성공");
-	      return "mem/pwChangePage";
-	   }
-	   
-	   /*
-	    * 비밀번호 변경 처리
-	    */
-	   @RequestMapping(value = "/pwChangePage.do", method = RequestMethod.POST)
-	   public ModelAndView pwChange2(@ModelAttribute("MemVO") MemVO mvo, HttpSession session, Model model) {
-	      System.out.println("MemController클래스 pwchange2 post메소드 호출");
-	      ModelAndView mav = new ModelAndView();
-	      MemVO vo = (MemVO) session.getAttribute("memId");
-
-	      int result = memService.pwChange2(mvo);
-	      System.out.println("반환값 : " + result);
-	      if (result != 1) {
-	         mav.addObject("errCode", 10);
-	         mav.setViewName("mem/pwChangePage");
-	         return mav;
-	      } else {
-	         mav.setViewName("mem/login");
-	         return mav;
-	      }
-
-	   }
-	
-	   /*
-		 *  리스트 구현
-		 */
-		@RequestMapping(value="/myReservationList", method=RequestMethod.GET)
-		public String reservList(@ModelAttribute MemVO mvo, Model model , HttpSession session) {
-			
-			LoginVO lvo = (LoginVO) session.getAttribute("login");
-			mvo.setMem_Id(lvo.getMem_Id());
-			
-			List<ReservVO> reservListe = memService.reservList(mvo);
-			session.setAttribute("reservList", reservListe);
-			
-			return "mem/myReservationList";
+		if (login == null) {
+			mav.setViewName("mem/login");
+			return mav;
 		}
-	
+
+		int a = memService.likeDelete(rvo.getSp_Num());
+		if (a == 1) {
+			System.out.println("삭제 성공! 공간번호 : " + rvo.getSp_Num());
+			mav.setViewName("redirect:/mem/likeList.do");
+		} else {
+			System.out.println("삭제 실패! 공간번호 : " + rvo.getSp_Num());
+			mav.setViewName("redirect:/mem/likeList.do");
+		}
+		return mav;
+	}
+
+	/*
+	 * 아이디찾기 화면 출력
+	 */
+	@RequestMapping(value = "/memSearch.do", method = RequestMethod.GET)
+	public String memSearchForm(Model model) {
+		log.info("memSearch.do get 방식에 의한 memSearchForm메서드 호출 성공");
+		return "mem/memSearch";
+	}
+
+	/*
+	 * 아이디찾기 처리
+	 */
+	@RequestMapping(value = "/memSearch.do", method = RequestMethod.POST)
+	public ModelAndView findMember(@ModelAttribute MemVO mvo, Model model) {
+		System.out.println("MemController클래스 findMember메소드 호출");
+		ModelAndView mav = new ModelAndView();
+
+		MemVO mVo = memService.findMember(mvo);
+
+		if (mVo == null) {
+			mav.addObject("errCode", 9);
+			mav.setViewName("mem/memSearch");
+			return mav;
+		} else {
+			String mem_Id = mVo.getMem_Id();
+
+			model.addAttribute("memId", mem_Id);
+			mav.setViewName("mem/memResult");
+			return mav;
+		}
+	}
+
+	/*
+	 * 비밀번호 변경 첫화면 출력
+	 */
+	@RequestMapping(value = "/pwChange.do", method = RequestMethod.GET)
+	public String pwChangForm(Model model) {
+		log.info("memSearch.do get 방식에 의한 pwchange get메서드 호출 성공");
+		return "mem/pwChange";
+	}
+
+	/*
+	 * 비밀번호 변경 첫화면 처리
+	 */
+	@RequestMapping(value = "/pwChange.do", method = RequestMethod.POST)
+	public ModelAndView pwChange(@ModelAttribute MemVO mvo, HttpSession session, Model model) {
+		System.out.println("MemController클래스 pwchange post메소드 호출");
+		ModelAndView mav = new ModelAndView();
+
+		MemVO mVo = memService.pwChange(mvo);
+
+		if (mVo == null) {
+			mav.addObject("errCode", 9);
+			mav.setViewName("mem/pwChange");
+			return mav;
+		} else {
+			session.setAttribute("memId", mVo);
+			mav.setViewName("mem/pwChangePage");
+			return mav;
+		}
+	}
+
+	/*
+	 * 비밀번호 변경 화면 출력
+	 */
+	@RequestMapping(value = "/pwChangePage.do", method = RequestMethod.GET)
+	public String pwChangForm2(Model model) {
+		log.info("memSearch.do get 방식에 의한 pwchange2 get메서드 호출 성공");
+		return "mem/pwChangePage";
+	}
+
+	/*
+	 * 비밀번호 변경 처리
+	 */
+	@RequestMapping(value = "/pwChangePage.do", method = RequestMethod.POST)
+	public ModelAndView pwChange2(@ModelAttribute("MemVO") MemVO mvo, HttpSession session, Model model) {
+		System.out.println("MemController클래스 pwchange2 post메소드 호출");
+		ModelAndView mav = new ModelAndView();
+		MemVO vo = (MemVO) session.getAttribute("memId");
+
+		int result = memService.pwChange2(mvo);
+		System.out.println("반환값 : " + result);
+		if (result != 1) {
+			mav.addObject("errCode", 10);
+			mav.setViewName("mem/pwChangePage");
+			return mav;
+		} else {
+			mav.setViewName("mem/login");
+			return mav;
+		}
+
+	}
+
+	/*
+	 * 리스트 구현
+	 */
+	@RequestMapping(value = "/myReservationList", method = RequestMethod.GET)
+	public String reservList(@ModelAttribute MemVO mvo, Model model, HttpSession session) {
+
+		LoginVO lvo = (LoginVO) session.getAttribute("login");
+		mvo.setMem_Id(lvo.getMem_Id());
+
+		List<ReservVO> reservListe = memService.reservList(mvo);
+		session.setAttribute("reservList", reservListe);
+
+		return "mem/myReservationList";
+	}
 
 }

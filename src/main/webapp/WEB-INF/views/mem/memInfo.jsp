@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Bootstrap core CSS -->
+<link href="/resources/include/css/mem.css" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -12,9 +14,8 @@
 
 <title>memInfo</title>
 <script type="text/javascript">
-
 	$(function() {
-		
+
 		$("#mem_Edit").click(function() {
 			location.href = "/mem/memModifyPw.do";
 		});
@@ -26,9 +27,10 @@
 </script>
 </head>
 <body>
+
 	<div class="container">
 		<h1 class="tit_space" align="center">내 정보</h1>
-		<br><br><br>
+		<br> <br> <br>
 		<div class="well">
 			<form id="mem_Form" class="form-horizontal">
 

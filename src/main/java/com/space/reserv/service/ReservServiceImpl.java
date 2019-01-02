@@ -21,14 +21,14 @@ public class ReservServiceImpl implements ReservService {
 	// 예약 실행
 	@Override
 	public int reservation(ReservVO rvo) {
-		
+
 		SpaceVO svo = rdao.spaceResert(rvo);
 		SpaceVO ssvo = svo;
 		ssvo.setResUseDate(rvo.getResUseDate());
 		if (svo.getSp_Stock() <= 0) {
 			return 2;
 		} else {
-			
+
 			int useSpace = rdao.useSpace(ssvo);
 			System.out.println("유즈스페이스 수 : " + useSpace);
 			if (useSpace < svo.getSp_Stock()) {
@@ -41,21 +41,35 @@ public class ReservServiceImpl implements ReservService {
 					// 예약 실패
 					return 0;
 				}
-			}else {
+			} else {
 				return 3;
 			}
 
 		}
 
 	}
-	//재고 갯수 확인
+
+	// 재고 갯수 확인
 	@Override
 	public int restSpace(ReservVO rvo) {
 		// TODO Auto-generated method stub
 		SpaceVO svo = rdao.spaceResert(rvo);
 		svo.setResUseDate(rvo.getResUseDate());
 		int useSpace = rdao.useSpace(svo);
-		return svo.getSp_Stock()-useSpace;
+		return svo.getSp_Stock() - useSpace;
+	}
+
+	// 찜목록 추가
+	@Override
+	public int likeInsert(ReservVO rvo) {
+		int success = rdao.likeInsert(rvo);
+		if (success == 1) {
+			// 예약 성공
+			return 1;
+		} else {
+			// 예약 실패
+			return 0;
+		}
 	}
 
 }
