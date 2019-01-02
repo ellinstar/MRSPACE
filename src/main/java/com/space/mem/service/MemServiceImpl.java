@@ -111,6 +111,7 @@ public class MemServiceImpl implements MemService {
 
 		return vo;
 	}
+
 	// 비밀번호 찾기에서 맴버 확인
 	@Override
 	public MemVO pwChange(MemVO mvo) {
@@ -119,6 +120,7 @@ public class MemServiceImpl implements MemService {
 
 		return vo;
 	}
+
 	// 비밀번호 변경
 	@Override
 	public int pwChange2(MemVO mvo) {
@@ -144,5 +146,29 @@ public class MemServiceImpl implements MemService {
 	public void updateState() {
 		memDAO.updateState();
 	}
-	
+
+	// 찜 목록 구현
+	@Override
+	public List<ReservVO> likeList(MemVO mvo) {
+		List<ReservVO> likeList = null;
+		likeList = memDAO.likeList(mvo);
+		return likeList;
+	}
+
+	// 찜 목록 삭제
+	@Override
+	public int likeDelete(int sp_Num) {
+		int lCode, isSucessCode = 2;
+		try {
+			lCode = memDAO.likeDelete(sp_Num);
+			if (lCode == 1) {
+				isSucessCode = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSucessCode = 2;
+		}
+		return isSucessCode;
+	}
+
 }
