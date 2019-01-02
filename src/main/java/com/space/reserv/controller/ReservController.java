@@ -28,7 +28,7 @@ public class ReservController {
 	private ReservService reservService;
 
 	/*
-	 * 예약 화면 출력ㅎ
+	 * 예약 화면 출력
 	 */
 	@RequestMapping(value = "/reservation.do", method = RequestMethod.GET)
 	public String reserv(HttpSession session, Model model) {
