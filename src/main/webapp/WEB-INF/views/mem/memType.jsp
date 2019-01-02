@@ -25,7 +25,8 @@
 <body>
 	<section class="testimonials text-center bg-light">
 		<div class="container">
-			<h3 class="tit_space">회원유형선택</h3>
+			<br>
+			<h1 class="tit_space">회원유형선택</h1>
 			<div class="row2">
 					<br><br><br>
 					<ul class="list-inline mb-2">
