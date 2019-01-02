@@ -20,7 +20,7 @@ $(function () {
             x: -20
         },
         xAxis: {
-            categories: ['1월','2월','3월']
+            categories: ['1월','2월','3월'] 
         },
         yAxis: {
             title: {
