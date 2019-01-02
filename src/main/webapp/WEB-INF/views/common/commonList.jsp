@@ -46,22 +46,26 @@
 		}
 
 		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
-		if ("<c:out value='${data.pageSize}' /> " != "") {
+/* 		if ("<c:out value='${data.pageSize}' /> " != "") {
 			$("#pageSize").val("<c:out value='${data.pageSize}'/>");
-		}
+		} */
 
-		// 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트
+	/* 	// 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트
 		$("#pageSize").change(function() {
 			goPage(1);
-		});
+		}); */
 		// select option
 		var searchForm = $("#searchForm");
 		$("#search").on("change", function() {
-			// value 값으로 선택
-			$("#search option:checked").val();
+			/* var word = "<c:out value='${data.keyword}'/>";
+			if (word != "") {
+				$("#keyword").val("<c:out value='${data.keyword}'/>"); */
 
-			searchForm.submit();
+				// value 값으로 선택
+				$("#search option:checked").val();
 
+				searchForm.submit();
+			/* } */
 		});
 
 		// 검색 버튼 클릭 시 처리 이벤트
@@ -201,7 +205,7 @@ form#searchForm {
 				<h3>"${data.keyword}"(으)로 검색한 결과입니다.</h3>
 				<form id="sp_Search" name="sp_Search" class="form-row">
 
-					<input type="hidden" id="page" name="page" value="${data.page}" />
+				<%-- 	<input type="hidden" id="page" name="page" value="${data.page}" /> --%>
 					<input type="hidden" id="order_by" name="order_by"
 						value="${data.order_by}" /> <input type="hidden" id="order_sc"
 						name="order_sc" value="${data.order_sc}" />
@@ -228,7 +232,7 @@ form#searchForm {
 					<!-- [D] 선택된 option의 텍스트를 label에 넣어주세요 -->
 					<select name="search" id="search"
 						class="form-control font-weight-bold">
-						<option value="0" style="display:none">전체</option>
+						<option selected disabled>정렬선택</option>
 						<option value="1">전체</option>
 						<option value="2">베스트 공간 순</option>
 						<option value="3">가격 낮은 순</option>
