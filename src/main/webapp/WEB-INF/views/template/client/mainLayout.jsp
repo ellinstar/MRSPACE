@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +61,19 @@
 			$("#mysearch").submit();
 		});
 
+		// 제목 클릭 시 상세 페이지 이동을 위한 처리 이벤트 - X
+		$(".goDetail").click(function() {
+			var sp_Num = $(this).parents("div").attr("data-num");
+			$("#sp_Num").val(sp_Num);
+			console.log("글번호 : " + sp_Num);
+			// 상세 페이지로 이동하기 위해 form추가 (id : detailForm)
+			$("#detailForm").attr({
+				"method" : "get",
+				"action" : "/common/commonDetail.do"
+			});
+			$("#detailForm").submit();
+		});
+
 	});
 </script>
 
@@ -112,6 +128,10 @@
 	font-family: "NanumBarunGothicBold", sans-serif;
 	color: #0069d9;
 }
+
+section.testimonials.text-center.bg-light {
+	margin-top: 45px;
+}
 </style>
 
 
@@ -161,331 +181,114 @@
 		</div>
 	</section>
 
-
+	<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
+	<form name="detailForm" id="detailForm">
+		<input type="hidden" name="sp_Num" id="sp_Num"> <input
+			type="hidden" name="page" value="${data.page}"> <input
+			type="hidden" name="pageSize" value="${data.pageSize}">
+	</form>
 
 	<section class="features-icons bg-light text-left">
+
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
-					<!-- 슬라이스 시작 시점1 -->
+				<c:choose>
+					<c:when test="${not empty mainlayoutList}">
 
-					<div id="myCarousel" class="carousel slide my-4"
-						data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel" data-slide-to="1"></li>
-							<li data-target="#myCarousel" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="/resources/img/1.png"
-									alt="First slide">
+						<c:forEach var="space" items="${mainlayoutList}"
+							varStatus="status">
+							<div class="col-lg-4">
+
+								<div class="tac" data-num="${space.sp_Num}">
+									<div class="goDetail tal">
+
+										<!-- 슬라이스 시작 시점1 -->
+
+										<div id="myCarousel" class="carousel slide my-4"
+											data-ride="carousel" data-interval="false">
+											<ol class="carousel-indicators">
+												<li data-target="#myCarousel" data-slide-to="0"
+													class="active"></li>
+												<!--       <li data-target="#myCarousel" data-slide-to="1"></li>
+                                 <li data-target="#myCarousel" data-slide-to="2"></li> -->
+											</ol>
+
+											<div class="carousel-inner" role="listbox">
+												<div class="carousel-item active">
+													<img src="/uploadStorage/space/${space.sp_File}"
+														class="d-block img-fluid" alt="First slide">
+												</div>
+												<%-- 		<div class="carousel-item">
+														<img class="d-block img-fluid"
+															src="/uploadStorage/space/${space.sp_File}"
+															alt="Second slide">
+													</div>
+													<div class="carousel-item">
+														<img class="d-block img-fluid"
+															src="/uploadStorage/space/${space.sp_File}"
+															alt="Third slide">
+													</div>
+ --%>
+												<!-- 		<a class="carousel-control-prev" href="#myCarousel"
+														role="button" data-slide="prev"> <span
+														class="carousel-control-prev-icon" aria-hidden="true"></span>
+														<span class="sr-only">Previous</span>
+													</a> <a class="carousel-control-next" href="#myCarousel"
+														role="button" data-slide="next"> <span
+														class="carousel-control-next-icon" aria-hidden="true"></span>
+														<span class="sr-only">Next</span>
+													</a> -->
+
+											</div>
+										</div>
+
+										<div class="info_area">
+											<h3 class="tit_space">${space.sp_Name}</h3>
+											<div class="tags">
+												<span class="tag_area_name">${space.sp_Address}</span>
+											</div>
+											<div class="info_price_hour">
+												<strong class="price"><fmt:formatNumber
+														value="${space.sp_Price}" /></strong><span class="txt_unit">원/월</span>
+												<input type="hidden" value="${space.cp_Phone}">
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/2.png"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/3.png"
-									alt="Third slide">
-							</div>
-
-							<a class="carousel-control-prev" href="#myCarousel" role="button"
-								data-slide="prev"> <span class="carousel-control-prev-icon"
-								aria-hidden="true"></span> <span class="sr-only">Previous</span>
-							</a> <a class="carousel-control-next" href="#myCarousel"
-								role="button" data-slide="next"> <span
-								class="carousel-control-next-icon" aria-hidden="true"></span> <span
-								class="sr-only">Next</span>
-							</a>
-						</div>
-
-					</div>
-
-					<div class="info_area">
-						<h3 class="tit_space">광화문 종로 모임공간, 공유거실</h3>
-						<div class="tags">
-							<span class="tag_area_name">광화문종로</span>
-						</div>
-						<div class="info_price_hour">
-							<strong class="price">550,000</strong><span class="txt_unit">원/월</span>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<!-- 슬라이스 시작 시점2 -->
-				<div class="col-lg-4">
-
-					<div id="myCarousel2" class="carousel slide my-4"
-						data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel2" data-slide-to="1"></li>
-							<li data-target="#myCarousel2" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="/resources/img/1.png"
-									alt="First slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/2.png"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/3.png"
-									alt="Third slide">
-							</div>
-						</div>
-
-						<a class="carousel-control-prev" href="#myCarousel2" role="button"
-							data-slide="prev"> <span class="carousel-control-prev-icon"
-							aria-hidden="true"></span> <span class="sr-only">Previous</span>
-						</a> <a class="carousel-control-next" href="#myCarousel2"
-							role="button" data-slide="next"> <span
-							class="carousel-control-next-icon" aria-hidden="true"></span> <span
-							class="sr-only">Next</span>
-						</a>
-
-					</div>
-
-					<div class="info_area">
-						<h3 class="tit_space">광화문 종로 모임공간, 공유거실</h3>
-						<div class="tags">
-							<span class="tag_area_name">광화문종로</span>
-						</div>
-						<div class="info_price_hour">
-							<strong class="price">550,000</strong><span class="txt_unit">원/월</span>
-
-						</div>
-
-					</div>
-
-				</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="7" class="tac">등록된 공간이 존재하지 않습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 
 
-				<!-- 슬라이스 시작 시점3 -->
-				<div class="col-lg-4">
-
-					<div id="myCarousel3" class="carousel slide my-4"
-						data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel3" data-slide-to="1"></li>
-							<li data-target="#myCarousel3" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="/resources/img/1.png"
-									alt="First slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/2.png"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/3.png"
-									alt="Third slide">
-							</div>
-						</div>
-
-						<a class="carousel-control-prev" href="#myCarousel3" role="button"
-							data-slide="prev"> <span class="carousel-control-prev-icon"
-							aria-hidden="true"></span> <span class="sr-only">Previous</span>
-						</a> <a class="carousel-control-next" href="#myCarousel3"
-							role="button" data-slide="next"> <span
-							class="carousel-control-next-icon" aria-hidden="true"></span> <span
-							class="sr-only">Next</span>
-						</a>
-
-					</div>
-
-					<div class="info_area">
-						<h3 class="tit_space">광화문 종로 모임공간, 공유거실</h3>
-						<div class="tags">
-							<span class="tag_area_name">광화문종로</span>
-						</div>
-						<div class="info_price_hour">
-							<strong class="price">550,000</strong><span class="txt_unit">원/월</span>
-
-						</div>
-
-					</div>
-
-				</div>
-
-
-				<!-- 슬라이스 시작 시점4 -->
-				<div class="col-lg-4">
-
-					<div id="myCarousel4" class="carousel slide my-4"
-						data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel4" data-slide-to="1"></li>
-							<li data-target="#myCarousel4" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="/resources/img/1.png"
-									alt="First slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/2.png"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/3.png"
-									alt="Third slide">
-							</div>
-						</div>
-
-						<a class="carousel-control-prev" href="#myCarousel4" role="button"
-							data-slide="prev"> <span class="carousel-control-prev-icon"
-							aria-hidden="true"></span> <span class="sr-only">Previous</span>
-						</a> <a class="carousel-control-next" href="#myCarousel4"
-							role="button" data-slide="next"> <span
-							class="carousel-control-next-icon" aria-hidden="true"></span> <span
-							class="sr-only">Next</span>
-						</a>
-
-					</div>
-
-					<div class="info_area">
-						<h3 class="tit_space">광화문 종로 모임공간, 공유거실</h3>
-						<div class="tags">
-							<span class="tag_area_name">광화문종로</span>
-						</div>
-						<div class="info_price_hour">
-							<strong class="price">550,000</strong><span class="txt_unit">원/월</span>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<!-- 슬라이스 시작 시점5 -->
-				<div class="col-lg-4">
-
-					<div id="myCarousel5" class="carousel slide my-4"
-						data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel5" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel5" data-slide-to="1"></li>
-							<li data-target="#myCarousel5" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="/resources/img/1.png"
-									alt="First slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/2.png"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/3.png"
-									alt="Third slide">
-							</div>
-						</div>
-
-						<a class="carousel-control-prev" href="#myCarousel5" role="button"
-							data-slide="prev"> <span class="carousel-control-prev-icon"
-							aria-hidden="true"></span> <span class="sr-only">Previous</span>
-						</a> <a class="carousel-control-next" href="#myCarousel5"
-							role="button" data-slide="next"> <span
-							class="carousel-control-next-icon" aria-hidden="true"></span> <span
-							class="sr-only">Next</span>
-						</a>
-
-					</div>
-
-					<div class="info_area">
-						<h3 class="tit_space">광화문 종로 모임공간, 공유거실</h3>
-						<div class="tags">
-							<span class="tag_area_name">광화문종로</span>
-						</div>
-						<div class="info_price_hour">
-							<strong class="price">550,000</strong><span class="txt_unit">원/월</span>
-
-						</div>
-
-					</div>
-
-				</div>
-
-
-				<!-- 슬라이스 시작 시점6 -->
-				<div class="col-lg-4">
-
-					<div id="myCarousel6" class="carousel slide my-4"
-						data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel6" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel6" data-slide-to="1"></li>
-							<li data-target="#myCarousel6" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="/resources/img/1.png"
-									alt="First slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/2.png"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block img-fluid" src="/resources/img/3.png"
-									alt="Third slide">
-							</div>
-						</div>
-
-						<a class="carousel-control-prev" href="#myCarousel6" role="button"
-							data-slide="prev"> <span class="carousel-control-prev-icon"
-							aria-hidden="true"></span> <span class="sr-only">Previous</span>
-						</a> <a class="carousel-control-next" href="#myCarousel6"
-							role="button" data-slide="next"> <span
-							class="carousel-control-next-icon" aria-hidden="true"></span> <span
-							class="sr-only">Next</span>
-						</a>
-
-					</div>
-
-					<div class="info_area">
-						<h3 class="tit_space">광화문 종로 모임공간, 공유거실</h3>
-						<div class="tags">
-							<span class="tag_area_name">광화문종로</span>
-						</div>
-						<div class="info_price_hour">
-							<strong class="price">550,000</strong><span class="txt_unit">원/월</span>
-
-						</div>
-
-					</div>
-
-				</div>
 			</div>
 		</div>
+
+
 	</section>
 
 
+	<%-- =================== 리스트 종료  ================= --%>
 
-	<section class="testimonials text-center bg-light">
+
+
+	<!-- <section class="testimonials text-center bg-light">
 		<div class="container">
 			<h2 class="mb-6">리뷰가 많은 공간</h2>
 		</div>
-	</section>
+	</section> -->
 
-	<section class="features-icons bg-light text-left">
+	<!-- <section class="features-icons bg-light text-left">
 		<div class="container">
 			<div class="row">
 
 				<div class="col-lg-4">
-					<!-- 리뷰 슬라이스 시작 시점1 -->
+					리뷰 슬라이스 시작 시점1
 					<div id="myCarousel7" class="carousel slide my-4"
 						data-ride="carousel" data-interval="false">
 						<ol class="carousel-indicators">
@@ -534,7 +337,7 @@
 				</div>
 
 
-				<!-- 리뷰 슬라이스 시작 시점2 -->
+				리뷰 슬라이스 시작 시점2
 				<div class="col-lg-4">
 
 					<div id="myCarousel8" class="carousel slide my-4"
@@ -585,7 +388,7 @@
 				</div>
 
 
-				<!-- 리뷰 슬라이스 시작 시점3 -->
+				리뷰 슬라이스 시작 시점3
 				<div class="col-lg-4">
 
 					<div id="myCarousel9" class="carousel slide my-4"
@@ -637,143 +440,8 @@
 
 			</div>
 		</div>
-	</section>
+	</section> -->
 
-	<!--       <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                  <div class="features-icons-icon d-flex" >
-                     <i class="icon-screen-desktop m-auto text-primary"></i>
-                     <img src="/resources/img/1.png">
-                  </div>
-                  <h3>더 브릭스 기흥점-5인실</h3>
-                  <p class="lead mb-0">638,000원/월</p>
-               </div>
-            </div>
-            
-            <div class="col-lg-4">
-               <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                  <div class="features-icons-icon d-flex">
-                     <img src="/resources/img/2.png">
-                  </div>
-                  <h3>카페24 신당)동대문 독립사무실</h3>
-                  <p class="lead mb-0">550,000원/월</p>
-               </div>
-            </div>
-            
-            <div class="col-lg-4">
-               <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                  <div class="features-icons-icon d-flex">
-                     <img src="/resources/img/3.png">
-                  </div>
-                  <h3>[GARAGE 교대] 1인실</h3>
-                  <p class="lead mb-0">572,000원</p>
-               </div>
-            </div> -->
-
-
-
-
-	<!-- Image Showcases
-   <section class="showcase">
-      <div class="container-fluid p-0">
-         <div class="row no-gutters">
-
-            <div class="col-lg-6 order-lg-2 text-white showcase-img"
-               style="background-image: url('img/bg-showcase-1.jpg');"></div>
-            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-               <h2>Fully Responsive Design</h2>
-               <p class="lead mb-0">When you use a theme created by Start
-                  Bootstrap, you know that the theme will look great on any device,
-                  whether it's a phone, tablet, or desktop the page will behave
-                  responsively!</p>
-            </div>
-         </div>
-         <div class="row no-gutters">
-            <div class="col-lg-6 text-white showcase-img"
-               style="background-image: url('img/bg-showcase-2.jpg');"></div>
-            <div class="col-lg-6 my-auto showcase-text">
-               <h2>Updated For Bootstrap 4</h2>
-               <p class="lead mb-0">Newly improved, and full of great utility
-                  classes, Bootstrap 4 is leading the way in mobile responsive web
-                  development! All of the themes on Start Bootstrap are now using
-                  Bootstrap 4!</p>
-            </div>
-         </div>
-         <div class="row no-gutters">
-            <div class="col-lg-6 order-lg-2 text-white showcase-img"
-               style="background-image: url('img/bg-showcase-3.jpg');"></div>
-            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-               <h2>Easy to Use &amp; Customize</h2>
-               <p class="lead mb-0">Landing Page is just HTML and CSS with a
-                  splash of SCSS for users who demand some deeper customization
-                  options. Out of the box, just add your content and images, and
-                  your new landing page will be ready to go!</p>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   Testimonials
-   <section class="testimonials text-center bg-light">
-      <div class="container">
-         <h2 class="mb-5">What people are saying...</h2>
-         <div class="row">
-            <div class="col-lg-4">
-               <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                  <img class="img-fluid rounded-circle mb-3"
-                     src="img/testimonials-1.jpg" alt="">
-                  <h5>Margaret E.</h5>
-                  <p class="font-weight-light mb-0">"This is fantastic! Thanks
-                     so much guys!"</p>
-               </div>
-            </div>
-            <div class="col-lg-4">
-               <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                  <img class="img-fluid rounded-circle mb-3"
-                     src="img/testimonials-2.jpg" alt="">
-                  <h5>Fred S.</h5>
-                  <p class="font-weight-light mb-0">"Bootstrap is amazing. I've
-                     been using it to create lots of super nice landing pages."</p>
-               </div>
-            </div>
-            <div class="col-lg-4">
-               <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                  <img class="img-fluid rounded-circle mb-3"
-                     src="img/testimonials-3.jpg" alt="">
-                  <h5>Sarah W.</h5>
-                  <p class="font-weight-light mb-0">"Thanks so much for making
-                     these free resources available to us!"</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
- -->
-	<!-- Call to Action -->
-	<!--    <section class="call-to-action text-white text-center">
-      <div class="overlay"></div>
-      <div class="container">
-         <div class="row">
-            <div class="col-xl-9 mx-auto">
-               <h2 class="mb-4">Ready to get started? Sign up now!</h2>
-            </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-               <form>
-                  <div class="form-row">
-                     <div class="col-12 col-md-9 mb-2 mb-md-0">
-                        <input type="email" class="form-control form-control-lg"
-                           placeholder="Enter your email...">
-                     </div>
-                     <div class="col-12 col-md-3">
-                        <button type="submit" class="btn btn-block btn-lg btn-primary">Sign
-                           up!</button>
-                     </div>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div> 
-   </section>
- -->
 	<footer class="footer">
 		<tiles:insertAttribute name="footer" />
 	</footer>

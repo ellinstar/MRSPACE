@@ -5,6 +5,8 @@ import java.util.List;
 import com.space.space.vo.SpaceVO;
 
 public interface CommonService {
+	public List<SpaceVO> mainlayoutList(SpaceVO svo);
+	
 	public List<SpaceVO> commonList(SpaceVO svo);
 
 	public List<SpaceVO> dtcommonList(SpaceVO svo);
