@@ -562,6 +562,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 					<br>
 
 					<p>
+<<<<<<< HEAD
 						<!-- <a class="btn btn-primary btn-lg" href="#"
 							data-needpopup-show="#small-popup"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
@@ -569,6 +570,11 @@ var customOverlay = new daum.maps.CustomOverlay({
 						<input type="button" id="like" class="btn btn-primary" value="찜하기&raquo;">
 						<a class="btn btn-primary btn-lg" id="reserv"
 							href="/reserv/reservation.do">예약하기 &raquo;</a>
+=======
+						<a class="btn btn-primary btn-lg" href="#" data-needpopup-show="#small-popup"> 
+							<i class="glyphicon glyphicon-earphone"></i> 전화 &raquo;</a> 
+							<a class="btn btn-primary btn-lg" id="reserv" href="/reserv/reservation.do">예약하기 &raquo;</a>
+>>>>>>> refs/remotes/origin/용세
 					</p>
 				</address>
 			</div>

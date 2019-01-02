@@ -30,9 +30,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(@ModelAttribute SpaceVO svo, Model model) {
 		log.info("메인컨트롤러 접속!!완료!!!!!!!!");
-		
-		memService.updateState();//접속 날짜 기준으로 예약->사용중 변경됨
-		
+
+		memService.updateState();// 접속 날짜 기준으로 예약->사용중 변경됨
 
 		List<SpaceVO> mainlayoutList = commonService.mainlayoutList(svo);
 
