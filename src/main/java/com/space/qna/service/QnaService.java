@@ -16,5 +16,6 @@ public interface QnaService {
 	public int pwdConfirm(QnaVO qvo);
 	public int qnaUpdate(QnaVO qvo);
 	public int qnaDelete(int qna_Num);
+	public int replyCnt(int qna_Num);
 	
 }

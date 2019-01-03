@@ -25,10 +25,33 @@
 				});
 				
 				/* 삭제 버튼 클릭 시 처리 이벤트 */
-				$("#qnaDeleteBtn").click(function(){
+				/* $("#qnaDeleteBtn").click(function(){
 					$("#pwdChk").show();
 					$("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
 					butChk = 2;
+				}); */
+				
+				/* 삭제 버튼 클릭 시 댓글 확인 후 처리 이벤트 */ 
+				$("#qnaDeleteBtn").click(function(){
+					$.ajax({
+						url : "/qna/replyCnt.do",  
+						type : "post",            
+						data : "qna_Num="+$("#qna_Num").val(), 
+						dataType : "text",
+						error : function(){ 
+							alert('시스템 오류 입니다. 관리자에게 문의 하세요');
+						}, 
+						success : function(resultData){ 
+							if(resultData==0){ 
+								$("#pwdChk").show();
+								$("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
+								butChk = 2;
+							}else{ 
+								alert("댓글 존재시 게시물을 삭제할 수가 없습니다.\n관리자에게 문의 하세요");
+								return;
+							}
+						}
+					});
 				});
 				
 				/* 비밀번호 확인 버튼 클릭 시 처리 이벤트 */
