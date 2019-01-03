@@ -36,14 +36,13 @@ public class AdminGraphController {
 		return "/admin/graph/chartjs";
 	}
 	@RequestMapping(value="cpgraph", method=RequestMethod.GET)
-	public void getCpGraph(@RequestParam("cpNum") int cp_Num) {
+	public String getCpGraph(HttpSession session, Model model) {
+		String cpNum = (String)session.getAttribute("cpNum");
 		Gson gson = new Gson();
-		HashMap<String, String> map = new HashMap<>();
-		map.put("cpNum", cpNum );
-		map.put("month",month);
 		System.out.println("cpNum"+cpNum);
-		List<ReservVO> cpgraph = adResServ.graphCp(rvo);
-		gson.toJson(cpgraph);
+		List<ReservVO> cpgraph = adResServ.graphCp(cpNum);
+		model.addAttribute("list", cpgraph);
+		return gson.toJson(cpgraph);
 	}
 	   /* public String getDailyVisitor(HttpSession session, String month){
 	        String cooContractNo = (String) session.getAttribute("setNo");

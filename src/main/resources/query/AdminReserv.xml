@@ -72,26 +72,22 @@
 		select cp_Num, cp_Name from tb_company
 	</select>
 	
+<!-- 업체 예약건수 그래프 -->
+
 	<resultMap type="java.util.HashMap" id="statistics">
 		<result javaType="java.lang.String" property="statsDate" column="date"/>
 		<result javaType="java.lang.String" property="statsAmount" column="amount"/>
+		
 	</resultMap>
-	
-	<parameterMap type="java.util.HashMap" id="param">
-		<parameter property=""/>
-	</parameterMap>
-
 	<select id="graphcp" resultMap="statistics">
 		select to_char(res_usedate, 'yyyy-mm') res_usedate, count(*) 
 		from(
 		select r.*, s.cp_num
 		from tb_reserv r, tb_space s
 		)
-		<where>
-			<if test="cp_Num != 0">
-				cp_num = #{cp_Num}
-			</if>
-		</where>
+		where
+				cp_num = #{cpNum}
+			
 		group by res_usedate
 
 	</select>
