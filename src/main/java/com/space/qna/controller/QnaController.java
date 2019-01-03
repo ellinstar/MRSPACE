@@ -32,7 +32,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	/**************************************************************
-	 * 글목록 구현하기
+	 * 문의글 목록 구현하기
 	 **************************************************************/	
 	@RequestMapping(value="/qnaList.do", method = RequestMethod.GET)
 	public String qnaList(@ModelAttribute QnaVO qvo, Model model) {
@@ -125,7 +125,7 @@ public class QnaController {
 	}
 	
 	/**************************************************************
-	 * 글 상세보기 구현
+	 * 문의글 상세보기 구현
 	 **************************************************************/
 	@RequestMapping(value="/qnaDetail.do", method=RequestMethod.GET)
 	public String qnaDetail(@ModelAttribute QnaVO qvo, Model model) {
@@ -144,7 +144,7 @@ public class QnaController {
 		return "qna/qnaDetail";
 	}
 	/**************************************************************
-	 * 글 상세보기 구현2
+	 * 자주묻는질문 상세보기 구현
 	 **************************************************************/
 	@RequestMapping(value="/qnaDetail2.do", method=RequestMethod.GET)
 	public String qnaDetail2(@ModelAttribute QnaVO qvo, Model model) {

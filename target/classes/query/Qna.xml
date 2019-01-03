@@ -79,7 +79,7 @@
 		
 	</select>
 	
-	<!-- 게시물 전체 조회2 --> 
+	<!-- 게시물 전체 조회 (자주 묻는 질문) --> 
 	<select id="qnaList2" parameterType="qna" resultType="qna"> 
 		/* qna - qnaList */ 
 		SELECT qna_Num, qna_Name, qna_Title,  
@@ -117,6 +117,7 @@
 		
 	</select>
 	
+	<!-- 글 목록 수 조회 -->
 	<select id="qnaListCnt" parameterType="qna" resultType="int">
 		/* Qna - qnaListCnt */
 		SELECT NVL(count(1), 0) FROM 
@@ -128,6 +129,7 @@
 		)
 	</select>
 	
+	<!-- 글 목록 수 조회 (자주 묻는 질문) -->
 	<select id="qnaListCnt2" parameterType="qna" resultType="int">
 		/* Qna - qnaListCnt */
 		SELECT NVL(count(1), 0) FROM 

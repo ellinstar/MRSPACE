@@ -11,13 +11,13 @@
 		from
 		( select list.*, rownum as rnum
 		from (
-		select sp_num, sp_name, sp_address, sp_type, sp_stock, sp_rest, cp_num
-		from tb_space where cp_num = #{cp_Num}
-		<where>
+		select
+		sp_num, sp_name, sp_address, sp_type, sp_stock, sp_rest, cp_num
+		from
+		tb_space where cp_num = #{cp_Num}
 			<if test="keyword != null and keyword != ''">
 				and sp_name like '%' || #{keyword} || '%'
 			</if>
-		</where>
 		order by sp_num desc
 		) list
 		)
@@ -30,9 +30,7 @@
 		</where>
 	</select>
 
-<!-- <if test="sp_name != null and sp_name != ''">
-			cp_num = #{cp_num}
-			</if> -->
+	<!-- <if test="sp_name != null and sp_name != ''"> cp_num = #{cp_num} </if> -->
 
 	<!-- 게시물 총 개수 -->
 	<select id="spaceListCnt" parameterType="space" resultType="int">
@@ -40,12 +38,10 @@
 		select nvl(count(1), 0) from
 		( select list.*, rownum as rnum
 		from(
-		select * from tb_space
-		<where>
+		select * from tb_space where cp_num = #{cp_Num}
 			<if test="keyword != null and keyword != ''">
-				sp_name like '%' || #{keyword} || '%'
+				and sp_name like '%' || #{keyword} || '%'
 			</if>
-		</where>
 		) list
 		)
 	</select>
@@ -75,29 +71,73 @@
 		sp_Traffic,
 		sp_Rest,
 		cp_Num
-		
+
 		)
 		VALUES(
 		#{sp_Num},
 		#{sp_Type, jdbcType=VARCHAR},
-		#{sp_Stock, jdbcType=VARCHAR},
+		#{sp_Stock,
+		jdbcType=VARCHAR},
 		#{sp_Name, jdbcType=VARCHAR},
 		#{sp_Price},
-		#{sp_Address, jdbcType=VARCHAR},
+		#{sp_Address,
+		jdbcType=VARCHAR},
 		#{sp_Y, jdbcType=VARCHAR},
-		#{sp_X, jdbcType=VARCHAR},
+		#{sp_X,
+		jdbcType=VARCHAR},
 		#{sp_Contract1, jdbcType=VARCHAR},
-		#{sp_Contract2, jdbcType=VARCHAR},
+		#{sp_Contract2,
+		jdbcType=VARCHAR},
 		#{sp_Opendate, jdbcType=VARCHAR},
-		#{sp_Exposition, jdbcType=VARCHAR},
+		#{sp_Exposition,
+		jdbcType=VARCHAR},
 		#{sp_File, jdbcType=VARCHAR},
-		#{sp_Service, jdbcType=VARCHAR},
+		#{sp_Service,
+		jdbcType=VARCHAR},
 		#{sp_Traffic, jdbcType=VARCHAR},
-		#{sp_Stock, jdbcType=VARCHAR},
-	
-		(select cp_num from tb_company where cp_id=#{cp_Id})
+		#{sp_Stock,
+		jdbcType=VARCHAR},
+
+		(select
+		cp_num from tb_company where cp_id=#{cp_Id})
 		)
 	</insert>
+
+	<!-- <select id="spaceSelect" parameterType="int"
+		resultType="space">
+		select * from tb_space where sp_Num = #{sp_Num}
+	</select> -->
+
+	<update id="spaceModify" parameterType="space">
+		update tb_space set
+		<if test="sp_Price != null and sp_Price != ''">sp_Price = #{sp_Price}, </if>
+		<if test="sp_Exposition != null and sp_Exposition != ''">sp_Exposition = #{sp_Exposition}, </if>
+		<if test="sp_File != null and sp_File != ''">sp_File = #{sp_File}, </if>
+		<if test="sp_Service != null and sp_Service != ''">sp_Service = #{sp_Service}, </if>
+		<if test="sp_Traffic != null and sp_Traffic != ''">sp_Traffic = #{sp_Traffic}</if>
+		where sp_Num = ${sp_Num} and cp_Num = ${cp_Num}
+	</update>
+
+
+
+	<!-- <select id="spaceSelect" parameterType="String" resultType="space"> 
+		select * from tb_space where sp_num = #{sp_Num} </select> -->
+
+	<!-- 수정 폼 -->
+	<!-- <select id="spaceModifyForm" parameterType="int" resultType="space"> 
+		select s.sp_num, s.sp_type, s.sp_stock, s.sp_name, s.sp_price, s.sp_address, 
+		s.sp_service, s.sp_traffic, s.sp_exposition, c.cp_phone, c.cp_num from tb_space 
+		s, tb_company c where s.cp_num = c.cp_num and s.sp_num = #{sp_Num} </select> 
+		<select id="dtspaceList" resultType="space" parameterType="int"> select * 
+		from ( select list.*, rownum as rnum from ( select s.sp_num, s.sp_type, s.sp_stock, 
+		s.sp_name, s.sp_price, s.sp_address, s.sp_service, s.sp_traffic, s.sp_exposition, 
+		c.cp_phone, c.cp_num from tb_space s, tb_company c <where> s.cp_num = c.cp_num 
+		and <![CDATA[ rownum < 4 ]]> and s.cp_num = #{cp_Num} and not s.sp_Num = 
+		#{sp_Num} </where> order by c.cp_num desc ) list ) <where> <if test="start_row 
+		!= null and start_row != ''"> <if test="end_row != null and end_row != ''"> 
+		rnum between #{start_row} and #{end_row} </if> </if> </where> </select> <select 
+		id="spnum" resultType="int" parameterType="space"> select cp_Num from tb_space 
+		where sp_num = #{sp_Num} </select> -->
 
 
 </mapper>

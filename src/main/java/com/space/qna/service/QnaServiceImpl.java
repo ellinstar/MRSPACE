@@ -75,7 +75,7 @@ public class QnaServiceImpl implements QnaService {
 		detail = qnaDAO.qnaDetail(qvo);
 		return detail;
 	}
-	// 글상세 구현
+	// 글상세 구현 (자주 묻는 질문)
 	@Override
 	public QnaVO qnaDetail2(QnaVO qvo) {
 		QnaVO detail = null;
