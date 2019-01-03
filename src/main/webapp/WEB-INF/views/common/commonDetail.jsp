@@ -8,13 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" id="bootstrap-css">
 <link href="/resources/css/sb-admin.css" rel="stylesheet">
 
 <!-- Custom fonts for this template -->
@@ -26,7 +25,11 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
-
+<!-- 아이콘CSS -->
+<!-- <link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+ -->
 
 <link rel="stylesheet" href="/resources/popup/needpopup.min.css">
 
@@ -281,7 +284,7 @@ img {
 }
 
 p {
-	font-size: 1.2em;
+	font-size: 1em;
 	line-height: 1.4;
 	color: #343638;
 	margin: 20px 0;
@@ -438,6 +441,12 @@ p {
 	left: 0;
 	font-size: 13px;
 }
+
+button#like {
+    font-size: 11px;
+    float: right;
+    margin-right: 7px;
+}
 </style>
 
 </head>
@@ -547,11 +556,16 @@ var customOverlay = new daum.maps.CustomOverlay({
 
 
 			<div class="info_area">
-				<h5 class="mt-4">공간 예약 정보</h5>
+				<div>
+					<h5 class="mt-4">공간 예약 정보</h5>
+					<button type="button" id="like" class="btn btn-danger btn-circle">
+						<i class="glyphicon glyphicon-heart"></i>찜하기
+					</button>
+				</div>
 				<address>
 					<strong>${detail.sp_Type}</strong> <br>───────────────────<br>
 					<p class="info_price_hour">
-						<strong class="price"><span class="txt_sign">\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<strong class="price"><span class="txt_sign">\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<fmt:formatNumber value="${detail.sp_Price}" /></strong> <span
 							class="txt_unit">/1개월</span> <br> <span class="txt_vat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -562,19 +576,9 @@ var customOverlay = new daum.maps.CustomOverlay({
 					<br>
 
 					<p>
-<<<<<<< HEAD
-						<!-- <a class="btn btn-primary btn-lg" href="#"
-							data-needpopup-show="#small-popup"> <i
-							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
-						</a> --> 
-						<input type="button" id="like" class="btn btn-primary" value="찜하기&raquo;">
-						<a class="btn btn-primary btn-lg" id="reserv"
-							href="/reserv/reservation.do">예약하기 &raquo;</a>
-=======
 						<a class="btn btn-primary btn-lg" href="#" data-needpopup-show="#small-popup"> 
 							<i class="glyphicon glyphicon-earphone"></i> 전화 &raquo;</a> 
 							<a class="btn btn-primary btn-lg" id="reserv" href="/reserv/reservation.do">예약하기 &raquo;</a>
->>>>>>> refs/remotes/origin/용세
 					</p>
 				</address>
 			</div>
@@ -653,8 +657,9 @@ var customOverlay = new daum.maps.CustomOverlay({
 															type="hidden" value="${space.sp_Num}">
 														<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 														<form name="detailForm" id="detailForm">
-															<input type="hidden" name="sp_Num" id="sp_Num" value="${space.sp_Num}">
-															
+															<input type="hidden" name="sp_Num" id="sp_Num"
+																value="${space.sp_Num}">
+
 														</form>
 
 
@@ -711,13 +716,14 @@ var customOverlay = new daum.maps.CustomOverlay({
 		needPopup.init();
 	</script> --%>
 	<!-- 전화 popup 모달창 끝 -->
-	
+
 	<!-- 찜 관련 -->
 	<form id="like_Form" class="form-horizontal">
-		<input type="hidden" id="sp_Num" name="sp_Num" value="${detail.sp_Num }" />
-		<input type="hidden" id="sp_Name" name="sp_Name" value="${detail.sp_Name }" />
-		<input type="hidden" id="like_Amount" name="like_Amount" value="${detail.sp_Price}" />
-		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id }" />
+		<input type="hidden" id="sp_Num" name="sp_Num"
+			value="${detail.sp_Num }" /> <input type="hidden" id="sp_Name"
+			name="sp_Name" value="${detail.sp_Name }" /> <input type="hidden"
+			id="like_Amount" name="like_Amount" value="${detail.sp_Price}" /> <input
+			type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id }" />
 	</form>
 
 
