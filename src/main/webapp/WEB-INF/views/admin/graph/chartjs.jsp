@@ -42,8 +42,8 @@
 			
 		
 			
-			chartLabels = list.toArray(new String[list.statsDate]);
-			chartData = list.toArray(new String[list.statsAmount]);
+			chartLabels = [];// list.toArray(new String[list.statsDate]);
+			chartData = [];//list.toArray(new String[list.statsAmount]);
 			
 			//getJson으로 데이터 받음
 			$.getJSON("./cpgraph",{
