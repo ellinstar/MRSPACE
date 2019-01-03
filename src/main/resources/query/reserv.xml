@@ -20,4 +20,11 @@
 		where sp_num = ${sp_Num} and res_UseDate = to_date('${resUseDate}','yyyy-MM')
 	</select>
 	
+	<!-- 찜목록 추가 -->
+	<insert id="likeInsert" parameterType="reserv">
+		insert into tb_like(like_num, like_amount, mem_Id, sp_num, sp_name)
+		values(
+			tb_like_seq.nextval, ${like_Amount}, '${mem_Id}', ${sp_Num}, '${sp_Name}')
+	</insert>
+	
 </mapper>

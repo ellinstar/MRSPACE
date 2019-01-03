@@ -15,37 +15,37 @@
 <title>Insert title here</title>
 
 </head>
-
+<style>
+.btn-sq-lg {
+	width: 200px !important;
+	height: 200px !important;
+}
+</style>
 
 <body>
-	<section class="testimonials text-center bg-light">
+	<section class="testimonials text-center">
 		<div class="container">
+			<br><br><br>
 			<h1 class="tit_space">마이 페이지</h1>
-			<div class="row2">
+			<br><br>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>
+						<a href="/mem/myReservationList.do" class="btn btn-sq-lg btn-primary"><br> 
+						<i class="fa fa-user fa-5x"></i><br /> <br>예약 목록</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						
+						<a href="/mem/likeList.do" class="btn btn-sq-lg btn-success"><br>
+						<i class="fa fa-user fa-5x"></i><br /> <br>찜 목록</a> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						
+						<a href="/mem/memInfo.do" class="btn btn-sq-lg btn-danger"><br>
+						<i class="fa fa-user fa-5x"></i><br /> <br>내 정보</a>
+					</p>
 					<br><br><br>
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="/mem/myReservationList.do"><img
-								alt="예약 목록" src="/resources/img/RL.PNG"></a></li>
-					</ul>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#"><img
-								alt="사용중인 공간" src="/resources/img/US.PNG"></a></li>
-					</ul>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#"><img
-								alt="찜목록" src="/resources/img/LL.PNG"></a></li>
-					</ul>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="/mem/memInfo.do"><img
-								alt="내 정보" src="/resources/img/MI.PNG"></a></li>
-					</ul>
-
+				</div>
 			</div>
 		</div>
 	</section>
-
 </body>
 </html>

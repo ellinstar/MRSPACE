@@ -100,11 +100,27 @@
                 when res_state = 3 and to_char(res_usedate,'yyyymm') < to_char(sysdate,'yyyymm') then 4
                 
                 when res_state = 1 and to_char(res_usedate,'yyyymm') > to_char(sysdate,'yyyymm') then 1
+                
+                when res_state = 3 and to_char(res_usedate,'yyyymm') = to_char(sysdate,'yyyymm') then 3
+                
+                when res_state = 4 then 4
         end)
 		]]>
 	</update>
 	
+	<!-- 찜목록 -->
+	<select id="likeList" resultType="reserv" parameterType="mem">
+		select s.sp_num, s.sp_name, s.sp_address, s.sp_type, l.like_amount, l.like_date
+		from tb_like l, tb_space s
+		where mem_id = #{mem_Id} and l.sp_num = s.sp_num
+	</select>
 	
+	<!-- 찜목록 삭제 -->
+	<delete id="likeDelete" parameterType="int">
+		delete 
+		from tb_like  
+		where sp_Num = #{sp_Num}
+	</delete>
 	
 	
 </mapper>

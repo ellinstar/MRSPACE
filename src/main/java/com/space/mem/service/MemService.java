@@ -25,4 +25,8 @@ public interface MemService {
 	public List<ReservVO> reservList(MemVO mvo);
 	
 	public void updateState();
+	
+	public List<ReservVO> likeList(MemVO mvo);
+	
+	public int likeDelete(int sp_Num);
 }
