@@ -39,8 +39,9 @@ $(document).ready(function() {
 <body>
 	<div class="contentContainer">
 	<!-- =====================콤보박스================================= -->
-	<form id='searchForm' action="/admin/reserv" method="get" class="form-label-group form-row " >
+	<form id='searchForm' action="/admin/reserv" method="post" class="form-label-group form-row " >
 		<select name="search" id="search" class="form-control font-weight-bold" data-live-search="true">
+			<option selected disabled>업체명선택</option>
 			<option value="0">전체</option>
 			<c:forEach var="cp" items="${cp}">
 			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
@@ -146,7 +147,7 @@ $(document).ready(function() {
 								<td><c:out value="${rescp.sp_Name}"/></td>
 								<td><c:out value="${rescp.sp_Type}"/></td>
 								<td><c:out value="${rescp.mem_Id}"/></td>
-								<td><c:out value="${rescp.resUseDate}"/></td>
+								<td><c:out value="${rescp.res_UseDate}"/></td>
 								<td><c:out value="${rescp.res_State}"/></td>
 							</tr>
 						</c:forEach>

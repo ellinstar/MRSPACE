@@ -73,12 +73,29 @@ public class MemDAOImpl implements MemDAO {
 	@Override
 	public int securityUpdate(MemSecurity set) {
 		System.out.println("MemDAOImpl - securityUpdate 메소드 호출");
-        return session.update("securityUpdate",set);
+		return session.update("securityUpdate", set);
 	}
-	
+
 	@Override
 	public List<ReservVO> reservList(MemVO mvo) {
 		return session.selectList("reservList", mvo);
+	}
+
+	@Override
+	public void updateState() {
+		session.update("updateState");
+	}
+
+	// 찜목록 구현
+	@Override
+	public List<ReservVO> likeList(MemVO mvo) {
+		return session.selectList("likeList", mvo);
+	}
+
+	// 찜목록 삭제
+	@Override
+	public int likeDelete(int sp_Num) {
+		return session.delete("likeDelete", sp_Num);
 	}
 
 }

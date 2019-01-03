@@ -3,7 +3,7 @@
 <mapper namespace="com.space.admin.dao.AdminResDAO">
 	
 	<sql id="resCommon">
-		select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state, r.res_date, r.res_UseDate
+		select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state, r.res_date, to_char(res_usedate,'yyyy-mm') res_UseDate
 		from tb_reserv r, tb_space s, tb_company c
 		<where>
 			<if test="search != 0">
@@ -53,7 +53,7 @@
 	
 	<!-- 예약건 확인 -->
 	<select id="resDetail" resultType="reserv">
-	select res_Num, mem_id, res_date, to_char(res_usedate,'yyyy-mm') resUseDate, res_state, res_amount, sp_Num
+	select res_Num, mem_id, res_date, to_char(res_usedate,'yyyy-mm') res_UseDate, res_state, res_amount, sp_Num
 		from tb_reserv
 	where res_num=#{res_Num}
 	</select>

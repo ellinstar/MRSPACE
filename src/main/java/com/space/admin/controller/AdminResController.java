@@ -28,7 +28,7 @@ public class AdminResController {
 	@Autowired
 	public AdminResService adResServ;
 	
-	@RequestMapping(value="/reserv", method= RequestMethod.GET)
+	@RequestMapping(value="/reserv", method= {RequestMethod.GET, RequestMethod.POST})
 	public String resToday(@ModelAttribute ReservVO rvo, Model model, Criteria cri) {
 		log.info("예약메인 호출 성공");
 		List<CompVO> cpname = adResServ.optionCp();//select option 값 불러오기

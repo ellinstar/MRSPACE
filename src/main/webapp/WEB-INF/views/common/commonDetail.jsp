@@ -30,6 +30,8 @@
 
 <link rel="stylesheet" href="/resources/popup/needpopup.min.css">
 
+<!-- 찜목록 -->
+<script src="/resources/include/js/like.js"></script>
 
 <!-- 구글지도 -->
 <script
@@ -560,11 +562,19 @@ var customOverlay = new daum.maps.CustomOverlay({
 					<br>
 
 					<p>
-						<a class="btn btn-primary btn-lg" href="#"
+<<<<<<< HEAD
+						<!-- <a class="btn btn-primary btn-lg" href="#"
 							data-needpopup-show="#small-popup"> <i
 							class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
-						</a> <a class="btn btn-primary btn-lg" id="reserv"
+						</a> --> 
+						<input type="button" id="like" class="btn btn-primary" value="찜하기&raquo;">
+						<a class="btn btn-primary btn-lg" id="reserv"
 							href="/reserv/reservation.do">예약하기 &raquo;</a>
+=======
+						<a class="btn btn-primary btn-lg" href="#" data-needpopup-show="#small-popup"> 
+							<i class="glyphicon glyphicon-earphone"></i> 전화 &raquo;</a> 
+							<a class="btn btn-primary btn-lg" id="reserv" href="/reserv/reservation.do">예약하기 &raquo;</a>
+>>>>>>> refs/remotes/origin/용세
 					</p>
 				</address>
 			</div>
@@ -676,12 +686,12 @@ var customOverlay = new daum.maps.CustomOverlay({
 
 
 	<!-- 전화 popup 모달창 -->
-	<div class="wrapper">
+	<%-- <div class="wrapper">
 		<div id='small-popup' class="needpopup">
 			<p>"코워킹스페이스를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다. :)</p>
 			<p>-------------------------------------------------------------------------</p>
 			<h2>${detail.sp_Name}</h2>
-			<%-- <h2>${detail.cp_Phone}</h2> --%>
+			<h2>${detail.cp_Phone}</h2>
 			<p>PHONE : ${detail.cp_Phone}</p>
 		</div>
 	</div>
@@ -699,8 +709,16 @@ var customOverlay = new daum.maps.CustomOverlay({
 			}
 		};
 		needPopup.init();
-	</script>
+	</script> --%>
 	<!-- 전화 popup 모달창 끝 -->
+	
+	<!-- 찜 관련 -->
+	<form id="like_Form" class="form-horizontal">
+		<input type="hidden" id="sp_Num" name="sp_Num" value="${detail.sp_Num }" />
+		<input type="hidden" id="sp_Name" name="sp_Name" value="${detail.sp_Name }" />
+		<input type="hidden" id="like_Amount" name="like_Amount" value="${detail.sp_Price}" />
+		<input type="hidden" id="mem_Id" name="mem_Id" value="${login.mem_Id }" />
+	</form>
 
 
 
