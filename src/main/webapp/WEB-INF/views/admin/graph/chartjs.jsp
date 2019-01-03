@@ -31,15 +31,24 @@
 			});
 		}
 		
+			var form = $("#form");
+		$("#cpNum").on("change", function(e) {
+				e.preventDefault();
+				var cpNum = $("#cpNum option:selected").val();
+				consol.log('cpNum:'+cpNum);
+		});
+		//버튼을 누르면 차트가 그려진다
 		$("#btn").click(function() {
-			chartLabels = [];
-			chartData = [];
+			
+		
+			
+			chartLabels = [];// list.toArray(new String[list.statsDate]);
+			chartData = [];//list.toArray(new String[list.statsAmount]);
 			
 			//getJson으로 데이터 받음
 			$.getJSON("./cpgraph",{
-				cpNum : cpNum,
-				month : month
-			}, function(data) {
+				cpNum: cpNum
+			},function(data) {
 				$.each(data, function(key, value) {
 					chartLabels.push(value.statsDate);
 					chartData.push(value.statsAmont);
@@ -57,16 +66,15 @@
 				}
 				createChart();
 			});
-		})
+		});
 		
-	})
+	});
 </script>
 <body>
 
  	<!-- =====================콤보박스================================= -->
 	<form id='form' action="/admin/cpgraph" method="get" class="form-label-group form-row " >
-		<select name="cp_Num" id="cp_Num" class="select" data-live-search="true">
-			<option selected disabled>업체명선택</option>
+		<select name="cpNum" id="cpNum" class="select" data-live-search="true">
 			<option value="0">전체</option>
 			<c:forEach var="cp" items="${cp}">
 			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
