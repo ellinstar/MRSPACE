@@ -118,3 +118,4 @@ function getDateFormat(dateValue){
 	var result = year+"-"+month+"-"+day;
 	return result;
 }
+

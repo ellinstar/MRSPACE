@@ -17,9 +17,10 @@
                   <li class="list-inline-item"><a href="#">Privacy Policy</a></li> -->
 				</ul>
 				<p class="text-muted small mb-4 mb-lg-0">&copy; 04704 서울시 성동구
-					무학로2길 54 / 대표자명 윤새별, 김용세, 이상현, 강병훈, 노승빈, 권경태, 안태영 / Tel : 02)
+					무학로2길 54 / 대표자명 윤새별, 김용세, 이상현, 노승빈, 안태영 / Tel : 02)
 					441-6006 / Fax : 02)428-9694 / coworking@naver.com / Copyright(c)
 					2018 All Rights Reserved</p>
+				<br><br>	
 			</div>
 			<div class="col-lg-6 h-100 text-center text-lg-right my-auto">
 				<ul class="list-inline mb-0">
