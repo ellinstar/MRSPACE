@@ -51,7 +51,6 @@
 						type : "post",                // 전송 시 method 방식
 						data : $("#f_pwd").serialize(),   //폼전체 데이터 전송
 						dataType : "text",
-						/* contentType : "text/html; charset=euc-kr", */
 						error : function(){             //실행시 오류가 발생하였을 경우
 							alert('시스템 오류 입니다. 관리자에게 문의 하세요');
 						},                            //정상적으로 실행이 되었을 경우
@@ -84,7 +83,6 @@
 			<input type="hidden" name="qna_Num" value="${detail.qna_Num}"/>
 			<input type="hidden" name="page" id="page" value="${param.page}"/>
 			<input type="hidden" name="pageSize" id="pageSize" value="${param.pageSize}"/>
-			<%-- <input type="hidden" name="qna_File" id="qna_File" value="${detail.qna_File}" /> --%>
 		</form>
 		
 		<%-- ========= 비밀번호 확인 버튼 및 버튼 추가 시작 ====== --%>
@@ -134,13 +132,6 @@
 						<td class="ac vm">내용</td>
 						<td colspan="3">${detail.qna_Content}</td>
 					</tr>
-					<%-- <c:if test="${detail.qna_File !=''}">
-					<tr>
-						<td class="ac vm">첨부파일 이미지</td>
-						<td colspan="3">
-						<img id="fileImage"></td>
-					</tr> 
-					</c:if> --%>
 				</tbody>
 			</table>
 		</div>

@@ -244,6 +244,8 @@ public class QnaController {
 		
 		result = qnaService.qnaDelete(qvo.getQna_Num());
 		
+		System.out.println("페이징사이즈 : " + qvo.getPageSize());
+		
 		if(result == 1){
 			url="/qna/qnaList.do?page="+qvo.getPage()+"&pageSize="+qvo.getPageSize();
 		}else{
