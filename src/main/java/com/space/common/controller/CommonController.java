@@ -26,8 +26,6 @@ public class CommonController {
 
 	@Autowired
 	private CommonService commonService;
-
-	
 	
 	// 공간 목록 검색 구현하기
 	@RequestMapping(value = "/commonList.do", method = RequestMethod.GET)

@@ -5,7 +5,8 @@
 
 	<select id="compsecuritySelect" parameterType="cpsecurity"
 		resultType="cpsecurity">
-		select cp_id, salt from tb_compsecurity where cp_id = #{cp_Id}
+		select cp_id, salt from tb_compsecurity where cp_id =
+		#{cp_Id}
 	</select>
 
 	<insert id="compsecurityInsert" parameterType="cpsecurity">
@@ -28,12 +29,15 @@
 		insert into tb_company
 		(cp_num, cp_Id, cp_Pw, cp_Name, cp_Ceo, cp_Add,
 		cp_Bnum, cp_Bank, cp_Account, cp_Email, cp_Phone,
-		cp_Date, cp_State, cp_Joinstate, cp_Outdate)
+		cp_Date, cp_State,
+		cp_Joinstate, cp_Outdate)
 		values
 		(tb_company_seq.nextval,
-		#{cp_Id}, #{cp_Pw}, #{cp_Name},
+		#{cp_Id},
+		#{cp_Pw}, #{cp_Name},
 		#{cp_Ceo}, #{cp_Add}, #{cp_Bnum},
-		#{cp_Bank}, #{cp_Account},
+		#{cp_Bank},
+		#{cp_Account},
 		#{cp_Email}, #{cp_Phone},sysdate, '0', '0',
 		null)
 	</insert>
@@ -56,25 +60,44 @@
 
 	<update id="compPwChange2" parameterType="comp">
 		update tb_company
-		set cp_pw = #{cp_Pw}
+		set
+		cp_pw = #{cp_Pw}
 		where cp_Id = #{cp_Id}
 	</update>
 
 	<update id="compSecurityUpdate" parameterType="cpsecurity">
-      update tb_compsecurity
-      set cp_id = #{cp_Id},
-      salt = #{salt}
-      where cp_id = #{cp_Id}
-   </update>
-   
-   <update id="compUpdate" parameterType="comp">
-   update tb_company set
-   <if test="cp_Pw != null and cp_Pw != ''">cp_Pw = #{cp_Pw},</if>
-   <if test="cp_Account != null and cp_Account != ''">cp_account=#{cp_Account},</if>
-   <if test="cp_Bank != null and cp_Bank != ''">cp_bank=#{cp_Bank},</if> 
-   <if test="cp_Phone != null and cp_Phone != ''">cp_phone=#{cp_Phone},</if>
-   <if test="cp_Email != null and cp_Email != ''"> cp_email=#{cp_Email}</if>
-   where cp_Id=#{cp_Id}
-   </update>
+		update
+		tb_compsecurity
+		set cp_id = #{cp_Id},
+		salt = #{salt}
+		where cp_id =
+		#{cp_Id}
+	</update>
 
+	<update id="compUpdate" parameterType="comp">
+		update tb_company set
+		<if test="cp_Pw != null and cp_Pw != ''">cp_Pw = #{cp_Pw},</if>
+		<if test="cp_Account != null and cp_Account != ''">cp_account=#{cp_Account},</if>
+		<if test="cp_Bank != null and cp_Bank != ''">cp_bank=#{cp_Bank},</if>
+		<if test="cp_Phone != null and cp_Phone != ''">cp_phone=#{cp_Phone},</if>
+		<if test="cp_Email != null and cp_Email != ''"> cp_email=#{cp_Email}</if>
+		where cp_Id=#{cp_Id}
+	</update>
+
+	<select id="compReservList" parameterType="comp" resultType="reserv">
+		select *
+		from tb_reserv
+		where sp_num in (select sp_num
+		from tb_space s, tb_company c
+		where s.cp_num
+		= ${cp_Num} )
+		order by sp_num
+	</select>
+	
+	<update id="reservStateUpdate" parameterType="reserv">
+		update tb_reserv
+		set res_State = 2
+		where mem_Id = #{mem_Id} and res_Num = #{res_Num}
+	</update>
+	
 </mapper>

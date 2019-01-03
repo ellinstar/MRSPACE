@@ -1,7 +1,10 @@
 package com.space.comp.dao;
 
+import java.util.List;
+
 import com.space.comp.vo.CompSecurity;
 import com.space.comp.vo.CompVO;
+import com.space.reserv.vo.ReservVO;
 
 public interface CompDAO {
 
@@ -29,5 +32,7 @@ public interface CompDAO {
 	public int compPwChange2(CompVO cvo);
 	
 	public int compSecurityUpdate(CompSecurity sec);
+	
+	public List<ReservVO> getReservList(CompVO cvo);
 
 }

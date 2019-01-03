@@ -1,5 +1,7 @@
 package com.space.comp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +11,7 @@ import com.space.common.util.Util;
 import com.space.comp.dao.CompDAOImpl;
 import com.space.comp.vo.CompSecurity;
 import com.space.comp.vo.CompVO;
+import com.space.reserv.vo.ReservVO;
 
 import lombok.extern.java.Log;
 
@@ -52,14 +55,14 @@ public class CompServiceImpl implements CompService {
 	@Override
 	public CompVO compSelect(String cp_Id) {
 		CompVO cvo = compDao.compSelect(cp_Id);
-		System.out.println("업체서비스Impl : compselect" + cvo.getCp_Id()); 
+		System.out.println("업체서비스Impl : compselect" + cvo.getCp_Id());
 		return cvo;
 	}
 
 	@Override
 	public CompVO compSelect2(String cp_Bnum) {
 		CompVO cvo = compDao.compSelect2(cp_Bnum);
-		System.out.println("업체서비스Impl : compselect2" + cvo.getCp_Id()); 
+		System.out.println("업체서비스Impl : compselect2" + cvo.getCp_Id());
 		return cvo;
 	}
 
@@ -90,7 +93,7 @@ public class CompServiceImpl implements CompService {
 	@Override
 	public int compUpdate(CompVO cvo) {
 		CompSecurity sec = new CompSecurity();
-		if(cvo.getCp_Pw() != null && cvo.getCp_Pw() != "") {
+		if (cvo.getCp_Pw() != null && cvo.getCp_Pw() != "") {
 			sec.setCp_Id(cvo.getCp_Id());
 			sec.setSalt(Util.getRandomString());
 			compDao.compSecurityUpdate(sec);
@@ -128,6 +131,18 @@ public class CompServiceImpl implements CompService {
 		int result = compDao.compPwChange2(cvo);
 		System.out.println("서비스 : " + result);
 		return result;
+	}
+
+	@Override
+	public List<ReservVO> getReservList(CompVO cvo) {
+		List<ReservVO> reservList = compDao.getReservList(cvo);
+		return reservList;
+	}
+
+	@Override
+	public void reservStateUpdate(ReservVO rvo) {
+		compDao.reservStateUpdate(rvo);
+		
 	}
 
 }

@@ -1,11 +1,14 @@
 package com.space.comp.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.space.comp.vo.CompSecurity;
 import com.space.comp.vo.CompVO;
+import com.space.reserv.vo.ReservVO;
 
 @Repository
 public class CompDAOImpl implements CompDAO {
@@ -68,4 +71,12 @@ public class CompDAOImpl implements CompDAO {
         return session.update("compSecurityUpdate", sec);
 	}
 
+	public List<ReservVO> getReservList(CompVO cvo) {
+		return session.selectList("compReservList",cvo);
+	}
+
+	public void reservStateUpdate(ReservVO rvo) {
+		session.update("reservStateUpdate",rvo);
+	}
+	
 }
