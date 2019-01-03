@@ -41,7 +41,7 @@
 	</head>
 	<body>
 		<div class="contentContainer">
-			<div class="contentTit"><h3>게시판 글수정</h3></div>
+			<br><div class="contentTit"><h2>게시판 글수정</h2></div><br>
 				
 			<div class="contentTB">
 				<form id="f_writeForm" name="f_writeForm" enctype="multipart/form-data">
@@ -91,9 +91,9 @@
 			</div>	
 			
 			<div class="contentBtn">
-				<input type="button" value="수정" id="qnaUpdateBtn">
-				<input type="button" value="목록" id="qnaListBtn">
-			</div>
+				<input type="button" value="수정" id="qnaUpdateBtn" class="btn btn-default">
+				<input type="button" value="목록" id="qnaListBtn" class="btn btn-default">
+			</div><br>
 		</div>
 	</body>
 </html>
