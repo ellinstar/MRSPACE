@@ -55,8 +55,8 @@
          <div id="memLogin">
             <form class="form-signin" id="loginForm" name="loginForm">
                <h2 class="form-signin-heading">로 그 인</h2>
-               <input type="radio" name="member" value="mem" checked>일반 회원 
-               <input type="radio" name="member" value="cmp">업체 회원
+                <label for="req"><input type="radio" name="member" id="req" value="mem" checked>일반회원</label>&nbsp;&nbsp;
+             	<label for="rew"><input type="radio" name="member" id="rew" value="cmp">업체회원</label> 
                 <label for="mem_Id" class="sr-only">아 이 디</label> 
                 <input   type="text" id="mem_Id" name="mem_Id" class="form-control" placeholder="ID" required autofocus> 
                 <label for="mem_Pw" class="sr-only">비밀번호</label> 
@@ -72,9 +72,9 @@
 
           <div id="cmpLogin" style="display: none;">
            <form class="form-signin" id="comploginForm" name="comploginForm">
-               <h2 class="form-signin-heading">업체 로 그 인</h2>
-               <input type="radio" name="member" value="mem" >일반 회원 
-               <input type="radio" name="member" value="cmp" checked>업체 회원
+               <h2 class="form-signin-heading">로 그 인</h2>
+               <label for="ree"><input type="radio" name="member" id="ree" value="mem">일반회원</label>&nbsp;&nbsp;
+             	<label for="rer"><input type="radio" name="member" id="rer" value="cmp" checked>업체회원</label> 
                 <label for="cp_Id" class="sr-only">아 이 디</label> 
                 <input   type="text" id="cp_Id" name="cp_Id" class="form-control" placeholder="ID" required autofocus> 
                 <label for="cp_Pw" class="sr-only">비밀번호</label> 

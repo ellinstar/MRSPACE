@@ -25,8 +25,12 @@ public class SpaceDAOImpl {
 
 	// 글목록 구현
 	public List<SpaceVO> spaceList(SpaceVO svo) {
-		System.out.println("글목록 구현 DAO " + svo.getCp_Id());
 		return session.selectList("spaceList", svo);
+	}
+
+	public void spaceModify(SpaceVO svo){
+		System.out.println("svo cp_Num : " + svo.getCp_Num() );
+		session.update("spaceModify", svo);
 	}
 
 }
