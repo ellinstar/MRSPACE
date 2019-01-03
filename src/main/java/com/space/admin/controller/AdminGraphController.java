@@ -1,32 +1,49 @@
 package com.space.admin.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.Gson;
+import com.space.admin.service.AdminResService;
+import com.space.comp.vo.CompVO;
+import com.space.reserv.vo.ReservVO;
 
 @Controller
 @RequestMapping(value="/admin")
 public class AdminGraphController {
 	
-	public String showGraph() {
-		System.out.println("graph controller");
-		return "/admin/graph/highchart";
-	}
+	@Autowired
+	public AdminResService adResServ;
 	
-	
-	public String showjqPlot() {
-		System.out.println("jqplot");
-		return "/admin/graph/jqplot";
-	}
 	@RequestMapping(value="/graph", method=RequestMethod.GET)
-	public String chartjs() {
+	public String chartjs(@ModelAttribute ReservVO rvo, Model model) {
 		System.out.println("chartjs");
+		List<CompVO> cpname = adResServ.optionCp();//select option 값 불러오기
+		model.addAttribute("cp", cpname);
 		return "/admin/graph/chartjs";
+	}
+	@RequestMapping(value="cpgraph", method=RequestMethod.GET)
+	public void getCpGraph(@RequestParam("cpNum") int cp_Num) {
+		Gson gson = new Gson();
+		HashMap<String, String> map = new HashMap<>();
+		map.put("cpNum", cpNum );
+		map.put("month",month);
+		System.out.println("cpNum"+cpNum);
+		List<ReservVO> cpgraph = adResServ.graphCp(rvo);
+		gson.toJson(cpgraph);
 	}
 	   /* public String getDailyVisitor(HttpSession session, String month){
 	        String cooContractNo = (String) session.getAttribute("setNo");

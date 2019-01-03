@@ -1,5 +1,6 @@
 package com.space.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,17 @@ public class AdminResServiceImpl implements AdminResService {
 	public List<ReservVO> cpResList(Criteria cri) {
 		// TODO Auto-generated method stub
 		return adResDAO.cpResList(cri);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.space.admin.service.AdminResService#graphCp()
+	 * 그래프 업체별 예약 수
+	 */
+	@Override
+	public List<ReservVO> graphCp(ReservVO rvo) {
+		// TODO Auto-generated method stub
+		return adResDAO.graphCp(rvo);
 	}
 
 	

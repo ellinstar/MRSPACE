@@ -1,5 +1,6 @@
 package com.space.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.space.admin.page.Criteria;
@@ -16,5 +17,6 @@ public interface AdminResService {
 	public SpaceVO resSp(int sp_Num); 
 	public List<CompVO> optionCp();
 	public List<ReservVO> cpResList(Criteria cri);
+	public List<ReservVO> graphCp(ReservVO rvo);
 
 }
