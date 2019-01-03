@@ -1,5 +1,7 @@
 package com.space.reserv.vo;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -17,10 +19,12 @@ public class ReservVO {
 	// 관리자 추가
 	private int cp_Num;// 업체번호
 	private String mem_Name;
+	private Date mem_Birth;
 	private String sp_Name;// 공간명
 	private String sp_Type;// 공간유형
 	private String cp_Name;// 업체명
 	private String res_UseDate; // 예약 사용하는 달
+	private int count;
 
 	// 찜목록
 	private int like_Num;

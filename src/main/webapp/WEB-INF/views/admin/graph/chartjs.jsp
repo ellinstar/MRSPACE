@@ -8,9 +8,81 @@
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
-
+<c:set value="${cp_Num}" var="cpNum"/>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var chartLabels = [];
+		var chartData=[];
+		var month="";
+		var cpNum = '<c:out value="${cpNum}"/>';
+		function createChart() {
+			var ctx = document.getElementById("canvas").getContext("2d");
+			LineChartDemo = Chart.Line(ctx,{
+				data : lineChartData,
+				options:{
+					scales:{
+						yAxes:[{
+							ticks:{
+								beginAtZero:true
+							}
+						}]
+					}
+				}
+			});
+		}
+		
+			var form = $("#form");
+		$("#cpNum").on("change", function(e) {
+				e.preventDefault();
+				var cpNum = $("#cpNum option:selected").val();
+				consol.log('cpNum:'+cpNum);
+		});
+		//버튼을 누르면 차트가 그려진다
+		$("#btn").click(function() {
+			
+		
+			
+			chartLabels = [];// list.toArray(new String[list.statsDate]);
+			chartData = [];//list.toArray(new String[list.statsAmount]);
+			
+			//getJson으로 데이터 받음
+			$.getJSON("./cpgraph",{
+				cpNum: cpNum
+			},function(data) {
+				$.each(data, function(key, value) {
+					chartLabels.push(value.statsDate);
+					chartData.push(value.statsAmont);
+				});
+				lineChartData = {
+						labels : chartLabels,
+						datasets:[{
+							label : "월별 예약 수",
+							backgroundColor:'rgba(255, 99, 132, 0.2)',
+							borderColor:'rgba(255, 99, 132, 1)',
+							borderWidth:4,
+							fill:false,
+							data : chartData
+						}]
+				}
+				createChart();
+			});
+		});
+		
+	});
+</script>
 <body>
- 
+
+ 	<!-- =====================콤보박스================================= -->
+	<form id='form' action="/admin/cpgraph" method="get" class="form-label-group form-row " >
+		<select name="cpNum" id="cpNum" class="select" data-live-search="true">
+			<option value="0">전체</option>
+			<c:forEach var="cp" items="${cp}">
+			<option class="font-weight-bold" value="<c:out value='${cp.cp_Num}'/>"><c:out value='${cp.cp_Name}'/></option>
+			</c:forEach>
+		</select>
+		<button id="btn" class="btn">보기</button>
+		</form>
+	<!-- =====================콤보박스================================= -->
  
  
             <div id="graph" style="width: 80%; margin: 30px;">
@@ -20,11 +92,9 @@
             </div>
  
  
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var ctx = document.getElementById("canvas");
-/* var ctx = document.getElementById("canvas").getContext("2d");
-var ctx = $("#canvas");
-var ctx = "canvas"; */
+
 var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var canvas = new Chart(ctx, {
 	type: "line",
@@ -64,6 +134,6 @@ var canvas = new Chart(ctx, {
 	}
 });
 
-</script>
+</script> -->
 </body>
 </html>

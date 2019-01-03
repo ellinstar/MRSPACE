@@ -90,9 +90,10 @@
 
 	/* 전체목록 불러오기 */
 	function spaceAll() {
+		console.log("전체목록불러오기성공!")
 		location.href = "/space/spaceList.do?cp_Num=${ cp_Num }";
 	}
-	
+
 	/* 공간 등록하기 */
 	function spaceRegister() {
 		location.href = "/space/spaceRegister.do";
@@ -101,9 +102,9 @@
 	// 수정 버튼 클릭 메소드
 	$(document).ready(function() {
 		$("#spaceModify").click(function() {
-			var sp_num = $(this).parents("tr").attr("attr-num");
+			var sp_Num = $(this).parents("tr").attr("attr-Num");
 			$("#sp_Num").val(sp_Num);
-			console.log("글번호 : " + sp_Num);
+			console.log("공간번호 : " + sp_Num);
 			// 수정 페이지로 이동하기 위해 form 추가 (id : modifyForm)
 			$("#modifyForm").attr({
 				"method" : "get",
@@ -116,14 +117,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<br>
 	<h1>공간목록</h1>
+	<br>
 	<div class="container">
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="modifyForm" id="modifyForm">
 			<input type="hidden" name="sp_Num" id="sp_Num">
 			<%-- <input type="hidden" name="cp_Id" id="cp_Id" value='${cplogin.cp_Id}'> --%>
 		</form>
-		
+
 		<%-- ================== 검색기능 시작 ================= --%>
 		<div class="spaceSearch">
 
@@ -135,6 +138,7 @@
 				<input type="button" value="검색" id="searchData" /> <input
 					type="text" name="keyword" id="keyword" placeholder="공 간 명 검 색" />
 				<input type="hidden" name="page" id="page" value="${ data.page }" />
+				<input type="hidden" name="cp_Num" id="cp_Num" value="${ cp_Num }"/>
 				<!-- <select name="pageSize" id="pageSize">
 					<option value="3">3</option>
 					<option value="5">5</option>
@@ -179,13 +183,17 @@
 							<c:forEach var="space" items="${spaceList}" varStatus="status">
 								<tr class="tac" data-num="${space.sp_Num}">
 									<td>${count - status.index}</td>
-									<td class="goDetail"><a href="">${space.sp_Name}</a></td>
+									<td class="goDetail"><a
+										href="/common/commonDetail.do?sp_Num=${space.sp_Num}">${space.sp_Name}</a></td>
 									<td>${space.sp_Address}</td>
 									<td>${space.sp_Type}</td>
 									<td>${space.sp_Stock}</td>
 									<td>${space.sp_Rest}</td>
-									<td><input type="hidden" value="${space.sp_Num}">
-										<input type="button" id="spaceModify" value="수정" /></td>
+									<td>
+										<%-- <input type="hidden" value="${space.sp_Num}">
+										<input type="button" id="spaceModify" value="수정"/> --%> <a
+										href="/common/spaceModify2.do?sp_Num=${space.sp_Num}">수정</a>
+									</td>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
@@ -201,7 +209,8 @@
 
 		<%-- ================ 공간등록 버튼 출력 시작 =============== --%>
 		<div class="contentBtn">
-			<input type="button" value="등록하기" id="spaceRegister" onclick="javascript:spaceRegister()">
+			<input type="button" value="등록하기" id="spaceRegister"
+				onclick="javascript:spaceRegister()">
 		</div>
 		<%-- ================ 공간등록 버튼 출력 종료 =============== --%>
 

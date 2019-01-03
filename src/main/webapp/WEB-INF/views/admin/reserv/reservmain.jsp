@@ -28,9 +28,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		searchForm.submit();
 		$("#search option:selected").text();
-		//$(this).find("option:eq(search)").prop("selected", true);
-		
-		
 	});
 	
 });
