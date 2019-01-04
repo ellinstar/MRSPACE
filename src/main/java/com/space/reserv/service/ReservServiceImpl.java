@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.space.comp.vo.CompVO;
+import com.space.mem.vo.MemVO;
+import com.space.memlogin.vo.LoginVO;
 import com.space.reserv.dao.ReservDAOImpl;
 import com.space.reserv.vo.ReservVO;
 import com.space.space.vo.SpaceVO;
@@ -71,5 +74,18 @@ public class ReservServiceImpl implements ReservService {
 			return 0;
 		}
 	}
+	
+	// 업체 정보 
+	@Override
+	public CompVO getCompInfo(SpaceVO svo) {
+		return rdao.getCompInfo(svo);
+	}
+	
+	// 사용자 정보
+	@Override
+	public MemVO getMemInfo(LoginVO lvo) {
+		return rdao.getMemInfo(lvo);
+	}
+
 
 }
