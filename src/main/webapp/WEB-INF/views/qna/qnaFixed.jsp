@@ -223,15 +223,15 @@
 			</tbody> 
 			</table>
 			
-
+			
 			</div>
 			<%-- =================== 리스트 종료  ================= --%>
 			
 			
 			<%-- =============== 페이지 네비게이션 시작 =============== --%>
-			<div id="qnaPage">
+			<br><div id="qnaPage">
 				<tag:paging page="${param.page}" total="${total}" list_size="${data.pageSize}"/>
-			</div>
+			</div><br>
 			<%-- =============== 페이지 네비게이션 종료 =============== --%>
 		</div>
 	</body>

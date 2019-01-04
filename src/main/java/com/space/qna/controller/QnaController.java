@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -231,6 +232,20 @@ public class QnaController {
 	}
 	
 	/**************************************************************
+	 * 글삭제전 댓글 개수 구현하기
+	 * @param int
+	 **************************************************************/
+	@ResponseBody
+	@RequestMapping(value="/replyCnt.do")
+	public String replyCnt(@RequestParam("qna_Num") int qna_Num){
+		log.info("replyCnt 호출 성공");
+		
+		int result = 0;
+		result = qnaService.replyCnt(qna_Num);
+		return result+"";
+	}
+	
+	/**************************************************************
 	 * 글삭제 구현하기
 	 * @throws IOException 
 	 **************************************************************/
@@ -245,7 +260,7 @@ public class QnaController {
 		result = qnaService.qnaDelete(qvo.getQna_Num());
 		
 		if(result == 1){
-			url="/qna/qnaList.do?page="+qvo.getPage()+"&pageSize="+qvo.getPageSize();
+			url="/qna/qnaList.do";
 		}else{
 			url="/qna/qnaDetail.do?qna_Num="+qvo.getQna_Num()+"&page="+qvo.getPage()+"&pageSize="+qvo.getPageSize();
 		}
