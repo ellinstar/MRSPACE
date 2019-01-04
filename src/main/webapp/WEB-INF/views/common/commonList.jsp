@@ -26,7 +26,7 @@
 
 
 <!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>

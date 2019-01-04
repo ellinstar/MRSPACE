@@ -970,7 +970,6 @@ img.ui-datepicker-trigger {
 
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
-                        alert(coords);
                         // 위도 경도값 받아감!
                         $("#mapcoords").val(result.y);
                         $("#mapcoords2").val(result.x);
@@ -988,8 +987,8 @@ img.ui-datepicker-trigger {
     }
 </script>	
 				<!-- 업체 지도 위도경도값 -->	
-				<input type="text" id="mapcoords" name="sp_Y">
-				<input type="text" id="mapcoords2" name="sp_X">	
+				<input type="hidden" id="mapcoords" name="sp_Y">
+				<input type="hidden" id="mapcoords2" name="sp_X">	
 	
 				<p>
 				<h3>임대 계약 기간</h3>
