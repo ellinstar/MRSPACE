@@ -2,13 +2,13 @@ package com.space.qna.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.space.qna.dao.QnaDAO;
+import com.space.qna.dao.QnaRepDAO;
+import com.space.qna.vo.QnaRepVO;
 import com.space.qna.vo.QnaVO;
 
 @Service
@@ -17,6 +17,9 @@ public class QnaServiceImpl implements QnaService {
 	
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+	@Autowired
+	private QnaRepDAO qnaRepDAO;
 	
 	// 글목록 구현
 	@Override
@@ -115,6 +118,20 @@ public class QnaServiceImpl implements QnaService {
 			result = 0;
 		}
 
+		return result;
+	}
+	
+	/* 해당 게시물의 댓글 존재 여부 확인 
+	 * 댓글이 존재하면 댓글수를 반환하고 존재하지 않으면 0을 반환*/
+	@Override
+	public int replyCnt(int qna_Num) {
+		int result = 0;
+		List<QnaRepVO> list = qnaRepDAO.qnaRepList(qna_Num);
+		if(!list.isEmpty()){
+			result = list.size();
+		}else{
+			result = 0;
+		}
 		return result;
 	}
 

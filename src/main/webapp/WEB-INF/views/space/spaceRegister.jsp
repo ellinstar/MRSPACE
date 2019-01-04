@@ -437,37 +437,12 @@ input[type=date]:focus {
 	width: 150px;
 }
 
-/*datepicker에서 사용한 이미지 버튼 style적용*/
-img.ui-datepicker-trigger {
-	margin-left: 5px;
-	vertical-align: middle;
-	cursor: pointer;
-}
-
-/* input[type=text] {
-	width: 350px;
-	border: 2px solid #aaa;
-	border-radius: 4px;
-	margin: 8px 0;
-	outline: none;
-	padding: 8px;
-	box-sizing: border-box;
-	transition: .3s;
-} */
-
 input[type=text]:focus {
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
 }
 
 textarea {
-	width: 100%;
-	border: 2px solid #aaa;
-	border-radius: 4px;
-	margin: 8px 0;
-	outline: none;
-	padding: 8px;
-	box-sizing: border-box;
 	transition: .3s;
 	height: 150px;
 	resize: none; /* 사용자 임의 변경 불가 */
@@ -478,16 +453,6 @@ textarea:focus {
 	box-shadow: 0 0 8px 0 #FF8000;
 }
 
-#spaceOpenDate {
-	width: 100%;
-	border: 2px solid #aaa;
-	border-radius: 4px;
-	margin: 8px 0;
-	outline: none;
-	padding: 8px;
-	box-sizing: border-box;
-	transition: .3s;
-}
 
 #spaceOpenDate:focus {
 	border-color: #FF8000;
@@ -510,14 +475,9 @@ textarea:focus {
 	top: 3.5px;
 	display: inline-block;
 	padding: .5em .75em;
-	color: #999;
-	font-size: inherit;
 	line-height: normal;
 	vertical-align: middle;
-	background-color: #e67e22;
 	cursor: pointer;
-	border: 1px solid #ebebeb;
-	border-bottom-color: #e2e2e2;
 	border-radius: .25em;
 	display: inline-block;
 }
@@ -539,23 +499,6 @@ textarea:focus {
 	appearance: none;
 }
 
-.filebox.bs3-primary label {
-	color: #fff;
-	background-color: #e67e22;
-	border-color: #ee9e57;
-}
-
-#spaceOpenDate {
-	width: 150px;
-}
-
-/*datepicker에서 사용한 이미지 버튼 style적용*/
-img.ui-datepicker-trigger {
-	margin-left: 5px;
-	vertical-align: middle;
-	curs
-	inter;
-}
 </style>
 <!-- 공간 서비스/교통편 텍스트 -->
 <style type="text/css">
@@ -578,14 +521,9 @@ img.ui-datepicker-trigger {
 	box-shadow: 0 0 8px 0 #FF8000;
 }
 
-#spaceTraffic, .trtitle {
-	position: relative;
-	bottom: 380px;
-	left: 710px;
-}
 </style>
 
-<style type="text/css">
+<!-- <style type="text/css">
 .btnReg, .btnCancle {
 	position: relative;
 	float: right;
@@ -616,8 +554,7 @@ img.ui-datepicker-trigger {
 	box-shadow: 0px 2px 0px #d35400;
 	position: relative;
 }
-
-</style>
+</style> -->
 
 <script type="text/javascript">
 	$(function() {
@@ -748,7 +685,7 @@ img.ui-datepicker-trigger {
 		$('#spaceDateStart').datepicker(
 				{
 					showOn : "both", // 달력을 표시할 타이밍 (both: focus or button)
-					buttonImage : "../resources/images/calendar.gif", // 버튼 이미지
+					buttonImage : "../resources/img/calender.png", // 버튼 이미지
 					buttonImageOnly : true, // 버튼 이미지만 표시할지 여부
 					buttonText : "날짜선택", // 버튼의 대체 텍스트
 					dateFormat : "yy-mm-dd", // 날짜의 형식
@@ -767,7 +704,7 @@ img.ui-datepicker-trigger {
 		$('#spaceDateEnd').datepicker(
 				{
 					showOn : "both",
-					buttonImage : "../resources/images/calendar.gif",
+					buttonImage : "../resources/img/calender.png",
 					buttonImageOnly : true,
 					buttonText : "날짜선택",
 					dateFormat : "yy-mm-dd",
@@ -787,7 +724,7 @@ img.ui-datepicker-trigger {
 		$('#spaceOpenDate').datepicker(
 				{
 					showOn : "both", // 달력을 표시할 타이밍 (both: focus or button)
-					buttonImage : "../resources/images/calendar.gif", // 버튼 이미지
+					buttonImage : "../resources/img/calender.png", // 버튼 이미지
 					buttonImageOnly : true, // 버튼 이미지만 표시할지 여부
 					buttonText : "날짜선택", // 버튼의 대체 텍스트
 					dateFormat : "yy-mm-dd", // 날짜의 형식
@@ -819,121 +756,111 @@ img.ui-datepicker-trigger {
 </head>
 <body>
 	<form name="myForm" id="myForm" enctype="multipart/form-data">
-				<br>
+		<br>
 
-				<!-- 제목부분 -->
-				<div class="alert alert-info row" role="alert">
+		<!-- 제목부분 -->
+		<div class="alert alert-info row" role="alert">
 			<label class="form-control-plaintext" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">등록할 공간 유형 선택</font></strong>
+				<strong><font style="vertical-align: inherit;">등록할
+						공간 유형 선택</font></strong>
 			</label>
+		</div>
+		<hr>
+
+		<div class="all">
+			<div class="onoffswitch">
+				<!-- 공간 선택 스위치 부분 -->
+				<input type="radio" name="sp_Type" class="onoffswitch-checkbox"
+					id="switch" value="오픈데스크"> <label class="onoffswitch-label"
+					for="switch"> <span class="onoffswitch-inner"></span> <span
+					class="onoffswitch-switch"></span>
+				</label>
 			</div>
-				<hr>
-
-			<div class="all">
-				<div class="onoffswitch">
-					<!-- 공간 선택 스위치 부분 -->
-					<input type="radio" name="sp_Type" class="onoffswitch-checkbox"
-						id="switch" value="오픈데스크"> <label
-						class="onoffswitch-label" for="switch"> <span
-						class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span>
-					</label>
-				</div>
 
 
-				<div class="onoffswitch2">
-					<!-- 공간 선택 스위치 부분 -->
-					<input type="radio" name="sp_Type" class="onoffswitch-checkbox2"
-						id="switch2" value="고정데스크"> <label
-						class="onoffswitch-label2" for="switch2"> <span
-						class="onoffswitch-inner2"></span> <span
-						class="onoffswitch-switch2"></span>
-					</label>
-				</div>
-
-
-				<div class="onoffswitch3">
-					<!-- 공간 선택 스위치 부분 -->
-					<input type="radio" name="sp_Type" class="onoffswitch-checkbox3"
-						id="switch3" value="1인프라이빗오피스"> <label
-						class="onoffswitch-label3" for="switch3"> <span
-						class="onoffswitch-inner3"></span> <span
-						class="onoffswitch-switch3"></span>
-					</label>
-				</div>
-
-				<div class="onoffswitch4">
-					<!-- 공간 선택 스위치 부분 -->
-					<input type="radio" name="sp_Type" class="onoffswitch-checkbox4"
-						id="switch4" value="3인프라이빗오피스"> <label
-						class="onoffswitch-label4" for="switch4"> <span
-						class="onoffswitch-inner4"></span> <span
-						class="onoffswitch-switch4"></span>
-					</label>
-				</div>
-
-
-				<div class="onoffswitch5">
-					<!-- 공간 선택 스위치 부분 -->
-					<input type="radio" name="sp_Type" class="onoffswitch-checkbox5"
-						id="switch5" value="6인프라이빗오피스"> <label
-						class="onoffswitch-label5" for="switch5"> <span
-						class="onoffswitch-inner5"></span> <span
-						class="onoffswitch-switch5"></span>
-					</label>
-				</div>
+			<div class="onoffswitch2">
+				<!-- 공간 선택 스위치 부분 -->
+				<input type="radio" name="sp_Type" class="onoffswitch-checkbox2"
+					id="switch2" value="고정데스크"> <label
+					class="onoffswitch-label2" for="switch2"> <span
+					class="onoffswitch-inner2"></span> <span
+					class="onoffswitch-switch2"></span>
+				</label>
 			</div>
-<!--============================ 스위치 종료 =========================================== -->
-			<div class="alert alert-info row">
+
+
+			<div class="onoffswitch3">
+				<!-- 공간 선택 스위치 부분 -->
+				<input type="radio" name="sp_Type" class="onoffswitch-checkbox3"
+					id="switch3" value="1인프라이빗오피스"> <label
+					class="onoffswitch-label3" for="switch3"> <span
+					class="onoffswitch-inner3"></span> <span
+					class="onoffswitch-switch3"></span>
+				</label>
+			</div>
+
+			<div class="onoffswitch4">
+				<!-- 공간 선택 스위치 부분 -->
+				<input type="radio" name="sp_Type" class="onoffswitch-checkbox4"
+					id="switch4" value="3인프라이빗오피스"> <label
+					class="onoffswitch-label4" for="switch4"> <span
+					class="onoffswitch-inner4"></span> <span
+					class="onoffswitch-switch4"></span>
+				</label>
+			</div>
+
+
+			<div class="onoffswitch5">
+				<!-- 공간 선택 스위치 부분 -->
+				<input type="radio" name="sp_Type" class="onoffswitch-checkbox5"
+					id="switch5" value="6인프라이빗오피스"> <label
+					class="onoffswitch-label5" for="switch5"> <span
+					class="onoffswitch-inner5"></span> <span
+					class="onoffswitch-switch5"></span>
+				</label>
+			</div>
+		</div>
+		<!--============================ 스위치 종료 =========================================== -->
+		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간 재고</font></strong>
+			</label> <input type="text" class="form-control col-md-8"
+				placeholder="재고 갯수입력" id="spaceStock" name="sp_Stock"> <label
+				class="form-control-plaintext col-md-1" style="color: #0c5460">개
 			</label>
-				<input type="text" class="form-control col-md-8" placeholder="재고 갯수입력" id="spaceStock" name="sp_Stock">
-			<label class="form-control-plaintext col-md-1" style="color: #0c5460">개	</label>
-			</div>
+		</div>
 
-			<hr>
+		<hr>
 
 		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간명</font></strong>
-			</label>
-				<input type="text" class="form-control col-md-8" name="sp_Name" id="spaceName"
-					placeholder="공간명을 입력해주세요.">
-			</div>
-				<hr>
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">공간 가격(월/원)</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
+			</label> <input type="text" class="form-control col-md-8" name="sp_Name"
+				id="spaceName" placeholder="공간명을 입력해주세요.">
+		</div>
+		<hr>
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간
+						가격(월/원)</font></strong>
+			</label> <input type="text" class="form-control col-md-8" name="sp_Price"
+				id="spacePrice" placeholder="가격을 입력해주세요.">
+		</div>
+		<hr>
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간 주소</font></strong>
+			</label> 
+			<input type="text" class="form-control col-md-8" id="spaceAddr" name="sp_Address" placeholder="주소">
+			<input type="button" onclick="sample5_execDaumPostcode()" class="btn btn-info" value="주소 검색"><br>
+		<div id="map" 
+			style="width: 500px; height: 500px; margin-top: 10px; margin-left:300px; display: none"></div>
+		<hr>
+		<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+		<script
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
 
-				<input type="text" name="sp_Price" id="spacePrice"
-					placeholder="가격을 입력해주세요." size="100">
-				<p>
-				<hr>
-
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">공간 주소</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
-
-
-
-				<input type="text" id="spaceAddr" name="sp_Address" placeholder="주소">
-				<input type="button" onclick="sample5_execDaumPostcode()"
-					value="주소 검색"><br>
-				<div id="map"
-					style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-				<hr>
-				<script
-					src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-				<script
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
-
-				<script>
+		<script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -983,92 +910,61 @@ img.ui-datepicker-trigger {
         }).open();
     }
 </script>
-				<!-- 업체 지도 위도경도값 -->
-				<input type="hidden" id="mapcoords" name="sp_Y"> <input
-					type="hidden" id="mapcoords2" name="sp_X">
-
-				<p>
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">임대계약기간</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
-
-				오늘 날짜 : <span id="today"></span><br> <input type="text"
-					name="sp_Contract1" id="spaceDateStart"> - <input
-					type="text" name="sp_Contract2" id="spaceDateEnd">
-				<p>
-		<hr>
-		<div class="thirdpage">
-			<div class="b">
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">오픈 가능날짜</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
-
-				<input type="text" name="sp_Opendate" id="spaceOpenDate">
-				<p>
-				<hr>
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">공간 소개</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
-
-				<textarea id="spaceexp" class="spaceexp" name="sp_Exposition"
-					placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
-				<p>
-				<hr>
-
-				<div class="filebox bs3-primary">
-
-					<div class="alert alert-info" role="alert">
-						<strong><font style="vertical-align: inherit;"><font
-								style="vertical-align: inherit;">공간 이미지</font></font></strong><font
-							style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;"></font></font>
-					</div>
-
-					<label for="file">업로드</label> <input type="file" id="file"
-						name="file"> &nbsp;*사진은 1장만 등록바랍니다.
-				</div>
-				<p>
-				<hr>
-			</div>
+		<!-- 업체 지도 위도경도값 -->
+		<input type="hidden" id="mapcoords" name="sp_Y"> 
+		<input type="hidden" id="mapcoords2" name="sp_X">
+		
 		</div>
-
-		<div class="forthpage">
-			<div class="service">
-				<div class="b">
-					<div class="alert alert-info" role="alert" style="width: 400px;">
-						<strong><font style="vertical-align: inherit;"><font
-								style="vertical-align: inherit;">공간 서비스 등록</font></font></strong><font
-							style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;"></font></font>
-					</div>
-					<div class="svrg">
-						<textarea name="sp_Service" id="spaceService"
-							placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
-					</div>
-					<p>
-					<div class="trtitle alert alert-info" role="alert"
-						style="width: 400px;">
-						<strong><font style="vertical-align: inherit;"><font
-								style="vertical-align: inherit;">교통편 등록</font></font></strong><font
-							style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;"></font></font>
-					</div>
-					<div class="svrg">
-						<textarea name="sp_Traffic" id="spaceTraffic"
-							placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
-					</div>
-					<p>
-				</div>
+		
+	<hr>
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-8" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">임대계약기간</font></strong>
+			(오늘 날짜 : <span id="today"></span>)<br> 
+			</label> 
+		</div>
+			<div class="col-md-12 row">
+			<input type="text" class="form-control col-md-3" name="sp_Contract1" id="spaceDateStart">&nbsp;-&nbsp; 
+			<input type="text" class="form-control col-md-3" name="sp_Contract2" id="spaceDateEnd">
 			</div>
+				
+		<hr>
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">오픈 가능날짜</font></strong>
+			</label> <input type="text" class="form-control col-md-3" name="sp_Opendate" id="spaceOpenDate">
+		</div>
+				<hr>
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간 소개</font></strong></label> 
+			<textarea id="spaceexp" class="form-control" name="sp_Exposition"
+					placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
+		</div>
+				<hr>
+
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간 이미지</font></strong></label>
+		<div class="filebox">
+			<label for="file" class="btn btn-info">업로드</label>
+			<input type="file" id="file" name="file"> &nbsp;*사진은 1장만 등록바랍니다.
+		</div>
+		</div>
+		<hr>
+		<div class="alert alert-info row">
+		<div class="col-md-6">
+			<label class="form-control-plaintext" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간 서비스 등록</font></strong></label> 
+			<textarea name="sp_Service" id="spaceService"
+							placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
+		</div>
+		<div class="col-md-6">
+			<label class="form-control-plaintext" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">교통편 등록</font></strong></label> 
+			<textarea name="sp_Traffic" id="spaceTraffic" 
+			placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
+		</div>
 		</div>
 
 

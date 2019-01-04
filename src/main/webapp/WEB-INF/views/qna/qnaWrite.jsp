@@ -43,7 +43,7 @@
 	</head>
 	<body>	
 		<div class="contentContainer">
-			<div class="contentTit"><h3>게시판 글작성</h3></div>
+			<br><div class="contentTit"><h2>게시판 글작성</h2></div><br>
 	
 			<div class="contentTB">
 				<form id="f_writeForm" name="f_writeForm">
@@ -77,9 +77,9 @@
 			</div>
 				
 			<div class="contentBtn">
-				<input type="button" value="저장" class="but" id="qnaInsertBtn">
-				<input type="button" value="목록" class="but" id="qnaListBtn">
-			</div>
+				<input type="button" value="저장" id="qnaInsertBtn" class="btn btn-default">
+				<input type="button" value="목록" id="qnaListBtn" class="btn btn-default">
+			</div><br>
 		</div>
 	</body>
 </html>
