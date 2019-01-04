@@ -47,7 +47,7 @@ public class AdminResDAO {
 	}
 	
 	//그래프 업체별 예약수
-	public List<ReservVO> graphCp(String cpNum){
+	public List<ReservVO> graphCp(){
 		return session.selectList("graphcp");
 	}
 }

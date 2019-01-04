@@ -65,9 +65,9 @@ public class AdminResServiceImpl implements AdminResService {
 	 * 그래프 업체별 예약 수
 	 */
 	@Override
-	public List<ReservVO> graphCp(String cpNum) {
+	public List<ReservVO> graphCp() {
 		// TODO Auto-generated method stub
-		return adResDAO.graphCp(cpNum);
+		return adResDAO.graphCp();
 	}
 
 	

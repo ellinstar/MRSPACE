@@ -1,20 +1,16 @@
 package com.space.admin.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.space.admin.service.AdminResService;
@@ -30,18 +26,21 @@ public class AdminGraphController {
 	
 	@RequestMapping(value="/graph", method=RequestMethod.GET)
 	public String chartjs(@ModelAttribute ReservVO rvo, Model model) {
-		System.out.println("chartjs");
-		List<CompVO> cpname = adResServ.optionCp();//select option 값 불러오기
-		model.addAttribute("cp", cpname);
-		return "/admin/graph/chartjs";
-	}
-	@RequestMapping(value="cpgraph", method=RequestMethod.GET)
-	public String getCpGraph(HttpSession session, Model model) {
-		String cpNum = (String)session.getAttribute("cpNum");
-		Gson gson = new Gson();
-		System.out.println("cpNum"+cpNum);
-		List<ReservVO> cpgraph = adResServ.graphCp(cpNum);
+		System.out.println("googlechart");
+		List<ReservVO> cpgraph = adResServ.graphCp();
 		model.addAttribute("list", cpgraph);
+		System.out.println("list"+cpgraph);
+		return "/admin/graph/gchart";
+	}
+	
+	public @ResponseBody String getCpGraph(@RequestParam("cpNum") int cp_Num, Model model) {
+		Gson gson = new Gson();
+		System.out.println("cpNum"+cp_Num);
+		//HashMap<String, String> map = new HashMap<>();
+		//map.put("cpNum", cpNum);
+		List<ReservVO> cpgraph = adResServ.graphCp();
+		model.addAttribute("list", cpgraph);
+		gson.toJson(cpgraph);
 		return gson.toJson(cpgraph);
 	}
 	   /* public String getDailyVisitor(HttpSession session, String month){

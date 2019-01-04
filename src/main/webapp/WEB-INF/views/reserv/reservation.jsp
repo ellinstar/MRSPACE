@@ -47,7 +47,12 @@
 				$("#reservForm").submit();
 			}
 		});
+		
 	});
+	/* 전체목록 불러오기 */
+	function goList() {
+		location.href = "/mem/myReservationList.do"
+	}
 </script>
 <style>
 input#reservBtn {
@@ -55,6 +60,55 @@ input#reservBtn {
 	color: #fff;
 	background-color: #007bff;
 	border-color: #007bff;
+}
+
+input#closeBtn {
+	width: 1040px;
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+.jb-wrap {
+	width: 100%;
+	margin: 0px auto;
+	position: relative;
+}
+
+.jb-wrap img {
+	width: 100%;
+	height: 320px;
+	position: relative;
+	background-size: cover;
+}
+
+.jb-text {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.jb-text-table {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.jb-text-table-row {
+	display: table-row;
+}
+
+.jb-text-table-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.jb-text p {
+	margin: 0px 40px;
+	padding: 10px;
+	background-color: #ffffff;
+	text-align: center;
 }
 </style>
 
@@ -123,12 +177,14 @@ input#reservBtn {
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control"> <fmt:formatNumber
-									value="${detail.sp_Price}" />원 / 1개월</label>
-						</div>(VAT포함가)
+									value="${detail.sp_Price}" />원 / 1개월
+							</label>
+						</div>
+						(VAT포함가)
 					</div>
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">예약 기간＊</label> 
+							<label class="form-control">예약 기간＊</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<input type="month" id="resUseDate" name="resUseDate"
@@ -139,7 +195,7 @@ input#reservBtn {
 
 
 
-					<!-- 업체 정보 -->
+					<!-- 사용자 정보 -->
 					<br>
 					<div class="alert alert-info" role="alert">
 						<strong><font style="vertical-align: inherit;"><font
@@ -147,12 +203,13 @@ input#reservBtn {
 							style="vertical-align: inherit;"><font
 							style="vertical-align: inherit;"></font></font>
 					</div>
+
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
 							<label class="form-control">공간상호</label>
 						</div>
 						<div class="col-md-4 form-label-group">
-							<label class="form-control"></label>
+							<label class="form-control">${comp.cp_Name}</label>
 						</div>
 					</div>
 
@@ -161,7 +218,7 @@ input#reservBtn {
 							<label class="form-control">대표자명</label>
 						</div>
 						<div class="col-md-4 form-label-group">
-							<label class="form-control"> </label>
+							<label class="form-control">${comp.cp_Ceo}</label>
 						</div>
 					</div>
 					<div class="form-group form-row">
@@ -169,7 +226,7 @@ input#reservBtn {
 							<label class="form-control">소재지</label>
 						</div>
 						<div class="col-md-4 form-label-group">
-							<label class="form-control"> </label>
+							<label class="form-control">${comp.cp_Add}</label>
 						</div>
 					</div>
 
@@ -178,7 +235,7 @@ input#reservBtn {
 							<label class="form-control">사업자번호</label>
 						</div>
 						<div class="col-md-4 form-label-group">
-							<label class="form-control"> </label>
+							<label class="form-control">${comp.cp_Account}</label>
 						</div>
 					</div>
 
@@ -187,7 +244,7 @@ input#reservBtn {
 							<label class="form-control">연락처</label>
 						</div>
 						<div class="col-md-4 form-label-group">
-							<label class="form-control">${detail.cp_Phone}</label>
+							<label class="form-control">${comp.cp_Phone}</label>
 						</div>
 					</div>
 
@@ -199,11 +256,13 @@ input#reservBtn {
 							style="vertical-align: inherit;"><font
 							style="vertical-align: inherit;"></font></font>
 					</div>
-					<p style="font-size: 0.95rem;">※이용당일(첫 날) 이후에 환불 관련 사항은 호스트에게 직접 문의하셔야 합니다. 결제 후<br> 2시간 이내에는
-						100% 환불이 가능합니다.(단, 이용시간 전까지만 가능)</p>
-					<p style="font-size: 0.95rem;">※이용 8일 전	총 금액의 100% 환불</p>	
-					<p style="font-size: 0.95rem;">※이용 7일 전 	총 금액의 90% 환불</p>
-					<p style="font-size: 0.95rem;">※이용 시작일     환불 불가</p>
+					<p style="font-size: 0.95rem;">
+						※이용당일(첫 날) 이후에 환불 관련 사항은 호스트에게 직접 문의하셔야 합니다. 결제 후<br> 2시간
+						이내에는 100% 환불이 가능합니다.(단, 이용시간 전까지만 가능)
+					</p>
+					<p style="font-size: 0.95rem;">※이용 8일 전 총 금액의 100% 환불</p>
+					<p style="font-size: 0.95rem;">※이용 7일 전 총 금액의 90% 환불</p>
+					<p style="font-size: 0.95rem;">※이용 시작일 환불 불가</p>
 
 
 					<input type="hidden" id="mem_Id" name="mem_Id"
@@ -227,11 +286,39 @@ input#reservBtn {
 			</div>
 		</c:if>
 		<c:if test="${reserv != null}">
-			<div class="card-heder">예약 정보 확인</div>
+			<header class="masthead text-white text-center">
+				<div class="jb-wrap">
+					<div>
+						<img class="jb-image" src="/uploadStorage/space/${detail.sp_File}">
+					</div>
+					<div class="jb-text">
+						<div class="jb-text-table">
+							<div class="jb-text-table-row">
+								<div class="jb-text-table-cell">
+									<div class="row">
+										<div class="col-xl-9 mx-auto">
+											<h3 class="mb-5" style="font-size: 40px;">${detail.sp_Name}<br>예약이
+												완료되었습니다.
+											</h3>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
 			<div class="card-body">
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">예약 내용</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">공간명</label>
+						<label class="form-control">예약공간</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${detail.sp_Name}</label>
@@ -239,7 +326,7 @@ input#reservBtn {
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">이용 월</label>
+						<label class="form-control">예약내용(총1개월)</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${reserv.resUseDate}</label>
@@ -250,9 +337,61 @@ input#reservBtn {
 						<label class="form-control">결제금액</label>
 					</div>
 					<div class="col-md-4 form-label-group">
-						<label class="form-control">${detail.sp_Price}</label>
+						<label class="form-control"><fmt:formatNumber
+								value="${detail.sp_Price}" />원 / 1개월</label>
 					</div>
 				</div>
+				<!-- 예약자 정보 -->
+				<!-- 업체 정보 -->
+				<br>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">예약자 정보</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
+
+
+				<div class="form-group form-row">
+					<div class="col-md-2 form-label-group">
+						<label class="form-control">예약자명</label>
+					</div>
+					<div class="col-md-4 form-label-group">
+						<label class="form-control">${login.mem_Name}</label>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 form-label-group">
+						<label class="form-control">연락처</label>
+					</div>
+					<div class="col-md-4 form-label-group">
+						<label class="form-control">${mem.mem_Phone}</label>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 form-label-group">
+						<label class="form-control">이메일</label>
+					</div>
+					<div class="col-md-4 form-label-group">
+						<label class="form-control">${mem.mem_Email}</label>
+					</div>
+				</div>
+				<!-- 환불규정안내 -->
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">환불규정 안내</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+				<p style="font-size: 0.95rem;">
+					이용당일(첫 날) 이후에 환불 관련 사항은 호스트에게 직접 문의하셔야 합니다. 결제 후 2시간 이내에는 100% 환불이
+					가능합니다.<br>(단, 이용시간 전까지만 가능)
+				</p>
+				<input type="button" class="btn btn-primary2 btn-lg" id="closeBtn"
+					name="closeBtn" value="확 인" onclick="javascript:goList()">
 			</div>
 		</c:if>
 	</div>

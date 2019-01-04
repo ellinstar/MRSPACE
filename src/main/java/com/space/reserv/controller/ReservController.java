@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.space.comp.vo.CompVO;
+import com.space.mem.vo.MemVO;
 import com.space.memlogin.vo.LoginVO;
 import com.space.reserv.service.ReservService;
 import com.space.reserv.vo.ReservVO;
@@ -34,7 +34,14 @@ public class ReservController {
 	public String reserv(HttpSession session, Model model) {
 		log.info("reserv.do get 호출");
 		session.getAttribute("login");
-		session.getAttribute("detail");
+		session.getAttribute("mem");
+		SpaceVO svo = (SpaceVO) session.getAttribute("detail");
+		CompVO cvo = reservService.getCompInfo(svo);
+		
+		
+		session.setAttribute("comp", cvo);
+		
+
 		return "reserv/reservation";
 	}
 
@@ -52,8 +59,12 @@ public class ReservController {
 	public ModelAndView reservation(@ModelAttribute ReservVO rvo, HttpSession session) {
 		log.info("reservation post 호출 성공");
 		ModelAndView mav = new ModelAndView();
+		
 		LoginVO lvo = (LoginVO) session.getAttribute("login");
-
+		
+		MemVO mvo = reservService.getMemInfo(lvo);
+		
+		
 		if (lvo == null) {
 			// 로그인 안되있는상태
 			mav.addObject("errCode", 1);
@@ -69,6 +80,7 @@ public class ReservController {
 				mav.setViewName("redirect: ");
 				session.setAttribute("errCode", 3);
 				session.setAttribute("reserv", rvo);
+				session.setAttribute("mem", mvo);
 				return mav;
 			} else if (result == 0) {
 				// 예약 실패

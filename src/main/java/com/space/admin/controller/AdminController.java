@@ -17,6 +17,7 @@ import com.space.admin.vo.NoticeVO;
 import com.space.comp.vo.CompVO;
 import com.space.qna.vo.QnaRepVO;
 import com.space.qna.vo.QnaVO;
+import com.space.reserv.vo.ReservVO;
 import com.space.space.vo.SpaceVO;
 
 import lombok.extern.java.Log;
@@ -72,9 +73,5 @@ public class AdminController {
 		log.info("문의게시판 관리 호출");
 		return "/admin/board/qnabd";
 	}
-	/*@RequestMapping(value="/reserv",method= RequestMethod.GET)
-	public String reservList() {
-		log.info("예약관리 게시판 호출");
-		return "/admin/reserv/reservmain";
-	}*/
+	
 }
