@@ -2,6 +2,9 @@ package com.space.mem.vo;
 
 import com.space.memlogin.vo.LoginVO;
 
+import lombok.Data;
+
+@Data
 public class MemVO extends LoginVO {
 
 	private String mem_Num;
