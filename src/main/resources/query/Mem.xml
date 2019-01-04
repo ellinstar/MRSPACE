@@ -94,15 +94,14 @@
 		update tb_reserv 
 		set res_state = 
 		(case
-                when res_state = 1 and to_char(res_usedate,'yyyymm') >= to_char(sysdate,'yyyymm') 
-                and to_char(res_usedate,'yyyymm') <= to_char(sysdate,'yyyymm')  then 3
+                 when res_state = 2 and to_char(res_usedate,'yyyymm') = to_char(sysdate,'yyyymm') then 3
                 
                 when res_state = 3 and to_char(res_usedate,'yyyymm') < to_char(sysdate,'yyyymm') then 4
-                
-                when res_state = 1 and to_char(res_usedate,'yyyymm') > to_char(sysdate,'yyyymm') then 1
-                
+
                 when res_state = 3 and to_char(res_usedate,'yyyymm') = to_char(sysdate,'yyyymm') then 3
-                
+	
+				when res_state = 1 then 1
+	                
                 when res_state = 4 then 4
         end)
 		]]>
