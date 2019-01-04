@@ -113,6 +113,10 @@
                 
                 when res_state = 5 and to_char(res_usedate,'yyyymm') = to_char(sysdate,'yyyymm') then 3
                 
+                when res_state = 5 and to_char(res_usedate,'yyyymm') > to_char(sysdate,'yyyymm') then 5
+                
+                when res_state = 3 and to_char(res_usedate,'yyyymm') = to_char(sysdate,'yyyymm') then 3
+                
                 when res_state = -1 then -1
                 
                 when res_state = -2 then -2
