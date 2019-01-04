@@ -893,18 +893,13 @@ img.ui-datepicker-trigger {
 
 			<hr>
 
-
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">공간명</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
-				
-
-				<input type="text" name="sp_Name" id="spaceName"
-					placeholder="공간명을 입력해주세요." size="100">
-				<p>
+		<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간명</font></strong>
+			</label>
+				<input type="text" class="form-control col-md-8" name="sp_Name" id="spaceName"
+					placeholder="공간명을 입력해주세요.">
+			</div>
 				<hr>
 				<div class="alert alert-info" role="alert">
 					<strong><font style="vertical-align: inherit;"><font
