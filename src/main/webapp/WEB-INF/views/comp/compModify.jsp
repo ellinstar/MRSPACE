@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Bootstrap core CSS -->
+<link href="/resources/include/css/mem.css" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -47,7 +49,7 @@
 
 	function bankCheck() {
 		var bank = "${comp2.cp_Bank}";
-		alert("${comp2.cp_Bank}");
+		/* alert("${comp2.cp_Bank}"); */
 		$("#cp_Bank1").val(bank).prop("selected", "true");
 	}
 
@@ -157,9 +159,9 @@
 						</select>
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<!-- <div class="col-sm-3">
 					<p class="form-control-static accountError"></p>
-				</div>
+				</div> -->
 				<!-- <div class="form-group form-group-sm">
 					은행
 					<div class="col-sm-2"> -->
