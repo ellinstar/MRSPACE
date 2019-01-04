@@ -119,7 +119,7 @@
 		s.sp_stock, s.sp_name, s.sp_price, s.sp_address, s.sp_Y,
 		s.sp_X,
 		s.sp_exposition, s.sp_file, s.sp_service, s.sp_traffic, c.cp_phone,
-		c.cp_num
+		c.cp_num, c.cp_name, c.cp_ceo, c.cp_account, c.cp_add 
 		FROM
 		tb_space s, tb_company c
 		WHERE s.cp_num = c.cp_num and
