@@ -1015,10 +1015,10 @@ img.ui-datepicker-trigger {
         }).open();
     }
 </script>
-				<!-- 업체 지도 위도경도값 -->
-				<input type="hidden" id="mapcoords" name="sp_Y"> <input
-					type="hidden" id="mapcoords2" name="sp_X">
-
+				<!-- 업체 지도 위도경도값 -->	
+				<input type="hidden" id="mapcoords" name="sp_Y">
+				<input type="hidden" id="mapcoords2" name="sp_X">	
+	
 				<p>
 				<div class="alert alert-info" role="alert">
 					<strong><font style="vertical-align: inherit;"><font

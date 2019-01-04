@@ -30,7 +30,7 @@
 
 
 <!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
 <script type="text/javascript">
 	$(function() {

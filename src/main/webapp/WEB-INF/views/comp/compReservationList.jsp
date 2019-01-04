@@ -23,8 +23,6 @@
 <link href="/resources/include/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		$("#agree").click(function() {

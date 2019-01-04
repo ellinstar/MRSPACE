@@ -13,10 +13,7 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="/resources/include/dist/js/bootstrap.min.js"></script>
-<script src="/resources/include/assets/js/docs.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script
-	src="/resources/include/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- <script src="/resources/include/assets/js/docs.min.js"></script> -->
 
 
 <!-- Bootstrap core CSS -->
@@ -24,7 +21,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
 
 <body>
