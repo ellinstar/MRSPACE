@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.admin.dao.AdminSpaceDAO">
+
+	<!-- 신규 리스트 조회 -->
+	<select id="spNewList" resultType="space">
+	<![CDATA[
+	select * 
+	from(select s.sp_num, s.sp_name, c.cp_name, s.sp_date
+	from tb_space s, tb_company c where s.cp_num = c.cp_num)
+	where sp_date >=trunc(sysdate) and rownum<=3
+	]]>
+	</select>
+	<!-- 메인 리스트 조회 -->
+	<select id="spMainList" resultType="space">
+	<![CDATA[
+	select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_address, s.sp_stock, s.sp_rest, s.sp_date
+		from tb_space s, tb_company c
+	where s.cp_num = c.cp_num
+	and rownum <=5
+	order by sp_num desc
+	]]>
+	</select>
+	<!-- 공간 기본 조회 -->
+	<select id="adspaceList" resultType="space">
+		select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_address, s.sp_stock, s.sp_rest, s.sp_date
+		from tb_space s, tb_company c
+		where s.cp_num = c.cp_num 
+		order by sp_num desc
+	</select>
+	<!-- 공간 수 조회 -->
+	<select id="spaceCount" resultType="int">
+	<![CDATA[
+		select 
+			count(*)
+		from
+			tb_space
+		where sp_num > 0
+		]]>
+	</select>
+	<!-- 공간 상세보기 -->
+	<select id="spaceDetail" resultType="space">
+		select s.sp_num, c.cp_name, s.sp_name, s.sp_type, s.sp_stock, s.sp_address, s.sp_exposition, s.sp_service, s.sp_traffic, s.sp_file
+		from tb_space s, tb_company c
+		where s.cp_num = c.cp_num and s.sp_num = #{sp_Num}
+	</select>
+	<!-- 공간 가입 승인 -->
+	<update id="spOk">
+		update tb_space
+		 set sp_state = 1
+		 where sp_num = #{sp_Num}
+	</update>
+</mapper>

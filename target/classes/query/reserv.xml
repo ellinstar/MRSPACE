@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.reserv.ReservDAOImpl">
+
+	<insert id="reservation" parameterType="reserv">
+		insert into
+		tb_reserv(res_num, res_usedate, res_amount, res_state, mem_Id, sp_num,
+		sp_name)
+		values(
+		tb_reserv_seq.nextval , to_date(#{resUseDate},'yyyy-MM') , ${res_Amount} , 1,'${mem_Id}' ,
+		${sp_Num}, '${sp_Name}')
+	</insert>
+
+	<select id="spaceResert" resultType="space">
+		select *
+		from tb_space
+		where
+		sp_Num = ${sp_Num}
+	</select>
+
+	<select id="useSpace" resultType="int">
+		select count(sp_num) useSpace
+		from tb_reserv
+		where sp_num = ${sp_Num} and res_UseDate =
+		to_date('${resUseDate}','yyyy-MM')
+	</select>
+
+	<!-- 찜목록 추가 -->
+	<insert id="likeInsert" parameterType="reserv">
+		insert into
+		tb_like(like_num, like_amount, mem_Id, sp_num, sp_name)
+		values(
+		tb_like_seq.nextval, ${like_Amount}, '${mem_Id}', ${sp_Num},
+		'${sp_Name}')
+	</insert>
+
+	<!-- 업체 정보 -->
+	<select id="getCompInfo" parameterType="space" resultType="comp">
+		select *
+		from tb_company
+		where cp_num = (select cp_num
+		from tb_space
+		where sp_num = #{sp_Num}
+		)
+
+	</select>
+
+	<!-- 사용자 정보 -->
+	<select id="getMemInfo" parameterType="login" resultType="mem">
+		select *
+		from tb_mem
+		where mem_id = #{mem_Id}
+	</select>
+
+</mapper>

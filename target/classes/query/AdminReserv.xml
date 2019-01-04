@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.space.admin.dao.AdminResDAO">
+	
+	<sql id="resCommon">
+		select c.cp_Num, r.res_Num, s.sp_Name, s.sp_type, r.mem_id, c.cp_name, r.res_state, r.res_date, to_char(res_usedate,'yyyy-mm') res_UseDate
+		from tb_reserv r, tb_space s, tb_company c
+		<where>
+			<if test="search != 0">
+				c.cp_num = #{search} and
+			</if>
+			r.sp_num=s.sp_num and s.cp_num = c.cp_num
+		</where>
+	</sql>
+
+
+	<!-- 신규 리스트 조회 -->
+	<select id="rsNewlist" resultType="reserv">
+	
+	select res_Num, sp_Name, sp_type, mem_id, cp_name, res_state
+	from
+	(select rownum rn, list.* 
+	from ( 
+	<include refid="resCommon"></include>
+	<![CDATA[
+	) list
+	where list.res_date >= trunc(sysdate) 
+	and rownum <= #{pageNum} * #{amount}
+	)
+	
+	where rn > (#{pageNum} -1) * #{amount}
+	]]>
+	</select>
+	
+	<!-- 업체별 예약현황 -->
+	<select id="rescplist" resultType="reserv">
+	select rownum rn, list.*
+	from(
+		<include refid="resCommon"></include>
+	) list
+	</select>
+	
+	<!-- 페이징 위한 목록 수 조회 -->
+	<select id="resCount" resultType="int">
+	<![CDATA[
+		select 
+			count(*)
+		from
+			tb_reserv
+		where res_num > 0 and res_date >= trunc(sysdate) 
+	]]>
+	</select>
+	
+	<!-- 예약건 확인 -->
+	<select id="resDetail" resultType="reserv">
+	select res_Num, mem_id, res_date, to_char(res_usedate,'yyyy-mm') res_UseDate, res_state, res_amount, sp_Num
+		from tb_reserv
+	where res_num=#{res_Num}
+	</select>
+	<select id="resMem" resultType="mem">
+		select mem_id, mem_Name, mem_Phone
+		from tb_mem
+		where mem_id = #{mem_Id}
+	</select>
+	<select id="resSp" resultType="space">
+		select s.sp_Name, s.sp_type, c.cp_Name, c.cp_Phone
+		from tb_space s, tb_company c
+		where sp_num=#{sp_Num} and s.cp_num = c.cp_num
+	</select>
+	
+	<select id="compName" resultType="comp">
+		select cp_Num, cp_Name from tb_company
+	</select>
+	
+<!-- 업체 예약건수 그래프 -->
+
+	<resultMap type="java.util.HashMap" id="statistics">
+		<!-- <result javaType="java.lang.String" property="month" column="res_usedate"/> -->
+		<result javaType="java.lang.Integer" property="resCnt" column="amount"/>
+		<result javaType="java.lang.String" property="comp" column="cp_name"/>
+	</resultMap>
+	
+	<select id="graphcp" resultMap="statistics">
+		select cp_name, count(*) amount
+from(
+		select r.*, c.cp_name
+		from tb_reserv r, tb_space s, tb_company c
+		where r.sp_num=s.sp_num and s.cp_num = c.cp_num(+)
+		)
+    group by cp_name
+
+	</select>
+	
+</mapper>
