@@ -837,9 +837,16 @@ img.ui-datepicker-trigger {
 	<form name="myForm" id="myForm" enctype="multipart/form-data">
 		<div class="firstpage">
 			<div class="a">
+				<br>
+
 				<!-- 제목부분 -->
-				<h5>공간 유형 선택</h5>
-				<h3>등록할 공간 유형을 선택하세요.</h3>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">등록할 공간 유형 선택</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+				<h3></h3>
 				<hr>
 
 			</div>
@@ -898,39 +905,61 @@ img.ui-datepicker-trigger {
 			</div>
 
 			<!-- 예약유형 선택부분 -->
-			<h3>공간 재고</h3>
-			<hr>
+			<div class="alert alert-info" role="alert">
+				<strong><font style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;">공간 재고</font></font></strong><font
+					style="vertical-align: inherit;"><font
+					style="vertical-align: inherit;"></font></font>
+			</div>
+
 			<p>
 				<input type="text" width="20" placeholder="재고 갯수입력" id="spaceStock"
 					name="sp_Stock">&nbsp;개<br>
 			<p>
-				<!-- <div class="c">
-				<input type="submit" value="NEXT ▷" name="btnNext" id="btnNext" />
-			</div> -->
+			<hr>
 		</div>
 
 		<div class="secondpage">
 
 			<div class="b">
-				<h3>공간명</h3>
-				<hr>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간명</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
 				<input type="text" name="sp_Name" id="spaceName"
 					placeholder="공간명을 입력해주세요." size="100">
 				<p>
-				<h3>공간 가격(월/원)</h3>
 				<hr>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간 가격(월/원)</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
 				<input type="text" name="sp_Price" id="spacePrice"
 					placeholder="가격을 입력해주세요." size="100">
 				<p>
-				<h3>공간 주소</h3>
 				<hr>
 
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간 주소</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
 
-				<input type="text" id="spaceAddr" name="sp_Address" placeholder="주소"> <input
-					type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+
+
+				<input type="text" id="spaceAddr" name="sp_Address" placeholder="주소">
+				<input type="button" onclick="sample5_execDaumPostcode()"
+					value="주소 검색"><br>
 				<div id="map"
 					style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-
+				<hr>
 				<script
 					src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 				<script
@@ -970,7 +999,6 @@ img.ui-datepicker-trigger {
 
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
-                        alert(coords);
                         // 위도 경도값 받아감!
                         $("#mapcoords").val(result.y);
                         $("#mapcoords2").val(result.x);
@@ -986,58 +1014,90 @@ img.ui-datepicker-trigger {
             }
         }).open();
     }
-</script>	
-				<!-- 업체 지도 위도경도값 -->	
-				<input type="text" id="mapcoords" name="sp_Y">
-				<input type="text" id="mapcoords2" name="sp_X">	
-	
+</script>
+				<!-- 업체 지도 위도경도값 -->
+				<input type="hidden" id="mapcoords" name="sp_Y"> <input
+					type="hidden" id="mapcoords2" name="sp_X">
+
 				<p>
-				<h3>임대 계약 기간</h3>
-				<hr>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">임대계약기간</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
 				오늘 날짜 : <span id="today"></span><br> <input type="text"
 					name="sp_Contract1" id="spaceDateStart"> - <input
 					type="text" name="sp_Contract2" id="spaceDateEnd">
 				<p>
 			</div>
 		</div>
-
+		<hr>
 		<div class="thirdpage">
 			<div class="b">
-				<h3>오픈가능 날짜 선택</h3>
-				<hr>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">오픈 가능날짜</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
 				<input type="text" name="sp_Opendate" id="spaceOpenDate">
 				<p>
-				<h3>공간 소개</h3>
 				<hr>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간 소개</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
 				<textarea id="spaceexp" class="spaceexp" name="sp_Exposition"
 					placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
 				<p>
+				<hr>
 
-					<!-- 멀티업로드 -->
 				<div class="filebox bs3-primary">
 
-					<h3>공간 사진</h3>
-					<hr>
+					<div class="alert alert-info" role="alert">
+						<strong><font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">공간 이미지</font></font></strong><font
+							style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;"></font></font>
+					</div>
+
 					<label for="file">업로드</label> <input type="file" id="file"
-						name="file"> &nbsp;*사진은 최소 3장이상 등록바랍니다.
+						name="file"> &nbsp;*사진은 1장만 등록바랍니다.
 				</div>
 				<p>
+				<hr>
 			</div>
 		</div>
 
 		<div class="forthpage">
 			<div class="service">
 				<div class="b">
-					<h3>공간 서비스 등록</h3>
+					<div class="alert alert-info" role="alert" style="width: 400px;">
+						<strong><font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">공간 서비스 등록</font></font></strong><font
+							style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;"></font></font>
+					</div>
 					<div class="svrg">
 						<textarea name="sp_Service" id="spaceService"
 							placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
 					</div>
 					<p>
 				</div>
-
+				
 				<div class="e">
-					<h3 class="trtitle">교통편 등록</h3>
+					<div class="trtitle alert alert-info" role="alert" style="width: 400px;">
+						<strong><font style="vertical-align: inherit;"><font
+								style="vertical-align: inherit;">교통편 등록</font></font></strong><font
+							style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;"></font></font>
+					</div>
 					<div class="svrg">
 						<textarea name="sp_Traffic" id="spaceTraffic"
 							placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
