@@ -1,5 +1,6 @@
 package com.space.admin.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -43,5 +44,10 @@ public class AdminResDAO {
 	//업체별 리스트
 	public List<ReservVO> cpResList(Criteria cri) {
 		return session.selectList("rescplist", cri);
+	}
+	
+	//그래프 업체별 예약수
+	public List<ReservVO> graphCp(String cpNum){
+		return session.selectList("graphcp");
 	}
 }

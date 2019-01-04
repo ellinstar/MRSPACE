@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.space.space.dao.SpaceDAOImpl;
 import com.space.space.vo.SpaceVO;
 
+import lombok.extern.java.Log;
+
+@Log
 @Service
 @Transactional
 public class SpaceServiceImpl implements SpaceService {
@@ -23,7 +26,7 @@ public class SpaceServiceImpl implements SpaceService {
 		System.out.println("spaceService : " + svo.getSp_Name());
 		System.out.println("spaceService : " + svo.getCp_Id());
 		try {
-			
+
 			result = spaceDao.spaceInsert(svo);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,4 +55,12 @@ public class SpaceServiceImpl implements SpaceService {
 		sp_List = spaceDao.spaceList(svo);
 		return sp_List;
 	}
+
+	public void spaceModify(SpaceVO svo) {
+		spaceDao.spaceModify(svo);
+	}
+
+	
+
+
 }

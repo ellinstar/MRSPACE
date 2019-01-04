@@ -11,5 +11,9 @@ public interface SpaceService {
 	public int spaceListCnt(SpaceVO svo);
 
 	public List<SpaceVO> spaceList(SpaceVO svo);
+
+	public void spaceModify(SpaceVO svo);
+
+
 	
 }
