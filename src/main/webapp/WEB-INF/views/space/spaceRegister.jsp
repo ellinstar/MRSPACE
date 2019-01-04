@@ -988,10 +988,10 @@ img.ui-datepicker-trigger {
         }).open();
     }
 </script>
-				<!-- 업체 지도 위도경도값 -->	
-				<input type="hidden" id="mapcoords" name="sp_Y">
-				<input type="hidden" id="mapcoords2" name="sp_X">	
-	
+				<!-- 업체 지도 위도경도값 -->
+				<input type="hidden" id="mapcoords" name="sp_Y"> <input
+					type="hidden" id="mapcoords2" name="sp_X">
+
 				<p>
 				<div class="alert alert-info" role="alert">
 					<strong><font style="vertical-align: inherit;"><font
@@ -1060,10 +1060,8 @@ img.ui-datepicker-trigger {
 							placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
 					</div>
 					<p>
-				</div>
-				
-				<div class="e">
-					<div class="trtitle alert alert-info" role="alert" style="width: 400px;">
+					<div class="trtitle alert alert-info" role="alert"
+						style="width: 400px;">
 						<strong><font style="vertical-align: inherit;"><font
 								style="vertical-align: inherit;">교통편 등록</font></font></strong><font
 							style="vertical-align: inherit;"><font
