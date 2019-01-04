@@ -15,23 +15,6 @@
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 
 <head>
-<style type="text/css">
-body {
-	width: 100%;
-	margin: 0 auto;
-	padding: 0;
-}
-
-footer {
-	padding: 100px;
-	position: relative;
-	bottom: 100px;
-}
-
-div {
-	margin: auto 15;
-}
-</style>
 <!-- 오픈데스크 1인 버튼 -->
 <style type="text/css">
 .onoffswitch {
@@ -461,7 +444,7 @@ img.ui-datepicker-trigger {
 	cursor: pointer;
 }
 
-input[type=text] {
+/* input[type=text] {
 	width: 350px;
 	border: 2px solid #aaa;
 	border-radius: 4px;
@@ -470,7 +453,7 @@ input[type=text] {
 	padding: 8px;
 	box-sizing: border-box;
 	transition: .3s;
-}
+} */
 
 input[type=text]:focus {
 	border-color: #FF8000;
@@ -633,6 +616,7 @@ img.ui-datepicker-trigger {
 	box-shadow: 0px 2px 0px #d35400;
 	position: relative;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -835,21 +819,16 @@ img.ui-datepicker-trigger {
 </head>
 <body>
 	<form name="myForm" id="myForm" enctype="multipart/form-data">
-		<div class="firstpage">
-			<div class="a">
 				<br>
 
 				<!-- 제목부분 -->
-				<div class="alert alert-info" role="alert">
-					<strong><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">등록할 공간 유형 선택</font></font></strong><font
-						style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;"></font></font>
-				</div>
-				<h3></h3>
+				<div class="alert alert-info row" role="alert">
+			<label class="form-control-plaintext" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">등록할 공간 유형 선택</font></strong>
+			</label>
+			</div>
 				<hr>
 
-			</div>
 			<div class="all">
 				<div class="onoffswitch">
 					<!-- 공간 선택 스위치 부분 -->
@@ -903,31 +882,25 @@ img.ui-datepicker-trigger {
 					</label>
 				</div>
 			</div>
-
-			<!-- 예약유형 선택부분 -->
-			<div class="alert alert-info" role="alert">
-				<strong><font style="vertical-align: inherit;"><font
-						style="vertical-align: inherit;">공간 재고</font></font></strong><font
-					style="vertical-align: inherit;"><font
-					style="vertical-align: inherit;"></font></font>
+<!--============================ 스위치 종료 =========================================== -->
+			<div class="alert alert-info row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간 재고</font></strong>
+			</label>
+				<input type="text" class="form-control col-md-8" placeholder="재고 갯수입력" id="spaceStock" name="sp_Stock">
+			<label class="form-control-plaintext col-md-1" style="color: #0c5460">개	</label>
 			</div>
 
-			<p>
-				<input type="text" width="20" placeholder="재고 갯수입력" id="spaceStock"
-					name="sp_Stock">&nbsp;개<br>
-			<p>
 			<hr>
-		</div>
 
-		<div class="secondpage">
 
-			<div class="b">
 				<div class="alert alert-info" role="alert">
 					<strong><font style="vertical-align: inherit;"><font
 							style="vertical-align: inherit;">공간명</font></font></strong><font
 						style="vertical-align: inherit;"><font
 						style="vertical-align: inherit;"></font></font>
 				</div>
+				
 
 				<input type="text" name="sp_Name" id="spaceName"
 					placeholder="공간명을 입력해주세요." size="100">
@@ -1031,8 +1004,6 @@ img.ui-datepicker-trigger {
 					name="sp_Contract1" id="spaceDateStart"> - <input
 					type="text" name="sp_Contract2" id="spaceDateEnd">
 				<p>
-			</div>
-		</div>
 		<hr>
 		<div class="thirdpage">
 			<div class="b">
