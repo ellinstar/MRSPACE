@@ -134,14 +134,20 @@ public class CompServiceImpl implements CompService {
 	}
 
 	@Override
-	public List<ReservVO> getReservList(CompVO cvo) {
-		List<ReservVO> reservList = compDao.getReservList(cvo);
+	public List<ReservVO> compReservList(CompVO cvo) {
+		List<ReservVO> reservList = compDao.compReservList(cvo);
 		return reservList;
 	}
 
 	@Override
 	public void reservStateUpdate(ReservVO rvo) {
 		compDao.reservStateUpdate(rvo);
+		
+	}
+	
+	@Override
+	public void reservStateUpdate2(ReservVO rvo) {
+		compDao.reservStateUpdate2(rvo);
 		
 	}
 

@@ -71,12 +71,18 @@ public class CompDAOImpl implements CompDAO {
         return session.update("compSecurityUpdate", sec);
 	}
 
-	public List<ReservVO> getReservList(CompVO cvo) {
+	public List<ReservVO> compReservList(CompVO cvo) {
 		return session.selectList("compReservList",cvo);
 	}
 
 	public void reservStateUpdate(ReservVO rvo) {
 		session.update("reservStateUpdate",rvo);
 	}
+	
+	public void reservStateUpdate2(ReservVO rvo) {
+		session.update("reservStateUpdate2",rvo);
+	}
+
+	
 	
 }

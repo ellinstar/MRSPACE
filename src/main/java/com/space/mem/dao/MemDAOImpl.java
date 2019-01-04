@@ -98,4 +98,16 @@ public class MemDAOImpl implements MemDAO {
 		return session.delete("likeDelete", sp_Num);
 	}
 
+	@Override
+	public void reservAgree(ReservVO rvo) {
+		session.update("reservAgree",rvo);
+		
+	}
+	
+	@Override
+	public void reservRefuse(ReservVO rvo) {
+		session.update("reservRefuse",rvo);
+		
+	}
+
 }

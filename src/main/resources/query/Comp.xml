@@ -100,4 +100,10 @@
 		where mem_Id = #{mem_Id} and res_Num = #{res_Num}
 	</update>
 	
+	<update id="reservStateUpdate2" parameterType="reserv">
+		update tb_reserv
+		set res_State = -1
+		where mem_Id = #{mem_Id} and res_Num = #{res_Num}
+	</update>
+	
 </mapper>

@@ -34,6 +34,14 @@
 			});
 			$("#reservStateUpdate").submit();
 		});
+		
+		$("#refuse").click(function() {
+			$("#reservStateUpdate").attr({
+				"method" : "POST",
+				"action" : "/comp/compReservStateUpdate2.do"
+			});
+			$("#reservStateUpdate").submit();
+		});
 	});
 </script>
 
@@ -81,13 +89,22 @@
 										</td>
 									</c:when>
 									<c:when test="${reserv.res_State == 2}">
-										<td>예약 완료</td>
+										<td>결제 전</td>
 									</c:when>
 									<c:when test="${reserv.res_State == 3}">
 										<td>사용중</td>
 									</c:when>
 									<c:when test="${reserv.res_State == 4}">
 										<td>사용종료</td>
+									</c:when>
+									<c:when test="${reserv.res_State == 5}">
+										<td>결제 완료</td>
+									</c:when>
+									<c:when test="${reserv.res_State == -1}">
+										<td>예약 거절</td>
+									</c:when>
+									<c:when test="${reserv.res_State == -2}">
+										<td>예약 취소</td>
 									</c:when>
 								</c:choose>
 							</tr>

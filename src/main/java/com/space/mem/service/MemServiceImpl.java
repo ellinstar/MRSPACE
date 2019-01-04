@@ -171,4 +171,13 @@ public class MemServiceImpl implements MemService {
 		return isSucessCode;
 	}
 
+	@Override
+	public void reservAgree(ReservVO rvo) {
+		memDAO.reservAgree(rvo);
+	}
+	@Override
+	public void reservRefuse(ReservVO rvo) {
+		memDAO.reservRefuse(rvo);
+	}
+
 }

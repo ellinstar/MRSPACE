@@ -26,6 +26,27 @@
 <!-- Custom styles for this template -->
 <link href="/resources/css/landing-page.min.css" rel="stylesheet">
 
+<script type="text/javascript">
+$(function() {
+	$("#agree").click(function() {
+		$("#reservStateUpdate").attr({
+			"method" : "POST",
+			"action" : "/mem/reservAgree.do"
+		});
+		$("#reservStateUpdate").submit();
+	});
+	
+	$("#refuse").click(function() {
+		$("#reservStateUpdate").attr({
+			"method" : "POST",
+			"action" : "/mem/reservRefuse.do"
+		});
+		$("#reservStateUpdate").submit();
+	});
+});
+
+</script>
+
 
 <body>
 	<div class="container-fluid">
@@ -63,13 +84,30 @@
 										<td>예약 신청 중</td>
 									</c:when>
 									<c:when test="${reserv.res_State == 2}">
-										<td>예약 완료</td>
+										<td>
+										예약 통과
+										<form id="reservStateUpdate" name="reservStateUpdate">
+												<input type="hidden" value="${reserv.mem_Id}" id="mem_Id" name="mem_Id">
+												<input type="hidden" value="${reserv.res_Num}" id="res_Num" name="res_Num">
+												<input type="button" value="결제" id="agree" name="agree">
+												<input type="button" value="취소" id="refuse" name="refuse">
+											</form>
+										</td>
 									</c:when>
 									<c:when test="${reserv.res_State == 3}">
 										<td>사용중</td>
 									</c:when>
 									<c:when test="${reserv.res_State == 4}">
 										<td>사용종료</td>
+									</c:when>
+									<c:when test="${reserv.res_State == 5}">
+										<td>결제 완료</td>
+									</c:when>
+									<c:when test="${reserv.res_State == -1}">
+										<td>예약 거절</td>
+									</c:when>
+									<c:when test="${reserv.res_State == -2}">
+										<td>예약 취소</td>
 									</c:when>
 								</c:choose>
 							</tr>

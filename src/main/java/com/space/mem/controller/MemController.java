@@ -413,5 +413,24 @@ public class MemController {
 
 		return "mem/myReservationList";
 	}
+	
+	//예약 결제
+	//예약 수락시 상태 변경
+		@RequestMapping(value="/reservAgree.do",method=RequestMethod.POST)
+		public String reservAgree(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
+			session.getAttribute("login");
+			memService.reservAgree(rvo);
+			return "redirect:/mem/myReservationList.do";
+		}
+	
+		//예약 취소시 상태 변경
+		@RequestMapping(value="/reservRefuse.do",method=RequestMethod.POST)
+		public String reservRefuse(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
+			session.getAttribute("login");
+			memService.reservRefuse(rvo);
+			return "redirect:/mem/myReservationList.do";
+		}
+		
+	
 
 }

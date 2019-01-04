@@ -29,4 +29,7 @@ public interface MemService {
 	public List<ReservVO> likeList(MemVO mvo);
 	
 	public int likeDelete(int sp_Num);
+	
+	public void reservAgree(ReservVO rvo);
+	public void reservRefuse(ReservVO rvo);
 }
