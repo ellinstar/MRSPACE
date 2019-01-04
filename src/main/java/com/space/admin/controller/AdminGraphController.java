@@ -26,19 +26,20 @@ public class AdminGraphController {
 	
 	@RequestMapping(value="/graph", method=RequestMethod.GET)
 	public String chartjs(@ModelAttribute ReservVO rvo, Model model) {
-		System.out.println("chartjs");
-		List<CompVO> cpname = adResServ.optionCp();//select option 값 불러오기
-		model.addAttribute("cp", cpname);
-		return "/admin/graph/chartjs";
+		System.out.println("googlechart");
+		List<ReservVO> cpgraph = adResServ.graphCp();
+		model.addAttribute("list", cpgraph);
+		System.out.println("list"+cpgraph);
+		return "/admin/graph/gchart";
 	}
-	@RequestMapping(value="cpgraph")
+	
 	public @ResponseBody String getCpGraph(@RequestParam("cpNum") int cp_Num, Model model) {
 		Gson gson = new Gson();
 		System.out.println("cpNum"+cp_Num);
 		//HashMap<String, String> map = new HashMap<>();
 		//map.put("cpNum", cpNum);
-		List<ReservVO> cpgraph = adResServ.graphCp(cp_Num);
-		model.addAttribute("month", cpgraph);
+		List<ReservVO> cpgraph = adResServ.graphCp();
+		model.addAttribute("list", cpgraph);
 		gson.toJson(cpgraph);
 		return gson.toJson(cpgraph);
 	}

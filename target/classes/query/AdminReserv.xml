@@ -75,19 +75,19 @@
 <!-- 업체 예약건수 그래프 -->
 
 	<resultMap type="java.util.HashMap" id="statistics">
-		<result javaType="java.lang.String" property="statsDate" column="res_usedate"/>
-		<result javaType="java.lang.String" property="statsAmount" column="amount"/>
-		<result javaType="java.lang.String" property="statsLabel" column="cp_name"/>
+		<!-- <result javaType="java.lang.String" property="month" column="res_usedate"/> -->
+		<result javaType="java.lang.Integer" property="resCnt" column="amount"/>
+		<result javaType="java.lang.String" property="comp" column="cp_name"/>
 	</resultMap>
 	
 	<select id="graphcp" resultMap="statistics">
-		select to_char(res_usedate, 'yyyy-mm') as res_usedate, count(res_num) as amount, cp_name
-		from(
+		select cp_name, count(*) amount
+from(
 		select r.*, c.cp_name
 		from tb_reserv r, tb_space s, tb_company c
-		where r.sp_num=s.sp_num and s.cp_num = c.cp_num
+		where r.sp_num=s.sp_num and s.cp_num = c.cp_num(+)
 		)
-		group by cp_name, to_char(res_usedate, 'yyyy-mm')
+    group by cp_name
 
 	</select>
 	

@@ -14,8 +14,6 @@
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 
-<script type="text/javascript" src="/resources/include/js/common.js"></script>
-
 <head>
 <style type="text/css">
 body {
@@ -815,7 +813,7 @@ img.ui-datepicker-trigger {
 					onClose : function(selectedDate) {
 						// 시작일(fromDate) datepicker가 닫힐때
 						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-						$("#spaceOpenDate").datepicker("option", "minDate",
+						$("#spaceDateStart").datepicker("option", "maxDate",
 								selectedDate);
 					}
 				});
