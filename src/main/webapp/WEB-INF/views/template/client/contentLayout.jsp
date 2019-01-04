@@ -43,6 +43,7 @@
 <link
 	href="/resources/vendor/simple-line-icons/css/simple-line-icons.css"
 	rel="stylesheet" type="text/css">
+<link href="/resources/css/landing-page.min.css" rel="stylesheet">
 
 
 
@@ -58,9 +59,7 @@
 
 	<!-- Begin page content -->
 	<div class="container">
-		<div class="page-header">
 			<tiles:insertAttribute name="body" />
-		</div>
 	</div>
 
 	<footer class="footer">

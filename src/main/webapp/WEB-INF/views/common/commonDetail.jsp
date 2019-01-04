@@ -50,7 +50,7 @@
 
 
 <!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
 <script type="text/javascript">
 	$(function() {
@@ -180,7 +180,7 @@ header.masthead2 .overlay2 {
 	/* 	opacity: .3 */
 }
 
-img {
+#spaceimg {
 	width: 100%;
 	height: 320px;
 	position: relative;
@@ -443,9 +443,17 @@ p {
 }
 
 button#like {
-    font-size: 11px;
-    float: right;
-    margin-right: 7px;
+	font-size: 11px;
+	float: right;
+	margin-right: 7px;
+}
+
+a.btn.btn-primary {
+	font-size: 1rem;
+}
+
+input#joinBtn {
+	font-size: 1rem;
 }
 </style>
 
@@ -464,7 +472,7 @@ $(function() {
 	<input type="hidden" id="cp_Num" name="cp_Num" value="${detail.cp_Num}" />
 
 	<!-- Header with Background Image -->
-	<img src="/uploadStorage/space/${detail.sp_File}">
+	<img id="spaceimg" src="/uploadStorage/space/${detail.sp_File}">
 
 
 	<!-- Page Content -->
@@ -474,14 +482,30 @@ $(function() {
 			<div class="col-sm-8">
 				<h2 class="mt-4">${detail.sp_Name}</h2>
 				<br>
-				<h5>공간소개</h5>
+				<div class="alert alert-info" role="alert">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간소개</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
+
 				<p>${detail.sp_Exposition}</p>
 				<br>
-				<h5>공간 서비스</h5>
+				<div class="alert alert-info" role="alert" style="width: 1062px;">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간서비스</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
 				<p>${detail.sp_Service}</p>
 				<p></p>
 				<br>
-				<h5>공간 주소</h5>
+				<div class="alert alert-info" role="alert" style="width: 1062px;">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">공간주소</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
 				<!-- 공간주소 -->
 				<div class="host_profile" id="_host_map">
 					<div class="inner">
@@ -545,13 +569,22 @@ var customOverlay = new daum.maps.CustomOverlay({
 				</div>
 				<p></p>
 				<br>
-				<h5>교통편</h5>
+				<div class="alert alert-info" role="alert" style="width: 1062px;">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">교통편</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
 				<p>${detail.sp_Traffic}</p>
 
 				<br> <br>
 
-				<h5>'업체명의' 다른 공간</h5>
-
+				<div class="alert alert-info" role="alert" style="width: 1062px;">
+					<strong><font style="vertical-align: inherit;"><font
+							style="vertical-align: inherit;">'업체명의' 다른 공간</font></font></strong><font
+						style="vertical-align: inherit;"><font
+						style="vertical-align: inherit;"></font></font>
+				</div>
 			</div>
 
 
@@ -576,9 +609,11 @@ var customOverlay = new daum.maps.CustomOverlay({
 					<br>
 
 					<p>
-						<a class="btn btn-primary btn-lg" href="#" data-needpopup-show="#small-popup"> 
-							<i class="glyphicon glyphicon-earphone"></i> 전화 &raquo;</a> 
-							<a class="btn btn-primary btn-lg" id="reserv" href="/reserv/reservation.do">예약하기 &raquo;</a>
+						<a class="btn btn-primary btn-lg" href="#"
+							data-needpopup-show="#small-popup" style="margin-left: 20px;">
+							<i class="glyphicon glyphicon-earphone"></i> 전화 &raquo;
+						</a> <a class="btn btn-primary btn-lg" id="reserv"
+							href="/reserv/reservation.do">예약하기 &raquo;</a>
 					</p>
 				</address>
 			</div>
@@ -691,12 +726,12 @@ var customOverlay = new daum.maps.CustomOverlay({
 
 
 	<!-- 전화 popup 모달창 -->
-	<%-- <div class="wrapper">
+	<div class="wrapper">
 		<div id='small-popup' class="needpopup">
-			<p>"코워킹스페이스를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다. :)</p>
+			<p>" 코워킹스페이스를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다.:)</p>
 			<p>-------------------------------------------------------------------------</p>
 			<h2>${detail.sp_Name}</h2>
-			<h2>${detail.cp_Phone}</h2>
+			<%-- 	<h2>${detail.cp_Phone}</h2> --%>
 			<p>PHONE : ${detail.cp_Phone}</p>
 		</div>
 	</div>
@@ -714,7 +749,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 			}
 		};
 		needPopup.init();
-	</script> --%>
+	</script>
 	<!-- 전화 popup 모달창 끝 -->
 
 	<!-- 찜 관련 -->

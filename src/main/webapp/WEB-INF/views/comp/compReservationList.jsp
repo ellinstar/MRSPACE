@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약 목록</title>
+<title>예약 현황</title>
 </head>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -20,11 +20,9 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="/resources/include/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- <link href="/resources/include/dist/css/bootstrap.min.css"
+	rel="stylesheet"> -->
 
-<!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		$("#agree").click(function() {
@@ -46,19 +44,37 @@
 </script>
 
 <body>
-	<div class="container-fluid">
-		<h2 class="sub-header">예약 목록</h2>
+	<section class="testimonials text-center">
+	<div class="container-fluid"><br><br>
+		<h2 class="sub-header">예약 현황</h2><br><br>
 		<div class="table-responsive">
 			<table class="table table-striped">
+				<colgroup>
+					<col width="10%" />
+					<col width="10%" />
+					<col width="10%" />
+					<col width="10%" />
+					<col width="10%" />
+				</colgroup>
+				<thead>
+				<tr>
+					<th>공간명</th>
+					<th>예약한 날짜</th>
+					<th>예약한 달</th>
+					<th>예약 금액</th>
+					<th>예약 상태</th>
+				</tr>
+				</thead>
+				<tbody id="list">
 				<c:choose>
 					<c:when test="${not empty compReservList}">
-						<tr>
+						<!-- <tr>
 							<th>공간명</th>
 							<th>예약한 날짜</th>
 							<th>예약한 달</th>
 							<th>예약 금액</th>
 							<th>예약 상태</th>
-						</tr>
+						</tr> -->
 						<c:forEach var="reserv" items="${compReservList}"
 							varStatus="status">
 							<tr>
@@ -79,7 +95,7 @@
 								<td><c:out value="${reserv.res_Amount}" /></td>
 								<c:choose>
 									<c:when test="${reserv.res_State == 1}">
-										<td>예약 신청 중
+										<td>
 											<form id="reservStateUpdate" name="reservStateUpdate">
 												<input type="hidden" value="${reserv.mem_Id}" id="mem_Id" name="mem_Id">
 												<input type="hidden" value="${reserv.res_Num}" id="res_Num" name="res_Num">
@@ -112,13 +128,15 @@
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4" class="tac">신청한 예약이 없습니다.</td>
+							<td colspan="5" class="tac">신청한 예약이 없습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
+				</tbody>
 			</table>
 
 		</div>
 	</div>
+	</section>
 </body>
 </html>

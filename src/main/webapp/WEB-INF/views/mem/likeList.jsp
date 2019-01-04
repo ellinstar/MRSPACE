@@ -30,7 +30,7 @@
 
 
 <!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
 <script type="text/javascript">
 	$(function() {
@@ -70,7 +70,7 @@
 		<div class="contentContainer">
 			<br>
 			<div class="container-fluid">
-				<h2 class="sub-header">찜 목록</h2>
+				<br><h2 class="sub-header">찜 목록</h2>
 			</div>
 			<br> <br>
 
@@ -114,7 +114,7 @@
 							</c:when>
 							<c:otherwise>
 								<tr>
-									<td colspan="4" class="tac">찜한 목록이 없습니다.</td>
+									<td colspan="6" class="tac">찜한 목록이 없습니다.</td>
 								</tr>
 							</c:otherwise>
 						</c:choose>

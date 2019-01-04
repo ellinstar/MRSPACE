@@ -13,18 +13,15 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="/resources/include/dist/js/bootstrap.min.js"></script>
-<script src="/resources/include/assets/js/docs.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script
-	src="/resources/include/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- <script src="/resources/include/assets/js/docs.min.js"></script> -->
 
 
 <!-- Bootstrap core CSS -->
-<link href="/resources/include/dist/css/bootstrap.min.css"
+<!-- <link href="/resources/include/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
+ -->
 <!-- Custom styles for this template -->
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
 <script type="text/javascript">
 $(function() {
@@ -49,19 +46,37 @@ $(function() {
 
 
 <body>
-	<div class="container-fluid">
-		<h2 class="sub-header">예약 목록</h2>
+	<section class="testimonials text-center">
+	<div class="container-fluid"><br><br>
+		<h2 class="sub-header">예약 목록</h2><br><br>
 		<div class="table-responsive">
 			<table class="table table-striped">
+				<colgroup>
+					<col width="10%" />
+					<col width="10%" />
+					<col width="10%" />
+					<col width="10%" />
+					<col width="10%" />
+				</colgroup>
+				<thead>
+				<tr>
+					<th>공간명</th>
+					<th>예약한 날짜</th>
+					<th>예약한 달</th>
+					<th>예약 금액</th>
+					<th>예약 상태</th>
+				</tr>
+				</thead>
+				<tbody id="list">
 				<c:choose>
 					<c:when test="${not empty reservList}">
-						<tr>
+						<!-- <tr>
 							<th>공간명</th>
 							<th>예약한 날짜</th>
 							<th>예약한 달</th>
 							<th>예약 금액</th>
 							<th>예약 상태</th>
-						</tr>
+						</tr> -->
 						<c:forEach var="reserv" items="${reservList}" varStatus="status">
 							<tr>
 								<td>
@@ -115,13 +130,15 @@ $(function() {
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4" class="tac">신청한 예약이 없습니다.</td>
+							<td colspan="5" class="tac">신청한 예약이 없습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
+				</tbody>
 			</table>
 
 		</div>
 	</div>
+	</section>
 </body>
 </html>
