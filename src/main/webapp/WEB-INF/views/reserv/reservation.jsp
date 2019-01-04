@@ -47,7 +47,7 @@
 				$("#reservForm").submit();
 			}
 		});
-		
+
 	});
 	/* 전체목록 불러오기 */
 	function goList() {
@@ -135,7 +135,7 @@ input#closeBtn {
 						<!-- /.col-lg-8 -->
 						<div class="col-lg-4">
 							<!-- 공간이름 -->
-							<h3>${detail.sp_Name}</h3>
+							<h3 style="font-weight: 600;">${detail.sp_Name}</h3>
 							<!-- 공간소개 -->
 							<p style="font-size: 0.95rem;">${detail.sp_Exposition}</p>
 						</div>
@@ -165,7 +165,7 @@ input#closeBtn {
 					<!-- 	<div class="card-heder">예약 하실 공간 정보</div> -->
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">공간유형</label>
+							<label class="form-control" style="font-weight: 600;">공간유형</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control"> ${detail.sp_Type}</label>
@@ -173,7 +173,7 @@ input#closeBtn {
 					</div>
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">금액</label>
+							<label class="form-control" style="font-weight: 600;">금액</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control"> <fmt:formatNumber
@@ -184,7 +184,8 @@ input#closeBtn {
 					</div>
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">예약 기간＊</label>
+							<label class="form-control" style="font-weight: 600;">예약
+								기간＊</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<input type="month" id="resUseDate" name="resUseDate"
@@ -206,7 +207,7 @@ input#closeBtn {
 
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">공간상호</label>
+							<label class="form-control" style="font-weight: 600;">공간상호</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control">${comp.cp_Name}</label>
@@ -215,7 +216,7 @@ input#closeBtn {
 
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">대표자명</label>
+							<label class="form-control" style="font-weight: 600;">대표자명</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control">${comp.cp_Ceo}</label>
@@ -223,7 +224,7 @@ input#closeBtn {
 					</div>
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">소재지</label>
+							<label class="form-control" style="font-weight: 600;">소재지</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control">${comp.cp_Add}</label>
@@ -232,7 +233,7 @@ input#closeBtn {
 
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">사업자번호</label>
+							<label class="form-control" style="font-weight: 600;">사업자번호</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control">${comp.cp_Account}</label>
@@ -241,7 +242,7 @@ input#closeBtn {
 
 					<div class="form-group form-row">
 						<div class="col-md-2 form-label-group">
-							<label class="form-control">연락처</label>
+							<label class="form-control" style="font-weight: 600;">연락처</label>
 						</div>
 						<div class="col-md-4 form-label-group">
 							<label class="form-control">${comp.cp_Phone}</label>
@@ -286,29 +287,32 @@ input#closeBtn {
 			</div>
 		</c:if>
 		<c:if test="${reserv != null}">
-			<header class="masthead text-white text-center">
-				<div class="jb-wrap">
-					<div>
-						<img class="jb-image" src="/uploadStorage/space/${detail.sp_File}">
-					</div>
-					<div class="jb-text">
-						<div class="jb-text-table">
-							<div class="jb-text-table-row">
-								<div class="jb-text-table-cell">
-									<div class="row">
-										<div class="col-xl-9 mx-auto">
-											<h3 class="mb-5" style="font-size: 40px;">${detail.sp_Name}<br>예약이
-												완료되었습니다.
-											</h3>
-										</div>
+			<div class="jb-wrap">
+				<div style="margin-top: 50px; position: relative">
+					<div
+						style="position: absolute; background-color: rgba(0, 0, 0, 0.20); z-index: 10; height: 100%; width: 100%"></div>
+					<img class="jb-image" src="/uploadStorage/space/${detail.sp_File}">
 
+				</div>
+				<div class="jb-text">
+					<div class="jb-text-table">
+						<div class="jb-text-table-row">
+							<div class="jb-text-table-cell">
+								<div class="row">
+									<div class="col-xl-9 mx-auto">
+										<h3 class="mb-5"
+											style="font-size: 40px; font-weight: 900; color: white; font-size: 40px; font-weight: 900; color: white; margin-left: 0; font-family: unset; text-align: center; font-size: 40px; font-weight: 900; color: white; margin-left: 0; font-family: unset; text-align: center; -webkit-text-fill-color: floralwhite;">
+											"${detail.sp_Name}"<br>예약이 완료되었습니다.
+
+										</h3>
 									</div>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</header>
+			</div>
 			<div class="card-body">
 				<div class="alert alert-info" role="alert">
 					<strong><font style="vertical-align: inherit;"><font
@@ -318,7 +322,7 @@ input#closeBtn {
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">예약공간</label>
+						<label class="form-control" style="font-weight: 600;">예약공간</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${detail.sp_Name}</label>
@@ -326,7 +330,7 @@ input#closeBtn {
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">예약내용(총1개월)</label>
+						<label class="form-control" style="font-weight: 600;">예약내용(총1개월)</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${reserv.resUseDate}</label>
@@ -334,7 +338,7 @@ input#closeBtn {
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">결제금액</label>
+						<label class="form-control" style="font-weight: 600;">결제금액</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control"><fmt:formatNumber
@@ -355,7 +359,7 @@ input#closeBtn {
 
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">예약자명</label>
+						<label class="form-control" style="font-weight: 600;">예약자명</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${login.mem_Name}</label>
@@ -364,7 +368,7 @@ input#closeBtn {
 
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">연락처</label>
+						<label class="form-control" style="font-weight: 600;">연락처</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${mem.mem_Phone}</label>
@@ -373,7 +377,7 @@ input#closeBtn {
 
 				<div class="form-group form-row">
 					<div class="col-md-2 form-label-group">
-						<label class="form-control">이메일</label>
+						<label class="form-control" style="font-weight: 600;">이메일</label>
 					</div>
 					<div class="col-md-4 form-label-group">
 						<label class="form-control">${mem.mem_Email}</label>

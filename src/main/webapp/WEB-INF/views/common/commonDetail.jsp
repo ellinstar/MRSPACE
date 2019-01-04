@@ -455,6 +455,9 @@ a.btn.btn-primary {
 input#joinBtn {
 	font-size: 1rem;
 }
+h5.mt-4 {
+    font-weight: 600;
+}
 </style>
 
 </head>
@@ -480,7 +483,7 @@ $(function() {
 
 		<div class="row">
 			<div class="col-sm-8">
-				<h2 class="mt-4">${detail.sp_Name}</h2>
+				<h2 class="mt-4" style="font-weight: 600;">${detail.sp_Name}</h2>
 				<br>
 				<div class="alert alert-info" role="alert">
 					<strong><font style="vertical-align: inherit;"><font
@@ -590,7 +593,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 
 			<div class="info_area">
 				<div>
-					<h5 class="mt-4">공간 예약 정보</h5>
+					<h5 class="mt-4" style="font-weight: 600;">공간 예약 정보</h5>
 					<button type="button" id="like" class="btn btn-danger btn-circle">
 						<i class="glyphicon glyphicon-heart"></i>찜하기
 					</button>
@@ -680,7 +683,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 												</div>
 
 												<div class="info_area2">
-													<h3 class="tit_space">${space.sp_Name}</h3>
+													<h3 class="tit_space" style="font-weight: 600;">${space.sp_Name}</h3>
 													<div class="tags">
 														<span class="tag_area_name">${space.sp_Address}</span>
 													</div>
