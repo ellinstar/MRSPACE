@@ -1,5 +1,7 @@
 package com.space.comp.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import com.space.comp.service.CompService;
 import com.space.comp.vo.CompVO;
 import com.space.complogin.service.CompLoginService;
 import com.space.complogin.vo.CompLoginVO;
+import com.space.reserv.vo.ReservVO;
 
 import lombok.extern.java.Log;
 
@@ -347,5 +350,42 @@ public class CompController {
 		}
 		return mav;
 	}
+	
+	
+	//예약 리스트 출력
+	@RequestMapping(value = "/compReservationList.do", method = RequestMethod.GET)
+	public String reservList(@ModelAttribute ReservVO rvo, HttpSession session, Model model) {
+		int cp_Num = (Integer) session.getAttribute("cp_Num");
+		
+		CompVO cvo = new CompVO();
+		cvo.setCp_Num(cp_Num);
+		
+		List<ReservVO> reservList = compService.getReservList(cvo);
+		session.getAttribute("cp_Id");
+		session.getAttribute("cp_Num");
+		session.getAttribute("cp_Name");
+		model.addAttribute("compReservList", reservList);
+		
+		return "comp/compReservationList";
+	}
+	
+	//예약 상태 변경
+	@RequestMapping(value="/compReservStateUpdate.do",method=RequestMethod.POST)
+	public String reservUpdate(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
+		session.getAttribute("cp_Id");
+		session.getAttribute("cp_Num");
+		session.getAttribute("cp_Name");
+		compService.reservStateUpdate(rvo);
+		
+		return "redirect:/comp/compReservationList.do";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

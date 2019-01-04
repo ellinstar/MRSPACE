@@ -24,7 +24,8 @@ public class ReservVO {
 	private String sp_Type;// 공간유형
 	private String cp_Name;// 업체명
 	private String res_UseDate; // 예약 사용하는 달
-	private int count;
+	private String amount;
+	public String[] array;
 
 	// 찜목록
 	private int like_Num;

@@ -1,20 +1,16 @@
 package com.space.admin.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.space.admin.service.AdminResService;
@@ -35,13 +31,15 @@ public class AdminGraphController {
 		model.addAttribute("cp", cpname);
 		return "/admin/graph/chartjs";
 	}
-	@RequestMapping(value="cpgraph", method=RequestMethod.GET)
-	public String getCpGraph(HttpSession session, Model model) {
-		String cpNum = (String)session.getAttribute("cpNum");
+	@RequestMapping(value="cpgraph")
+	public @ResponseBody String getCpGraph(@RequestParam("cpNum") int cp_Num, Model model) {
 		Gson gson = new Gson();
-		System.out.println("cpNum"+cpNum);
-		List<ReservVO> cpgraph = adResServ.graphCp(cpNum);
-		model.addAttribute("list", cpgraph);
+		System.out.println("cpNum"+cp_Num);
+		//HashMap<String, String> map = new HashMap<>();
+		//map.put("cpNum", cpNum);
+		List<ReservVO> cpgraph = adResServ.graphCp(cp_Num);
+		model.addAttribute("month", cpgraph);
+		gson.toJson(cpgraph);
 		return gson.toJson(cpgraph);
 	}
 	   /* public String getDailyVisitor(HttpSession session, String month){

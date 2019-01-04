@@ -2,24 +2,48 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
-<c:set value="${cp_Num}" var="cpNum"/>
+<c:set value="${cpNum}" var="cpNum"/>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var chartLabels = [];
-		var chartData=[];
-		var month="";
-		var cpNum = '<c:out value="${cpNum}"/>';
+		
+		var form = $("#form");
+		
+		//버튼을 누르면 차트가 그려진다
+		//$("#btn").click(function() {
+			//chartLabels = [];// list.toArray(new String[list.statsDate]);
+			//chartData = [];//list.toArray(new String[list.statsAmount]);
+			
+			//getJson으로 데이터 받음
+			$.getJSON("./graph",function(data) {
+				var chartLabels = [];
+				var chartData=[];
+				var cpName=[];
+				$.each(data, function(inx, obj) {
+					chartLabels.push(obj.statsDate);
+					chartData.push(obj.statsAmount);
+					cpName.push(obj.statsLabel);
+				});
+				console.log(chartLabels)
+				createChart();
+			});
+			
+	//	});
+		
 		function createChart() {
 			var ctx = document.getElementById("canvas").getContext("2d");
-			LineChartDemo = Chart.Line(ctx,{
+			
+			var myChart = new Chart(ctx,{
+				type : 'line',
 				data : lineChartData,
 				options:{
+					responsive: false,
 					scales:{
 						yAxes:[{
 							ticks:{
@@ -31,49 +55,14 @@
 			});
 		}
 		
-			var form = $("#form");
-		$("#cpNum").on("change", function(e) {
-				e.preventDefault();
-				var cpNum = $("#cpNum option:selected").val();
-				consol.log('cpNum:'+cpNum);
-		});
-		//버튼을 누르면 차트가 그려진다
-		$("#btn").click(function() {
-			
-		
-			
-			chartLabels = [];// list.toArray(new String[list.statsDate]);
-			chartData = [];//list.toArray(new String[list.statsAmount]);
-			
-			//getJson으로 데이터 받음
-			$.getJSON("./cpgraph",{
-				cpNum: cpNum
-			},function(data) {
-				$.each(data, function(key, value) {
-					chartLabels.push(value.statsDate);
-					chartData.push(value.statsAmont);
-				});
-				lineChartData = {
-						labels : chartLabels,
-						datasets:[{
-							label : "월별 예약 수",
-							backgroundColor:'rgba(255, 99, 132, 0.2)',
-							borderColor:'rgba(255, 99, 132, 1)',
-							borderWidth:4,
-							fill:false,
-							data : chartData
-						}]
-				}
-				createChart();
-			});
-		});
-		
+		var button = document.gtElementById("sendAjax")
+		button.addE
 	});
 </script>
 <body>
 
  	<!-- =====================콤보박스================================= -->
-	<form id='form' action="/admin/cpgraph" method="get" class="form-label-group form-row " >
+	<%-- <form id='form' action="/admin/cpgraph" method="get" class="form-label-group form-row " >
 		<select name="cpNum" id="cpNum" class="select" data-live-search="true">
 			<option value="0">전체</option>
 			<c:forEach var="cp" items="${cp}">
@@ -81,7 +70,7 @@
 			</c:forEach>
 		</select>
 		<button id="btn" class="btn">보기</button>
-		</form>
+		</form> --%>
 	<!-- =====================콤보박스================================= -->
  
  

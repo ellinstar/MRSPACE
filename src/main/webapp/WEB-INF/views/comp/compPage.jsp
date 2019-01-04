@@ -49,7 +49,7 @@
 					</ul>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="/reserv/reservBoard.do"><img
+						<li class="list-inline-item"><a href="/comp/compReservationList.do"><img
 								alt="예약현황" src=""></a></li>
 					</ul>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
