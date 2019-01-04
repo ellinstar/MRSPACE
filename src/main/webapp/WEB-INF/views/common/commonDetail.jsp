@@ -180,7 +180,7 @@ header.masthead2 .overlay2 {
 	/* 	opacity: .3 */
 }
 
-img {
+#spaceimg {
 	width: 100%;
 	height: 320px;
 	position: relative;
@@ -472,7 +472,7 @@ $(function() {
 	<input type="hidden" id="cp_Num" name="cp_Num" value="${detail.cp_Num}" />
 
 	<!-- Header with Background Image -->
-	<img src="/uploadStorage/space/${detail.sp_File}">
+	<img id="spaceimg" src="/uploadStorage/space/${detail.sp_File}">
 
 
 	<!-- Page Content -->
