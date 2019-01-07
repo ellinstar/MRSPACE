@@ -71,12 +71,12 @@
                 lineWidth:3,
                 interpolateNulls: 'true'
             };
-        var chart = new google.visualization.LineChart(document.getElementById('cp_chart'));
-        chart.draw(data, options);
+       // var chart = new google.visualization.LineChart(document.getElementById('cp_chart'));
+     //   chart.draw(data, options);
     	  
 	}
       
-      $('.btn').click(function() {
+     /*  $('.btn').click(function() {
 		$.ajax({
 			url : "./graph",
 			type : "POST",
@@ -84,7 +84,7 @@
 			success : drawCpChart()
 				
 		});
-	});
+	}); */
       
       
     </script>

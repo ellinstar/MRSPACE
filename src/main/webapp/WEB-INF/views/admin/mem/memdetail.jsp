@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,8 +115,7 @@ label, input{
 					<col width="30%">
 					<col width="30%">
 					<col width="10%">
-					<col width="10%">
-					<col width="10%">
+					<col width="20%">
 				</colgroup>
 			<thead>
 			<tr>
@@ -125,7 +124,6 @@ label, input{
 				<th>기간</th>
 				<th>상태</th>
 				<th>결제금액(원)</th>
-				<th>잔여일</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -138,14 +136,13 @@ label, input{
 							<td><c:out value="${reserv.sp_Name}"/></td>
 							<td><c:out value="${reserv.resUseDate}"/></td>
 							<td><c:out value="${reserv.res_State}"/></td>
-							<td><c:out value="${reserv.res_Amount}"/></td>
-							<td><c:out value="${reserv.res_Num}"/></td>
+							<td><fmt:formatNumber value="${reserv.res_Amount}"/> </td>
 						</tr>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td colspan="6">예약 이력이 없습니다.</td>
+						<td colspan="5">예약 이력이 없습니다.</td>
 					</tr>
 				</c:otherwise>
 			</c:choose>

@@ -93,7 +93,7 @@ label, input {
 						<label class="label col-md-12">공간 소개 </label>
 						<div class="col-md-12 form-label-group">
 							<input type="text" id="expo" class="form-control"
-								placeholder="Confirm password" required="required"> <label
+								placeholder="Confirm password" required="required" style="min-height: 200px;"> <label
 								for="expo">${detail.sp_Exposition}</label>
 						</div>
 					</div>
@@ -101,7 +101,7 @@ label, input {
 						<label class="label col-md-12 ">공간 서비스 </label>
 						<div class="col-md-12 form-label-group">
 							<input type="text" id="serv" class="form-control"
-								placeholder="Confirm password" required="required"> <label
+								placeholder="Confirm password" required="required" style="min-height: 200px;"> <label
 								for="serv">${detail.sp_Service}</label>
 						</div>
 					</div>
@@ -109,7 +109,7 @@ label, input {
 						<label class="label col-md-12">교통편</label>
 						<div class="col-md-12 form-label-group">
 							<input type="text" id="traf" class="form-control"
-								placeholder="First name" required="required"> <label
+								placeholder="First name" required="required" style="min-height: 200px;"> <label
 								for="traf">${detail.sp_Traffic}</label>
 						</div>
 					</div>

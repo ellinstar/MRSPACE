@@ -56,22 +56,12 @@ public class AdminQnaController {
 	@RequestMapping(value="/repInsert", method=RequestMethod.POST)
 	public String repInsert(@ModelAttribute QnaRepVO qrvo, Model model, @ModelAttribute("cri") Criteria cri) {
 		int result = adQnaServ.repInsert(qrvo);
-		String url="";
-		if(result == 1) url="/admin/qna/list";
-		else {
-			url="/admin/qna/detail?qna_Num="+qrvo.getQna_Num();
-		}
-		return "redirect : "+url;
+		return "redirect:/admin/qna/list";
 	}
 	@RequestMapping(value="/repUpdate", method=RequestMethod.POST)
 	public String repUpdate(@ModelAttribute QnaRepVO qrvo, Model model, @ModelAttribute("cri") Criteria cri) {
 		int result = adQnaServ.repUpdate(qrvo);
-		String url="";
-		if(result == 1) url="/admin/qna/list";
-		else {
-			url="/admin/qna/detail?qna_Num="+qrvo.getQna_Num();//수정 필요
-		}
-		return "redirect : "+url;
+		return "redirect:/admin/qna/list";
 	}
 	
 	
