@@ -13,7 +13,9 @@
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
-
+<script type="text/javascript">
+	document.title = 'MRSPACE : 공간등록';
+</script>
 <head>
 <!-- 오픈데스크 1인 버튼 -->
 <style type="text/css">
@@ -497,8 +499,8 @@ textarea:focus {
 	appearance: none;
 }
 
-<!--
-공간 서비스 /교통편 텍스트 -->#spaceService:focus, #spaceTraffic:focus {
+<!--공간 서비스 /교통편 텍스트 -->
+#spaceService:focus, #spaceTraffic:focus {
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
 }
@@ -868,7 +870,7 @@ textarea:focus {
 		</div>
 
 		<hr>
-		<div class="alert  row">
+		<div class="alert row">
 			<label class="form-control-plaintext col-md-8" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">임대계약기간</font></strong>
 				(오늘 날짜 : <span id="today"></span>)<br>
