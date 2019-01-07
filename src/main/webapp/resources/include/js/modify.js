@@ -45,8 +45,8 @@ $(function(){
 		}
 	});	
 	
-	$("#mem_Cancel").click(function(){
-		history.back();
+	$("#mem_Cancel").click(function() {
+		location.href = "/mem/memMyPage.do";
 	});
 	
 	// 회워탈퇴

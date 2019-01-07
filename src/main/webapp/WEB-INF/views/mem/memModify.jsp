@@ -47,7 +47,7 @@
 			}
 		}
 	}
-
+	
 	function jobCheck() {
 		var job = "${mem.mem_Job}";
 		$("#job").val(job).prop("selected", "true");
