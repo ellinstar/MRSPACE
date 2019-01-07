@@ -68,8 +68,7 @@
 					</div>
 				</div>
 				<div class="form-group form-group-sm">
-					<label for="mem_PwCheck" class="col-sm-2 control-label">비밀번호
-						확인</label>
+					<label for="mem_PwCheck" class="col-sm-2 control-label">비밀번호 확인</label>
 					<div class="col-sm-3">
 						<input type="password" id="mem_PwCheck" name="mem_PwCheck"
 							maxlength="20" class="form-control" placeholder="예) abcd1234">
@@ -78,7 +77,6 @@
 						<p class="form-control-static error"></p>
 					</div>
 				</div>
-
 				<div class="form-group form-group-sm">
 					<label for="mem_Name" class="col-sm-2 control-label">이름</label>
 					<div class="col-sm-3">

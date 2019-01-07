@@ -29,6 +29,7 @@
 
 <body>
 	<div id="joinSuc">
+		<hr>
 		<h1>회원가입 신청 완료</h1>
 
 		<div id="joinSuc1">

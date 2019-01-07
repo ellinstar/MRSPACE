@@ -16,10 +16,9 @@
 
 <title>회원가입 완료 화면</title>
 <script type="text/javascript">
-/* 전체목록 불러오기 */
-function goList() {
-	location.href = "/space/spaceList.do?cp_Num=${ cp_Num }";
-}
+	function goList() {
+		location.href = "/space/spaceList.do?cp_Num=${ cp_Num }";
+	}
 </script>
 <!-- 모바일 웹 페이지 설정 -->
 <!-- <link rel="shortcut icon" href="/resources/images/common/icon.png" />
@@ -36,9 +35,9 @@ function goList() {
 <body>
 	<div class="contentContainer">
 		<div class="well">
-			<div class="tac"> 공간 등록 신청에 성공하였습니다.<br />
-				<span id="text"></span>
-				<input type="button" id="goList" name="goList" onclick="javascript:goList()" value="확인"/>
+			<div class="tac">
+				<h2 id="title">공간 등록 신청에 성공하였습니다.</h2><br />
+				<input type="button" id="goList" name="goList" onclick="javascript:goList()" value="확인" />
 
 			</div>
 		</div>

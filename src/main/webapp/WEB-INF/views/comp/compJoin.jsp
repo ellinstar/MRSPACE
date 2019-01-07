@@ -54,9 +54,9 @@
 <body>
 	<div id="container">
 		<h1>회원가입(업체)</h1>
-		<div class="home">
+		<div class="well">
 			<form id="myForm">
-				<div>
+				<div class="form-group form-group-sm">
 					<label for="cp_Id">아 이 디</label> <input type="text" name="cp_Id"
 						id="cp_Id" placeholder="예) qwer8845"> <input type="button" id="idConfirmBtn"
 						value="아이디 중복체크">

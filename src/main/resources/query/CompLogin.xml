@@ -22,7 +22,7 @@
 		cp_Num
 		from tb_company
 		where cp_Id =
-		#{cp_Id} and cp_Pw = #{cp_Pw}
+		#{cp_Id} and cp_Pw = #{cp_Pw} and cp_state = 1
 	</select>
 	
 	<select id="compLoginSelect2" parameterType="complogin" resultType="complogin">
