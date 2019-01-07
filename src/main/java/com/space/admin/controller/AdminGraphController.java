@@ -29,13 +29,11 @@ public class AdminGraphController {
 		System.out.println("googlechart");
 		List<ReservVO> cpgraph = adResServ.graphCp();
 		model.addAttribute("list", cpgraph);
-		System.out.println("list"+cpgraph);
 		return "/admin/graph/gchart";
 	}
 	
 	public @ResponseBody String getCpGraph(@RequestParam("cpNum") int cp_Num, Model model) {
 		Gson gson = new Gson();
-		System.out.println("cpNum"+cp_Num);
 		//HashMap<String, String> map = new HashMap<>();
 		//map.put("cpNum", cpNum);
 		List<ReservVO> cpgraph = adResServ.graphCp();

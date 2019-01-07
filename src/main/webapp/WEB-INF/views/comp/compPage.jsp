@@ -45,39 +45,48 @@
 
 </head>
 <body>
-
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<section class="testimonials text-center">
 		<div class="container">
 			<form id="sp_Form">
-			<br><br><br>
-			<h1 class="tit_space">마이 페이지</h1>
-			<br><br>
-			<div class="row2">
-				<div class="col-lg-12">
-					<p>
-						<a href="/space/spaceList.do?cp_Num=${ cp_Num }" class="btn btn-sq-lg btn-primary"><br> 
-						<i class="fa fa-user fa-5x"></i><br /> <br>공간 목록</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						
-						<a href="/comp/compReservationList.do" class="btn btn-sq-lg btn-warning"><br> 
-						<i class="fa fa-user fa-5x"></i><br /> <br>예약 현황</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						
-						<a href="/comp/compGraph.do" class="btn btn-sq-lg btn-success"><br>
-						<i class="fa fa-user fa-5x"></i><br /> <br>통계</a> 
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						
-						<a href="/comp/compInfo.do" class="btn btn-sq-lg btn-danger"><br>
-						<i class="fa fa-user fa-5x"></i><br /> <br>내 정보</a>
-					</p>
-					<br><br><br>
+				<br>
+				<br>
+				<br>
+				<h1 class="tit_space">마이 페이지</h1>
+				<br>
+				<br>
+				<div class="row2">
+					<div class="col-lg-12">
+						<p>
+							<a href="/space/spaceList.do?cp_Num=${ cp_Num }"
+								class="btn btn-sq-lg btn-primary"><br> <i
+								class="fa fa-user fa-5x"></i><br /> <br>공간 목록</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a href="/comp/compReservationList.do"
+								class="btn btn-sq-lg btn-warning"><br> <i
+								class="fa fa-user fa-5x"></i><br /> <br>예약 현황</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a href="/comp/compGraph.do" class="btn btn-sq-lg btn-success"><br>
+								<i class="fa fa-user fa-5x"></i><br /> <br>통계</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a href="/comp/compInfo.do" class="btn btn-sq-lg btn-danger"><br>
+								<i class="fa fa-user fa-5x"></i><br /> <br>내 정보</a>
+						</p>
+						<br>
+						<br>
+						<br>
+					</div>
 				</div>
-			</div>
 			</form>
 		</div>
 	</section>
-	
-	
+
+
 
 	<%-- <div class="container">
 		<form id="sp_Form">

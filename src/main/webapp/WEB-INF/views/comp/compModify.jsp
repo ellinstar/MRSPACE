@@ -71,6 +71,9 @@
 </style>
 </head>
 <body>
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<div class="contentContainer">
 		<h1 class="tit_space" align="center">회원정보 수정</h1>
 		<br>
@@ -129,7 +132,8 @@
 					<label for="cp_Account" class="col-sm-2 control-label">입금계좌</label>
 					<div class="col-sm-3">
 						<input type="text" id="cp_Account" name="cp_Account"
-							onkeypress="return numkeyCheck(event)" value="${comp2.cp_Account}">
+							onkeypress="return numkeyCheck(event)"
+							value="${comp2.cp_Account}">
 					</div>
 				</div>
 				<%-- <c:if test="${comp2.cp_Bank == '국민은행' }">
@@ -151,7 +155,7 @@
 				<div class="form-group form-group-sm">
 					<label for="cp_Bank1" class="col-sm-2 control-label">입금은행</label>
 					<div class="col-sm-2">
-						<select name="cp_Bank1" id="cp_Bank1"class="form-control">
+						<select name="cp_Bank1" id="cp_Bank1" class="form-control">
 							<option value="국민은행">국민은행</option>
 							<option value="기업은행">기업은행</option>
 							<option value="우리은행">우리은행</option>

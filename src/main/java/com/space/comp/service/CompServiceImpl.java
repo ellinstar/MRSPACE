@@ -55,14 +55,12 @@ public class CompServiceImpl implements CompService {
 	@Override
 	public CompVO compSelect(String cp_Id) {
 		CompVO cvo = compDao.compSelect(cp_Id);
-		System.out.println("업체서비스Impl : compselect" + cvo.getCp_Id());
 		return cvo;
 	}
 
 	@Override
 	public CompVO compSelect2(String cp_Bnum) {
 		CompVO cvo = compDao.compSelect2(cp_Bnum);
-		System.out.println("업체서비스Impl : compselect2" + cvo.getCp_Id());
 		return cvo;
 	}
 
@@ -97,7 +95,6 @@ public class CompServiceImpl implements CompService {
 			sec.setCp_Id(cvo.getCp_Id());
 			sec.setSalt(Util.getRandomString());
 			compDao.compSecurityUpdate(sec);
-			System.out.println("업체서비스Impl compUpdate : " + cvo);
 			cvo.setCp_Pw(new String(OpenCrypt.getSHA256(cvo.getCp_Pw(), sec.getSalt())));
 		}
 		return compDao.compUpdate(cvo);
@@ -129,7 +126,6 @@ public class CompServiceImpl implements CompService {
 		compDao.compSecurityUpdate(sec);
 		cvo.setCp_Pw(new String(OpenCrypt.getSHA256(cvo.getCp_Pw(), sec.getSalt())));
 		int result = compDao.compPwChange2(cvo);
-		System.out.println("서비스 : " + result);
 		return result;
 	}
 

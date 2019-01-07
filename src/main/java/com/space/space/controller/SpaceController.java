@@ -83,7 +83,6 @@ public class SpaceController {
 
 		result = spaceService.spaceInsert(svo);
 
-		System.out.println(result);
 		switch (result) {
 		case 1: // 성공
 			mav.addObject("errCode", 1);

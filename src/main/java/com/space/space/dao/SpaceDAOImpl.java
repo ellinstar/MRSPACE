@@ -29,7 +29,6 @@ public class SpaceDAOImpl {
 	}
 
 	public void spaceModify(SpaceVO svo){
-		System.out.println("svo cp_Num : " + svo.getCp_Num() );
 		session.update("spaceModify", svo);
 	}
 

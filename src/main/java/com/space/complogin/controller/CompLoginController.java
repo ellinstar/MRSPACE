@@ -45,7 +45,6 @@ public class CompLoginController {
 		
 		String cp_Id = lvo.getCp_Id();
 		int resultData = comploginService.compLoginHistoryInsert(lvo);
-		System.out.println("resultData" + resultData);
 		
 		// 로그인 실패
 		if (resultData == 1) {
@@ -85,7 +84,6 @@ public class CompLoginController {
 	            
 	            
 				session.setMaxInactiveInterval(-1);
-				System.out.println("업체 로그인성공!");
 				String url="/";
 				return "redirect: "+url;
 			}

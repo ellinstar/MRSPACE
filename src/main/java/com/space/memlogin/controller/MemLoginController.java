@@ -52,8 +52,6 @@ public class MemLoginController {
 		} else {
 			// 입력한 아이디 비밀번호 확인
 			LoginVO loginCheckResult = loginService.loginSelect(lvo.getMem_Id(), lvo.getMem_Pw());
-			System.out.println("id : " + lvo.getMem_Id());
-			System.out.println("pw : " + lvo.getMem_Pw());
 			LoginVO vo = loginService.loginHistorySelect(mem_Id);
 			//log.info("최근 로그인 일시 : " + new SimpleDateFormat("YYYY-MM-dd").format(vo.getLastSuccessedLogin()));
 			// 로그인 성공인지 확인
