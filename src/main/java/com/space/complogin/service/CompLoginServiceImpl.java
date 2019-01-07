@@ -31,15 +31,11 @@ public class CompLoginServiceImpl implements CompLoginService {
 	public CompLoginVO compLoginSelect(String cp_Id, String cp_Pw) {
 		CompLoginVO vo = null;
 		CompSecurity sec = compDao.compsecuritySelect(cp_Id);
-		System.out.println("compLoginSelect 아이디 : " + cp_Id);
-		System.out.println("compLoginSelect 비밀번호 : " + cp_Pw);
-		//System.out.println("sec.getSalt() : " + sec.getSalt());
 		if (sec != null) {
 			cp_Pw = new String(OpenCrypt.getSHA256(cp_Pw, sec.getSalt()));
 			CompLoginVO lvo = new CompLoginVO();
 			lvo.setCp_Id(cp_Id);
 			lvo.setCp_Pw(cp_Pw);
-			System.out.println("비밀번호 : " + cp_Pw);
 
 			vo = lDao.compLoginSelect(lvo);
 		}

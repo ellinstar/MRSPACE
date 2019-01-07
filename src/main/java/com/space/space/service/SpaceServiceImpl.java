@@ -23,8 +23,6 @@ public class SpaceServiceImpl implements SpaceService {
 	@Override
 	public int spaceInsert(SpaceVO svo) {
 		int result = 0;
-		System.out.println("spaceService : " + svo.getSp_Name());
-		System.out.println("spaceService : " + svo.getCp_Id());
 		try {
 
 			result = spaceDao.spaceInsert(svo);

@@ -80,7 +80,7 @@
 		<result javaType="java.lang.String" property="comp" column="cp_name"/>
 	</resultMap>
 	
-	<select id="graphcp" resultMap="statistics">
+	<select id="graphall" resultMap="statistics">
 		select cp_name, count(*) amount
 from(
 		select r.*, c.cp_name
@@ -90,5 +90,17 @@ from(
     group by cp_name
 
 	</select>
-	
+	<resultMap type="java.util.HashMap" id="cplist">
+		<result javaType="java.lang.String" property="month" column="res_usedate"/>
+		<result javaType="java.lang.Integer" property="amount" column="amount"/>
+	</resultMap>
+	<select id="graphcp" resultMap="cplist">
+		select to_char(res_usedate,'yyyy-mm') res_usedate, count(*) amount
+		from(
+		select r.*
+		from tb_reserv r, tb_space s
+		where s.cp_num = #{cp_Num} and r.sp_num = s.sp_num
+		)
+		group by res_usedate
+	</select>
 </mapper>

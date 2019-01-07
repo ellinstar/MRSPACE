@@ -132,8 +132,6 @@ public class CompController {
 
 		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
 
-		System.out.println(lvo);
-
 		if (lvo == null) {
 			mav.setViewName("mem/login");
 			return mav;
@@ -240,7 +238,6 @@ public class CompController {
 			String cp_Id = cVo.getCp_Id();
 
 			model.addAttribute("cpId", cp_Id);
-			System.out.println(cp_Id);
 			mav.setViewName("comp/compResult");
 			return mav;
 		}
@@ -272,13 +269,11 @@ public class CompController {
 	public ModelAndView compPwChange2(@ModelAttribute("CompVO") CompVO cvo, HttpSession session, Model model) {
 		System.out.println("CompController클래스 compPwChangePage post메소드 호출");
 		ModelAndView mav = new ModelAndView();
-		System.out.println("ModelAndView mav : " + mav);
 		String cpId = (String) session.getAttribute("cp_Id2");
 
 		cvo.setCp_Id(cpId);
 
 		int result = compService.compPwChange2(cvo);
-		System.out.println("반환값 : " + result);
 		if (result != 1) {
 			mav.addObject("errCode", 10);
 			mav.setViewName("comp/compPwChangePage");
@@ -326,9 +321,6 @@ public class CompController {
 
 		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
 
-		System.out.println("세션 comp2 : " + session.getAttribute("comp2"));
-		
-		
 		if (lvo == null) {
 			mav.setViewName("mem/login");
 			return mav;

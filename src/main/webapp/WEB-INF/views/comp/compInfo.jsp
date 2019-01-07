@@ -27,6 +27,9 @@
 </script>
 </head>
 <body>
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<div class="container">
 		<h1 class="tit_space" align="center">내 정보</h1>
 		<br> <br>
@@ -59,7 +62,8 @@
 				</div>
 				<div class="form-group form-group-sm">
 					<label for="cp_Account" class="col-sm-2 control-label">입금계좌</label>
-					<div class="col-sm-3">${compInfo.cp_Account} (${compInfo.cp_Bank})</div>
+					<div class="col-sm-3">${compInfo.cp_Account}
+						(${compInfo.cp_Bank})</div>
 				</div>
 				<div class="form-group form-group-sm">
 					<label for="cp_Phone" class="col-sm-2 control-label">연락처</label>

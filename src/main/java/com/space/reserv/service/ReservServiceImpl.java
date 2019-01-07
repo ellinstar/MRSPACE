@@ -33,7 +33,6 @@ public class ReservServiceImpl implements ReservService {
 		} else {
 
 			int useSpace = rdao.useSpace(ssvo);
-			System.out.println("유즈스페이스 수 : " + useSpace);
 			if (useSpace < svo.getSp_Stock()) {
 				int success = rdao.reservation(rvo);
 

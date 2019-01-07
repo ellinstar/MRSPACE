@@ -31,13 +31,10 @@ public class MemLoginServiceImpl implements MemLoginService {
 		LoginVO vo = null;
 		MemSecurity sec = memDao.securitySelect(mem_Id);
 		if (sec != null) {
-			System.out.println("sec.getSalt() : " + sec.getSalt());
 			mem_Pw = new String(OpenCrypt.getSHA256(mem_Pw, sec.getSalt()));
-			System.out.println("sec.getSalt() : " + sec.getSalt());
 			LoginVO lvo = new LoginVO();
 			lvo.setMem_Id(mem_Id);
 			lvo.setMem_Pw(mem_Pw);
-			System.out.println("비밀번호" + mem_Pw);
 
 			vo = lDao.loginSelect(lvo);
 		}
@@ -61,11 +58,9 @@ public class MemLoginServiceImpl implements MemLoginService {
 	public int loginHistoryInsert(LoginVO lvo) {
 		int result;
 		if (mem_IdSelect(lvo.getMem_Id()) == null) {
-			System.out.println("asdasd :"+lvo.getMem_Id());
 			result = 1;
 		} else {
 			LoginVO vo = loginHistorySelect(lvo.getMem_Id());
-			System.out.println("asdasd2 : "+lvo.getMem_Id());
 			if (vo == null) {
 				lDao.loginHistoryInsert(lvo);
 			}

@@ -46,11 +46,9 @@ public class CommonController {
 		log.info("commonDetail 호출 성공");
 		log.info("sp_num = " + svo.getSp_Num());
 		
-		System.out.println("svo123123 : " + svo.toString());
 		int cpNum = commonService.cpnum(svo);
 		
 		/* log.info("cp_num = " + svo.getCp_Num()); */
-		System.out.println("cp_num : " + svo.getCp_Num());
 		SpaceVO detail = new SpaceVO();
 		
 		
@@ -80,11 +78,8 @@ public class CommonController {
 		log.info("commonDetail 호출 성공");
 		log.info("sp_num = " + svo.getSp_Num());
 		
-		System.out.println("svo123123 : " + svo.toString());
 		int cpNum = commonService.cpnum(svo);
 		
-		/* log.info("cp_num = " + svo.getCp_Num()); */
-		System.out.println("cp_num : " + svo.getCp_Num());
 		SpaceVO detail = new SpaceVO();
 		
 		

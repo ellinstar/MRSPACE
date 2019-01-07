@@ -55,18 +55,21 @@
 
 </head>
 <body>
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<section class="testimonials text-center">
 		<div class="contentContainer">
 			<h1 class="tit_space">비밀번호 확인</h1>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br>
 			<div class="row" id="memMP">
 				<form class="form-signin" id="mem_Form" name="mem_Form">
 					<br> <label for="mem_OldPw">비밀번호</label> <input
-						type="password" id="mem_OldPw" name="mem_OldPw" required autofocus style="width: 154px;">
-					<div class="col-sm-5" >
-						<p class="form-control-static error" style="color: rgb(0, 0, 153);width: 240px;"></p>
+						type="password" id="mem_OldPw" name="mem_OldPw" required autofocus
+						style="width: 154px;">
+					<div class="col-sm-5">
+						<p class="form-control-static error"
+							style="color: rgb(0, 0, 153); width: 240px;"></p>
 					</div>
 					<input type="button" class="btn btn-default" id="mem_Submit"
 						value="확인">
