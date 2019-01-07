@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>찜 목록</title>
+<script type="text/javascript">
+	document.title = 'MRSPACE : 찜목록';
+</script>
 </head>
 
 <!-- Custom styles for this template -->

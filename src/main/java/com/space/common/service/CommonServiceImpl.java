@@ -33,11 +33,6 @@ public class CommonServiceImpl implements CommonService {
 	public List<SpaceVO> commonList(SpaceVO svo) {
 		List<SpaceVO> sp_List = null;
 
-		// 정렬에 대한 기본값 설정
-		/*
-		 * if(svo.getOrder_by()==null) { svo.setOrder_by("sp_Num"); }
-		 * if(svo.getOrder_sc()==null) { svo.setOrder_sc("DESC"); }
-		 */
 		sp_List = commonDao.commonList(svo);
 		return sp_List;
 	}

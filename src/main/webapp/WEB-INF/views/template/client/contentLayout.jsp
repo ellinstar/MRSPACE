@@ -32,7 +32,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
+<link href="/resources/css/landing-page.min.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -43,7 +43,7 @@
 <link
 	href="/resources/vendor/simple-line-icons/css/simple-line-icons.css"
 	rel="stylesheet" type="text/css">
-<link href="/resources/css/landing-page.min.css" rel="stylesheet">
+
 
 
 
