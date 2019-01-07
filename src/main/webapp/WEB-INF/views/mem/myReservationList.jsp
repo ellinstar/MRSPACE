@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 목록</title>
+<script type="text/javascript">
+	document.title = 'MRSPACE : 예약목록';
+</script>
 </head>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

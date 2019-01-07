@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,14 +47,14 @@
 		}
 
 		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
-/* 		if ("<c:out value='${data.pageSize}' /> " != "") {
-			$("#pageSize").val("<c:out value='${data.pageSize}'/>");
-		} */
+		/* 		if ("<c:out value='${data.pageSize}' /> " != "") {
+		 $("#pageSize").val("<c:out value='${data.pageSize}'/>");
+		 } */
 
-	/* 	// 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트
-		$("#pageSize").change(function() {
-			goPage(1);
-		}); */
+		/* 	// 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트
+			$("#pageSize").change(function() {
+				goPage(1);
+			}); */
 		// select option
 		var searchForm = $("#searchForm");
 		$("#search").on("change", function() {
@@ -61,10 +62,10 @@
 			if (word != "") {
 				$("#keyword").val("<c:out value='${data.keyword}'/>"); */
 
-				// value 값으로 선택
-				$("#search option:checked").val();
+			// value 값으로 선택
+			$("#search option:checked").val();
 
-				searchForm.submit();
+			searchForm.submit();
 			/* } */
 		});
 
@@ -95,7 +96,9 @@
 		location.href = "/common/commonList.do";
 	}
 </script>
-
+<script type="text/javascript">
+	document.title = '${data.keyword} 검색결과 : MRSPACE';
+</script>
 <!-- 이미지 줌 CSS -->
 <style type="text/css">
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300); */
@@ -128,6 +131,7 @@
 	padding-bottom: 7px;
 	font-size: 21px;
 	line-height: 23px;
+	font-weight: 600;
 }
 
 .info_area .info_price_hour {
@@ -184,8 +188,6 @@ form#searchForm {
 	width: 150px;
 }
 </style>
-
-<title>Insert title here</title>
 </head>
 <body id="page-top">
 
@@ -205,7 +207,7 @@ form#searchForm {
 				<h3>"${data.keyword}"(으)로 검색한 결과입니다.</h3>
 				<form id="sp_Search" name="sp_Search" class="form-row">
 
-				<%-- 	<input type="hidden" id="page" name="page" value="${data.page}" /> --%>
+					<%-- 	<input type="hidden" id="page" name="page" value="${data.page}" /> --%>
 					<input type="hidden" id="order_by" name="order_by"
 						value="${data.order_by}" /> <input type="hidden" id="order_sc"
 						name="order_sc" value="${data.order_sc}" />
@@ -278,26 +280,6 @@ form#searchForm {
 														<img src="/uploadStorage/space/${space.sp_File}"
 															class="d-block img-fluid" alt="First slide">
 													</div>
-													<%-- 		<div class="carousel-item">
-														<img class="d-block img-fluid"
-															src="/uploadStorage/space/${space.sp_File}"
-															alt="Second slide">
-													</div>
-													<div class="carousel-item">
-														<img class="d-block img-fluid"
-															src="/uploadStorage/space/${space.sp_File}"
-															alt="Third slide">
-													</div>
- --%>
-													<!-- 		<a class="carousel-control-prev" href="#myCarousel"
-														role="button" data-slide="prev"> <span
-														class="carousel-control-prev-icon" aria-hidden="true"></span>
-														<span class="sr-only">Previous</span>
-													</a> <a class="carousel-control-next" href="#myCarousel"
-														role="button" data-slide="next"> <span
-														class="carousel-control-next-icon" aria-hidden="true"></span>
-														<span class="sr-only">Next</span>
-													</a> -->
 
 												</div>
 											</div>

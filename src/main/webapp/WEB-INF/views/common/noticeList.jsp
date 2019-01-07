@@ -13,6 +13,9 @@
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <title>공지사항</title>
 <script type="text/javascript">
+	document.title = 'MRSPACE : 공지사항';
+</script>
+<script type="text/javascript">
 	$(document).ready(function() {
 		/* 페이지 이동 */
 		var actionForm = $("#actionForm");
