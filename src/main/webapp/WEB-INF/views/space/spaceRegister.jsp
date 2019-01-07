@@ -61,7 +61,7 @@
 .onoffswitch-inner:before {
 	content: "오픈데스크 1인";
 	padding-left: 10px;
-	background-color: #EB8715;
+	background-color: #17a2b8;
 	color: #FFFFFF;
 }
 
@@ -144,7 +144,7 @@
 .onoffswitch-inner2:before {
 	content: "고정데스크 1인";
 	padding-left: 10px;
-	background-color: #EB8715;
+	background-color: #17a2b8;
 	color: #FFFFFF;
 }
 
@@ -225,7 +225,7 @@
 .onoffswitch-inner3:before {
 	content: "프라이빗오피스1인";
 	padding-left: 10px;
-	background-color: #EB8715;
+	background-color: #17a2b8;
 	color: #FFFFFF;
 }
 
@@ -308,7 +308,7 @@
 .onoffswitch-inner4:before {
 	content: "프라이빗오피스3인";
 	padding-left: 10px;
-	background-color: #EB8715;
+	background-color: #17a2b8;
 	color: #FFFFFF;
 }
 
@@ -391,7 +391,7 @@
 .onoffswitch-inner5:before {
 	content: "프라이빗오피스6인";
 	padding-left: 10px;
-	background-color: #EB8715;
+	background-color: #17a2b8;
 	color: #FFFFFF;
 }
 
@@ -444,7 +444,6 @@ input[type=text]:focus {
 
 textarea {
 	transition: .3s;
-	height: 150px;
 	resize: none; /* 사용자 임의 변경 불가 */
 }
 
@@ -452,7 +451,6 @@ textarea:focus {
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
 }
-
 
 #spaceOpenDate:focus {
 	border-color: #FF8000;
@@ -499,62 +497,13 @@ textarea:focus {
 	appearance: none;
 }
 
-</style>
-<!-- 공간 서비스/교통편 텍스트 -->
-<style type="text/css">
-#spaceService, #spaceTraffic {
-	width: 400px;
-	height: 300px;
-	border: 2px solid #aaa;
-	border-radius: 4px;
-	margin: 8px 0;
-	outline: none;
-	padding: 8px;
-	box-sizing: border-box;
-	transition: .3s;
-	resize: none;
-	border: 2px solid #aaa;
-}
-
-#spaceService:focus, #spaceTraffic:focus {
+<!--
+공간 서비스 /교통편 텍스트 -->#spaceService:focus, #spaceTraffic:focus {
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
 }
-
 </style>
 
-<!-- <style type="text/css">
-.btnReg, .btnCancle {
-	position: relative;
-	float: right;
-	width: auto;
-	bottom: 300px;
-	display: inline-block;
-	color: #ecf0f1;
-	text-decoration: none;
-	border-radius: 5px;
-	border: solid 1px #f39c12;
-	background: #e67e22;
-	text-align: center;
-	padding: 16px 18px 14px;
-	margin: 12px;
-	-webkit-transition: all 0.1s;
-	-moz-transition: all 0.1s;
-	transition: all 0.1s;
-	-webkit-box-shadow: 0px 6px 0px #d35400;
-	-moz-box-shadow: 0px 6px 0px #d35400;
-	box-shadow: 0px 6px 0px #d35400;
-	width: auto;
-	display: inline-block;
-}
-
-.btnReg:active, .btnCancle:active {
-	-webkit-box-shadow: 0px 2px 0px #d35400;
-	-moz-box-shadow: 0px 2px 0px #d35400;
-	box-shadow: 0px 2px 0px #d35400;
-	position: relative;
-}
-</style> -->
 
 <script type="text/javascript">
 	$(function() {
@@ -759,7 +708,7 @@ textarea:focus {
 		<br>
 
 		<!-- 제목부분 -->
-		<div class="alert alert-info row" role="alert">
+		<div class="alert  row" role="alert">
 			<label class="form-control-plaintext" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">등록할
 						공간 유형 선택</font></strong>
@@ -821,7 +770,7 @@ textarea:focus {
 			</div>
 		</div>
 		<!--============================ 스위치 종료 =========================================== -->
-		<div class="alert alert-info row">
+		<div class="alert  row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간 재고</font></strong>
 			</label> <input type="text" class="form-control col-md-8"
@@ -832,14 +781,14 @@ textarea:focus {
 
 		<hr>
 
-		<div class="alert alert-info row">
+		<div class="alert row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간명</font></strong>
 			</label> <input type="text" class="form-control col-md-8" name="sp_Name"
 				id="spaceName" placeholder="공간명을 입력해주세요.">
 		</div>
 		<hr>
-		<div class="alert alert-info row">
+		<div class="alert row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간
 						가격(월/원)</font></strong>
@@ -847,20 +796,22 @@ textarea:focus {
 				id="spacePrice" placeholder="가격을 입력해주세요.">
 		</div>
 		<hr>
-		<div class="alert alert-info row">
+		<div class="alert  row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간 주소</font></strong>
-			</label> 
-			<input type="text" class="form-control col-md-8" id="spaceAddr" name="sp_Address" placeholder="주소">
-			<input type="button" onclick="sample5_execDaumPostcode()" class="btn btn-info" value="주소 검색"><br>
-		<div id="map" 
-			style="width: 500px; height: 500px; margin-top: 10px; margin-left:300px; display: none"></div>
-		<hr>
-		<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-		<script
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
+			</label> <input type="text" class="form-control col-md-8" id="spaceAddr"
+				name="sp_Address" placeholder="주소"> <input type="button"
+				onclick="sample5_execDaumPostcode()" class="btn btn-info"
+				value="주소 검색"><br>
+			<div id="map"
+				style="width: 500px; height: 500px; margin-top: 10px; margin-left: 300px; display: none"></div>
+			<hr>
+			<script
+				src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+			<script
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
 
-		<script>
+			<script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -910,69 +861,83 @@ textarea:focus {
         }).open();
     }
 </script>
-		<!-- 업체 지도 위도경도값 -->
-		<input type="hidden" id="mapcoords" name="sp_Y"> 
-		<input type="hidden" id="mapcoords2" name="sp_X">
-		
+			<!-- 업체 지도 위도경도값 -->
+			<input type="hidden" id="mapcoords" name="sp_Y"> <input
+				type="hidden" id="mapcoords2" name="sp_X">
+
 		</div>
-		
-	<hr>
-		<div class="alert alert-info row">
+
+		<hr>
+		<div class="alert  row">
 			<label class="form-control-plaintext col-md-8" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">임대계약기간</font></strong>
-			(오늘 날짜 : <span id="today"></span>)<br> 
-			</label> 
+				(오늘 날짜 : <span id="today"></span>)<br>
+			</label>
 		</div>
-			<div class="col-md-12 row">
-			<input type="text" class="form-control col-md-3" name="sp_Contract1" id="spaceDateStart">&nbsp;-&nbsp; 
-			<input type="text" class="form-control col-md-3" name="sp_Contract2" id="spaceDateEnd">
-			</div>
-				
-		<hr>
-		<div class="alert alert-info row">
-			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">오픈 가능날짜</font></strong>
-			</label> <input type="text" class="form-control col-md-3" name="sp_Opendate" id="spaceOpenDate">
+		<div class="col-md-12 row">
+			<input type="text" class="form-control col-md-3" name="sp_Contract1"
+				id="spaceDateStart">&nbsp;-&nbsp; <input type="text"
+				class="form-control col-md-3" name="sp_Contract2" id="spaceDateEnd">
 		</div>
-				<hr>
-		<div class="alert alert-info row">
-			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">공간 소개</font></strong></label> 
-			<textarea id="spaceexp" class="form-control" name="sp_Exposition"
-					placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
-		</div>
-				<hr>
 
-		<div class="alert alert-info row">
+		<hr>
+		<div class="alert  row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">공간 이미지</font></strong></label>
-		<div class="filebox">
-			<label for="file" class="btn btn-info">업로드</label>
-			<input type="file" id="file" name="file"> &nbsp;*사진은 1장만 등록바랍니다.
-		</div>
+				<strong><font style="vertical-align: inherit;">오픈
+						가능날짜</font></strong>
+			</label> <input type="text" class="form-control col-md-3" name="sp_Opendate"
+				id="spaceOpenDate">
 		</div>
 		<hr>
-		<div class="alert alert-info row">
-		<div class="col-md-6">
-			<label class="form-control-plaintext" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">공간 서비스 등록</font></strong></label> 
-			<textarea name="sp_Service" id="spaceService"
-							placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
+		<div class="alert  row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간 소개</font></strong>
+			</label>
+			<textarea id="spaceexp" class="form-control" style="height: 150px"
+				name="sp_Exposition" placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
 		</div>
-		<div class="col-md-6">
-			<label class="form-control-plaintext" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">교통편 등록</font></strong></label> 
-			<textarea name="sp_Traffic" id="spaceTraffic" 
-			placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
+		<hr>
+
+		<div class="alert  row">
+			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
+				<strong><font style="vertical-align: inherit;">공간
+						이미지</font></strong>
+			</label>
+			<div class="filebox">
+				<label for="file" class="btn btn-info">업로드</label> <input
+					type="file" id="file" name="file"> &nbsp;*사진은 1장만 등록바랍니다.
+			</div>
 		</div>
+		<hr>
+		<div class="alert  row">
+			<div class="col-md-6">
+				<label class="form-control-plaintext" style="color: #0c5460">
+					<strong><font style="vertical-align: inherit;">공간
+							서비스 등록</font></strong>
+				</label>
+				<textarea name="sp_Service" id="spaceService" class="form-control"
+					style="height: 300px"
+					placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
+			</div>
+			<div class="col-md-6">
+				<label class="form-control-plaintext" style="color: #0c5460">
+					<strong><font style="vertical-align: inherit;">교통편
+							등록</font></strong>
+				</label>
+				<textarea name="sp_Traffic" id="spaceTraffic" class="form-control"
+					style="height: 300px"
+					placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
+			</div>
 		</div>
 
 
 		<input type="hidden" name='cp_Id' id='cp_Id' value='${cp_Id}' />
 	</form>
-	<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
-		class="btnCancle" />
-	<input type="button" value="REGIST" name="btnReg" id="btnReg"
-		class="btnReg" />
+	<div class="btn-group-right" style="margin-left: 300px; padding: 30px;">
+		<button name="btnCancle" id="btnCancle" class="btn btn-info"
+			style="width: 200px; margin-right: 30px;">취소</button>
+		<button name="btnReg" id="btnReg" class="btn btn-info"
+			style="width: 200px;">등록</button>
+	</div>
 </body>
 </html>
