@@ -297,10 +297,8 @@ public class MemController {
 
 		int a = memService.likeDelete(rvo.getSp_Num());
 		if (a == 1) {
-			System.out.println("삭제 성공! 공간번호 : " + rvo.getSp_Num());
 			mav.setViewName("redirect:/mem/likeList.do");
 		} else {
-			System.out.println("삭제 실패! 공간번호 : " + rvo.getSp_Num());
 			mav.setViewName("redirect:/mem/likeList.do");
 		}
 		return mav;
@@ -387,7 +385,6 @@ public class MemController {
 		MemVO vo = (MemVO) session.getAttribute("memId");
 
 		int result = memService.pwChange2(mvo);
-		System.out.println("반환값 : " + result);
 		if (result != 1) {
 			mav.addObject("errCode", 10);
 			mav.setViewName("mem/pwChangePage");

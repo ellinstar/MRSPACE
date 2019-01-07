@@ -61,6 +61,11 @@
 	});
 </script>
 <body>
+
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
+	
 	<section class="testimonials text-center">
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="move" id="move">

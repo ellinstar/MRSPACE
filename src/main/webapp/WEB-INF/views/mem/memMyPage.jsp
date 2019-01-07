@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +24,11 @@
 </style>
 
 <body>
+
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
+
 	<section class="testimonials text-center">
 		<div class="container">
 			<br><br><br>
