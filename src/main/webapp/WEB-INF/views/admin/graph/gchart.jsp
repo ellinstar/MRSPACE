@@ -9,6 +9,7 @@
 <title>Insert title here</title>
  <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="/resources/css/admin.css" rel="stylesheet">
     <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
@@ -71,12 +72,12 @@
                 lineWidth:3,
                 interpolateNulls: 'true'
             };
-        var chart = new google.visualization.LineChart(document.getElementById('cp_chart'));
-        chart.draw(data, options);
+       // var chart = new google.visualization.LineChart(document.getElementById('cp_chart'));
+     //   chart.draw(data, options);
     	  
 	}
       
-      $('.btn').click(function() {
+     /*  $('.btn').click(function() {
 		$.ajax({
 			url : "./graph",
 			type : "POST",
@@ -84,7 +85,7 @@
 			success : drawCpChart()
 				
 		});
-	});
+	}); */
       
       
     </script>
