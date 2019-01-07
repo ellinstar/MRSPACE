@@ -35,8 +35,6 @@ public class HomeController {
 
 		List<SpaceVO> mainlayoutList = commonService.mainlayoutList(svo);
 
-		System.out.println("sp_num" + svo.getSp_Num());
-
 		model.addAttribute("mainlayoutList", mainlayoutList);
 		model.addAttribute("data", svo);
 

@@ -14,6 +14,9 @@
 
 <title>memInfo</title>
 <script type="text/javascript">
+	document.title = 'MRSPACE : 내 정보';
+</script>
+<script type="text/javascript">
 	$(function() {
 
 		$("#comp_Edit").click(function() {

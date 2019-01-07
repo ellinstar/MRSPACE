@@ -9,7 +9,9 @@
 <head>
 <meta charset="UTF-8" />
 <title>글 목록</title>
-
+<script type="text/javascript">
+	document.title = 'MRSPACE : 문의';
+</script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
 <link rel="stylesheet" type="text/css"

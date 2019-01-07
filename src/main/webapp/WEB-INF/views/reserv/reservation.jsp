@@ -54,6 +54,9 @@
 		location.href = "/mem/myReservationList.do"
 	}
 </script>
+<script type="text/javascript">
+	document.title = 'MRSPACE 예약페이지';
+</script>
 <style>
 input#reservBtn {
 	width: 1040px;
@@ -141,25 +144,6 @@ input#closeBtn {
 						</div>
 						<!-- /.col-md-4 -->
 					</div>
-					<%-- 	<div class="card-header">
-			<p class="text-primary m-1">
-				√ 공간유형 : <strong>${detail.sp_Type}</strong>
-			</p>
-		</div> --%>
-
-
-					<!-- /.row -->
-
-					<!-- Call to Action Well -->
-					<!-- 	<div class="card text-white bg-secondary my-4 text-center">
-			<div class="card-body">
-				<p class="text-white m-0">This call to action card is a great
-					place to showcase some important information or display a clever
-					tagline!</p>
-			</div>
-		</div>
- -->
-
 					<!-- /.row -->
 					<br>
 					<!-- 	<div class="card-heder">예약 하실 공간 정보</div> -->

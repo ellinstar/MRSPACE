@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,7 +96,9 @@
 		location.href = "/common/commonList.do";
 	}
 </script>
-
+<script type="text/javascript">
+	document.title = '${data.keyword} 검색결과 : MRSPACE';
+</script>
 <!-- 이미지 줌 CSS -->
 <style type="text/css">
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300); */
@@ -185,8 +188,6 @@ form#searchForm {
 	width: 150px;
 }
 </style>
-
-<title>Insert title here</title>
 </head>
 <body id="page-top">
 
@@ -279,26 +280,6 @@ form#searchForm {
 														<img src="/uploadStorage/space/${space.sp_File}"
 															class="d-block img-fluid" alt="First slide">
 													</div>
-													<%-- 		<div class="carousel-item">
-														<img class="d-block img-fluid"
-															src="/uploadStorage/space/${space.sp_File}"
-															alt="Second slide">
-													</div>
-													<div class="carousel-item">
-														<img class="d-block img-fluid"
-															src="/uploadStorage/space/${space.sp_File}"
-															alt="Third slide">
-													</div>
- --%>
-													<!-- 		<a class="carousel-control-prev" href="#myCarousel"
-														role="button" data-slide="prev"> <span
-														class="carousel-control-prev-icon" aria-hidden="true"></span>
-														<span class="sr-only">Previous</span>
-													</a> <a class="carousel-control-next" href="#myCarousel"
-														role="button" data-slide="next"> <span
-														class="carousel-control-next-icon" aria-hidden="true"></span>
-														<span class="sr-only">Next</span>
-													</a> -->
 
 												</div>
 											</div>

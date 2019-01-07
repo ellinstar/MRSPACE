@@ -32,7 +32,6 @@
  -->
 
 <link rel="stylesheet" href="/resources/popup/needpopup.min.css">
-
 <!-- 찜목록 -->
 <script src="/resources/include/js/like.js"></script>
 
@@ -358,7 +357,6 @@ p {
 }
 </style>
 
-
 <!-- 이미지 줌 CSS -->
 <style type="text/css">
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300); */
@@ -459,7 +457,6 @@ h5.mt-4 {
     font-weight: 600;
 }
 </style>
-
 </head>
 <script type="text/javascript">
 $(function() {
@@ -467,7 +464,9 @@ $(function() {
 	<%session.removeAttribute("reserv");%>
 });
 </script>
-
+<script type="text/javascript">
+	document.title = '${detail.sp_Name} : 예약';
+</script>
 <body>
 
 	<input type="hidden" name="sp_Num" id="sp_Num" value="${space.sp_Num }">
