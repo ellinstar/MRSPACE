@@ -48,6 +48,7 @@ public class MemLoginController {
 		// 로그인 실패
 		if (resultData == 1) {
 			mav.addObject("errCode", 1);
+			session.setAttribute("errCode", 1);
 			return "mem/login";
 		} else {
 			// 입력한 아이디 비밀번호 확인
@@ -57,6 +58,7 @@ public class MemLoginController {
 			// 로그인 성공인지 확인
 			if (loginCheckResult == null) {
 				mav.addObject("errCode", 1);
+				session.setAttribute("errCode", 1);
 				return "mem/login";
 			}
 			// 로그인 성공

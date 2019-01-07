@@ -116,9 +116,6 @@ input#closeBtn {
 </style>
 
 <body>
-	<c:if test="${login == null and cp_Id == null}">
-		<c:redirect url="/mem/login.do" />
-	</c:if>
 	<!-- Page Content -->
 	<div class="container">
 		<c:if test="${reserv == null}">
