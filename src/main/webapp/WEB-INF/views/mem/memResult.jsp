@@ -13,8 +13,6 @@
 
 <title>Insert title here</title>
 
-<!-- Bootstrap core CSS -->
-
 <!-- Custom styles for this template -->
 <link href="/resources/css/signin.css" rel="stylesheet">
 
@@ -38,7 +36,9 @@
 	margin-left: 250px;
 }
 </style>
+
 </head>
+
 <body>
 	<section class="features-icons">
 		<h3 class="form-signin-heading">아이디 찾기</h3>

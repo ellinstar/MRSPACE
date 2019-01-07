@@ -5,22 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <title>Insert title here</title>
 
 <style type="text/css">
 .row2 {
 }
-
 </style>
-</head>
 
+</head>
 
 <body>
 	<section class="testimonials text-center bg-light">
