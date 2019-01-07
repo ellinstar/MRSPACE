@@ -48,9 +48,6 @@
 	src="/resources/include/js/jquery.googlemap.js"></script>
 
 
-<!-- Custom styles for this template -->
-<!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
-
 <script type="text/javascript">
 	$(function() {
 		/* 첨부파일 이미지 보여주기 위한 속성 추가 */
@@ -70,24 +67,6 @@
 		var value = "";
 		if (word != "") {
 			$("#keyword").val("<c:out value='${data.keyword}'/>");
-			/* $("#search").val("<c:out value='${data.search}'/>"); */
-
-			/* if ($("#search").val() != 'sp_Name') {
-			   // :contains()는 특정 테스트를 포함한 요소반환
-			   if ($("#search").val() == 'sp_Name')
-			      value = "#list tr td.goDetail";
-			   else if ($("#search").val() == 'sp_Name')
-			      value = "#list tr td.name";
-			   $(value + ":contains('" + word + "')").each(
-			         function() {
-			            var regex = new RegExp(word, 'gi');
-			            $(this).html(
-			                  $(this).text().replace(
-			                        regex,
-			                        "<span class='required'>" + word
-			                              + "</span"));
-			         });
-			} */
 		}
 
 		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
@@ -100,15 +79,6 @@
 			goPage(1);
 		});
 
-		/* // 검색 대상이 변경될 때마다 처리 이벤트
-		$("#search").change(function() {
-		   if ($("#search").val() == "all") {
-		      $("#keyword").val("전체 데이터 조회합니다.");
-		   } else if ($("#search").val() != "all") {
-		      $("#keyword").val("");
-		      $("#keyword").focus();
-		   }
-		}); */
 
 		// 검색 버튼 클릭 시 처리 이벤트
 		$("#searchData").click(function() {
@@ -150,10 +120,6 @@
 		location.href = "/common/commonList.do";
 	}
 </script>
-
-
-
-
 
 
 <style type="text/css">
@@ -287,6 +253,7 @@ p {
 	line-height: 1.4;
 	color: #343638;
 	margin: 20px 0;
+	
 }
 
 .needpopup {
@@ -491,7 +458,7 @@ $(function() {
 						style="vertical-align: inherit;"></font></font>
 				</div>
 
-				<p>${detail.sp_Exposition}</p>
+				<p style="min-height: 140px;">${detail.sp_Exposition}</p>
 				<br>
 				<div class="alert alert-info" role="alert" style="width: 1062px;">
 					<strong><font style="vertical-align: inherit;"><font
@@ -500,7 +467,6 @@ $(function() {
 						style="vertical-align: inherit;"></font></font>
 				</div>
 				<p>${detail.sp_Service}</p>
-				<p></p>
 				<br>
 				<div class="alert alert-info" role="alert" style="width: 1062px;">
 					<strong><font style="vertical-align: inherit;"><font
@@ -569,7 +535,6 @@ var customOverlay = new daum.maps.CustomOverlay({
 });
 </script>
 				</div>
-				<p></p>
 				<br>
 				<div class="alert alert-info" role="alert" style="width: 1062px;">
 					<strong><font style="vertical-align: inherit;"><font
@@ -578,7 +543,6 @@ var customOverlay = new daum.maps.CustomOverlay({
 						style="vertical-align: inherit;"></font></font>
 				</div>
 				<p>${detail.sp_Traffic}</p>
-
 				<br> <br>
 
 				<div class="alert alert-info" role="alert" style="width: 1062px;">

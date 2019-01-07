@@ -13,7 +13,9 @@
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
-
+<script type="text/javascript">
+	document.title = 'MRSPACE : 공간등록';
+</script>
 <head>
 <!-- 오픈데스크 1인 버튼 -->
 <style type="text/css">
@@ -453,7 +455,6 @@ textarea:focus {
 	box-shadow: 0 0 8px 0 #FF8000;
 }
 
-
 #spaceOpenDate:focus {
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
@@ -498,7 +499,6 @@ textarea:focus {
 	-moz-appearance: none;
 	appearance: none;
 }
-
 </style>
 <!-- 공간 서비스/교통편 텍스트 -->
 <style type="text/css">
@@ -520,7 +520,6 @@ textarea:focus {
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
 }
-
 </style>
 
 <!-- <style type="text/css">
@@ -850,17 +849,19 @@ textarea:focus {
 		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">공간 주소</font></strong>
-			</label> 
-			<input type="text" class="form-control col-md-8" id="spaceAddr" name="sp_Address" placeholder="주소">
-			<input type="button" onclick="sample5_execDaumPostcode()" class="btn btn-info" value="주소 검색"><br>
-		<div id="map" 
-			style="width: 500px; height: 500px; margin-top: 10px; margin-left:300px; display: none"></div>
-		<hr>
-		<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-		<script
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
+			</label> <input type="text" class="form-control col-md-8" id="spaceAddr"
+				name="sp_Address" placeholder="주소"> <input type="button"
+				onclick="sample5_execDaumPostcode()" class="btn btn-info"
+				value="주소 검색"><br>
+			<div id="map"
+				style="width: 500px; height: 500px; margin-top: 10px; margin-left: 300px; display: none"></div>
+			<hr>
+			<script
+				src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+			<script
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24&libraries=services"></script>
 
-		<script>
+			<script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -910,61 +911,71 @@ textarea:focus {
         }).open();
     }
 </script>
-		<!-- 업체 지도 위도경도값 -->
-		<input type="hidden" id="mapcoords" name="sp_Y"> 
-		<input type="hidden" id="mapcoords2" name="sp_X">
-		
+			<!-- 업체 지도 위도경도값 -->
+			<input type="hidden" id="mapcoords" name="sp_Y"> <input
+				type="hidden" id="mapcoords2" name="sp_X">
+
 		</div>
-		
-	<hr>
+
+		<hr>
 		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-8" style="color: #0c5460">
 				<strong><font style="vertical-align: inherit;">임대계약기간</font></strong>
-			(오늘 날짜 : <span id="today"></span>)<br> 
-			</label> 
+				(오늘 날짜 : <span id="today"></span>)<br>
+			</label>
 		</div>
-			<div class="col-md-12 row">
-			<input type="text" class="form-control col-md-3" name="sp_Contract1" id="spaceDateStart">&nbsp;-&nbsp; 
-			<input type="text" class="form-control col-md-3" name="sp_Contract2" id="spaceDateEnd">
-			</div>
-				
+		<div class="col-md-12 row">
+			<input type="text" class="form-control col-md-3" name="sp_Contract1"
+				id="spaceDateStart">&nbsp;-&nbsp; <input type="text"
+				class="form-control col-md-3" name="sp_Contract2" id="spaceDateEnd">
+		</div>
+
 		<hr>
 		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">오픈 가능날짜</font></strong>
-			</label> <input type="text" class="form-control col-md-3" name="sp_Opendate" id="spaceOpenDate">
+				<strong><font style="vertical-align: inherit;">오픈
+						가능날짜</font></strong>
+			</label> <input type="text" class="form-control col-md-3" name="sp_Opendate"
+				id="spaceOpenDate">
 		</div>
-				<hr>
+		<hr>
 		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">공간 소개</font></strong></label> 
+				<strong><font style="vertical-align: inherit;">공간 소개</font></strong>
+			</label>
 			<textarea id="spaceexp" class="form-control" name="sp_Exposition"
-					placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
+				placeholder="고객에게 내 공간에 대해 소개해주세요."></textarea>
 		</div>
-				<hr>
+		<hr>
 
 		<div class="alert alert-info row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">공간 이미지</font></strong></label>
-		<div class="filebox">
-			<label for="file" class="btn btn-info">업로드</label>
-			<input type="file" id="file" name="file"> &nbsp;*사진은 1장만 등록바랍니다.
-		</div>
+				<strong><font style="vertical-align: inherit;">공간
+						이미지</font></strong>
+			</label>
+			<div class="filebox">
+				<label for="file" class="btn btn-info">업로드</label> <input
+					type="file" id="file" name="file"> &nbsp;*사진은 1장만 등록바랍니다.
+			</div>
 		</div>
 		<hr>
 		<div class="alert alert-info row">
-		<div class="col-md-6">
-			<label class="form-control-plaintext" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">공간 서비스 등록</font></strong></label> 
-			<textarea name="sp_Service" id="spaceService"
-							placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
-		</div>
-		<div class="col-md-6">
-			<label class="form-control-plaintext" style="color: #0c5460">
-				<strong><font style="vertical-align: inherit;">교통편 등록</font></strong></label> 
-			<textarea name="sp_Traffic" id="spaceTraffic" 
-			placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
-		</div>
+			<div class="col-md-6">
+				<label class="form-control-plaintext" style="color: #0c5460">
+					<strong><font style="vertical-align: inherit;">공간
+							서비스 등록</font></strong>
+				</label>
+				<textarea name="sp_Service" id="spaceService"
+					placeholder="예:&#13;&#10;주차시설:가능&#13;&#10;TV/빔 프로젝터: 없음&#13;&#10;PC/인터넷: WIFI&#13;&#10;취사시설: 전자렌지, 냉온수기, 커피포트&#13;&#10;기타비품: 종이컵, 에어컨, 온풍기, 공기청정기"></textarea>
+			</div>
+			<div class="col-md-6">
+				<label class="form-control-plaintext" style="color: #0c5460">
+					<strong><font style="vertical-align: inherit;">교통편
+							등록</font></strong>
+				</label>
+				<textarea name="sp_Traffic" id="spaceTraffic"
+					placeholder="예:&#13;&#10;강남역에서 오는방법:xx병원 정류장 맞은편 골목&#13;&#10;&#13;&#10;서울역에서 오는방법: 지하철 환승후 강남역 4번출구"></textarea>
+			</div>
 		</div>
 
 
