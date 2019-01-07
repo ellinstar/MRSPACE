@@ -7,15 +7,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8" />
+
 <title>글 목록</title>
 
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/common.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/qna.css" />
-<script type="text/javascript"
-	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/include/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/resources/include/css/qna.css" />
+
+<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -124,7 +124,9 @@
 		$("#f_search").submit();
 	}
 </script>
+
 </head>
+
 <body>
 
 	<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>

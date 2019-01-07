@@ -5,8 +5,7 @@
 
 <html>
 <head>
-<!-- Bootstrap core CSS -->
-<link href="/resources/include/css/mem.css" rel="stylesheet">
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +14,9 @@
 
 <title>Insert title here</title>
 
+<!-- Bootstrap core CSS -->
+<link href="/resources/include/css/mem.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<!-- <link href="/resources/css/signin.css" rel="stylesheet"> -->
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -54,6 +53,7 @@
 </script>
 
 </head>
+
 <body>
 	<c:if test="${login == null and cp_Id == null}">
 		<c:redirect url="/mem/login.do" />
