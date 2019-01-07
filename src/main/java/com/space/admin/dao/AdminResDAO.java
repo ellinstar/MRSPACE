@@ -46,8 +46,12 @@ public class AdminResDAO {
 		return session.selectList("rescplist", cri);
 	}
 	
+	//그래프 전체 예약수
+	public List<ReservVO> graphAll(){
+		return session.selectList("graphall");
+	}
 	//그래프 업체별 예약수
-	public List<ReservVO> graphCp(){
-		return session.selectList("graphcp");
+	public List<ReservVO> graphCp(int cp_Num){
+		return session.selectList("graphcp",cp_Num);
 	}
 }

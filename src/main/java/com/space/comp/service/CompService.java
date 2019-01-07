@@ -26,9 +26,11 @@ public interface CompService {
 
 	public int compPwChange2(CompVO cvo);
 	
-	public List<ReservVO> getReservList(CompVO cvo);
+	public List<ReservVO> compReservList(CompVO cvo);
 	
 	public void reservStateUpdate(ReservVO rvo);
+	
+	public void reservStateUpdate2(ReservVO rvo);
 	
 
 }

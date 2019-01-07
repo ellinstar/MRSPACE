@@ -41,7 +41,6 @@ public class CompDAOImpl implements CompDAO {
 	}
 
 	public int compUpdate(CompVO cvo) {
-		System.out.println("업데이트 DAO : cpID : " + cvo.getCp_Id());
 		return session.update("compUpdate", cvo);
 	}
 
@@ -60,23 +59,26 @@ public class CompDAOImpl implements CompDAO {
 	}
 
 	public int compPwChange2(CompVO cvo) {
-		System.out.println("DaoCpPwCh2 : " + cvo.getCp_Id());
-		System.out.println("DaoCpPwCh2 : " + cvo.getCp_Pw());
 		return session.update("compPwChange2", cvo);
 	}
 
 	public int compSecurityUpdate(CompSecurity sec) {
 		System.out.println("CompDAOImpl - securityUpdate 메소드 호출");
-		System.out.println("DaoSecUpdate : " + sec.getCp_Id());
         return session.update("compSecurityUpdate", sec);
 	}
 
-	public List<ReservVO> getReservList(CompVO cvo) {
+	public List<ReservVO> compReservList(CompVO cvo) {
 		return session.selectList("compReservList",cvo);
 	}
 
 	public void reservStateUpdate(ReservVO rvo) {
 		session.update("reservStateUpdate",rvo);
 	}
+	
+	public void reservStateUpdate2(ReservVO rvo) {
+		session.update("reservStateUpdate2",rvo);
+	}
+
+	
 	
 }

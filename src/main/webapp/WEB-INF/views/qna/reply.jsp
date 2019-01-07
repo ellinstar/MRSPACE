@@ -4,18 +4,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
 <meta charset="UTF-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 <title>댓글</title>
 
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/reply.css" />
+<link rel="stylesheet" type="text/css" href="/resources/include/css/reply.css" />
 
 <!-- jQuery Framework 참조하기 -->
-<script type="text/javascript"
-	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	var replyNum, message = "작성시 입력한 비밀번호를 입력해 주세요.", pwdConfirm = 0, btnKind = "";
@@ -77,7 +76,9 @@
 	}
 	
 </script>
+
 </head>
+
 <body>
 	<div id="replyContainer">
 		<h1></h1>

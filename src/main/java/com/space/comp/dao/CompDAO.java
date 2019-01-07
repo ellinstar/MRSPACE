@@ -33,7 +33,9 @@ public interface CompDAO {
 	
 	public int compSecurityUpdate(CompSecurity sec);
 	
-	public List<ReservVO> getReservList(CompVO cvo);
+	public List<ReservVO> compReservList(CompVO cvo);
 	
 	public void reservStateUpdate(ReservVO rvo);
+	
+	public void reservStateUpdate2(ReservVO rvo);
 }

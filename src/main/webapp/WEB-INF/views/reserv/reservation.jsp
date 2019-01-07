@@ -24,7 +24,7 @@
 <%session.removeAttribute("errCode");%>
 	break;
 			case 3:
-				alert("예약 성공 했습니다. '<br>'예약 내역은 마이페이지에서 확인 하실수 있습니다.");
+				alert("예약 성공 했습니다. 예약 내역은 마이페이지에서 확인 하실수 있습니다.");
 <%session.removeAttribute("errCode");%>
 	break;
 			case 4:
@@ -116,6 +116,9 @@ input#closeBtn {
 </style>
 
 <body>
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<!-- Page Content -->
 	<div class="container">
 		<c:if test="${reserv == null}">

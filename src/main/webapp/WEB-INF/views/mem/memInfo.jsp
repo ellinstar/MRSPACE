@@ -5,14 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- Bootstrap core CSS -->
 <link href="/resources/include/css/mem.css" rel="stylesheet">
+
 <meta charset="UTF-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>memInfo</title>
+
 <script type="text/javascript">
 	document.title = 'MRSPACE : 내 정보';
 </script>
@@ -28,9 +30,13 @@
 		});
 	});
 </script>
-</head>
-<body>
 
+</head>
+
+<body>
+	<c:if test="${login == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<div class="container">
 		<h1 class="tit_space" align="center">내 정보</h1>
 		<br> <br> <br>

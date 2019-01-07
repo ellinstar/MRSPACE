@@ -5,8 +5,7 @@
 
 <html>
 <head>
-<!-- Bootstrap core CSS -->
-<link href="/resources/include/css/mem.css" rel="stylesheet">
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +14,9 @@
 
 <title>Insert title here</title>
 
+<!-- Bootstrap core CSS -->
+<link href="/resources/include/css/mem.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<!-- <link href="/resources/css/signin.css" rel="stylesheet"> -->
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -54,19 +53,23 @@
 </script>
 
 </head>
+
 <body>
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<section class="testimonials text-center">
 		<div class="contentContainer">
 			<h1 class="tit_space">비밀번호 확인</h1>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br>
 			<div class="row" id="memMP">
 				<form class="form-signin" id="mem_Form" name="mem_Form">
 					<br> <label for="mem_OldPw">비밀번호</label> <input
-						type="password" id="mem_OldPw" name="mem_OldPw" required autofocus style="width: 154px;">
-					<div class="col-sm-5" >
-						<p class="form-control-static error" style="color: rgb(0, 0, 153);width: 240px;"></p>
+						type="password" id="mem_OldPw" name="mem_OldPw" required autofocus
+						style="width: 154px;">
+					<div class="col-sm-5">
+						<p class="form-control-static error"
+							style="color: rgb(0, 0, 153); width: 240px;"></p>
 					</div>
 					<input type="button" class="btn btn-default" id="mem_Submit"
 						value="확인">

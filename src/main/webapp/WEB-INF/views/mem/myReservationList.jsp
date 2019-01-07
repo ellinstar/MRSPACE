@@ -26,84 +26,128 @@
 <!-- Custom styles for this template -->
 <!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
 
+<script type="text/javascript">
+	$(function() {
+		$("#agree").click(function() {
+			$("#reservStateUpdate").attr({
+				"method" : "POST",
+				"action" : "/mem/reservAgree.do"
+			});
+			$("#reservStateUpdate").submit();
+		});
+
+		$("#refuse").click(function() {
+			$("#reservStateUpdate").attr({
+				"method" : "POST",
+				"action" : "/mem/reservRefuse.do"
+			});
+			$("#reservStateUpdate").submit();
+		});
+	});
+</script>
+
 
 <body>
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
 	<section class="testimonials text-center">
-	<div class="container-fluid"><br><br>
-		<h2 class="sub-header">예약 목록</h2><br><br>
-		<div class="table-responsive">
-			<table class="table table-striped">
-				<colgroup>
-					<col width="10%" />
-					<col width="10%" />
-					<col width="10%" />
-					<col width="10%" />
-					<col width="10%" />
-				</colgroup>
-				<thead>
-				<tr>
-					<th>공간명</th>
-					<th>예약한 날짜</th>
-					<th>예약한 달</th>
-					<th>예약 금액</th>
-					<th>예약 상태</th>
-				</tr>
-				</thead>
-				<tbody id="list">
-				<c:choose>
-					<c:when test="${not empty reservList}">
-						<!-- <tr>
+		<div class="container-fluid">
+			<br>
+			<br>
+			<h2 class="sub-header">예약 목록</h2>
+			<br>
+			<br>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<colgroup>
+						<col width="10%" />
+						<col width="10%" />
+						<col width="10%" />
+						<col width="10%" />
+						<col width="10%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>공간명</th>
+							<th>예약한 날짜</th>
+							<th>예약한 달</th>
+							<th>예약 금액</th>
+							<th>예약 상태</th>
+						</tr>
+					</thead>
+					<tbody id="list">
+						<c:choose>
+							<c:when test="${not empty reservList}">
+								<!-- <tr>
 							<th>공간명</th>
 							<th>예약한 날짜</th>
 							<th>예약한 달</th>
 							<th>예약 금액</th>
 							<th>예약 상태</th>
 						</tr> -->
-						<c:forEach var="reserv" items="${reservList}" varStatus="status">
-							<tr>
-								<td>
-									<form id="move" name="move">
-										<input type="hidden" id="sp_Num" name="sp_Num"
-											value="${reserv.sp_Num}">
-										<c:out value="${reserv.sp_Name}" />
-									</form>
-								</td>
-								<td><fmt:parseDate value="${reserv.res_Date}"
-										pattern="yyyy-MM-dd HH:mm:ss" var="parseDate1" /> <fmt:formatDate
-										value="${parseDate1}" pattern="yyyy-MM-dd" /></td>
+								<c:forEach var="reserv" items="${reservList}" varStatus="status">
+									<tr>
+										<td>
+											<form id="move" name="move">
+												<input type="hidden" id="sp_Num" name="sp_Num"
+													value="${reserv.sp_Num}">
+												<c:out value="${reserv.sp_Name}" />
+											</form>
+										</td>
+										<td><fmt:parseDate value="${reserv.res_Date}"
+												pattern="yyyy-MM-dd HH:mm:ss" var="parseDate1" /> <fmt:formatDate
+												value="${parseDate1}" pattern="yyyy-MM-dd" /></td>
 
-								<td><fmt:parseDate value="${reserv.res_UseDate}"
-										pattern="yyyy-MM-dd HH:mm:ss" var="parseDate2" /> <fmt:formatDate
-										value="${parseDate2}" pattern="yyyy년MM월" /></td>
-								<td><c:out value="${reserv.res_Amount}" /></td>
-								<c:choose>
-									<c:when test="${reserv.res_State == 1}">
-										<td>예약 신청 중</td>
-									</c:when>
-									<c:when test="${reserv.res_State == 2}">
-										<td>예약 완료</td>
-									</c:when>
-									<c:when test="${reserv.res_State == 3}">
-										<td>사용중</td>
-									</c:when>
-									<c:when test="${reserv.res_State == 4}">
-										<td>사용종료</td>
-									</c:when>
-								</c:choose>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="5" class="tac">신청한 예약이 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-				</tbody>
-			</table>
+										<td><fmt:parseDate value="${reserv.res_UseDate}"
+												pattern="yyyy-MM-dd HH:mm:ss" var="parseDate2" /> <fmt:formatDate
+												value="${parseDate2}" pattern="yyyy년MM월" /></td>
+										<td><c:out value="${reserv.res_Amount}" /></td>
+										<c:choose>
+											<c:when test="${reserv.res_State == 1}">
+												<td>예약 신청 중</td>
+											</c:when>
+											<c:when test="${reserv.res_State == 2}">
+												<td>예약 통과
+													<form id="reservStateUpdate" name="reservStateUpdate">
+														<input type="hidden" value="${reserv.mem_Id}" id="mem_Id"
+															name="mem_Id"> <input type="hidden"
+															value="${reserv.res_Num}" id="res_Num" name="res_Num">
+														<input type="button" value="결제" id="agree" name="agree">
+														<input type="button" value="취소" id="refuse" name="refuse">
+													</form>
+												</td>
+											</c:when>
+											<c:when test="${reserv.res_State == 3}">
+												<td>사용중</td>
+											</c:when>
+											<c:when test="${reserv.res_State == 4}">
+												<td>사용종료</td>
+											</c:when>
+											<c:when test="${reserv.res_State == 5}">
+												<td>결제 완료</td>
+											</c:when>
+											<c:when test="${reserv.res_State == -1}">
+												<td>예약 거절</td>
+											</c:when>
+											<c:when test="${reserv.res_State == -2}">
+												<td>예약 취소</td>
+											</c:when>
+										</c:choose>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="5" class="tac">신청한 예약이 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 
+			</div>
 		</div>
-	</div>
 	</section>
 </body>
 </html>

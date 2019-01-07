@@ -132,8 +132,6 @@ public class CompController {
 
 		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
 
-		System.out.println(lvo);
-
 		if (lvo == null) {
 			mav.setViewName("mem/login");
 			return mav;
@@ -240,7 +238,6 @@ public class CompController {
 			String cp_Id = cVo.getCp_Id();
 
 			model.addAttribute("cpId", cp_Id);
-			System.out.println(cp_Id);
 			mav.setViewName("comp/compResult");
 			return mav;
 		}
@@ -272,13 +269,11 @@ public class CompController {
 	public ModelAndView compPwChange2(@ModelAttribute("CompVO") CompVO cvo, HttpSession session, Model model) {
 		System.out.println("CompController클래스 compPwChangePage post메소드 호출");
 		ModelAndView mav = new ModelAndView();
-		System.out.println("ModelAndView mav : " + mav);
 		String cpId = (String) session.getAttribute("cp_Id2");
 
 		cvo.setCp_Id(cpId);
 
 		int result = compService.compPwChange2(cvo);
-		System.out.println("반환값 : " + result);
 		if (result != 1) {
 			mav.addObject("errCode", 10);
 			mav.setViewName("comp/compPwChangePage");
@@ -326,9 +321,6 @@ public class CompController {
 
 		CompLoginVO lvo = (CompLoginVO) session.getAttribute("comp2");
 
-		System.out.println("세션 comp2 : " + session.getAttribute("comp2"));
-		
-		
 		if (lvo == null) {
 			mav.setViewName("mem/login");
 			return mav;
@@ -360,7 +352,7 @@ public class CompController {
 		CompVO cvo = new CompVO();
 		cvo.setCp_Num(cp_Num);
 		
-		List<ReservVO> reservList = compService.getReservList(cvo);
+		List<ReservVO> reservList = compService.compReservList(cvo);
 		session.getAttribute("cp_Id");
 		session.getAttribute("cp_Num");
 		session.getAttribute("cp_Name");
@@ -369,7 +361,7 @@ public class CompController {
 		return "comp/compReservationList";
 	}
 	
-	//예약 상태 변경
+	//예약 수락시 상태 변경
 	@RequestMapping(value="/compReservStateUpdate.do",method=RequestMethod.POST)
 	public String reservUpdate(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
 		session.getAttribute("cp_Id");
@@ -380,8 +372,16 @@ public class CompController {
 		return "redirect:/comp/compReservationList.do";
 	}
 	
-	
-	
+	//예약 거절시 상태 변경
+	@RequestMapping(value="/compReservStateUpdate2.do",method=RequestMethod.POST)
+	public String reservUpdate2(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
+		session.getAttribute("cp_Id");
+		session.getAttribute("cp_Num");
+		session.getAttribute("cp_Name");
+		compService.reservStateUpdate2(rvo);
+		
+		return "redirect:/comp/compReservationList.do";
+	}
 	
 	
 	

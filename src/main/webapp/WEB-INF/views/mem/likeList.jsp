@@ -13,27 +13,12 @@
 	document.title = 'MRSPACE : 찜목록';
 </script>
 </head>
-<!-- Bootstrap core CSS -->
-<!-- <link href="/resources/include/dist/css/bootstrap.min.css"
-	rel="stylesheet"> -->
-
-<!-- Custom styles for this template -->
-<!-- <link href="dashboard.css" rel="stylesheet"> -->
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
-
-
-
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="/resources/include/dist/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-
-
 
 <!-- Custom styles for this template -->
 <!-- <link href="/resources/css/landing-page.min.css" rel="stylesheet"> -->
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="/resources/include/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -63,7 +48,13 @@
 		});
 	});
 </script>
+
 <body>
+
+	<c:if test="${login == null and cp_Id == null}">
+		<c:redirect url="/mem/login.do" />
+	</c:if>
+	
 	<section class="testimonials text-center">
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="move" id="move">

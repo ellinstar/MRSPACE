@@ -9,22 +9,10 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta http-equiv="refresh" content="5; url=/mem/login.do">
-
 <title>회원가입 완료 화면</title>
 <script type="text/javascript">
 	document.title = 'MRSPACE : 회원가입';
 </script>
-<!-- 모바일 웹 페이지 설정 -->
-<!-- <link rel="shortcut icon" href="/resources/images/common/icon.png" />
-		<link rel="apple-touch-icon" href="/resources/images/common/icon.png" /> -->
-<!-- 모바일 웹 페이지 설정 끝 -->
-
-<!--[if lt IE 9]>
-		<script src="/resources/include/js/html5shiv.js"></script>
-		<![endif]-->
-
-<!-- <link rel="stylesheet" type="text/css" href="/resources/include/css/common.css" />
-		<link rel="stylesheet" type="text/css" href="/resources/include/css/member.css" /> -->
 </head>
 <body>
 	<div class="contentContainer">

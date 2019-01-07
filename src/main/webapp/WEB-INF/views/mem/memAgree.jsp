@@ -5,6 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+
 <script type="text/javascript">
    function check() {
       // 체크박스 체크 여부
@@ -23,17 +28,18 @@
       history.back();
    }
 </script>
-<script type="text/javascript"
-   src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <style type="text/css">
 	textarea {
 		width: 900px;
 		height: 500px;
 	}
 </style>
+
 </head>
+
 <body>
 <section class="testimonials text-center bg-light">
    <form id="form" name="form">
