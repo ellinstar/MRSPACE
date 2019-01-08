@@ -37,7 +37,7 @@
 </script>
 </head>
 <body>
-<div class="contentContainer">
+<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
 		<div class="container">
 		<p>
 			<h2>안내 드립니다</h2>

@@ -34,6 +34,18 @@
       }
    }
 </script>
+<style type="text/css">
+.navbar-nav {
+   float: left;
+   /* margin: 0 auto; */
+   margin-right: -200px;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand
+   {
+   margin-left: -220px;
+}
+</style>
 </head>
 <body>
 

@@ -84,8 +84,8 @@
 
 <body>
 	<div class="contentContainer">
-		<div class="contentTit">
-			<h3>게시판 상세보기</h3>
+		<div class="contentTit"><br>
+			<h2>게시판 상세보기</h2>
 		</div>
 
 		<form name="f_data" id="f_data" method="POST">
@@ -109,9 +109,7 @@
 						</form>
 					</div>
 				</td>
-				<td id="btd2"><input type="button" value="수정"
-					id="updateFormBtn"> <input type="button" value="삭제"
-					id="qnaDeleteBtn"> <input type="button" value="목록"
+				<td id="btd2"><input type="button" value="목록"
 					id="qnaListBtn"></td>
 			</tr>
 		</table>

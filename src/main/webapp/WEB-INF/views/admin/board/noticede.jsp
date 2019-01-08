@@ -13,6 +13,7 @@
 <script type="text/javascript" 	src="/resources/include/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<link href="/resources/css/landing-page.min.css" rel="stylesheet">
 <script type="text/javascript">
 $(function() {
 	$("#ntModFormBtn").click(function() {
@@ -38,7 +39,7 @@ $(function() {
 </script>
 </head>
 <body>
-	<div class="contentContainer">
+	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
 		<div class="panel-heading"><h3>작성된 공지사항 확인</h3></div>
 
 		<div class="panel-body">
@@ -50,9 +51,11 @@ $(function() {
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="30" name='nt_content' readonly="readonly"><c:out value="${detail.nt_content}"/>
-					
-					</textarea>
+					<div class="form-control" id='nt_content' style="height: 100%;">
+						<p>
+					${detail.nt_content}"
+					</p>
+					</div>
 				</div>
 				<div class="form-group">
 				<c:if test="${detail.nt_file != '' }">

@@ -38,7 +38,7 @@
 	</script>
 </head>
 <body>
-	<div class="contentContainer">
+	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
 		<div class="page-header">
 			<h3>문의게시판</h3>
 		</div>

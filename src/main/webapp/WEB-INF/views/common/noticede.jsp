@@ -18,7 +18,7 @@
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-	<div class="contentContainer">
+	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
 		<div class="panel-heading"><h3>공지 상세보기</h3></div>
 
 		<div class="panel-body">
@@ -30,7 +30,11 @@
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="30" name='nt_content' readonly="readonly"><c:out value="${detail.nt_content}"/></textarea>
+					<div class="form-control" id='nt_content' style="height: 100%;">
+						<p>
+					${detail.nt_content}"
+					</p>
+					</div>
 				</div>
 				<div class="form-group">
 				<c:if test="${detail.nt_file != '' }">
@@ -58,7 +62,7 @@ $(document).ready(function() {
 	var file="<c:out value='${detail.nt_file}'/>";
 	if(file != ""){
 		$("#fileImage").attr({
-			src:"/uploadStorage/notice/${detail.nt_file}", width:"450px", height:"200px"
+			src:"/uploadStorage/notice/${detail.nt_file}", width:"100%", height:"100%"
 		});
 	}
 });

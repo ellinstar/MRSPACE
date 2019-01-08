@@ -15,7 +15,7 @@
 	src="/resources/include/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="contentContainer">
+	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
 		<div class="panel-heading">
 			<h3>문의 내용 상세보기</h3>
 		</div>
