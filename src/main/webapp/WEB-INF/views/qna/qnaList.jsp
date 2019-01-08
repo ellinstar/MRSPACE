@@ -7,9 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>글 목록</title>
 
+<meta charset="UTF-8" />
+
+<title>글 목록</title>
+<script type="text/javascript">
+	document.title = 'MRSPACE : 문의';
+</script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
 <link rel="stylesheet" type="text/css"
@@ -124,7 +128,9 @@
 		$("#f_search").submit();
 	}
 </script>
+
 </head>
+
 <body>
 
 	<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
@@ -137,8 +143,7 @@
 		<div class="contentTit">
 			<h2>문의 게시판</h2>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="detailForm" id="detailForm">
@@ -149,8 +154,8 @@
 		<%-- ================== 검색기능 시작 ================= --%>
 		<div id="qnaSearch">
 			<form id="f_search" name="f_search">
-				<input type="hidden" id="page" name="page" value="${data.page}" /> <input
-					type="hidden" id="order_by" name="order_by"
+				<input type="hidden" id="page" name="page" value="${data.page}" />
+				<input type="hidden" id="order_by" name="order_by"
 					value="${data.order_by}" /> <input type="hidden" id="order_sc"
 					name="order_sc" value="${data.order_sc}" />
 				<table summary="검색">
@@ -165,9 +170,11 @@
 								<option value="qna_Title">제목</option>
 								<option value="qna_Content">내용</option>
 								<option value="qna_Name">작성자</option>
-						</select> <input type="text" name="keyword" id="keyword" placeholder="검색어를입력하세요" />
-							<input type="button" value="검색" id="searchData" class="btn btn-default" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="button" value="자주 묻는 질문" id="qnaFixed" class="btn btn-primary" /></td>
+						</select> <input type="text" name="keyword" id="keyword"
+							placeholder="검색어를입력하세요" /> <input type="button" value="검색"
+							id="searchData" class="btn btn-default" />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+							value="자주 묻는 질문" id="qnaFixed" class="btn btn-primary" /></td>
 						<td id="btd2">한페이지에 <select id="pageSize" name="pageSize">
 								<option value="1">1줄</option>
 								<option value="2">2줄</option>
@@ -243,7 +250,8 @@
 		<%-- ================ 글쓰기 버튼 출력 시작 =============== --%>
 
 		<div class="contentBtn">
-			<input type="button" value="글쓰기" id="insertFormBtn" class="btn btn-default">
+			<input type="button" value="글쓰기" id="insertFormBtn"
+				class="btn btn-default">
 		</div>
 		<%-- ================ 글쓰기 버튼 출력 종료 =============== --%>
 
@@ -251,7 +259,8 @@
 		<div id="qnaPage">
 			<tag:paging page="${param.page}" total="${total}"
 				list_size="${data.pageSize}" />
-		</div><br>
+		</div>
+		<br>
 		<%-- =============== 페이지 네비게이션 종료 =============== --%>
 	</div>
 </body>

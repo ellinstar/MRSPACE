@@ -33,11 +33,13 @@ public class ReservController {
 	@RequestMapping(value = "/reservation.do", method = RequestMethod.GET)
 	public String reserv(HttpSession session, Model model) {
 		log.info("reserv.do get 호출");
-		session.getAttribute("login");
 		session.getAttribute("mem");
 		SpaceVO svo = (SpaceVO) session.getAttribute("detail");
 		CompVO cvo = reservService.getCompInfo(svo);
-		
+		LoginVO lvo =(LoginVO) session.getAttribute("login");
+		if (lvo == null) {
+			return "mem/login";
+		}
 		
 		session.setAttribute("comp", cvo);
 		
