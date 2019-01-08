@@ -49,6 +49,9 @@
 </script>
 
 <title>Company Join</title>
+<script type="text/javascript">
+   document.title = 'MRSPACE : 업체회원가입';
+</script>
 </head>
 <body>
 	<div id="contentContainer">
