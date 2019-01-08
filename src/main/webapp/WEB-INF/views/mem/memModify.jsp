@@ -47,13 +47,12 @@
 			}
 		}
 	}
-
+	
 	function jobCheck() {
 		var job = "${mem.mem_Job}";
 		$("#job").val(job).prop("selected", "true");
 	}
 </script>
-<<<<<<< HEAD
 <style type="text/css">
 #mem_Delete {
 	margin-left: 200px;
@@ -64,18 +63,6 @@
 	<c:if test="${login == null and cp_Id == null}">
 		<c:redirect url="/mem/login.do" />
 	</c:if>
-=======
-
-<style type="text/css">
-#mem_Delete {
-	margin-left: 200px;
-}
-</style>
-
-</head>
-
-<body>
->>>>>>> refs/remotes/origin/상현
 	<div class="contentContainer">
 		<h1 class="tit_space" align="center">회원정보 수정</h1>
 		<br>
@@ -88,23 +75,6 @@
 					<label for="mem_Id" class="col-sm-2 control-label">아이디</label>
 					<div class="col-sm-3">${mem.mem_Id}</div>
 				</div>
-<<<<<<< HEAD
-				<!-- <div class="form-group form-group-sm">
-						<label for="mem_OldPw" class="col-sm-2 control-label">기존 비밀 번호</label>
-						<div class="col-sm-3">
-							<input type="password" id="mem_OldPw" name="mem_OldPw" maxlength="20" class="form-control" placeholder="기존 비밀번호 입력" >
-						</div>
-						<div class="col-sm-5">
-							<p class="form-control-static error"></p>
-						</div>
-					</div> -->
-				<div class="form-group form-group-sm">
-					<label for="mem_Pw" class="col-sm-2 control-label">변경할 비밀
-						번호</label>
-					<div class="col-sm-3">
-						<input type="password" id="mem_Pw" name="mem_Pw" maxlength="20"
-							class="form-control" placeholder="변경할 비밀번호 입력">
-=======
 				<div class="form-group form-group-sm">
 					<label for="mem_Pw" class="col-sm-2 control-label">변경할 비밀
 						번호</label>
@@ -114,12 +84,7 @@
 					</div>
 					<div class="col-sm-5">
 						<p class="form-control-static error"></p>
->>>>>>> refs/remotes/origin/상현
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-5">
-						<p class="form-control-static error"></p>
-=======
 				</div>
 				<div class="form-group form-group-sm">
 					<label for="mem_PwCheck" class="col-sm-2 control-label">변경할
@@ -127,43 +92,10 @@
 					<div class="col-sm-3">
 						<input type="password" id="mem_PwCheck" name="mem_PwCheck"
 							maxlength="20" class="form-control" placeholder="변경할 비밀번호 입력 확인">
->>>>>>> refs/remotes/origin/상현
 					</div>
-<<<<<<< HEAD
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="mem_PwCheck" class="col-sm-2 control-label">변경할
-						비밀번호 확인</label>
-					<div class="col-sm-3">
-						<input type="password" id="mem_PwCheck" name="mem_PwCheck"
-							maxlength="20" class="form-control" placeholder="변경할 비밀번호 입력 확인">
-=======
 					<div class="col-sm-5">
 						<p class="form-control-static error"></p>
->>>>>>> refs/remotes/origin/상현
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-5">
-						<p class="form-control-static error"></p>
-=======
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="mem_Name" class="col-sm-2 control-label">회원이름</label>
-					<div class="col-sm-3">${mem.mem_Name}</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="birth" class="col-sm-2 control-label">생년월일</label>
-					<div class="col-sm-3">${mem.mem_Birth}</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="mem_Phone" class="col-sm-2 control-label">핸드폰
-						번호</label>
-					<div class="col-sm-3">
-						<input type="text" id="mem_Phone" name="mem_Phone" maxlength="11"
-							class="form-control" value="${mem.mem_Phone}">
->>>>>>> refs/remotes/origin/상현
-					</div>
-<<<<<<< HEAD
 				</div>
 				<div class="form-group form-group-sm">
 					<label for="mem_Name" class="col-sm-2 control-label">회원이름</label>
@@ -180,8 +112,6 @@
 						<input type="text" id="mem_Phone" name="mem_Phone" maxlength="11"
 							class="form-control" value="${mem.mem_Phone}">
 					</div>
-=======
->>>>>>> refs/remotes/origin/상현
 					<div class="col-sm-5">
 						<p class="form-control-static error"></p>
 					</div>

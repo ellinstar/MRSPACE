@@ -103,8 +103,14 @@ public class MemController {
 	 * 마이 페이지 폼
 	 **************************************************************/
 	@RequestMapping(value = "/memMyPage.do", method = RequestMethod.GET)
-	public String memMyPageForm(Model model) {
+	public String memMyPageForm(Model model, HttpSession session) {
 		log.info("memMyPage.do get 방식에 의한 memMyPageForm메서드 호출 성공");
+
+		LoginVO lvo = (LoginVO) session.getAttribute("login");
+		if (lvo == null) {
+			return "mem/login";
+		}
+
 		return "mem/memMyPage";
 	}
 
@@ -272,6 +278,10 @@ public class MemController {
 
 		LoginVO lvo = (LoginVO) session.getAttribute("login");
 
+		if (lvo == null) {
+			return "mem/login";
+		}
+
 		mvo.setMem_Id(lvo.getMem_Id());
 
 		List<ReservVO> likeList = memService.likeList(mvo);
@@ -397,12 +407,16 @@ public class MemController {
 	}
 
 	/*
-	 * 리스트 구현
+	 * 예약 리스트 구현
 	 */
 	@RequestMapping(value = "/myReservationList", method = RequestMethod.GET)
 	public String reservList(@ModelAttribute MemVO mvo, Model model, HttpSession session) {
 
 		LoginVO lvo = (LoginVO) session.getAttribute("login");
+		if (lvo == null) {
+			return "mem/login";
+		}
+
 		mvo.setMem_Id(lvo.getMem_Id());
 
 		List<ReservVO> reservListe = memService.reservList(mvo);
@@ -410,24 +424,22 @@ public class MemController {
 
 		return "mem/myReservationList";
 	}
-	
-	//예약 결제
-	//예약 수락시 상태 변경
-		@RequestMapping(value="/reservAgree.do",method=RequestMethod.POST)
-		public String reservAgree(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
-			session.getAttribute("login");
-			memService.reservAgree(rvo);
-			return "redirect:/mem/myReservationList.do";
-		}
-	
-		//예약 취소시 상태 변경
-		@RequestMapping(value="/reservRefuse.do",method=RequestMethod.POST)
-		public String reservRefuse(@ModelAttribute ReservVO rvo , HttpSession session, Model model) {
-			session.getAttribute("login");
-			memService.reservRefuse(rvo);
-			return "redirect:/mem/myReservationList.do";
-		}
-		
-	
+
+	// 예약 결제
+	// 예약 수락시 상태 변경
+	@RequestMapping(value = "/reservAgree.do", method = RequestMethod.POST)
+	public String reservAgree(@ModelAttribute ReservVO rvo, HttpSession session, Model model) {
+		session.getAttribute("login");
+		memService.reservAgree(rvo);
+		return "redirect:/mem/myReservationList.do";
+	}
+
+	// 예약 취소시 상태 변경
+	@RequestMapping(value = "/reservRefuse.do", method = RequestMethod.POST)
+	public String reservRefuse(@ModelAttribute ReservVO rvo, HttpSession session, Model model) {
+		session.getAttribute("login");
+		memService.reservRefuse(rvo);
+		return "redirect:/mem/myReservationList.do";
+	}
 
 }

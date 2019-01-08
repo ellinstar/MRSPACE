@@ -98,7 +98,6 @@ $(document).ready(function() {
 						<th>유형</th>
 						<th>위치</th>
 						<th>총수량</th>
-						<th>남은수량</th>
 						<th data-value="sp_Regdate" class="order">등록신청일</th>
 					</tr>
 				</thead>
@@ -113,14 +112,13 @@ $(document).ready(function() {
 								<td><c:out value="${spmain.sp_Type}"/></td>
 								<td><c:out value="${spmain.sp_Address}"/></td>
 								<td><c:out value="${spmain.sp_Stock}"/></td>
-								<td><c:out value="${spmain.sp_Rest}"/></td>
 								<td><c:out value="${spmain.sp_Date}"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+							<td colspan="7" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

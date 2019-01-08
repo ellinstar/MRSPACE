@@ -60,8 +60,8 @@
 							<input type="reset" class="btn" value="작성글비우기">
 							</c:when>
 							<c:otherwise>
-							<input type="submit" id="repUpdate" class="btn btn-primary" value="수정하기">
-							<input type="button" id="repDelete" class="btn" value="댓글지우기">
+						<!-- 	<input type="submit" id="repUpdate" class="btn btn-primary" value="수정하기">
+							<input type="button" id="repDelete" class="btn" value="댓글지우기"> -->
 							</c:otherwise>
 							</c:choose>
 						</div>

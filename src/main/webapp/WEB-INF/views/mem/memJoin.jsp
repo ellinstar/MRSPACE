@@ -10,11 +10,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>Join Mem!</title>
-
-<!-- Bootstrap core CSS -->
-<link href="/resources/include/css/mem.css" rel="stylesheet">
-
-<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	document.title = 'MRSPACE : 회원가입';
+</script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript" src="/resources/include/js/join.js"></script>
 <script type="text/javascript">

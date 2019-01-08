@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 목록</title>
+<script type="text/javascript">
+	document.title = 'MRSPACE : 예약목록';
+</script>
 </head>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -105,7 +108,7 @@
 												<td>예약 신청 중</td>
 											</c:when>
 											<c:when test="${reserv.res_State == 2}">
-												<td>예약 통과
+												<td>예약 승인
 													<form id="reservStateUpdate" name="reservStateUpdate">
 														<input type="hidden" value="${reserv.mem_Id}" id="mem_Id"
 															name="mem_Id"> <input type="hidden"

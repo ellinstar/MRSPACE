@@ -9,12 +9,15 @@
 <title>Insert title here</title>
  <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="/resources/css/admin.css" rel="stylesheet">
     <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart','bar']});
+      google.charts.load('current', {'packages':['corechart','line']});
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawCpChart);
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
@@ -35,7 +38,7 @@
         </c:forEach>
         // Set chart options
         var options = {
-        			title:'업체별 예약수',
+        			title:'업체별 누적 예약수',
         			color: '#76a7fa',
         			opacity: 0.2,
         			height: 800,
@@ -47,6 +50,43 @@
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+      function drawCpChart() {
+    	  var data = new google.visualization.DataTable();
+    	  var row = ${fn:length(cpList)};
+    	  data.addColumn("string", '예약월');
+          data.addColumn('number', '예약수');
+          data.addRows(row);
+          <c:forEach var="cp" items="${cpList}" varStatus="status">
+        	var month="${cpList.month}"
+        	var amount = "${cpList.amount}";
+        	var index = ${status.index};
+        	Number(amount);
+        	data.setCell(index, 0, month);
+        	data.setCell(index, 1, amount);
+        </c:forEach>
+        var options = {
+    			title:'월별 예약수',
+    			color: '#76a7fa',
+    			opacity: 0.2,
+    			height: 800,
+                lineWidth:3,
+                interpolateNulls: 'true'
+            };
+       // var chart = new google.visualization.LineChart(document.getElementById('cp_chart'));
+     //   chart.draw(data, options);
+    	  
+	}
+      
+     /*  $('.btn').click(function() {
+		$.ajax({
+			url : "./graph",
+			type : "POST",
+			data : $('.btn').val(),
+			success : drawCpChart()
+				
+		});
+	}); */
+      
       
     </script>
   </head>
@@ -55,9 +95,9 @@
   
     <!--Div that will hold the pie chart-->
     <div id="chart_div"></div>
-    <c:forEach var="cpop" items="${cpop}">
-    <button id="btn" name="${cpop.cp_Num}">${cpop.cp_Name}</button>
+    <%-- <c:forEach var="cpop" items="${cpop}">
+    <button class="btn" id='<c:out value="${cpop.cp_Num}"/>'>${cpop.cp_Name}<c:out value="${cpop.cp_Num}"></c:out></button>
     </c:forEach>
-    <div id="cp_chart"></div>
+    <div id="cp_chart"></div> --%>
   </body>
 </html>

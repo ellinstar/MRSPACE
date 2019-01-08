@@ -114,7 +114,9 @@
 		});
 	});
 </script>
-<title>Insert title here</title>
+<script type="text/javascript">
+	document.title = 'MRSPACE : 공간목록';
+</script>
 </head>
 <body>
 	<br>
