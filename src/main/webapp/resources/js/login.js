@@ -11,7 +11,6 @@ $(function() {
 	 * /*if(!formCheck($('#keyword'),$('#msg'),"검색어를")) return;
 	 */
 	$("#loginBtn").click(function() {
-		errCodeCheck();
 		if (!formCheck($('#mem_Id'), $('.error:eq(0)'), "아이디를"))
 			return;
 		else if (!inputVerify(0, '#mem_Id', '.error:eq(0)'))

@@ -19,7 +19,7 @@
 	$(document).ready(function() {
 		/* 페이지 이동 */
 		var actionForm = $("#actionForm");
-		$(".paginate_button a").on("click", function(e) {
+		$(".page-link a").on("click", function(e) {
 			e.preventDefault();
 			console.log('click');
 			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
@@ -38,21 +38,27 @@
 </head>
 <body>
 <div class="contentContainer">
-		<div class="page-header">
-			<h2 class="mb-6">안내 드립니다</h2>
+		<div class="container">
+		<p>
+			<h2>안내 드립니다</h2>
+			<hr>
 		</div>
 
 		<%-- =================== 리스트 시작  ================= --%>
 		<div class="col-md-12">
 			<table summary="게시판 리스트"
 				class="table table-striped table-bordered table-hover">
+				<colgroup>
+					<col width="10%">
+					<col width="50%">
+					<col width="15%">
+				</colgroup>
 
 				<thead>
 					<tr>
 						<th>#번호</th>
 						<th>공지사항 제목</th>
 						<th>작성일</th>
-						<th>조회수</th>
 					</tr>
 				</thead>
 				<tbody id="notice">
@@ -66,13 +72,12 @@
 										href='<c:out value="${notice.nt_num}"/>'><c:out
 												value="${notice.nt_title}"></c:out></a></td>
 									<td><c:out value="${notice.nt_date}" /></td>
-									<td></td>
 								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+								<td colspan="3" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -87,18 +92,18 @@
 		<div class='pull-right button-group'>
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev }">
-					<li class="paginate_button previous"><a
+					<li class="page-link previous"><a
 						href="${pageMaker.startPage -1 }">Previous</a></li>
 				</c:if>
 
 				<c:forEach var="num" begin="${pageMaker.startPage}"
 					end="${pageMaker.endPage}">
-					<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":''}"><a
+					<li class="page-link ${pageMaker.cri.pageNum == num ? "active":''}"><a
 						href="${num}">${num}</a></li>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next}">
-					<li class="paginate_button next"><a
+					<li class="page-link next"><a
 						href="${pageMaker.endPage +1 }">Next</a></li>
 				</c:if>
 			</ul>
