@@ -935,7 +935,7 @@ textarea:focus {
 			<div class="col-md-6">
 				<label class="form-control-plaintext" style="color: #0c5460">
 					<strong><font style="vertical-align: inherit;">공간
-							서비스 등록</font></strong>
+							서비스</font></strong>
 				</label>
 				<textarea name="sp_Service" id="spaceService" class="form-control"
 					style="height: 300px"
@@ -943,8 +943,7 @@ textarea:focus {
 			</div>
 			<div class="col-md-6">
 				<label class="form-control-plaintext" style="color: #0c5460">
-					<strong><font style="vertical-align: inherit;">교통편
-							등록</font></strong>
+					<strong><font style="vertical-align: inherit;">교통편</font></strong>
 				</label>
 				<textarea name="sp_Traffic" id="spaceTraffic" class="form-control"
 					style="height: 300px"

@@ -41,6 +41,7 @@ public class HomeController {
 		return "index";
 	}
 
+
 	// 공지사항
 	@Autowired
 	private NoticeService ntService;

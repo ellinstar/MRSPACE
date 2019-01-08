@@ -22,28 +22,12 @@
 <link
 	href="/resources/vendor/simple-line-icons/css/simple-line-icons.css"
 	rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-	rel="stylesheet" type="text/css">
 <!-- 아이콘CSS -->
-<!-- <link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
- -->
 
 <link rel="stylesheet" href="/resources/popup/needpopup.min.css">
 <!-- 찜목록 -->
 <script src="/resources/include/js/like.js"></script>
 
-<!-- 구글지도 -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-	google.load("maps", "3.4", {
-		other_params : "sensor=false&language=kr"
-	});
-</script>
 <script type="text/javascript"
 	src="/resources/include/js/jquery.googlemap.js"></script>
 
@@ -694,7 +678,7 @@ var customOverlay = new daum.maps.CustomOverlay({
 	<!-- 전화 popup 모달창 -->
 	<div class="wrapper">
 		<div id='small-popup' class="needpopup">
-			<p>" 코워킹스페이스를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다.:)</p>
+			<p>" MRSPACE를 통해 연락드렸어요~" 라고 말씀하시면 더 친절하게 안내 받으실 수 있습니다.:)</p>
 			<p>-------------------------------------------------------------------------</p>
 			<h2>${detail.sp_Name}</h2>
 			<%-- 	<h2>${detail.cp_Phone}</h2> --%>

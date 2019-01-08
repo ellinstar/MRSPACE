@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-lg-6 h-100 text-center text-lg-left my-auto">
 				<ul class="list-inline mb-2">
-					<li class="list-inline-item"><a href="#">회사소개</a></li>
+					<li class="list-inline-item"><a href="/common/introduction.do">회사소개</a></li>
 					<li class="list-inline-item">&sdot;</li>
 					<li class="list-inline-item"><a href="#">이용약관</a></li>
 					<li class="list-inline-item">&sdot;</li>
