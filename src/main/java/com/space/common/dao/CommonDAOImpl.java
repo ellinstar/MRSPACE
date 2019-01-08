@@ -41,4 +41,6 @@ public class CommonDAOImpl {
 	public int cpnum(SpaceVO svo) {
 		return session.selectOne("cpnum", svo);
 	}
+
+
 }

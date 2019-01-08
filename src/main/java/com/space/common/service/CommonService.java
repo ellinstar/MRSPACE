@@ -16,4 +16,5 @@ public interface CommonService {
 	public SpaceVO commonDetail(SpaceVO svo);
 
 	public int cpnum(SpaceVO svo);
+	
 }

@@ -40,7 +40,7 @@
 			<ul class="navbar-nav">
 				<li><strong>[${login.mem_Name}]님 반갑습니다.</strong>
 					&nbsp;&nbsp;&nbsp;&nbsp; <a href="/mem/logout.do">로그아웃</a> <a
-					href="/mem/memMyPage.do">&nbsp;&nbsp;&nbsp;회원 정보</a></li>
+					href="/mem/memMyPage.do">&nbsp;&nbsp;&nbsp;마이페이지</a></li>
 			</ul>
 		</c:when>
 		<c:otherwise>

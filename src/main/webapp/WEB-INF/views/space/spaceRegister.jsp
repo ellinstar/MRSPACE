@@ -14,7 +14,7 @@
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
-	document.title = 'MRSPACE : 공간등록';
+   document.title = 'MRSPACE : 공간등록';
 </script>
 <head>
 <!-- 오픈데스크 1인 버튼 -->
@@ -483,7 +483,20 @@ textarea:focus {
 }
 
 /* named upload */
-.filebox .upload-name {
+.filebox .upload-name { <<<<<<<
+	HEAD display: inline-block;
+	padding: .5em .75em;
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none; =======
 	display: inline-block;
 	padding: .5em .75em;
 	font-size: inherit;
@@ -497,207 +510,215 @@ textarea:focus {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+	>>>>>>>
+	refs
+	/remotes/origin/master
 }
 
-<!--공간 서비스 /교통편 텍스트 -->
-#spaceService:focus, #spaceTraffic:focus {
+<!--
+공간 서비스 /교통편 텍스트 -->#spaceService:focus, #spaceTraffic:focus { <<<<<<<
+	HEAD border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000; =======
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
+	>>>>>>>
+	refs
+	/remotes/origin/master
 }
 </style>
 
 
 <script type="text/javascript">
-	$(function() {
+   $(function() {
 
-		//다음 버튼 클릭시 
-		$("#btnReg").click(function() {
-					alert("공간 등록 신청 성공!");
-					
-					
-					//재고갯수 입력 유효성 검사
-					if (document.myForm.spaceStock.value == "") {
-						alert("재고 갯수를 입력하세요.");
-						return false;
-					}
-					
-				      // 숫자가 아닌 것을 입력한 경우
-				      var stock = document.myForm.spaceStock.value.substr(0,9);
-			          if (!isNumeric(stock)) {
-			            alert("재고갯수는 숫자로 입력하세요.");
-			            document.myForm.spaceStock.value = ""
-			            document.myForm.spaceStock.focus()
-			            return false;
-			          } 
-			          
-			        //공간명 유효성검사 
-						if (myForm.spaceName.value == "") {
-							alert("공간명을 입력하세요.");
-							spaceName.focus();
-							return false;
-						}
+      //다음 버튼 클릭시 
+      $("#btnReg").click(function() {
+               alert("공간 등록 신청 성공!");
+               
+               
+               //재고갯수 입력 유효성 검사
+               if (document.myForm.spaceStock.value == "") {
+                  alert("재고 갯수를 입력하세요.");
+                  return false;
+               }
+               
+                  // 숫자가 아닌 것을 입력한 경우
+                  var stock = document.myForm.spaceStock.value.substr(0,9);
+                   if (!isNumeric(stock)) {
+                     alert("재고갯수는 숫자로 입력하세요.");
+                     document.myForm.spaceStock.value = ""
+                     document.myForm.spaceStock.focus()
+                     return false;
+                   } 
+                   
+                 //공간명 유효성검사 
+                  if (myForm.spaceName.value == "") {
+                     alert("공간명을 입력하세요.");
+                     spaceName.focus();
+                     return false;
+                  }
 
-						//공간명에 공백 사용불가
-						if (document.myForm.spaceName.value.indexOf(" ") >= 0) {
-							alert("공간명에는 공백을 사용할 수 없습니다.")
-							document.myForm.spaceName.focus()
-							document.myForm.spaceName.select()
-							return false;
-						}
+                  //공간명에 공백 사용불가
+                  if (document.myForm.spaceName.value.indexOf(" ") >= 0) {
+                     alert("공간명에는 공백을 사용할 수 없습니다.")
+                     document.myForm.spaceName.focus()
+                     document.myForm.spaceName.select()
+                     return false;
+                  }
 
-						//공간명 2~20자 유효성 검사
-						if (document.myForm.spaceName.value.length<2 || document.myForm.spaceName.value.length>20) {
-							alert("아이디를 4~12자까지 입력해주세요.")
-							document.myForm.spaceName.focus()
-							document.myForm.spaceName.select()
-							return false;
-						}
-						
-						//공간 가격 미입력시
-						if(document.myForm.spacePrice.value == ""){
-							alert("가격을 입력해주세요!")
-							document.myForm.spacePrice.value = ""
-								document.myForm.spacePrice.focus()
-								return false;
-						}
+                  //공간명 2~20자 유효성 검사
+                  if (document.myForm.spaceName.value.length<2 || document.myForm.spaceName.value.length>20) {
+                     alert("아이디를 4~12자까지 입력해주세요.")
+                     document.myForm.spaceName.focus()
+                     document.myForm.spaceName.select()
+                     return false;
+                  }
+                  
+                  //공간 가격 미입력시
+                  if(document.myForm.spacePrice.value == ""){
+                     alert("가격을 입력해주세요!")
+                     document.myForm.spacePrice.value = ""
+                        document.myForm.spacePrice.focus()
+                        return false;
+                  }
 
-						//공간 가격에 숫자만 입력
-						var price = document.myForm.spacePrice.value
-								.substr(0, 9);
-						if (!isNumeric(price)) {
-							alert("가격은 숫자만 입력하세요.")
-							document.myForm.spacePrice.value = ""
-							document.myForm.spacePrice.focus()
-							return false;
-						}
-						
-						//공간 주소 미입력시
-						if(document.myForm.spaceAddr.value == ""){
-							alert("주소를 입력해주세요!")
-							document.myForm.spaceAddr.value = ""
-								document.myForm.spaceAddr.focus()
-								return false;
-						}
-						
+                  //공간 가격에 숫자만 입력
+                  var price = document.myForm.spacePrice.value
+                        .substr(0, 9);
+                  if (!isNumeric(price)) {
+                     alert("가격은 숫자만 입력하세요.")
+                     document.myForm.spacePrice.value = ""
+                     document.myForm.spacePrice.focus()
+                     return false;
+                  }
+                  
+                  //공간 주소 미입력시
+                  if(document.myForm.spaceAddr.value == ""){
+                     alert("주소를 입력해주세요!")
+                     document.myForm.spaceAddr.value = ""
+                        document.myForm.spaceAddr.focus()
+                        return false;
+                  }
+                  
 
-						//계약기간 미설정시
-						if(document.myForm.spaceDateStart.value == "" && document.myForm.spaceDateEnd.value == ""){
-							alert("임대 계약 기간을 설정해주세요!")
-							document.myForm.spaceDateStart.value = ""
-								document.myForm.spaceDateStart.focus()
-								return false;
-						}
-						//오픈날짜 미선택시
-						if (document.myForm.spaceOpenDate.value == ""
-								&& document.myForm.spaceOpenDate.value == "") {
-							alert("오픈가능 날짜를 설정해주세요!")
-							document.myForm.spaceOpenDate.value = ""
-							document.myForm.spaceOpenDate.focus()
-							return false;
-						}
+                  //계약기간 미설정시
+                  if(document.myForm.spaceDateStart.value == "" && document.myForm.spaceDateEnd.value == ""){
+                     alert("임대 계약 기간을 설정해주세요!")
+                     document.myForm.spaceDateStart.value = ""
+                        document.myForm.spaceDateStart.focus()
+                        return false;
+                  }
+                  //오픈날짜 미선택시
+                  if (document.myForm.spaceOpenDate.value == ""
+                        && document.myForm.spaceOpenDate.value == "") {
+                     alert("오픈가능 날짜를 설정해주세요!")
+                     document.myForm.spaceOpenDate.value = ""
+                     document.myForm.spaceOpenDate.focus()
+                     return false;
+                  }
 
-						//공간 소개 미입력시
-						if (document.myForm.spaceexp.value == "") {
-							alert("공간 설명을 입력해주세요!")
-							document.myForm.spaceexp.value = ""
-							document.myForm.spaceexp.focus()
-							return false;
-						}
-						
-			          $("#myForm").attr({
-							"method":"POST",
-							"action":"/space/spaceInsert.do"
-						});
-						$("#myForm").submit();
-				});
-	});
+                  //공간 소개 미입력시
+                  if (document.myForm.spaceexp.value == "") {
+                     alert("공간 설명을 입력해주세요!")
+                     document.myForm.spaceexp.value = ""
+                     document.myForm.spaceexp.focus()
+                     return false;
+                  }
+                  
+                   $("#myForm").attr({
+                     "method":"POST",
+                     "action":"/space/spaceInsert.do"
+                  });
+                  $("#myForm").submit();
+            });
+   });
 
-	//숫자입력 (0~9)
-		   function isNumeric(s) { 
-		          for (i=0; i<s.length; i++) { 
-		            c = s.substr(i, 1); 
-		            if (c < "0" || c > "9") return false; 
-		          } 
-		          return true; 
-		        }
-		
-	
-	$(function() {
-		//오늘 날짜를 출력
-		$("#today").text(new Date().toLocaleDateString());
+   //숫자입력 (0~9)
+         function isNumeric(s) { 
+                for (i=0; i<s.length; i++) { 
+                  c = s.substr(i, 1); 
+                  if (c < "0" || c > "9") return false; 
+                } 
+                return true; 
+              }
+      
+   
+   $(function() {
+      //오늘 날짜를 출력
+      $("#today").text(new Date().toLocaleDateString());
 
-		//datepicker 한국어로 사용하기 위한 언어설정
-		$.datepicker.setDefaults($.datepicker.regional['ko']);
+      //datepicker 한국어로 사용하기 위한 언어설정
+      $.datepicker.setDefaults($.datepicker.regional['ko']);
 
-		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
-		// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
+      // 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
+      // 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
 
-		//시작일.
-		$('#spaceDateStart').datepicker(
-				{
-					showOn : "both", // 달력을 표시할 타이밍 (both: focus or button)
-					buttonImage : "../resources/img/calender.png", // 버튼 이미지
-					buttonImageOnly : true, // 버튼 이미지만 표시할지 여부
-					buttonText : "날짜선택", // 버튼의 대체 텍스트
-					dateFormat : "yy-mm-dd", // 날짜의 형식
-					changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-					changeYear : true,
-					//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
-					onClose : function(selectedDate) {
-						// 시작일(fromDate) datepicker가 닫힐때
-						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-						$("#spaceDateEnd").datepicker("option", "minDate",
-								selectedDate);
-					}
-				});
+      //시작일.
+      $('#spaceDateStart').datepicker(
+            {
+               showOn : "both", // 달력을 표시할 타이밍 (both: focus or button)
+               buttonImage : "../resources/img/calender.png", // 버튼 이미지
+               buttonImageOnly : true, // 버튼 이미지만 표시할지 여부
+               buttonText : "날짜선택", // 버튼의 대체 텍스트
+               dateFormat : "yy-mm-dd", // 날짜의 형식
+               changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
+               changeYear : true,
+               //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+               onClose : function(selectedDate) {
+                  // 시작일(fromDate) datepicker가 닫힐때
+                  // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                  $("#spaceDateEnd").datepicker("option", "minDate",
+                        selectedDate);
+               }
+            });
 
-		//종료일
-		$('#spaceDateEnd').datepicker(
-				{
-					showOn : "both",
-					buttonImage : "../resources/img/calender.png",
-					buttonImageOnly : true,
-					buttonText : "날짜선택",
-					dateFormat : "yy-mm-dd",
-					changeMonth : true,
-					changeYear : true,
-					//minDate: 0, // 오늘 이전 날짜 선택 불가
-					onClose : function(selectedDate) {
-						// 종료일(toDate) datepicker가 닫힐때
-						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-						$("#spaceDateStart").datepicker("option", "maxDate",
-								selectedDate);
-					}
-				});
-		
-		
-		//오픈가능일자
-		$('#spaceOpenDate').datepicker(
-				{
-					showOn : "both", // 달력을 표시할 타이밍 (both: focus or button)
-					buttonImage : "../resources/img/calender.png", // 버튼 이미지
-					buttonImageOnly : true, // 버튼 이미지만 표시할지 여부
-					buttonText : "날짜선택", // 버튼의 대체 텍스트
-					dateFormat : "yy-mm-dd", // 날짜의 형식
-					changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-					changeYear : true,
-					//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
-					onClose : function(selectedDate) {
-						// 시작일(fromDate) datepicker가 닫힐때
-						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-						$("#spaceDateStart").datepicker("option", "maxDate",
-								selectedDate);
-					}
-				});
-	});
-	
-	/*취소 버튼 클릭 시 처리 이벤트 */
-	$("#btnCancle").click(function(){
-		location.href="/space/spaceList.do";
-	});
-		
-		
-	
+      //종료일
+      $('#spaceDateEnd').datepicker(
+            {
+               showOn : "both",
+               buttonImage : "../resources/img/calender.png",
+               buttonImageOnly : true,
+               buttonText : "날짜선택",
+               dateFormat : "yy-mm-dd",
+               changeMonth : true,
+               changeYear : true,
+               //minDate: 0, // 오늘 이전 날짜 선택 불가
+               onClose : function(selectedDate) {
+                  // 종료일(toDate) datepicker가 닫힐때
+                  // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+                  $("#spaceDateStart").datepicker("option", "maxDate",
+                        selectedDate);
+               }
+            });
+      
+      
+      //오픈가능일자
+      $('#spaceOpenDate').datepicker(
+            {
+               showOn : "both", // 달력을 표시할 타이밍 (both: focus or button)
+               buttonImage : "../resources/img/calender.png", // 버튼 이미지
+               buttonImageOnly : true, // 버튼 이미지만 표시할지 여부
+               buttonText : "날짜선택", // 버튼의 대체 텍스트
+               dateFormat : "yy-mm-dd", // 날짜의 형식
+               changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
+               changeYear : true,
+               //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+               onClose : function(selectedDate) {
+                  // 시작일(fromDate) datepicker가 닫힐때
+                  // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                  $("#spaceDateStart").datepicker("option", "maxDate",
+                        selectedDate);
+               }
+            });
+   });
+   
+   /*취소 버튼 클릭 시 처리 이벤트 */
+   $("#btnCancle").click(function(){
+      location.href="/space/spaceList.do";
+   });
+      
+      
+   
 </script>
 
 
@@ -881,7 +902,6 @@ textarea:focus {
 				id="spaceDateStart">&nbsp;-&nbsp; <input type="text"
 				class="form-control col-md-3" name="sp_Contract2" id="spaceDateEnd">
 		</div>
-
 		<hr>
 		<div class="alert  row">
 			<label class="form-control-plaintext col-md-2" style="color: #0c5460">
@@ -915,7 +935,7 @@ textarea:focus {
 			<div class="col-md-6">
 				<label class="form-control-plaintext" style="color: #0c5460">
 					<strong><font style="vertical-align: inherit;">공간
-							서비스 등록</font></strong>
+							서비스</font></strong>
 				</label>
 				<textarea name="sp_Service" id="spaceService" class="form-control"
 					style="height: 300px"
@@ -923,8 +943,7 @@ textarea:focus {
 			</div>
 			<div class="col-md-6">
 				<label class="form-control-plaintext" style="color: #0c5460">
-					<strong><font style="vertical-align: inherit;">교통편
-							등록</font></strong>
+					<strong><font style="vertical-align: inherit;">교통편</font></strong>
 				</label>
 				<textarea name="sp_Traffic" id="spaceTraffic" class="form-control"
 					style="height: 300px"
