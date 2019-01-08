@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="/resources/include/css/comp.css" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -22,31 +23,69 @@
 			location.href = "index.do"
 		});
 	});
-
 </script>
-<script type="text/javascript">
-	document.title = 'MRSPACE : 업체회원가입';
-</script></head>
+<style type="text/css">
+#test1{
+	float: right;
+    position: relative;
+    left: -45%;
+}
+
+.well {
+	width : 60%;
+	float: right;
+    position: relative;
+    left: -20%;
+}
+
+.well p {
+	left: -20%;
+}
+
+.miniTitle {
+	font-weight:bold;
+	font-size : 22px;
+}
+
+.tit_space {
+font-weight:bold;
+}
+
+#joinSuc2 {
+color : red;
+text-align : center;
+}
+
+
+</style>
+<title>Join Success</title>
+</head>
 
 <body>
-	<div id="joinSuc">
-		<hr>
-		<h1>회원가입 신청 완료</h1>
-
-		<div id="joinSuc1">
-			<p class="miniTitle">제출서류목록</p>
-			<p>&nbsp;&nbsp;-&nbsp;사업자 등록증, 통장사본</p>
-			<p class="miniTitle">공간 등록 시 제출 서류 목록</p>
-			<p>&nbsp;&nbsp;-&nbsp;계약자와 사업자가 동일한 부동산 임대 계약서</p>
-		</div>
-		<div id="joinSuc2">
-			<p>제출 서류 검토 후 회원가입 승인처리 됩니다.</p>
-			<p>서류 제출 기한은 가입 신청일로부터 7일 입니다.</p>
-			<p>제출 기한이 지나면 신청은 자동취소 됩니다.</p>
-		</div>
-		<div>
-			<input type="button" id="test1" value="확인" />
-		</div>
+	<br><br><br>
+	<div class="well">
+			<h1 class="tit_space" align="center">회원가입 신청 완료</h1>
+			<br>
+			<div id="joinSuc1">
+				<p class="miniTitle">&nbsp;&nbsp;제출서류목록</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;사업자 등록증, 통장사본</p>
+				<p class="miniTitle">&nbsp;&nbsp;공간 등록 시 제출 서류 목록</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;계약자와 사업자가 동일한 부동산 임대 계약서</p>
+				<br>
+				<p>&nbsp;&nbsp;주소 : 서울시 성동구 무학로2길 54</p>
+				<p>&nbsp;&nbsp;FAX : 02-428-9694</p>
+			</div>
+			<br><br>
+			
+	
+	<div id="joinSuc2">
+				<p>제출 서류 검토 후 회원가입 승인처리 됩니다.</p>
+				<p>서류 제출 기한은 가입 신청일로부터 7일 입니다.</p>
+				<p>제출 기한이 지나면 신청은 자동취소 됩니다.</p>
+			</div>
+			<div>
+				<input type="button" id="test1" value="확인" class="btn btn-default" />
+			</div>
 	</div>
 </body>
 </html>

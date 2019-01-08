@@ -9,6 +9,44 @@
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="/resources/include/js/compCommon.js"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+
+<!-- 검색 창 클릭시 색 -->
+<style type="text/css">
+input[type=date]:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+input[type=text]:focus {
+	border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000;
+}
+
+text {
+	transition: .3s;
+	resize: none; /* 사용자 임의 변경 불가 */
+}
+
+.buttonA {
+float : right;
+}
+
+.pageA {
+  	float: right;
+    position: relative;
+    left: -37%;
+}
+
+#titleA {
+	float: right;
+    position: relative;
+    left: -45%;
+}
+
+</style>
 <script type="text/javascript">
 	$(function() {
 		// 검색 후 검색 대상과 단어 출력
@@ -114,14 +152,12 @@
 		});
 	});
 </script>
-<script type="text/javascript">
-	document.title = 'MRSPACE : 공간목록';
-</script>
+<title>Insert title here</title>
 </head>
 <body>
-	<br>
-	<h1>공간목록</h1>
-	<br>
+	<br><br><br>
+	<h2 class="sub-header" id="titleA" >공간목록</h2>
+	<br><br><br>
 	<div class="container">
 		<%-- ========= 상세 페이지 이동을 위한 FORM ============= --%>
 		<form name="modifyForm" id="modifyForm">
@@ -135,10 +171,12 @@
 			<form id="f_Search" name="f_Search">
 				<%-- <input type="hidden" id="order_by" name="order_by" value="${data.order_by}" />
 				<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" /> --%>
-				<label for="spaceListCnt">총 개수 : ${total}</label> <input
-					type="button" value="전체목록" onclick="javascript:spaceAll()">
-				<input type="button" value="검색" id="searchData" /> <input
-					type="text" name="keyword" id="keyword" placeholder="공 간 명 검 색" />
+				<input type="button" value="전체목록" onclick="javascript:spaceAll()" class="btn btn-info">
+				&nbsp;<label for="spaceListCnt">총 개수 : ${total}</label>
+				<div class="buttonA">
+					<input type="text" name="keyword" id="keyword" placeholder="공 간 명 검 색"  />
+					<input type="button" value="검색" id="searchData" class="btn btn-info"/>
+				</div>
 				<input type="hidden" name="page" id="page" value="${ data.page }" />
 				<input type="hidden" name="cp_Num" id="cp_Num" value="${ cp_Num }"/>
 				<!-- <select name="pageSize" id="pageSize">
@@ -153,7 +191,7 @@
 
 		<%-- =================== 리스트 시작  ================= --%>
 		<div class="spaceList">
-			<table border="1" width="100%">
+			<table class="table table-striped">
 				<colgroup>
 					<col width="7%">
 					<col width="15%">
@@ -210,14 +248,14 @@
 		<%-- =================== 리스트 종료  ================= --%>
 
 		<%-- ================ 공간등록 버튼 출력 시작 =============== --%>
-		<div class="contentBtn">
-			<input type="button" value="등록하기" id="spaceRegister"
+		<div class="buttonA">
+			<input type="button" value="등록하기" id="spaceRegister" class="btn btn-info"
 				onclick="javascript:spaceRegister()">
 		</div>
 		<%-- ================ 공간등록 버튼 출력 종료 =============== --%>
 
 		<%-- =============== 페이지 네비게이션 시작 =============== --%>
-		<div id="boardPage">
+		<div class="pageA">
 			<tag:paging page="${data.page}" total="${total}"
 				list_size="${data.pageSize}" />
 		</div>

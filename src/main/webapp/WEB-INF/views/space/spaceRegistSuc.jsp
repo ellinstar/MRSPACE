@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="/resources/include/css/comp.css" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -20,6 +21,13 @@
 		location.href = "/space/spaceList.do?cp_Num=${ cp_Num }";
 	}
 </script>
+<style type="text/css">
+#goList {
+	float: right;
+    position: relative;
+    left: -50%;
+}
+</style>
 <!-- 모바일 웹 페이지 설정 -->
 <!-- <link rel="shortcut icon" href="/resources/images/common/icon.png" />
 		<link rel="apple-touch-icon" href="/resources/images/common/icon.png" /> -->
@@ -34,10 +42,13 @@
 </head>
 <body>
 	<div class="contentContainer">
-		<div class="well">
+		<div>
 			<div class="tac">
-				<h2 id="title">공간 등록 신청에 성공하였습니다.</h2><br />
-				<input type="button" id="goList" name="goList" onclick="javascript:goList()" value="확인" />
+			<br><br><br>
+				<h2 class="tit_space" align="center">공간 등록 신청에 성공하였습니다.</h2>
+				<br><br><br>
+				<input type="button" id="goList" name="goList" onclick="javascript:goList()" value="확인"
+				class="btn btn-default" />
 
 			</div>
 		</div>
