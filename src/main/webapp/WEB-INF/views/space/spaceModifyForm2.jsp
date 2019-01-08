@@ -299,9 +299,9 @@ img.ui-datepicker-trigger {
 				<textarea name="sp_Traffic" id="spaceTraffic">${modify.sp_Traffic}</textarea>
 			</div>
 		</div>
-		<input type="button" value="CANCLE" name="btnCancle" id="btnCancle"
+		<input type="button" value="취소" name="btnCancle" id="btnCancle"
 			onclick="javascript:cancel()" class="btnCancle" /> <input
-			type="button" value="MODIFY" name="btnModify" id="btnModify"
+			type="button" value="수정" name="btnModify" id="btnModify"
 			class="btnModify" /> <input type="hidden" name='cp_Id' id='cp_Id'
 			value='${modify.cp_Id}' />
 

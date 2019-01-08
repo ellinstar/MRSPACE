@@ -117,7 +117,7 @@ $(document).ready(function() {
 		<%-- =================== 전체 예약 =================== --%>
 		<div class="col-6">
 		<div class="page-header">
-			<h3>전체 예약건</h3>
+			<h3>업체별 예약건</h3>
 		</div>
 		
 			<table class="table table-striped table-bordered table-hover">
