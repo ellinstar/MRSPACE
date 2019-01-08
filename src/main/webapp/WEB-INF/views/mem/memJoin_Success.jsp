@@ -18,7 +18,7 @@
 	<div class="contentContainer">
 		<div class="well">
 			<div class="tac">
-				LentSpace 사이트에 회원 가입해 주셔서 감사합니다.<br /> <span id="text">(5초후에
+				MRSPACE 사이트에 회원 가입해 주셔서 감사합니다.<br /> <span id="text">(5초후에
 					자동으로 로그인 화면으로 이동합니다.)</span>
 			</div>
 		</div>
