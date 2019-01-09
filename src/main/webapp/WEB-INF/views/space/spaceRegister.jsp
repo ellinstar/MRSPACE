@@ -516,14 +516,12 @@ textarea:focus {
 }
 
 <!--
-공간 서비스 /교통편 텍스트 -->#spaceService:focus, #spaceTraffic:focus { <<<<<<<
-	HEAD border-color: #FF8000;
-	box-shadow: 0 0 8px 0 #FF8000; =======
+공간 서비스 /교통편 텍스트 -->
+#spaceService:focus, #spaceTraffic:focus { 
+border-color: #FF8000;
+	box-shadow: 0 0 8px 0 #FF8000; 
 	border-color: #FF8000;
 	box-shadow: 0 0 8px 0 #FF8000;
-	>>>>>>>
-	refs
-	/remotes/origin/master
 }
 </style>
 
@@ -628,7 +626,7 @@ textarea:focus {
                    $("#myForm").attr({
                      "method":"POST",
                      "action":"/space/spaceInsert.do"
-                  });
+                  }); 
                   $("#myForm").submit();
             });
    });

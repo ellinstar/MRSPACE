@@ -51,11 +51,4 @@
 			</ul>
 		</c:otherwise>
 	</c:choose>
-	<%-- <c:if test="${login.cp_Id != null and login.cp_Id != ''}">
-		<ul class="navbar-nav">
-			<li><strong>[${login.cp_Name}]님 반갑습니다.</strong>
-				&nbsp;&nbsp;&nbsp;&nbsp; <a href="/comp/logout.do">로그아웃</a> <a
-				href="/comp/memModify.do">&nbsp;&nbsp;&nbsp;회원 정보</a></li>
-		</ul>
-	</c:if> --%>
 </div>

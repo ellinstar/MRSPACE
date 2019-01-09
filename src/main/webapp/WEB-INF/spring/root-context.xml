@@ -12,7 +12,8 @@
 	<!-- DataSource -->
 	<bean id="dataSource"
 		class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/Team" />
+		<!-- <property name="jndiName" value="java:comp/env/jdbc/Team" /> -->
+		<property name="jndiName" value="java:comp/env/jdbc/local" />
 	</bean>
 	
 	
