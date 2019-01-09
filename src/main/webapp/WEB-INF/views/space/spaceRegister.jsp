@@ -628,7 +628,7 @@ textarea:focus {
                    $("#myForm").attr({
                      "method":"POST",
                      "action":"/space/spaceInsert.do"
-                  });
+                  }); 
                   $("#myForm").submit();
             });
    });

@@ -46,27 +46,11 @@
 
 		}
 
-		// 한 페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정
-		/* 		if ("<c:out value='${data.pageSize}' /> " != "") {
-		 $("#pageSize").val("<c:out value='${data.pageSize}'/>");
-		 } */
-
-		/* 	// 한 페이지에 보여줄 레코드 수 변경될 때마다 처리 이벤트
-			$("#pageSize").change(function() {
-				goPage(1);
-			}); */
-		// select option
 		var searchForm = $("#searchForm");
 		$("#search").on("change", function() {
-			/* var word = "<c:out value='${data.keyword}'/>";
-			if (word != "") {
-				$("#keyword").val("<c:out value='${data.keyword}'/>"); */
-
-			// value 값으로 선택
 			$("#search option:checked").val();
 
 			searchForm.submit();
-			/* } */
 		});
 
 		// 검색 버튼 클릭 시 처리 이벤트
@@ -207,7 +191,6 @@ form#searchForm {
 				<h3>"${data.keyword}"(으)로 검색한 결과입니다.</h3>
 				<form id="sp_Search" name="sp_Search" class="form-row">
 
-					<%-- 	<input type="hidden" id="page" name="page" value="${data.page}" /> --%>
 					<input type="hidden" id="order_by" name="order_by"
 						value="${data.order_by}" /> <input type="hidden" id="order_sc"
 						name="order_sc" value="${data.order_sc}" />
@@ -271,8 +254,6 @@ form#searchForm {
 												<ol class="carousel-indicators">
 													<li data-target="#myCarousel" data-slide-to="0"
 														class="active"></li>
-													<!--       <li data-target="#myCarousel" data-slide-to="1"></li>
-                                 <li data-target="#myCarousel" data-slide-to="2"></li> -->
 												</ol>
 
 												<div class="carousel-inner" role="listbox">
