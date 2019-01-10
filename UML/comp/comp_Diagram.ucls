@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.space.comp.controller.CompController" project="space" 
+    file="/space/src/main/java/com/space/comp/controller/CompController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="359" y="328"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.space.comp.service.CompServiceImpl" project="space" 
+    file="/space/src/main/java/com/space/comp/service/CompServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="693" y="585"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="com.space.comp.service.CompService" project="space" 
+    file="/space/src/main/java/com/space/comp/service/CompService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="691" y="185"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="4" language="java" name="com.space.comp.vo.CompSecurity" project="space" 
+    file="/space/src/main/java/com/space/comp/vo/CompSecurity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="102" y="442"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.space.comp.vo.CompVO" project="space" 
+    file="/space/src/main/java/com/space/comp/vo/CompVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="160" x="20" y="45"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="com.space.comp.dao.CompDAO" project="space" 
+    file="/space/src/main/java/com/space/comp/dao/CompDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="990" y="210"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.space.comp.dao.CompDAOImpl" project="space" 
+    file="/space/src/main/java/com/space/comp/dao/CompDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="992" y="585"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="8">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <association id="9">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="10" name="compDao"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="13" name="compService"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="15">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

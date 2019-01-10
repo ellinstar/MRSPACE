@@ -1,12 +1,11 @@
 $(function() {
+	errCodeCheck();
 	// 아래 함수는 서버로 받아 온 코드값에 대한 처리 함수(login.jsp 파일에 정의.)
-	errCodeCheck()
 	$('#mem_Id, #mem_Pw').bind("keyup", function() {
 		$(this).parents("div").find(".error").html("");
 	});
 
 	// 아래 함수는 서버로 받아 온 코드값에 대한 처리 함수(login.jsp 파일에 정의.)
-	errCodeCheck();
 	$('#cp_Id, #cp_Pw').bind("keyup", function() {
 		$(this).parents("div").find(".error").html("");
 	});

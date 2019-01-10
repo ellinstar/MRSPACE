@@ -14,8 +14,8 @@
 <link href="/resources/css/admin.css" rel="stylesheet">
 </head>
 <body>
-	<div class="contentContainer">
-		<div class="panel-heading"><h3>공지사항 작성</h3></div>
+	<div class="contentContainer"  style="width: 85%; margin-left:3%; margin-top: 25px; ">
+		<div class=""page-header"><h3>공지사항 작성</h3></div>
 
 		<div class="panel-body">
 			<form role="form" method="post" name="noticewrForm" id="noticewrForm" action="/admin/notice/noticeInsert" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="30" name='nt_content'></textarea>
+					<textarea class="form-control" rows="15" name='nt_content'></textarea>
 				</div>
 				<div class="form-group">
 					<label>첨부파일</label> <input type="file" class="form-control" name='file' id="file">

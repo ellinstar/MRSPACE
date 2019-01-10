@@ -28,8 +28,9 @@ public class MemLoginController {
 	 * 로그인 화면 출력ㅎ
 	 */
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login() {
+	public String login(HttpSession session) {
 		log.info("login.do get 호출");
+		session.invalidate();
 		return "mem/login";
 	}
 
@@ -47,8 +48,7 @@ public class MemLoginController {
 		
 		// 로그인 실패
 		if (resultData == 1) {
-			mav.addObject("errCode", 1);
-			session.setAttribute("errCode", 1);
+			session.setAttribute("errCode13", 1);
 			return "mem/login";
 		} else {
 			// 입력한 아이디 비밀번호 확인
@@ -57,8 +57,7 @@ public class MemLoginController {
 			//log.info("최근 로그인 일시 : " + new SimpleDateFormat("YYYY-MM-dd").format(vo.getLastSuccessedLogin()));
 			// 로그인 성공인지 확인
 			if (loginCheckResult == null) {
-				mav.addObject("errCode", 1);
-				session.setAttribute("errCode", 1);
+				session.setAttribute("errCode13", 1);
 				return "mem/login";
 			}
 			// 로그인 성공

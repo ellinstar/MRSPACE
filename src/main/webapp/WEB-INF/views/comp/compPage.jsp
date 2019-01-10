@@ -70,10 +70,6 @@
 								class="fa fa-user fa-5x"></i><br /> <br>예약 현황</a>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-							<a href="/comp/compGraph.do" class="btn btn-sq-lg btn-success"><br>
-								<i class="fa fa-user fa-5x"></i><br /> <br>통계</a>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							<a href="/comp/compInfo.do" class="btn btn-sq-lg btn-danger"><br>
 								<i class="fa fa-user fa-5x"></i><br /> <br>내 정보</a>
 						</p>

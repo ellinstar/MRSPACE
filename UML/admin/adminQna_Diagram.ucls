@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.space.admin.controller.AdminQnaController" project="space" 
+    file="/space/src/main/java/com/space/admin/controller/AdminQnaController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="153" y="127"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="com.space.admin.service.AdminQnaService" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminQnaService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="431" y="436"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="com.space.admin.service.AdminQnaServiceImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminQnaServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="431" y="162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.space.admin.dao.AdminQnaDaoImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/dao/AdminQnaDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="680" y="161"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.space.qna.vo.QnaVO" project="space" 
+    file="/space/src/main/java/com/space/qna/vo/QnaVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1067" y="297"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.space.qna.vo.QnaRepVO" project="space" 
+    file="/space/src/main/java/com/space/qna/vo/QnaRepVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1265" y="290"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.space.qna.vo.CommonVO" project="space" 
+    file="/space/src/main/java/com/space/qna/vo/CommonVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="875" y="293"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="8">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="9">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="10" name="adQnaDao"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="12">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="14">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="15" name="adQnaServ"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

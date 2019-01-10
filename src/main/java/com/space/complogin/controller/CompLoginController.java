@@ -48,8 +48,7 @@ public class CompLoginController {
 		
 		// 로그인 실패
 		if (resultData == 1) {
-			mav.addObject("errCode", 1);
-			session.setAttribute("errCode", 1);
+			session.setAttribute("errCode13", 1);
 			return "mem/login";
 			
 		} else {
@@ -64,8 +63,7 @@ public class CompLoginController {
 			// 로그인 성공인지 확인
 			
 			if (loginCheckResult == null) {
-				mav.addObject("errCode", 1);
-				session.setAttribute("errCode", 1);
+				session.setAttribute("errCode13", 1);
 				return "mem/login";
 			}
 			// 로그인 성공

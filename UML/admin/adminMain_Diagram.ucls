@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.space.admin.controller.AdminController" project="space" 
+    file="/space/src/main/java/com/space/admin/controller/AdminController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="139" y="156"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.space.admin.service.AdminCompServiceImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminCompServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="647" y="154"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="com.space.admin.service.AdminCompService" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminCompService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="379" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="4" language="java" name="com.space.admin.service.AdminQnaService" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminQnaService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="356" y="617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="com.space.admin.service.AdminQnaServiceImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminQnaServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="653" y="615"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="com.space.admin.service.AdminSpaceService" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminSpaceService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="368" y="365"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.space.admin.service.AdminSpaceServiceImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/service/AdminSpaceServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="648" y="366"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="com.space.admin.dao.AdminCompDAO" project="space" 
+    file="/space/src/main/java/com/space/admin/dao/AdminCompDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="911" y="149"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="com.space.admin.dao.AdminCompDaoImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/dao/AdminCompDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1153" y="167"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.space.admin.dao.AdminQnaDaoImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/dao/AdminQnaDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="920" y="612"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.space.admin.dao.AdminSpaceDaoImpl" project="space" 
+    file="/space/src/main/java/com/space/admin/dao/AdminSpaceDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1253" y="367"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="com.space.admin.dao.AdminSpaceDAO" project="space" 
+    file="/space/src/main/java/com/space/admin/dao/AdminSpaceDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="940" y="366"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="13">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="14" name="adQnServ"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="16">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="17">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="18" name="adminCompServ"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="20">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <association id="21">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="22" name="adQnaDao"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="24">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="25" name="adminSpaceDao"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="28" name="adminSpaceServ"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="30">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <association id="31">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="32" name="adminCompDao"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="34">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="35">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

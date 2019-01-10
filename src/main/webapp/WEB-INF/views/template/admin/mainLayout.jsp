@@ -47,6 +47,8 @@
 	padding-top: 1rem;
 	padding-bottom: 80px;
 }
+
+
 </style>
 <!-- Bootstrap core JavaScript-->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>

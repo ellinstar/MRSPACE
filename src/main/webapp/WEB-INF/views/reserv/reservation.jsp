@@ -172,7 +172,7 @@ input#closeBtn {
 								기간＊</label>
 						</div>
 						<div class="col-md-4 form-label-group">
-							<input type="month" id="resUseDate" name="resUseDate"
+							<input type="month" id="resUseDate" name="resUseDate" required="required"
 								class="form-control">
 						</div>
 					</div>
