@@ -39,7 +39,7 @@ $(function() {
 </script>
 </head>
 <body>
-	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
+	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 25px;">
 		<div class="panel-heading"><h3>작성된 공지사항 확인</h3></div>
 
 		<div class="panel-body">

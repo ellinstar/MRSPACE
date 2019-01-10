@@ -23,11 +23,11 @@
 <script type="text/javascript" src="/resources/include/js/login.js"></script>
 <script>
    function errCodeCheck() {
-      var errCode = '<c:out value="${errCode}"/>';
+      var errCode = '<c:out value="${errCode13}"/>';
       if (errCode != "") {
          switch (parseInt(errCode)) {
          case 1:
-            alert("아이디 혹은 비밀번호가 일치하지 않거나 존재하지 않는 회원 입니다./n 업체의 경우 관리자 승인이 필요합니다.");
+            alert("아이디 혹은 비밀번호가 일치하지 않거나 존재하지 않는 회원 입니다.\n 업체의 경우 관리자 승인이 필요합니다!");
             break;
          }
       }

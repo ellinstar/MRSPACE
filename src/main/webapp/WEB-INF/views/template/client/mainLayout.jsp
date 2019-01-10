@@ -132,6 +132,18 @@
 section.testimonials.text-center.bg-light {
 	margin-top: 45px;
 }
+
+header.masthead {
+	height: 400px;
+}
+
+section.testimonials.text-center.bg-light {
+	margin-top: 5px;
+}
+
+.rounded {
+	border-radius: .25rem !important;
+}
 </style>
 
 
@@ -216,7 +228,7 @@ section.testimonials.text-center.bg-light {
 											<div class="carousel-inner" role="listbox">
 												<div class="carousel-item active">
 													<img src="/uploadStorage/space/${space.sp_File}"
-														class="d-block img-fluid" alt="First slide">
+														class="d-block img-fluid rounded" alt="First slide">
 												</div>
 
 											</div>

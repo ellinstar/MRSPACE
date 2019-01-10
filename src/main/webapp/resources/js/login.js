@@ -1,6 +1,5 @@
 $(function() {
 	// 아래 함수는 서버로 받아 온 코드값에 대한 처리 함수(login.jsp 파일에 정의.)
-	errCodeCheck();
 	$('#mem_Id, #mem_Pw').bind("keyup", function() {
 		$(this).parents("div").find(".error").html("");
 	});
@@ -11,6 +10,7 @@ $(function() {
 	 * /*if(!formCheck($('#keyword'),$('#msg'),"검색어를")) return;
 	 */
 	$("#loginBtn").click(function() {
+		errCodeCheck();
 		if (!formCheck($('#mem_Id'), $('.error:eq(0)'), "아이디를"))
 			return;
 		else if (!inputVerify(0, '#mem_Id', '.error:eq(0)'))
