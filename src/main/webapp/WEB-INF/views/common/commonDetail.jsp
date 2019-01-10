@@ -237,7 +237,6 @@ p {
 	line-height: 1.4;
 	color: #343638;
 	margin: 20px 0;
-	
 }
 
 .needpopup {
@@ -404,8 +403,9 @@ a.btn.btn-primary {
 input#joinBtn {
 	font-size: 1rem;
 }
+
 h5.mt-4 {
-    font-weight: 600;
+	font-weight: 600;
 }
 </style>
 </head>
@@ -475,10 +475,10 @@ $(function() {
 					<div id="map" style="width: 1060px; height: 400px;"></div>
 					<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23e208b11117bed56607098ecaaedb24"></script>
-					<script>
+<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
   mapOption = { 
-        center: new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X}), // 지도의 중심좌표
+        center: new daum.maps.LatLng('${detail.sp_Y}', '${detail.sp_X}'), // 지도의 중심좌표
         level: 4 // 지도의 확대 레벨
     };
 

@@ -93,7 +93,7 @@ label, input {
 						<label class="label col-md-12">공간 소개 </label>
 						<div class="col-md-12 form-label-group">
 							<input type="text" id="expo" class="form-control"
-								placeholder="Confirm password" required="required" style="min-height: 200px;"> <label
+								placeholder="Confirm password" required="required" style="min-height: 150px; height:100%;"> <label
 								for="expo">${detail.sp_Exposition}</label>
 						</div>
 					</div>
@@ -101,7 +101,7 @@ label, input {
 						<label class="label col-md-12 ">공간 서비스 </label>
 						<div class="col-md-12 form-label-group">
 							<input type="text" id="serv" class="form-control"
-								placeholder="Confirm password" required="required" style="min-height: 200px;"> <label
+								placeholder="Confirm password" required="required" style="min-height: 150px; height:100%;"> <label
 								for="serv">${detail.sp_Service}</label>
 						</div>
 					</div>
@@ -109,7 +109,7 @@ label, input {
 						<label class="label col-md-12">교통편</label>
 						<div class="col-md-12 form-label-group">
 							<input type="text" id="traf" class="form-control"
-								placeholder="First name" required="required" style="min-height: 200px;"> <label
+								placeholder="First name" required="required" style="height:100%;"> <label
 								for="traf">${detail.sp_Traffic}</label>
 						</div>
 					</div>
@@ -132,6 +132,7 @@ label, input {
 		<button>반려</button>&nbsp;
 		<button>접수</button>&nbsp; -->
 			<button id="ok" class="btn btn-default">승인</button>
+			<a class="btn btn-default" href="/admin/space/list">목록으로 돌아가기</a>
 		</div>
 	</div>
 

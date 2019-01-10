@@ -2,6 +2,7 @@ package com.space.mem.controller;
 
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -327,14 +328,14 @@ public class MemController {
 	 * 아이디찾기 처리
 	 */
 	@RequestMapping(value = "/memSearch.do", method = RequestMethod.POST)
-	public ModelAndView findMember(@ModelAttribute MemVO mvo, Model model) {
+	public ModelAndView findMember(@ModelAttribute MemVO mvo, Model model, HttpSession session) {
 		System.out.println("MemController클래스 findMember메소드 호출");
 		ModelAndView mav = new ModelAndView();
 
 		MemVO mVo = memService.findMember(mvo);
 
 		if (mVo == null) {
-			mav.addObject("errCode", 9);
+			session.setAttribute("errCode", 9);
 			mav.setViewName("mem/memSearch");
 			return mav;
 		} else {

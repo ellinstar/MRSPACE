@@ -113,15 +113,15 @@ label, input{
 			<colgroup>
 					<col width="10%">
 					<col width="30%">
-					<col width="30%">
-					<col width="10%">
+					<col width="20%">
+					<col width="20%">
 					<col width="20%">
 				</colgroup>
 			<thead>
 			<tr>
 				<th>No</th>
 				<th>공간명</th>
-				<th>기간</th>
+				<th>사용월</th>
 				<th>상태</th>
 				<th>결제금액(원)</th>
 			</tr>
@@ -135,7 +135,16 @@ label, input{
 							<td><c:out value="${reserv.res_Num}"/></td>
 							<td><c:out value="${reserv.sp_Name}"/></td>
 							<td><c:out value="${reserv.resUseDate}"/></td>
-							<td><c:out value="${reserv.res_State}"/></td>
+							<td>
+							<c:if test="${reserv.res_State == 1}">예약 신청 중</c:if>
+							<c:if test="${reserv.res_State == 2}">예약 승인</c:if>
+							<c:if test="${reserv.res_State == 3}">사용중</c:if>
+							<c:if test="${reserv.res_State == 4}">사용 종료</c:if>
+							<c:if test="${reserv.res_State == 5}">결제 완료</c:if>
+							<c:if test="${reserv.res_State == -1}">예약 거절</c:if>
+							<c:if test="${reserv.res_State == -2}">예약 취소</c:if>
+							
+							</td>
 							<td><fmt:formatNumber value="${reserv.res_Amount}"/> </td>
 						</tr>
 					</c:forEach>
@@ -149,6 +158,7 @@ label, input{
 			</tbody>
 			</table>
           </div>
+          <a class="btn btn-default" href="/admin/mem">목록으로 돌아가기</a>
         </div>
       </div>
     </div>
