@@ -53,7 +53,7 @@ function errCodeCheck() {
 
 </head>
 <body>
-		<h3 class="form-signin-heading">아이디 찾기</h3>
+		<!-- <h3 class="form-signin-heading">아이디 찾기</h3> -->
 		<div class="contentContainer">
 			<div class="row">
 				<form class="form-signin" id="compSearch" name="compSearch">

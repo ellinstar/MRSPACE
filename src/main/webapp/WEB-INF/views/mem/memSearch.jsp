@@ -53,12 +53,12 @@ function errCodeCheck() {
 </head>
 
 <body>
-		<h3 class="form-signin-heading">아이디 / 비밀번호 찾기</h3>
+		<!-- <h3 class="form-signin-heading">아이디 / 비밀번호 찾기</h3> -->
 		<div class="contentContainer">
 			<div class="row" id="memLogin">
 				<form class="form-signin" id="memSearch" name="memSearch">
 					<br>
-					<h6>아이디 찾기</h6>
+					<h3>회원 아이디 찾기</h3>
 					<label for="mem_Name" class="sr-only">이&nbsp;름 </label>
 					<input	type="text" id="mem_Name" name="mem_Name" class="form-control"	placeholder="이 름" required autofocus> 
 					<label	for="mem_Phone" class="sr-only">휴대폰 번호</label>

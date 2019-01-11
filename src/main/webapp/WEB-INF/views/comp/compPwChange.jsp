@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/resources/css/signin.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/compCommon.js"></script>
 <script type="text/javascript" src="/resources/js/login.js"></script>
@@ -46,7 +47,7 @@
 	<div class="contentContainer">
 		<div id="pwChangeDiv">
 			<form class="form-signin" id="compPwChange" name="compPwChange">
-				<h2 class="form-signin-heading">비밀번호 변경</h2>
+				<h2 class="form-signin-heading">업체정보확인</h2>
 				<label for="cp_Id" class="sr-only">아 이 디</label> <input type="text"
 					id="cp_Id" name="cp_Id" class="form-control" placeholder="ID"
 					required autofocus> <label for="cp_Name" class="sr-only">업체명</label>

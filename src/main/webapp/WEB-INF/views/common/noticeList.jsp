@@ -40,7 +40,7 @@
 <div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
 		<div class="container">
 		<p>
-			<h2>안내 드립니다</h2>
+			<h2 style="margin:0 auto;">MRSPACE 공지사항</h2>
 			<hr>
 		</div>
 
