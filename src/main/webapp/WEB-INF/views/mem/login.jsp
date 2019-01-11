@@ -50,6 +50,8 @@
 </script>
 </head>
 <body>
+
+	<br><br>
    <c:if test="${login.mem_Id == null or login.mem_Id == ''}">
       <div class="contentContainer">
          <div id="memLogin">
