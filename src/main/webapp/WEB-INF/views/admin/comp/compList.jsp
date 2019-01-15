@@ -52,7 +52,7 @@ $(document).ready(function() {
 						<th>승인</th>
 						<th>상태</th>
 						<th>가입 신청일</th>
-						<th>탈퇴일</th>
+						<th>탈퇴일/반려일</th>
 					</tr>
 				</thead>
 				<tbody id="comp">

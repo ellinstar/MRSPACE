@@ -490,7 +490,7 @@ var imageSrc = '/resources/img/marker_red.png', // 마커이미지의 주소입�
 
 // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption),
-    markerPosition = new daum.maps.LatLng(${detail.sp_Y}, ${detail.sp_X}); // 마커가 표시될 위치입니다
+    markerPosition = new daum.maps.LatLng('${detail.sp_Y}', '${detail.sp_X}'); // 마커가 표시될 위치입니다
 
 // 마커를 생성합니다
 var marker = new daum.maps.Marker({
