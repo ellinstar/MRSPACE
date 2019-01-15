@@ -10,6 +10,7 @@
  <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link href="/resources/css/admin.css" rel="stylesheet">
+  
     <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
@@ -77,15 +78,7 @@
     	  
 	}
       
-     /*  $('.btn').click(function() {
-		$.ajax({
-			url : "./graph",
-			type : "POST",
-			data : $('.btn').val(),
-			success : drawCpChart()
-				
-		});
-	}); */
+    
       
       
     </script>
@@ -95,6 +88,12 @@
   
     <!--Div that will hold the pie chart-->
     <div id="chart_div"></div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/resources/graph/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/resources/graph/jquery.easing.min.js"></script>
+      <script type="text/javascript"src="/resources/graph/Chart.min.js"></script>
+    <script type="text/javascript"src="/resources/graph/chart-area-demo.js"></script>
+    <canvas id="myAreaChart" width="1606" height="481" style="display: block; width: 1606px; height: 481px;" class="chartjs-render-monitor"></canvas>
     <%-- <c:forEach var="cpop" items="${cpop}">
     <button class="btn" id='<c:out value="${cpop.cp_Num}"/>'>${cpop.cp_Name}<c:out value="${cpop.cp_Num}"></c:out></button>
     </c:forEach>

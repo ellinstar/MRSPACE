@@ -32,7 +32,7 @@
 			count(*)
 		from
 			tb_company
-		where cp_num > 0
+		where cp_num >= 0
 		]]>
 	</select>
 	<!-- 업체 상세보기 -->

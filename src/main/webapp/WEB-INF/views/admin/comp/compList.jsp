@@ -70,7 +70,7 @@ $(document).ready(function() {
 								<td><c:if test="${comp.cp_Joinstate == 1}">승인완료</c:if>
 								<c:if test="${comp.cp_Joinstate == 0}">서류접수대기</c:if>
 								<c:if test="${comp.cp_Joinstate == -1}">반려</c:if>
-								<c:if test="${comp.cp_Outdate != null}">탈퇴</c:if></td>
+								<c:if test="${comp.cp_Outdate != null}"></c:if></td>
 								<td><c:out value="${comp.cp_Date}"/></td>
 								<td><c:out value="${comp.cp_Outdate}"/></td>
 							</tr>
