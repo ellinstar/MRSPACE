@@ -6,7 +6,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>COWKINGSPACE</span>
+            <span>MRSPACE HOME</span>
           </a>
         </li>
         <!-- 예약관리 -->

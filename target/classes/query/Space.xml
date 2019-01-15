@@ -70,8 +70,8 @@
 		sp_Service,
 		sp_Traffic,
 		sp_Rest,
-		cp_Num
-
+		cp_Num,
+		sp_state
 		)
 		VALUES(
 		#{sp_Num},
@@ -100,7 +100,7 @@
 
 		(select
 		cp_num from tb_company where cp_id=#{cp_Id})
-		)
+		,0)
 	</insert>
 
 	<!-- <select id="spaceSelect" parameterType="int"

@@ -58,7 +58,7 @@
 		<div class="contentContainer">
 			<div id="pwChangeDiv">
 				<form class="form-signin" id="pwChange" name="pwChange">
-					<h2 class="form-signin-heading">비밀번호 찾기</h2>
+					<h2 class="form-signin-heading">회원정보확인</h2>
 					<label for="mem_Id" class="sr-only">아 이 디</label> <input
 						type="text" id="mem_Id" name="mem_Id" class="form-control"
 						placeholder="ID" required autofocus> <label for="mem_Name"

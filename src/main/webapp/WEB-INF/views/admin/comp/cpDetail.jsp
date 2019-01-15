@@ -133,10 +133,12 @@ label, input{
 						value='<c:out value="${detail.cp_Num}"/>' />
 				</form>
 				<div class="btn-group ">
-					<button>삭제</button>
+					<!-- <button>삭제</button> -->
 					&nbsp;
 
-					<button id="ok">승인</button>
+					<button id="ok" class="btn">승인</button>&nbsp;
+					<button class="btn">반려</button>&nbsp;
+					<a class="btn btn-default" href="/admin/comp/list">업체목록</a>
 				</div>
 			</div>
 		</div>

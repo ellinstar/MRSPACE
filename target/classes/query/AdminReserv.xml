@@ -69,7 +69,7 @@
 	</select>
 	
 	<select id="compName" resultType="comp">
-		select cp_Num, cp_Name from tb_company
+		select cp_Num, cp_Name from tb_company where cp_joinstate = 1
 	</select>
 	
 <!-- 업체 예약건수 그래프 -->

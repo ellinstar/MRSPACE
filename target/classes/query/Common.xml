@@ -71,23 +71,19 @@
 
 		from
 
-		( select list.*, rownum as rnum
+		( select list.*, rownum as rnum from 
+			(
+			select s.sp_num,
+			s.sp_file, s.sp_name, s.sp_address, s.sp_price
 
-		from (
+			from tb_space s
 
-		select s.sp_num,
-		s.sp_file, s.sp_name, s.sp_address, s.sp_price
-
-		from tb_space s
-
-		<if test="keyword != null and keyword != ''">
+			<if test="keyword != null and keyword != ''">
 			where sp_name like '%' || #{keyword} || '%'
-
-		</if>
+	
+			</if>
 		<include refid="searchcommon"></include>
-
-
-		) list
+			) list
 		)
 	</select>
 

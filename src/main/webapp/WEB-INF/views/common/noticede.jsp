@@ -19,17 +19,15 @@
 </head>
 <body>
 	<div class="contentContainer" style="width: 85%; margin-left:3%; margin-top: 10px;">
-		<div class="panel-heading"><h3>공지 상세보기</h3></div>
-
-		<div class="panel-body">
+	<p>
+<hr><hr>
+		<div class="panel-heading" style="margin-top: 30px; margin-bottom: 30px;"><h3>${detail.nt_title}</h3></div>
+<hr><hr>
+		<div class="panel-body" style="margin-top: 10px;">
 			
+<p>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name='nt_title'
-					value='<c:out value="${detail.nt_title}"/>' readonly="readonly">
-				</div>
-
-				<div class="form-group">
-					<label>내용</label>
+					<!-- <label>내용</label> -->
 					<div class="form-control" id='nt_content' style="height: 100%;">
 						<p>
 					${detail.nt_content}"
@@ -38,7 +36,7 @@
 				</div>
 				<div class="form-group">
 				<c:if test="${detail.nt_file != '' }">
-					<label>첨부파일</label> 
+				<!-- 	<label>첨부파일</label>  -->
 					<img id="fileImage">
 				</c:if>
 				</div>
